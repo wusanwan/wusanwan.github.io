@@ -365,9 +365,7 @@ height:50vh;
             <!-- 不可以删除，否则会调用post的layout  -->
 <main class="main about-page">
     <article class="article-entry">
-        <p>你来了，我是三万，是一只菜鸡。<br>
-我喜欢探索，也喜欢记录。<br>
-敬请期待。</p>
+        <p>你来了，我是三万，是一只菜鸡。<br>我喜欢探索，也喜欢记录。<br>敬请期待。  </p>
 
     </article>
 </main>
@@ -518,9 +516,22 @@ height:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 3
+        Total : 4
         </div>
         <!-- search  -->
         
@@ -550,6 +561,11 @@ height:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">09/23</span><a class="archive-post-title" href= "/2018/09/23/数学分析笔记（一）实数集与函数/" >数学分析笔记（一）实数集与函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">09/21</span><a class="archive-post-title" href= "/2018/09/21/BLOG搭建/" >BLOG搭建</a>
         </li>
     
@@ -558,11 +574,15 @@ height:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+    
         <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
     
-        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
+        <span class="sidebar-tag-name" data-tags="数学分析"><span class="iconfont-archer">&#xe606;</span>数学分析</span>
     
-        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+        <span class="sidebar-tag-name" data-tags="数学"><span class="iconfont-archer">&#xe606;</span>数学</span>
+    
+        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -596,6 +616,8 @@ jsonContent:
 </div>
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="数学分析笔记"><span class="iconfont-archer">&#xe60a;</span>数学分析笔记</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
@@ -653,7 +675,22 @@ jsonContent:
     </div>
     <!-- async load share.js -->
      
-    <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
 
 
