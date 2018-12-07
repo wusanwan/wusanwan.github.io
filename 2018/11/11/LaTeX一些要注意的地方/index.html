@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>BLOG搭建 · 菜鸡小万。</title>
+    <title>LaTeX中一些要注意的地方 · 菜鸡小万。</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -232,7 +232,7 @@
                 <a href="/" >菜鸡小万。</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">BLOG搭建</a>
+                <a href="#" class="post-name">LaTeX中一些要注意的地方</a>
             </div>
     </div>
     
@@ -262,7 +262,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            BLOG搭建
+            LaTeX中一些要注意的地方
             <!-- 404 -->
             
         </h1>
@@ -281,18 +281,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "blog">blog</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "LaTeX">LaTeX</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">313</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">107</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2018/09/21</span>
+                    <span class="post-intro-time">2018/11/11</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -417,41 +417,20 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="说给自己"><a href="#说给自己" class="headerlink" title="说给自己"></a>说给自己</h1><p>大三了好像还是一副一事无成的菜鸡样子，建完模突然有想法建个blog记录一下生活，那就干吧，买了最便宜的域名，搭在github page上的最便宜博客就这么横空出世了(一共花了5块)。<br>在开博客的第一天我要许下一个心愿：希望我能一直拥有这种探索的快乐和实现想法的满足感嘻嘻。<br>真的没啥技术，前端一窍不通就懂点html，下面这些想法等我有空了再搞搞看(手动再见)。</p>
-<h1 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h1><h2 id="TO-DO"><a href="#TO-DO" class="headerlink" title="TO DO"></a>TO DO</h2><ul>
-<li>个人链接完善</li>
-<li>备份</li>
-<li>引导界面</li>
-<li>照片墙</li>
-<li>地图</li>
-<li>鼠标特效</li>
-<li>侧边栏修改</li>
-<li>留言板修改</li>
-<li>主题配色字体修改</li>
-<li>其它个性化</li>
-<li>搜索修复+弄到侧边栏上</li>
-<li>博客字数统计<h2 id="DONE"><a href="#DONE" class="headerlink" title="DONE"></a>DONE</h2></li>
-<li>18.09.21-添加宠物,去除友链</li>
-<li>18.09.23-添加搜索功能</li>
-<li>18.09.30-添加音乐播放器</li>
-<li>18.10.06-添加emoji支持😆</li>
-<li>18.10.16-添加留言板</li>
-<li>18.10.17-添加博客运行天数</li>
-<li>18.10.22-添加相册</li>
-<li>18.11.02-添加LaTeX支持</li>
-</ul>
-<h1 id="花式报错"><a href="#花式报错" class="headerlink" title="花式报错"></a>花式报错</h1><ul>
-<li>18.10.22<br>404了，经历一晚上的修复才明白是github崩了</li>
-</ul>
+        <p>Q:表格生成<br>A:<a href="http://www.tablesgenerator.com/" target="_blank" rel="noopener">http://www.tablesgenerator.com/</a><br>谁用谁知道        </p>
+<p>Q:页面宽度不够怎么办?<br>A:横表，直接用上面的tablesgenerator给它旋转了。        </p>
+<p>Q:分在两页但是要有表头的表。<br>A:用\\begin{longtable}</p>
+<p>Q:File ended while scanning use of \Gin@iii.<br>A:把\\usepackage{graphics}换成\usepackage{graphicx}就好了。      </p>
+<p>Q:斜线表头。<br>A:\usepackage{diagbox}<br>表格中就是diagbox{a}{b}{x}&amp;1&amp;2&amp;3&amp;4 \\这种形式的。</p>
 
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>原文作者：<a href="http://www.wusanwan.xyz">吴三万</a>
-            <p>原文链接：<a href="http://www.wusanwan.xyz/2018/09/21/BLOG搭建/">http://www.wusanwan.xyz/2018/09/21/BLOG搭建/</a>
-            <p>发表日期：<a href="http://www.wusanwan.xyz/2018/09/21/BLOG搭建/">September 21st 2018, 1:21:12 pm</a>
-            <p>更新日期：<a href="http://www.wusanwan.xyz/2018/09/21/BLOG搭建/">November 11th 2018, 6:59:12 pm</a>
+            <p>原文链接：<a href="http://www.wusanwan.xyz/2018/11/11/LaTeX一些要注意的地方/">http://www.wusanwan.xyz/2018/11/11/LaTeX一些要注意的地方/</a>
+            <p>发表日期：<a href="http://www.wusanwan.xyz/2018/11/11/LaTeX一些要注意的地方/">November 11th 2018, 10:03:25 pm</a>
+            <p>更新日期：<a href="http://www.wusanwan.xyz/2018/11/11/LaTeX一些要注意的地方/">December 7th 2018, 8:48:04 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -459,13 +438,13 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/10/22/论文笔记 GSR-TNNM/" title= "论文笔记：Truncated Nuclear Norm Minimization Based Group Sparsity Representation For Image Restoration">
-                    <div class="nextTitle">论文笔记：Truncated Nuclear Norm Minimization Based Group Sparsity Representation For Image Restoration</div>
-                </a>
-            
         </li>
         <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/11/11/文献管理与信息分析课程笔记/" title= "《文献管理与信息分析》课程笔记">
+                    <div class="prevTitle">《文献管理与信息分析》课程笔记</div>
+                </a>
             
         </li>
     </ul>
@@ -627,7 +606,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#说给自己"><span class="toc-number">1.</span> <span class="toc-text">说给自己</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#搭建"><span class="toc-number">2.</span> <span class="toc-text">搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TO-DO"><span class="toc-number">2.1.</span> <span class="toc-text">TO DO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DONE"><span class="toc-number">2.2.</span> <span class="toc-text">DONE</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#花式报错"><span class="toc-number">3.</span> <span class="toc-text">花式报错</span></a></li></ol>
+        
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
