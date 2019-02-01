@@ -11,7 +11,7 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
     <meta name="author" content="吴三万">
     <meta name="renderer" content="webkit">
@@ -77,8 +77,6 @@
 
     <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
-    
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
@@ -213,13 +211,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
     <!-- 百度统计  -->
     
-    <!-- 谷歌统计  -->
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 </head>
 
     
+        <body class="home-body">
     
-<header class="header">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header index-header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -235,21 +235,34 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
     
+    
+    <!-- 文章页  -->
+    
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            菜鸡小万。
+            <!-- 文章页  -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
+            
+            
+                咕咕咕咕
+            
+            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -362,25 +375,23 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/10/22/论文笔记 GSR-TNNM/" >
+        <a class="abstract-title" href = "/2018/09/21/BLOG搭建/" >
             
-                <span>论文笔记：Truncated Nuclear Norm Minimization Based Group Sparsity Representation For Image Restoration</span>
+                <span>BLOG搭建</span>
         </a>
         <div class="abstract-content">
-            关于《Truncated Nuclear Norm Minimization Based Group Sparsity Representation For Image Restoration》这一论文的背景知识整理。
+            搭建该博客的点点滴滴。
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/10/22</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/21</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "图像处理">图像处理</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "论文">论文</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "blog">blog</a>
     
 </div>
             
@@ -389,8 +400,105 @@
     
     <!-- paginator  -->
     
+    <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
+    
 </main>
             <!-- profile -->
+            
+            <div class="profile">
+    <img class="profile-avatar" alt="avatar" src= /avatar/e.jpg >
+    <div class="profile-name">菜鸡小万</div>
+    
+    <div class="profile-signature">
+        素履以往
+    </div>
+    
+    
+    <div class="profile-social">
+        
+    
+        
+            
+                <a href="mailto:wuwenxi_2011@126.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/wusanwan" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.douban.com/people/147344298/" class="iconfont-archer douban" target="_blank" title=douban></a>
+            
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://instagram.com/sanw5win7" class="iconfont-archer instagram" target="_blank" title=instagram></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/绿鲤鱼与驴三万" class="iconfont-archer steam" target="_blank" title=steam></a>
+            
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    
+    
+        <div class="about-me">
+            <a href = "https://www.douban.com/people/147344298/photos" >PHOTOS</a>
+        </div>
+        <div class="about-me">
+            <a href = "/about" >ABOUT ME</a>
+        </div>
+		      <div class="about-me">
+            <a href = "/message" >MESSAGE BOARD</a>
+        </div>
+    
+	<div style="position:absolute; bottom:120px left:auto; margin:auto;width:90%">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=210 height=86 src="//music.163.com/outchain/player?type=2&id=32102404&auto=0&height=66"></iframe>
+    </div>
+</div>
+
             
         </div>
         <footer class="footer footer-unloaded">
@@ -846,7 +954,7 @@ jsonContent:
     });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
 
 

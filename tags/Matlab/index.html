@@ -362,25 +362,31 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/10/22/论文笔记 GSR-TNNM/" >
+        <a class="abstract-title" href = "/2019/02/01/通过两地经纬度计算距离/" >
             
-                <span>论文笔记：Truncated Nuclear Norm Minimization Based Group Sparsity Representation For Image Restoration</span>
+                <span>通过经纬度计算两地距离</span>
         </a>
         <div class="abstract-content">
-            关于《Truncated Nuclear Norm Minimization Based Group Sparsity Representation For Image Restoration》这一论文的背景知识整理。
+            这几天搞美赛C题,需要通过经纬度计算两地距离，看了看网上的算法基本上都是通过近似地球为正球体来计算的，误差较大，而且操作麻烦，这里分享一种简单易行的方法。
+核心语句为    E = referenceEllipsoid(‘wgs84’);    distance=distance(lat1,lat2,lon1,lon2,E);
+对五个点两两求距离。
+%distance wgs84
+distances1=zeros(5,5);
+E = referenceEllipsoid(&#39;wgs84&#39;);
+for i=1:5
+    for j=1:i-1
+        x=GeoDa...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/10/22</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/01</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "图像处理">图像处理</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "论文">论文</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Matlab">Matlab</a>
     
 </div>
             

@@ -375,6 +375,112 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/02/01/通过两地经纬度计算距离/" >
+            
+                <span>通过经纬度计算两地距离</span>
+        </a>
+        <div class="abstract-content">
+            这几天搞美赛C题,需要通过经纬度计算两地距离，看了看网上的算法基本上都是通过近似地球为正球体来计算的，误差较大，而且操作麻烦，这里分享一种简单易行的方法。
+核心语句为    E = referenceEllipsoid(‘wgs84’);    distance=distance(lat1,lat2,lon1,lon2,E);
+对五个点两两求距离。
+%distance wgs84
+distances1=zeros(5,5);
+E = referenceEllipsoid(&#39;wgs84&#39;);
+for i=1:5
+    for j=1:i-1
+        x=GeoDa...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/01</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Matlab">Matlab</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/01/14/数学模型-学习索引/" >
+            
+                <span>数学模型 学习索引</span>
+        </a>
+        <div class="abstract-content">
+            
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/14</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/01/14/图像处理-全变分模型/" >
+            
+                <span>图像处理-全变分模型</span>
+        </a>
+        <div class="abstract-content">
+            
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/14</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/01/14/PAT-题目集1-数学和逻辑问题/" >
+            
+                <span>PAT 题目集1 数学和逻辑问题</span>
+        </a>
+        <div class="abstract-content">
+            
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/14</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2018/11/27/python脚本-excel批处理/" >
             
                 <span>excel批处理</span>
@@ -440,7 +546,7 @@ height:50vh;
                 <span>《文献管理与信息分析》课程笔记</span>
         </a>
         <div class="abstract-content">
-            努力更新中！
+            最近开始做科创项目了…
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -547,36 +653,11 @@ height:50vh;
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/21/BLOG搭建/" >
-            
-                <span>BLOG搭建</span>
-        </a>
-        <div class="abstract-content">
-            搭建该博客的点点滴滴。
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/21</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "blog">blog</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
+    
+    <nav class="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
+    </nav>
     
 </main>
             <!-- profile -->
@@ -863,9 +944,65 @@ height:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 7
+        Total : 11
         </div>
         <!-- search  -->
         
@@ -879,6 +1016,35 @@ height:50vh;
     
     
     
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/01</span><a class="archive-post-title" href= "/2019/02/01/通过两地经纬度计算距离/" >通过经纬度计算两地距离</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2019/01/14/数学模型-学习索引/" >数学模型 学习索引</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2019/01/14/图像处理-全变分模型/" >图像处理-全变分模型</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/2019/01/14/PAT-题目集1-数学和逻辑问题/" >PAT 题目集1 数学和逻辑问题</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
@@ -931,11 +1097,13 @@ height:50vh;
     
         <span class="sidebar-tag-name" data-tags="数据处理"><span class="iconfont-archer">&#xe606;</span>数据处理</span>
     
+        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+    
+        <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
+    
         <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
     
         <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
-    
-        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1040,8 +1208,8 @@ jsonContent:
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script></body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
 
 
