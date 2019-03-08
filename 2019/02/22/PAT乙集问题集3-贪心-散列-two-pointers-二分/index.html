@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>模糊函数 · 菜鸡小万。</title>
+    <title>PAT乙集题目集3  贪心，散列，二分法，two pointers · 菜鸡小万。</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -232,7 +232,7 @@
                 <a href="/" >菜鸡小万。</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">模糊函数</a>
+                <a href="#" class="post-name">PAT乙集题目集3  贪心，散列，二分法，two pointers</a>
             </div>
     </div>
     
@@ -262,7 +262,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            模糊函数
+            PAT乙集题目集3  贪心，散列，二分法，two pointers
             <!-- 404 -->
             
         </h1>
@@ -281,18 +281,20 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "图像处理">图像处理</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "算法">算法</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "PAT">PAT</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">0</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">5.6k</span>阅读时长: <span class="post-count reading-time">24 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2018/11/06</span>
+                    <span class="post-intro-time">2019/02/22</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -417,15 +419,722 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        
+        <p>参考《算法笔记》第四章。
+[TOC]
+#贪心</p>
+<hr>
+<h2>##知识要点</h2>
+<p>##1020 月饼 （25 分）
+月饼是中国人在中秋佳节时吃的一种传统食品，不同地区有许多不同风味的月饼。现给定所有种类月饼的库存量、总售价、以及市场的最大需求量，请你计算可以获得的最大收益是多少。
+注意：销售时允许取出一部分库存。样例给出的情形是这样的：假如我们有 3 种月饼，其库存量分别为 18、15、10 万吨，总售价分别为 75、72、45 亿元。如果市场的最大需求量只有 20 万吨，那么我们最大收益策略应该是卖出全部 15 万吨第 2 种月饼、以及 5 万吨第 3 种月饼，获得 72 + 45/2 = 94.5（亿元）。</p>
+<p>输入格式：
+每个输入包含一个测试用例。每个测试用例先给出一个不超过 1000 的正整数 N 表示月饼的种类数、以及不超过 500（以万吨为单位）的正整数 D 表示市场最大需求量。随后一行给出 N 个正数表示每种月饼的库存量（以万吨为单位）；最后一行给出 N 个正数表示每种月饼的总售价（以亿元为单位）。数字间以空格分隔。</p>
+<p>输出格式：
+对每组测试用例，在一行中输出最大收益，以亿元为单位并精确到小数点后 2 位。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>3 20
+18 15 10
+75 72 45</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>94.50</p>
+</blockquote>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#pragma warning(disable:4996)
+struct mooncake{
+	double weight,price,per;
+};
+bool cmp(mooncake a, mooncake b){
+	return a.per &gt; b.per;
+}
+int main(){
+	int n,d,j=0;
+	double sum = 0;
+	cin &gt;&gt; n&gt;&gt;d;
+	mooncake list[1000];
+	for (int i = 0; i &lt; n; i++)
+		cin &gt;&gt; list[i].weight;
+	for (int i = 0; i &lt; n; i++){
+		cin &gt;&gt; list[i].price;
+		list[i].per = list[i].price / list[i].weight;
+	}
+	sort(list, list + n, cmp);
+	while (d&amp;&amp;j!=n){
+		if (list[j].weight&gt;d){
+			sum += d*list[j].per;
+			d = 0;
+		}
+		else{
+			sum += list[j].price;
+			d -= list[j].weight;
+		}
+		j++;
+	}
+	printf(&quot;%.2f&quot;,sum);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<p>注意卖光仍旧不能满足超市需要的情况。</p>
+<hr>
+<p>##1023 组个最小数 （20 分）
+给定数字 0-9 各若干个。你可以以任意顺序排列这些数字，但必须全部使用。目标是使得最后得到的数尽可能小（注意 0 不能做首位）。例如：给定两个 0，两个 1，三个 5，一个 8，我们得到的最小的数就是 10015558。
+现给定数字，请编写程序输出能够组成的最小的数。</p>
+<p>输入格式：
+输入在一行中给出 10 个非负整数，顺序表示我们拥有数字 0、数字 1、……数字 9 的个数。整数间用一个空格分隔。10 个数字的总个数不超过 50，且至少拥有 1 个非 0 的数字。</p>
+<p>输出格式：
+在一行中输出能够组成的最小的数。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>2 2 0 0 0 3 0 0 1 0</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>10015558</p>
+</blockquote>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdlib&gt;
+using namespace std;
+#pragma warning(disable:4996)
+int main(){
+	int time[10] = { 0 };
+	for (int i = 0; i &lt; 10; i++){
+		cin &gt;&gt; time[i];
+	}
+	for (int i = 1; i &lt; 10; i++){
+		if (time[i] &gt;= 1){
+			cout &lt;&lt; i;
+			time[i]--;
+			break;
+		}
+	}
+	for (int i = 0; i &lt; 10; i++){
+		for (int j = time[i]; j&gt;0; j--)
+			cout &lt;&lt; i;
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
+<p>##1070 结绳 （25 分）
+给定一段一段的绳子，你需要把它们串成一条绳。每次串连的时候，是把两段绳子对折，再如下图所示套接在一起。这样得到的绳子又被当成是另一段绳子，可以再次对折去跟另一段绳子串连。每次串连后，原来两段绳子的长度就会减半。
+rope.jpg
+给定 N 段绳子的长度，你需要找出它们能串成的绳子的最大长度。</p>
+<p>输入格式：
+每个输入包含 1 个测试用例。每个测试用例第 1 行给出正整数 N (2≤N≤10^​4)；第 2 行给出 N 个正整数，即原始绳段的长度，数字间以空格分隔。所有整数都不超过10^4。</p>
+<p>输出格式：
+在一行中输出能够串成的绳子的最大长度。结果向下取整，即取为不超过最大长度的最近整数。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>8
+10 15 12 3 4 13 1 15</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>14</p>
+</blockquote>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#pragma warning(disable:4996)
+int main(){
+	int n;
+	int list[10000];
+	double sum = 0;
+	cin &gt;&gt; n;
+	for (int i = 0; i &lt; n; i++)
+		cin &gt;&gt; list[i];
+	sort(list, list + n);
+	sum = list[0];
+	for (int i = 1; i &lt; n; i++){
+		sum += list[i];
+		sum = sum / 2;
+	}
+	int s = sum;
+	cout &lt;&lt; s;
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
+<h2>#散列</h2>
+<p>##知识要点
+不用map的情况下可以用数组实现int,int以及char,int的（其实只要是int,char,数组就都可以了，比如通过数组到结构体。</p>
+<hr>
+<p>##1005 继续(3n+1)猜想 （25 分）
+卡拉兹(Callatz)猜想已经在1001中给出了描述。在这个题目里，情况稍微有些复杂。
+当我们验证卡拉兹猜想的时候，为了避免重复计算，可以记录下递推过程中遇到的每一个数。例如对 n=3 进行验证的时候，我们需要计算 3、5、8、4、2、1，则当我们对 n=5、8、4、2 进行验证的时候，就可以直接判定卡拉兹猜想的真伪，而不需要重复计算，因为这 4 个数已经在验证3的时候遇到过了，我们称 5、8、4、2 是被 3“覆盖”的数。我们称一个数列中的某个数 n 为“关键数”，如果 n 不能被数列中的其他数字所覆盖。
+现在给定一系列待验证的数字，我们只需要验证其中的几个关键数，就可以不必再重复验证余下的数字。你的任务就是找出这些关键数字，并按从大到小的顺序输出它们。</p>
+<p>输入格式：
+每个测试输入包含 1 个测试用例，第 1 行给出一个正整数 K (&lt;100)，第 2 行给出 K 个互不相同的待验证的正整数 n (1&lt;n≤100)的值，数字间用空格隔开。</p>
+<p>输出格式：
+每个测试用例的输出占一行，按从大到小的顺序输出关键数字。数字间用 1 个空格隔开，但一行中最后一个数字后没有空格。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>6
+3 5 6 7 8 11</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>7 6</p>
+</blockquote>
+<pre><code>#include&lt;cstdlib&gt;
+#include&lt;string&gt;
+#include&lt;vector&gt;
+#include&lt;cstdio&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#pragma warning(disable:4996)
+bool cmp(int a, int b){ return a &gt; b; }
+int main(){
+	int n,temp;
+	cin &gt;&gt; n;
+	int a[10000] = { 0 };
+	vector&lt;int&gt;t,result;
+	for (int i = 0; i &lt; n; i++){
+		cin &gt;&gt; temp;
+		t.push_back(temp);
+		while(temp!=1){
+			if (temp % 2)temp = (3 * temp + 1) / 2;
+			else temp = temp / 2;
+			a[temp]++; //因为*3再/2可能会持续上涨
+		}
+	}
+	for (int i = 0; i &lt; n; i++){
+		if (a[t[i]] == 0)result.push_back(t[i]);
+	}
+	sort(result.begin(), result.end(),cmp);
+	for (int i = 0; i &lt; result.size(); i++){
+		if (i != 0)cout &lt;&lt; &quot; &quot;;
+		cout&lt;&lt;result[i];
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<p>因为*3/2会放大，可以设定++的范围，也可以直接hashtable数组开大，这里开到了10000</p>
+<hr>
+<p>##1021 个位数统计 （15 分）
+给定一个 k 位整数 N=d_k-1<em>10^(k-1)+…+d_1</em>1-^1+d0(0&lt;=di&lt;=9,i=0,…，k-1,d_k-1&gt;0),请编写程序统计每种不同的个位数字出现的次数。例如：给定 N=100311，则有 2 个 0，3 个 1，和 1 个 3。</p>
+<p>输入格式：
+每个输入包含 1 个测试用例，即一个不超过 1000 位的正整数 N。</p>
+<p>输出格式：
+对 N 中每一种不同的个位数字，以 D:M 的格式在一行中输出该位数字 D 及其在 N 中出现的次数 M。要求按 D 的升序输出。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>100311</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>0:2
+1:3
+3:1</p>
+</blockquote>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;string&gt;
+#include&lt;string.h&gt;
+#include&lt;iostream&gt;
+using namespace std;
+#pragma warning(disable:4996)
+int main(){
+	string num;
+	cin &gt;&gt; num;
+	int a[10] = { 0 };
+	for (int i = 0; i &lt; num.length(); i++){
+		a[num[i] - '0']++;
+	}
+	for (int i = 0; i &lt; 10; i++){
+		if (a[i] == 0)continue;
+		printf(&quot;%d:%d\n&quot;, i, a[i]);
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
+<p>##1029 旧键盘 （20 分）
+旧键盘上坏了几个键，于是在敲一段文字的时候，对应的字符就不会出现。现在给出应该输入的一段文字、以及实际被输入的文字，请你列出肯定坏掉的那些键。
+输入格式：
+输入在 2 行中分别给出应该输入的文字、以及实际被输入的文字。每段文字是不超过 80 个字符的串，由字母 A-Z（包括大、小写）、数字 0-9、以及下划线 _（代表空格）组成。题目保证 2 个字符串均非空。</p>
+<p>输出格式：
+按照发现顺序，在一行中输出坏掉的键。其中英文字母只输出大写，每个坏键只输出一次。题目保证至少有 1 个坏键。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>7_This_is_a_test
+_hs_s_a_es</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>7TI</p>
+</blockquote>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string&gt;
+#include&lt;iostream&gt;
+using namespace std;
+#pragma warning(disable:4996)
+int main(){
+	string no, test;
+	cin &gt;&gt; no;
+	int ch[256] = { 0 };
+	cin &gt;&gt; test;
+	int index = 0;
+	for (int i = 0; i &lt; no.length(); i++){
+		if (no[i] != test[index]){
+			if (no[i]&gt;='a'&amp;&amp;no[i]&lt;='z'){
+				if (ch[no[i] - 'a' + 'A'] == 0){
+					putchar(no[i] - 'a' + 'A');
+					ch[no[i] - 'a' + 'A'] = 1;
+				}
+			}
+			else if (ch[no[i]] == 0){
+				putchar(no[i]);
+				ch[no[i]] = 1;
+			}
+		}
+		else index++;
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
+<p>##1033 旧键盘打字 （20 分）
+旧键盘上坏了几个键，于是在敲一段文字的时候，对应的字符就不会出现。现在给出应该输入的一段文字、以及坏掉的那些键，打出的结果文字会是怎样？
+输入格式：</p>
+<p>输入在 2 行中分别给出坏掉的那些键、以及应该输入的文字。其中对应英文字母的坏键以大写给出；每段文字是不超过 10^5个字符的串。可用的字符包括字母 [a-z, A-Z]、数字 0-9、以及下划线 _（代表空格）、,、.、-、+（代表上档键）。题目保证第 2 行输入的文字串非空。
+注意：如果上档键坏掉了，那么大写的英文字母无法被打出。</p>
+<p>输出格式：
+在一行中输出能够被打出的结果文字。如果没有一个字符能被打出，则输出空行。</p>
+<p>输入样例：
+7+IE.
+7_This_is_a_test.</p>
+<p>输出样例：
+_hs_s_a_tst</p>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string&gt;
+#include&lt;iostream&gt;
+using namespace std;
+#pragma warning(disable:4996)
+int main(){
+	string no,test;
+	getline(cin, no);
+	int flag = 0,cout=1;
+	int ch[256] = { 0 };
+	cin &gt;&gt; test;
+	for (int i = 0; i &lt; no.length(); i++){
+		if (no[i] == '+')flag = 1;
+		else ch[no[i]] = 1;
+	}
+	for (int i = 0; i &lt; test.length(); i++){
+		if (test[i] &gt;= 'a'&amp;&amp;test[i] &lt;= 'z'&amp;&amp;ch[test[i] - 'a' + 'A'] == 1)continue;
+		if (test[i] &gt;= 'A'&amp;&amp;test[i] &lt;= 'Z' &amp;&amp; flag)continue;
+		if (ch[test[i]] == 1)continue;
+		putchar(test[i]);
+		cout = 0;
+	}
+	if (cout)printf(&quot;\n&quot;);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<p>特殊情况是第一行为空，所以用getline。想不到特殊点的话就多读几遍题目。循环边界，0，空。</p>
+<hr>
+<p>##1038 统计同成绩学生 （20 分）
+本题要求读入 N 名学生的成绩，将获得某一给定分数的学生人数输出。</p>
+<p>输入格式：
+输入在第 1 行给出不超过 10^5的正整数 N，即学生总人数。随后一行给出 N 名学生的百分制整数成绩，中间以空格分隔。最后一行给出要查询的分数个数 K（不超过 N 的正整数），随后是 K 个分数，中间以空格分隔。</p>
+<p>输出格式：
+在一行中按查询顺序给出得分等于指定分数的学生人数，中间以空格分隔，但行末不得有多余空格。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>10
+60 75 90 55 75 99 82 90 75 50
+3 75 90 88</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>3 2 0</p>
+</blockquote>
+<pre><code>  #include&lt;cstdlib&gt;
+  #include&lt;iostream&gt;
+  #include&lt;cstdio&gt;
+  using namespace std;
+  #pragma warning(disable:4996)
+  int main(){
+  	int n,temp,grade[101] = { 0 };
+  	scanf(&quot;%d&quot;, &amp;n);
+  	for (int i = 0; i &lt; n; i++){
+  		cin &gt;&gt; temp;
+  		grade[temp]++;
+  	}
+  	scanf(&quot;%d&quot;, &amp;n);
+  	for (int i = 0; i &lt; n; i++){
+  		scanf(&quot;%d&quot;, &amp;temp);
+  		printf(&quot;%d&quot;,grade[temp]);
+  		if (i != n - 1)printf( &quot; &quot;);
+  	}
+  	system(&quot;pause&quot;);
+  	return 0;
+  }
+</code></pre>
+<p>必须用cstdio,不然超时。</p>
+<hr>
+<p>##1039 到底买不买 （20 分）
+小红想买些珠子做一串自己喜欢的珠串。卖珠子的摊主有很多串五颜六色的珠串，但是不肯把任何一串拆散了卖。于是小红要你帮忙判断一下，某串珠子里是否包含了全部自己想要的珠子？如果是，那么告诉她有多少多余的珠子；如果不是，那么告诉她缺了多少珠子。
+为方便起见，我们用[0-9]、[a-z]、[A-Z]范围内的字符来表示颜色。例如在图1中，第3串是小红想做的珠串；那么第1串可以买，因为包含了全部她想要的珠子，还多了8颗不需要的珠子；第2串不能买，因为没有黑色珠子，并且少了一颗红色的珠子。</p>
+<p>输入格式：
+每个输入包含 1 个测试用例。每个测试用例分别在 2 行中先后给出摊主的珠串和小红想做的珠串，两串都不超过 1000 个珠子。</p>
+<p>输出格式：
+如果可以买，则在一行中输出 Yes 以及有多少多余的珠子；如果不可以买，则在一行中输出 No 以及缺了多少珠子。其间以 1 个空格分隔。</p>
+<p>输入样例 1：</p>
+<blockquote>
+<p>ppRYYGrrYBR2258
+YrR8RrY</p>
+</blockquote>
+<p>输出样例 1：</p>
+<blockquote>
+<p>Yes 8</p>
+</blockquote>
+<p>输入样例 2：</p>
+<blockquote>
+<p>ppRYYGrrYB225
+YrR8RrY</p>
+</blockquote>
+<p>输出样例 2：</p>
+<blockquote>
+<p>No 2</p>
+</blockquote>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;string&gt;
+#include&lt;iostream&gt;
+using namespace std;
+#pragma warning(disable:4996)
+int main(){
+	string s1, s2;
+	int ch[256] = { 0 };
+	cin &gt;&gt; s1 &gt;&gt; s2;
+	int flag = 1, sum = 0;
+	for (int i = 0; i&lt; s1.length(); i++){
+		ch[s1[i]]++;
+	}
+	for (int i = 0; i&lt; s2.length(); i++){
+		if (ch[s2[i]] &gt; 0)ch[s2[i]]--;
+		else{
+			flag = 0;
+			sum++;
+		}
+	}
+	if (flag)cout &lt;&lt; &quot;Yes &quot; &lt;&lt; s1.length() - s2.length();
+	else cout &lt;&lt; &quot;No &quot; &lt;&lt; sum;
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
+<p>##1042 字符统计 （20 分）
+请编写程序，找出一段给定文字中出现最频繁的那个英文字母。</p>
+<p>输入格式：
+输入在一行中给出一个长度不超过 1000 的字符串。字符串由 ASCII 码表中任意可见字符及空格组成，至少包含 1 个英文字母，以回车结束（回车不算在内）。</p>
+<p>输出格式：
+在一行中输出出现频率最高的那个英文字母及其出现次数，其间以空格分隔。如果有并列，则输出按字母序最小的那个字母。统计时不区分大小写，输出小写字母。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>This is a simple TEST.  There ARE numbers and other symbols 1&amp;2&amp;3...........</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>e 7</p>
+</blockquote>
+<pre><code>#include&lt;cstdlib&gt;
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+using namespace std;
+#pragma warning(disable:4996)
+int main(){
+	string str;
+	getline(cin, str);
+	int times[256] = { 0 };
+	for (int i = 0; i &lt; str.length(); i++){
+		if (str[i] &lt;= 'z'&amp;&amp;str[i] &gt;= 'a')
+			times[str[i]]++;
+		if (str[i] &lt;= 'Z'&amp;&amp;str[i] &gt;= 'A')
+			times[str[i]-'A'+'a']++;
+	}
+	int high = 0;
+	for (int i = 0; i &lt; 256; i++){
+		if (times[high] &lt; times[i])high = i;
+	}
+	putchar(high);
+	cout &lt;&lt; &quot; &quot; &lt;&lt; times[high];
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
+<p>##1043 输出PATest （20 分）
+给定一个长度不超过 10^4的、仅由英文字母构成的字符串。请将字符重新调整顺序，按 PATestPATest.... 这样的顺序输出，并忽略其它字符。当然，六种字符的个数不一定是一样多的，若某种字符已经输出完，则余下的字符仍按 PATest 的顺序打印，直到所有字符都被输出。</p>
+<p>输入格式：
+输入在一行中给出一个长度不超过 10^​4的、仅由英文字母构成的非空字符串。</p>
+<p>输出格式：
+在一行中按题目要求输出排序后的字符串。题目保证输出非空。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>redlesPayBestPATTopTeePHPereatitAPPT</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>PATestPATestPTetPTePePee</p>
+</blockquote>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string&gt;
+#include&lt;iostream&gt;
+using namespace std;
+#pragma warning(disable:4996)
+int main(){
+	string str;
+	cin &gt;&gt; str;
+	int num[6] = { 0 };
+	for (int i = 0; i &lt; str.length(); i++){
+		if (str[i] == 'P')num[0]++;
+		else if(str[i] == 'A')num[1]++;
+		else if (str[i] == 'T')num[2]++;
+		else if (str[i] == 'e')num[3]++;
+		else if (str[i] == 's')num[4]++;
+		else if (str[i] == 't')num[5]++;
+	}
+	while (num[0] || num[1] || num[2] || num[3] || num[4] || num[5]){
+		if (num[0]&gt;0){
+			num[0]--;
+			printf(&quot;P&quot;);
+		}
+		if (num[1]&gt;0){
+			num[1]--;
+			printf(&quot;A&quot;);
+		}
+		if (num[2]&gt;0){
+			num[2]--;
+			printf(&quot;T&quot;);
+		}
+		if (num[3]&gt;0){
+			num[3]--;
+			printf(&quot;e&quot;);
+		}
+		if (num[4]&gt;0){
+			num[4]--;
+			printf(&quot;s&quot;);
+		}
+		if (num[5]&gt;0){
+			num[5]--;
+			printf(&quot;t&quot;);
+		}
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
+<p>##1047 编程团体赛 （20 分）
+编程团体赛的规则为：每个参赛队由若干队员组成；所有队员独立比赛；参赛队的成绩为所有队员的成绩和；成绩最高的队获胜。
+现给定所有队员的比赛成绩，请你编写程序找出冠军队。
+输入格式：
+输入第一行给出一个正整数 N（≤10^​4），即所有参赛队员总数。随后 N 行，每行给出一位队员的成绩，格式为：队伍编号-队员编号 成绩，其中队伍编号为 1 到 1000 的正整数，队员编号为 1 到 10 的正整数，成绩为 0 到 100 的整数。</p>
+<p>输出格式：
+在一行中输出冠军队的编号和总成绩，其间以一个空格分隔。注意：题目保证冠军队是唯一的。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>6
+3-10 99
+11-5 87
+102-1 0
+102-3 100
+11-9 89
+3-2 61</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>11 176</p>
+</blockquote>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string&gt;
+#include&lt;iostream&gt;
+using namespace std;
+#pragma warning(disable:4996)
+int main(){
+	int N,teamnum,member,grade;
+	cin &gt;&gt; N;
+	int team[1001] = { 0 };
+	for (int i = 0; i &lt; N; i++){
+		cin &gt;&gt; teamnum;
+		cin.ignore(1) &gt;&gt; member &gt;&gt; grade;			//分行
+		team[teamnum] += grade;
+	}
+	int high = 0;
+	for (int i = 1; i &lt; 1001; i++){
+		if (team[i]&gt;team[high])high = i;
+	}
+	cout &lt;&lt; high &lt;&lt; &quot; &quot; &lt;&lt; team[high];
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
+<p>##1072 开学寄语 （20 分）
+下图是上海某校的新学期开学寄语：天将降大任于斯人也，必先删其微博，卸其 QQ，封其电脑，夺其手机，收其 ipad，断其 wifi，使其百无聊赖，然后，净面、理发、整衣，然后思过、读书、锻炼、明智、开悟、精进。而后必成大器也！
+jiyu.JPG
+本题要求你写个程序帮助这所学校的老师检查所有学生的物品，以助其成大器。</p>
+<p>输入格式：
+输入第一行给出两个正整数 N（≤ 1000）和 M（≤ 6），分别是学生人数和需要被查缴的物品种类数。第二行给出 M 个需要被查缴的物品编号，其中编号为 4 位数字。随后 N 行，每行给出一位学生的姓名缩写（由 1-4 个大写英文字母组成）、个人物品数量 K（0 ≤ K ≤ 10）、以及 K 个物品的编号。</p>
+<p>输出格式：
+顺次检查每个学生携带的物品，如果有需要被查缴的物品存在，则按以下格式输出该生的信息和其需要被查缴的物品的信息（注意行末不得有多余空格）：
+姓名缩写: 物品编号1 物品编号2 ……
+最后一行输出存在问题的学生的总人数和被查缴物品的总数。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>4 2
+2333 6666
+CYLL 3 1234 2345 3456
+U 4 9966 6666 8888 6666
+GG 2 2333 7777
+JJ 3 0012 6666 2333</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>U: 6666 6666
+GG: 2333
+JJ: 6666 2333
+3 5</p>
+</blockquote>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;string&gt;
+#include&lt;vector&gt;
+#include&lt;iostream&gt;
+using namespace std;
+#pragma warning(disable:4996)
+int main(){
+	int n, m, temp,pnum=0,inum=0;
+	cin &gt;&gt; n &gt;&gt; m;
+	int no[10000] = { 0 };
+	for (int i = 0; i &lt; m; i++){
+		cin &gt;&gt; temp;
+		no[temp] = 1;
+	}
+	for (int i = 0; i &lt; n; i++){
+		string name;
+		int item,flag=1;
+		cin &gt;&gt; name &gt;&gt; item;
+		for (int j = 0; j &lt; item; j++){
+			cin &gt;&gt; temp;
+			if (no[temp] == 1){
+				if (flag){
+					printf(&quot;%s: %04d&quot;,name.c_str(),temp);
+					flag = 0;
+					pnum++;
+					inum++;
+				}
+				else{
+					printf(&quot; %04d&quot;,temp);
+					inum++;
+				}
+			}
+		}
+		if (!flag)printf(&quot;\n&quot;);
+	}
+	printf(&quot;%d %d&quot;,pnum,inum);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<p>要注意用%04d补全0，不然报错。</p>
+<hr>
+<p>##1083 是否存在相等的差 （20 分）
+给定 N 张卡片，正面分别写上 1、2、……、N，然后全部翻面，洗牌，在背面分别写上 1、2、……、N。将每张牌的正反两面数字相减（大减小），得到 N 个非负差值，其中是否存在相等的差？
+输入格式：
+输入第一行给出一个正整数 N（2 ≤ N ≤ 10 000），随后一行给出 1 到 N 的一个洗牌后的排列，第 i 个数表示正面写了 i 的那张卡片背面的数字。</p>
+<p>输出格式：
+按照“差值 重复次数”的格式从大到小输出重复的差值及其重复的次数，每行输出一个结果。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>8
+3 5 8 6 2 1 4 7</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>5 2
+3 3
+2 2</p>
+</blockquote>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdlib&gt;
+#include&lt;string&gt;
+#include&lt;cmath&gt;
+using namespace std;
+#pragma warning(disable:4996)
+#include&lt;algorithm&gt;
+#include&lt;map&gt;
+#include&lt;vector&gt;
+struct nums{
+	int diff, times;
+};
+bool cmp(nums a, nums b){
+	return a.diff &gt; b.diff;
+}
+int main(){//第一题20min,第二题5min
+	int n,diff,num;
+	cin &gt;&gt; n;
+	map&lt;int, int&gt;mp;
+	int d[10000] = { 0};
+	vector&lt;nums&gt;list;
+	for (int i = 0; i &lt; n; i++){
+		cin &gt;&gt; num;
+		if (num &gt;= i + 1)diff = num - i - 1;
+		else diff = i + 1 - num;
+		d[diff]++;
+	}
+	for (int i = 0; i &lt; 10000; i++){
+		if (d[i] &gt; 1){//只要重复的
+			nums a;
+			a.diff = i;
+			a.times = d[i];
+			list.push_back(a);
+		}
+	}
+	sort(list.begin(), list.end(),cmp);//这边本来用map写的//sort map吗怎么搞来着？（第五题记起来了
+	for (int i = 0; i &lt; list.size();i++){//如何输出map的键？用first和second
+		cout &lt;&lt;list[i].diff &lt;&lt; &quot; &quot; &lt;&lt; list[i].times &lt;&lt; endl;
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<p>用map做会更快一点，就是要用pair写排序，或者把键加进值里（结构体），然后遍历map把值存进vector再排序。</p>
+
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>原文作者：<a href="http://www.wusanwan.xyz">吴三万</a>
-            <p>原文链接：<a href="http://www.wusanwan.xyz/2018/11/06/模糊函数/">http://www.wusanwan.xyz/2018/11/06/模糊函数/</a>
-            <p>发表日期：<a href="http://www.wusanwan.xyz/2018/11/06/模糊函数/">November 6th 2018, 10:15:11 pm</a>
-            <p>更新日期：<a href="http://www.wusanwan.xyz/2018/11/06/模糊函数/">February 1st 2019, 10:45:04 pm</a>
+            <p>原文链接：<a href="http://www.wusanwan.xyz/2019/02/22/PAT乙集问题集3-贪心-散列-two-pointers-二分/">http://www.wusanwan.xyz/2019/02/22/PAT乙集问题集3-贪心-散列-two-pointers-二分/</a>
+            <p>发表日期：<a href="http://www.wusanwan.xyz/2019/02/22/PAT乙集问题集3-贪心-散列-two-pointers-二分/">February 22nd 2019, 12:58:26 am</a>
+            <p>更新日期：<a href="http://www.wusanwan.xyz/2019/02/22/PAT乙集问题集3-贪心-散列-two-pointers-二分/">March 8th 2019, 9:06:43 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -434,16 +1143,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/11/09/科研工具一网打尽/" title= "科研工具一网打尽😎">
-                    <div class="nextTitle">科研工具一网打尽😎</div>
+                <a href= "/2019/02/23/git学习实验报告/" title= "git学习实验报告">
+                    <div class="nextTitle">git学习实验报告</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2018/10/22/论文笔记 GSR-TNNM/" title= "论文笔记：Truncated Nuclear Norm Minimization Based Group Sparsity Representation For Image Restoration">
-                    <div class="prevTitle">论文笔记：Truncated Nuclear Norm Minimization Based Group Sparsity Representation For Image Restoration</div>
+                <a href= "/2019/02/21/PAT乙级题目集2-字符串处理/" title= "PAT乙级题目集2 字符串处理 排序">
+                    <div class="prevTitle">PAT乙级题目集2 字符串处理 排序</div>
                 </a>
             
         </li>
@@ -606,7 +1315,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">##知识要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">#散列</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>

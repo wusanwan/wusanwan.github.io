@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="吴三万">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="吴三万">
+    
+    <meta name="keywords" content="个人博客">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>PAT乙级题目集4 数学问题 STL 链表 · 菜鸡小万。</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+        <!-- algolia -->
+        <script>
+            
+            var hits = JSON.parse('{"per_page":10}')
+            var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"We did not find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}')
+
+            var algolia = {
+                applicationID: 'WUWVPBKO6N',
+                apiKey: 'e0afed75eb96c871bd883e9bc8eea39c',
+                indexName: 'sanw',
+                hits: hits,
+                labels: labels
+            }
+        </script>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >菜鸡小万。</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">PAT乙级题目集4 数学问题 STL 链表</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>菜鸡小万。</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            PAT乙级题目集4 数学问题 STL 链表
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数学问题，STL,链表">数学问题，STL,链表</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">6.4k</span>阅读时长: <span class="post-count reading-time">29 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/02/28</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>[toc]
+#数学问题</p>
+<hr>
+<p>##知识要点
+###最大公约数
+int gcd(int a,int b){
+if(b==0)return a;
+else return gcd(b,b%a);
+}
+###最小公倍数
+a*b/gcd(a,b)
+###分数相关
+####定义
+定义以下三条，化简也是如此定义。</p>
+<ul>
+<li>定义为结构体，up为负，down为正。</li>
+<li>若为0，则up=0,down=1。</li>
+<li>除去最大公约数化简。（没有除了1以外的最大公约数）</li>
+</ul>
+<p>####注意事项</p>
+<ul>
+<li>输出前需化简，如果分母为1一般输出分子即可。</li>
+<li>除数不能为0。</li>
+<li>如果分子绝对值大于分母，则其是一个假分数，要用带分数的形式输出。</li>
+</ul>
+<p>###素数</p>
+<ul>
+<li>通过循环。</li>
+<li>素数表，对于10^5次方内可以2层循环，外可以用埃式筛法，把倍数用hashtable给false了，轮到如果还是true那就是素数（因为没有约数）</li>
+<li>1不是素数！！！
+###大整数
+记得去0。
+##1007 素数对猜想 （20 分）
+让我们定义d​n为：dn=pn+1−pn，其中pi是第i个素数。显然有d1=1，且对于n&gt;1有dn是偶数。“素数对猜想”认为“存在无穷多对相邻且差为2的素数”。现给定任意正整数N(&lt;10^5)，请计算不超过N的满足猜想的素数对的个数。
+输入格式:
+输入在一行给出正整数N。
+输出格式:
+在一行中输出不超过N的满足猜想的素数对的个数。</li>
+</ul>
+<p>输入样例:</p>
+<blockquote>
+<p>20</p>
+</blockquote>
+<p>输出样例:</p>
+<blockquote>
+<p>4</p>
+</blockquote>
+<pre><code>  #include&lt;iostream&gt;
+  #include&lt;cstdlib&gt;
+  #include&lt;string&gt;
+  #include&lt;cmath&gt;
+  using namespace std;
+  #pragma warning(disable:4996)
+  #include&lt;algorithm&gt;
+  #include&lt;map&gt;
+  #include&lt;vector&gt;
+  bool IsPrime(int a){
+  	for (int i = 2; i &lt;= sqrt(a); i++){
+  		if (a % i == 0)return false;
+  	}
+  	return true;
+  }
+  int main(){
+  	int n, count = 0,last=2;//相邻指前一个
+  	cin &gt;&gt; n;
+  	for (int i = 3; i &lt;= n; i++){
+  		if (IsPrime(i)){
+  			if (i - last == 2)count++;
+  			last = i;
+  		}
+  	}
+  	cout &lt;&lt; count;
+  		system(&quot;pause&quot;);
+  	return 0;
+  }
+</code></pre>
+<hr>
+<p>##1013 数素数 （20 分）
+令 Pi表示第 i 个素数。现任给两个正整数 M≤N≤10^4，请输出 PM 到 PN 的所有素数。</p>
+<p>输入格式：
+输入在一行中给出 M 和 N，其间以空格分隔。</p>
+<p>输出格式：
+输出从 PM 到 PN 的所有素数，每 10 个数字占 1 行，其间以空格分隔，但行末不得有多余空格。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>5 27</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>11 13 17 19 23 29 31 37 41 43
+47 53 59 61 67 71 73 79 83 89
+97 101 103</p>
+</blockquote>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdlib&gt;
+#include&lt;string&gt;
+#include&lt;cmath&gt;
+using namespace std;
+#pragma warning(disable:4996)
+#include&lt;algorithm&gt;
+#include&lt;map&gt;
+#include&lt;vector&gt;
+bool IsPrime(int a){
+	for (int i = 2; i &lt;= sqrt(a); i++){
+		if (a % i == 0)return false;
+	}
+	return true;
+}
+int main(){
+	int n, k, count = 0, index = 2;
+	cin &gt;&gt; n&gt;&gt;k;
+	while (count != k){
+		if (IsPrime(index)){
+			count++;
+			if (count &gt;= n){
+				cout &lt;&lt; index;
+				if (count == k)continue;
+				else if ((count - n + 1) % 10 == 0)cout &lt;&lt; endl;
+				else cout &lt;&lt; &quot; &quot;;
+			}
+		}
+		index++;
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
+<p>##1017 A除以B （20 分）
+本题要求计算 A/B，其中 A 是不超过 1000 位的正整数，B 是 1 位正整数。你需要输出商数 Q 和余数 R，使得 A=B×Q+R 成立。</p>
+<p>输入格式：
+输入在一行中依次给出 A 和 B，中间以 1 空格分隔。</p>
+<p>输出格式：
+在一行中依次输出 Q 和 R，中间以 1 空格分隔。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>123456789050987654321 7</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>17636684150141093474 3</p>
+</blockquote>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;cstdlib&gt;
+#include&lt;set&gt;
+#include&lt;string&gt;
+#include&lt;map&gt;
+#include&lt;algorithm&gt;
+#pragma warning(disable:4996)
+using namespace std;
+struct big{
+	int num[1000];
+	int length;
+};
+int main(){
+	int n;
+	string a;
+	cin &gt;&gt; a &gt;&gt;n;
+	big b;
+	b.length = a.length();
+	for (int i=0; i&lt;a.length(); i++){
+		b.num[i] = a[i] - '0';
+	}
+	int i = 0, rest = 0, flag = 1;
+	while (i &lt; b.length){
+		rest = rest * 10 + b.num[i];
+		if (rest &lt; n){
+			if (b.length == 1)cout &lt;&lt; &quot;0&quot;;     //2 4这种情况下输出0
+			if (!flag)cout &lt;&lt; &quot;0&quot;;     //防止开头的0
+		}
+		else{
+			int k = rest / n;
+			rest = rest %  n;
+			cout &lt;&lt; k;
+			flag = 0;
+		}
+		i++;
+	}
+	cout &lt;&lt; &quot; &quot; &lt;&lt; rest;
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
+<h2>#vector</h2>
+<p>##知识要点</p>
+<ul>
+<li>
+<p>变长数组。
+###定义</p>
+</li>
+<li>
+<p>vector &lt; int &gt; a;</p>
+</li>
+<li>
+<p>vector &lt; int &gt; a(n);      //长度为n</p>
+</li>
+<li>
+<p>vector &lt; int &gt; a(n,2);    //长度为n且全初始化为2。</p>
+</li>
+<li>
+<p>vector &lt; int &gt; a[10];     //仅一维可变长的二维向量数组。</p>
+</li>
+<li>
+<p>vector &lt; vector &lt; int &gt; &gt;a;     //&gt;&gt;之间要加空格,二维可变长的二维向量数组。
+###访问方法</p>
+</li>
+<li>
+<p>通过下标访问 vi[9];   //只有string和vector可以用下标.</p>
+</li>
+<li>
+<p>通过迭代器*it访问。</p>
+<pre><code>vector &lt; int &gt; iterator::it;
+it=vi.begin();
+for(vector&lt; int &gt; ::iterator it=vi.begin();it!=vi.end();it++)  //不支持it&lt;vi.end()的写法
+v[i]等价于*(vi.begin()+i)    //只有vector和string才能用这种vi.begin()+i的操作
+</code></pre>
+</li>
+<li>
+<p>it&lt;vi.end()不支持这种写法(和意思无关),vi.end()指向vi的存储末尾元素的后一位。</p>
+</li>
+</ul>
+<p>###常用操作
+- vi.push_back(a);
+- vi.pop_back();
+- vi.size();
+- vi.clear();
+- vi.insert(it,x);    //没有pos，len什么的
+- vi.erase(it);
+- vi.erase(first,last);   //[first，last)
+- find(it1,it2,3);     //algorithm里的，如不存在返回end()
+- find(vi.begin(),v1.end(),3);<br>
+- sort(a.begin(),a.end(),cmp);</p>
+<hr>
+<hr>
+<h2>#set</h2>
+<p>##知识要点
+自动内部有序，且不含重复元素的容器。
+如果元素不唯一，可以用multiset。
+###定义
+set&lt;int&gt;a;
+set&lt; &lt;vector&gt; &gt;a;     //中间要加空格
+set&lt;int&gt;a[10];</p>
+<p>###元素访问
+只支持迭代器,用*it访问元素。只有string和vector可以用下标。
+set&lt;int&gt;::iterator it;
+for(it=a.begin();it!=a.end;it++)      //注意不支持it&lt;st.end()这种写法。
+printf(&quot;%d&quot;,*it);</p>
+<p>###常用操作
+a.insert(x);        //不是push back!!!
+set&lt;int&gt;::iterator it=a.find(value);      //返回所在位置迭代器,如果没找到则返回end()
+a.erase(it);
+a.erase(value);     //可以直接删除值
+a.erase(first,last);    //[first,last)
+a.size();         //获得个数
+a.clear();</p>
+<hr>
+<p>##1064 朋友数 （20 分）
+如果两个整数各位数字的和是一样的，则被称为是“朋友数”，而那个公共的和就是它们的“朋友证号”。例如 123 和 51 就是朋友数，因为 1+2+3 = 5+1 = 6，而 6 就是它们的朋友证号。给定一些整数，要求你统计一下它们中有多少个不同的朋友证号。</p>
+<p>输入格式：
+输入第一行给出正整数 N。随后一行给出 N 个正整数，数字间以空格分隔。题目保证所有数字小于 10^4​​ 。</p>
+<p>输出格式：
+首先第一行输出给定数字中不同的朋友证号的个数；随后一行按递增顺序输出这些朋友证号，数字间隔一个空格，且行末不得有多余空格。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>8
+123 899 51 998 27 33 36 12</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>4
+3 6 9 26</p>
+</blockquote>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;set&gt;
+#include&lt;cstdlib&gt;
+#include&lt;string&gt;
+using namespace std;
+#pragma warning(disable:4996)
+int main(){
+	int n;
+	cin &gt;&gt; n;
+	string s;
+	set&lt;int&gt;friendnumber;
+	for (int i = 0; i &lt; n; i++){
+		cin &gt;&gt; s;
+		int sum = 0;
+		for (int j = 0; j &lt; s.length(); j++){
+			sum += s[j] - '0';
+		}
+		friendnumber.insert(sum);
+	}
+	cout &lt;&lt; friendnumber.size() &lt;&lt; endl;
+	for (auto it = friendnumber.begin(); it != friendnumber.end(); it++){
+		if (it != friendnumber.begin())cout &lt;&lt; &quot; &quot;;
+		cout &lt;&lt; *it;
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
+<p>##1087 有多少不同的值 （20 分）
+当自然数 n 依次取 1、2、3、……、N 时，算式 ⌊n/2⌋+⌊n/3⌋+⌊n/5⌋ 有多少个不同的值？（注：⌊x⌋ 为取整函数，表示不超过 x 的最大自然数，即 x 的整数部分。）
+输入格式：
+输入给出一个正整数 N（2≤N≤10^​4）。</p>
+<p>输出格式：
+在一行中输出题面中算式取到的不同值的个数。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>2017</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>1480</p>
+</blockquote>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdlib&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstdio&gt;
+#include&lt;cmath&gt;
+#include&lt;set&gt;
+#include&lt;string&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#pragma warning(disable:4996)
+int main(){
+	int n;
+	cin &gt;&gt; n;
+	set&lt;int&gt;value;
+	for (int i = 1; i &lt;= n; i++){
+		int k = i / 2 + i / 3+ i / 5;
+		value.insert(k);
+	}
+	cout &lt;&lt; value.size();
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
+<h2>#map</h2>
+<p>##知识要点
+字典，可以将任何基本类型（包括STL容器）映射到任何基本类型（包括STL容器）。
+map会以键从小到大的顺序自动排序。
+键和值都是唯一的，如果一个键要多个值，就只能用multimap。
+不需要排序的map是unordered_map，速度比map快得多。
+对于不存在的键key mp[key]==0;(值如果为int的话)</p>
+<p>###定义
+map&lt;string,int&gt;mp;      //int到int就是数组。
+map&lt;int,string&gt;mp;      //想用字符串做映射就是string
+map&lt;set&lt;int&gt;,string&gt;mp;
+###元素访问</p>
+<ul>
+<li>
+<p>下标
+如有map&lt;char,int&gt;mp可以用mp['c']的方式直接访问整数。
+键是唯一的。</p>
+</li>
+<li>
+<p>迭代器
+map&lt;int,string&gt;::iterator it;
+用it-&gt;first访问键，it-&gt;secod访问值。</p>
+</li>
+</ul>
+<p>###常用操作
+mp.find(key);     //返回键为key的迭代器，找不到就是end
+mp.erase(it);
+mp.erase(key);    //删除某个键的映射
+mp.erase(first,last);   // [first,last)
+mp.size();
+mp.clear();</p>
+<p>###常见用途</p>
+<ul>
+<li>字符或字符串与整数之间映射的题目。</li>
+<li>判断整数或者其它类型数据是否存在的题目。</li>
+<li>字符串和字符串的映射。</li>
+</ul>
+<h3>排序</h3>
+<ul>
+<li>对值进行排序，可以利用pair如1137,也可将键存入值中，遍历mp将值加进vector单独排序。</li>
+</ul>
+<hr>
+<p>##1059 C语言竞赛 （20 分）
+C 语言竞赛是浙江大学计算机学院主持的一个欢乐的竞赛。既然竞赛主旨是为了好玩，颁奖规则也就制定得很滑稽：
+0、冠军将赢得一份“神秘大奖”（比如很巨大的一本学生研究论文集……）。
+1、排名为素数的学生将赢得最好的奖品 —— 小黄人玩偶！
+2、其他人将得到巧克力。
+给定比赛的最终排名以及一系列参赛者的 ID，你要给出这些参赛者应该获得的奖品。</p>
+<p>输入格式：
+输入第一行给出一个正整数 N（≤10^​4），是参赛者人数。随后 N 行给出最终排名，每行按排名顺序给出一位参赛者的 ID（4 位数字组成）。接下来给出一个正整数 K 以及 K 个需要查询的 ID。</p>
+<p>输出格式：
+对每个要查询的 ID，在一行中输出 ID: 奖品，其中奖品或者是 Mystery Award（神秘大奖）、或者是 Minion（小黄人）、或者是 Chocolate（巧克力）。如果所查 ID 根本不在排名里，打印 Are you kidding?（耍我呢？）。如果该 ID 已经查过了（即奖品已经领过了），打印 ID: Checked（不能多吃多占）。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>6
+1111
+6666
+8888
+1234
+5555
+0001
+6
+8888
+0001
+1111
+2222
+8888
+2222</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>8888: Minion
+0001: Chocolate
+1111: Mystery Award
+2222: Are you kidding?
+8888: Checked
+2222: Are you kidding?</p>
+</blockquote>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdlib&gt;
+#include&lt;string&gt;
+#include&lt;cmath&gt;
+using namespace std;
+#pragma warning(disable:4996)
+#include&lt;algorithm&gt;
+#include&lt;map&gt;
+#include&lt;vector&gt;
+bool IsPrime(int a){
+	for (int i = 2; i &lt;= sqrt(a); i++){
+		if (a % i == 0)return false;
+	}
+	return true;
+}
+int main(){
+	int n,k;
+	cin &gt;&gt; n;
+	string temp;
+	map&lt;string, int&gt;mp;
+	for (int i = 0; i &lt; n; i++){
+		cin &gt;&gt; temp;
+		if (i == 0)mp[temp] = 1;
+		else if (IsPrime(i + 1))mp[temp] = 2;
+		else mp[temp] = 3;
+	}
+	cin &gt;&gt; k;
+	for (int i = 0; i &lt; k; i++){
+		cin &gt;&gt; temp;
+		if (mp[temp] == 1){
+			cout &lt;&lt; temp &lt;&lt; &quot;: &quot; &lt;&lt; &quot;Mystery Award&quot; &lt;&lt; endl;
+			mp[temp] = -1;
+		}
+		else if (mp[temp] == 2){
+			cout &lt;&lt; temp &lt;&lt; &quot;: &quot; &lt;&lt; &quot;Minion&quot; &lt;&lt; endl;
+			mp[temp] = -1;
+		}
+		else if (mp[temp] == 3){
+			cout &lt;&lt; temp &lt;&lt; &quot;: &quot; &lt;&lt; &quot;Chocolate&quot; &lt;&lt; endl;
+			mp[temp] = -1;
+		}
+		else if (mp[temp] == -1){
+			cout &lt;&lt; temp &lt;&lt; &quot;: &quot; &lt;&lt; &quot;Checked&quot; &lt;&lt; endl;
+		}
+		else 	cout &lt;&lt; temp &lt;&lt; &quot;: &quot; &lt;&lt; &quot;Are you kidding?&quot; &lt;&lt; endl;
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
+<p>##1068 万绿丛中一点红 （20 分）
+对于计算机而言，颜色不过是像素点对应的一个 24 位的数值。现给定一幅分辨率为 M×N 的画，要求你找出万绿丛中的一点红，即有独一无二颜色的那个像素点，并且该点的颜色与其周围 8 个相邻像素的颜色差充分大。</p>
+<p>输入格式：
+输入第一行给出三个正整数，分别是 M 和 N（≤ 1000），即图像的分辨率；以及 TOL，是所求像素点与相邻点的颜色差阈值，色差超过
+TOL 的点才被考虑。随后 N 行，每行给出 M 个像素的颜色值，范围在 [0,2^​24) 内。所有同行数字间用空格或 TAB 分开。
+输出格式：
+在一行中按照 (x, y): color 的格式输出所求像素点的位置以及颜色值，其中位置 x 和 y 分别是该像素在图像矩阵中的列、行编号（从 1 开始编号）。如果这样的点不唯一，则输出 Not Unique；如果这样的点不存在，则输出 Not Exist。</p>
+<p>输入样例 1：</p>
+<blockquote>
+<p>8 6 200
+0 	 0 	  0 	   0	    0 	     0 	      0        0
+65280 	 65280    65280    16711479 65280    65280    65280    65280
+16711479 65280    65280    65280    16711680 65280    65280    65280
+65280 	 65280    65280    65280    65280    65280    165280   165280
+65280 	 65280 	  16777015 65280    65280    165280   65480    165280
+16777215 16777215 16777215 16777215 16777215 16777215 16777215 16777215</p>
+</blockquote>
+<p>输出样例 1：</p>
+<blockquote>
+<p>(5, 3): 16711680</p>
+</blockquote>
+<p>输入样例 2：</p>
+<blockquote>
+<p>4 5 2
+0 0 0 0
+0 0 3 0
+0 0 0 0
+0 5 0 0
+0 0 0 0</p>
+</blockquote>
+<p>输出样例 2：</p>
+<blockquote>
+<p>Not Unique</p>
+</blockquote>
+<p>输入样例 3：</p>
+<blockquote>
+<p>3 3 5
+1 2 3
+3 4 5
+5 6 7</p>
+</blockquote>
+<p>输出样例 3：</p>
+<blockquote>
+<p>Not Exist</p>
+</blockquote>
+<pre><code>#include&lt;cstdlib&gt;
+#include&lt;iostream&gt;
+#include&lt;cmath&gt;
+#include&lt;map&gt;
+using namespace std;
+#pragma warning(disable:4996)
+int main(){
+	int M, N, TOL, temp, x, y, num = 0;
+	cin &gt;&gt; M &gt;&gt; N &gt;&gt; TOL;
+	vector&lt;int&gt;pixel[1000];
+	map&lt;int,int&gt; exist;
+	for (int i = 0; i &lt; N; i++){
+		for (int j = 0; j &lt; M; j++){
+			cin &gt;&gt; temp;
+			pixel[i].push_back(temp);
+			exist[temp]++;
+		}
+	}
+	for (int i = 0; i &lt; N  &amp;&amp;num&lt;2; i++){//宁可8条if也不要分开循环
+		for (int j = 0; j &lt; M&amp;&amp;num&lt;2; j++){
+			if (exist[pixel[i][j]]&gt;1)continue;
+			if (i != 0 &amp;&amp; j != 0 &amp;&amp; abs (pixel[i - 1][j - 1] - pixel[i][j]) &lt;= TOL)continue;
+			if (i != 0 &amp;&amp; abs(pixel[i - 1][j] - pixel[i][j]) &lt;= TOL)continue;
+			if (i!=0 &amp;&amp;j!=M-1&amp;&amp;abs(pixel[i - 1][j + 1] - pixel[i][j]) &lt;= TOL)continue;
+			if (j != 0 &amp;&amp; abs(pixel[i][j - 1] - pixel[i][j]) &lt;= TOL)continue;
+			if (j!= M - 1 &amp;&amp; abs(pixel[i][j + 1] - pixel[i][j]) &lt;= TOL)continue;
+			if (i != N - 1 &amp;&amp; j != 0 &amp;&amp; abs(pixel[i + 1][j - 1] - pixel[i][j]) &lt;= TOL)continue;
+			if (i != N - 1 &amp;&amp; abs(pixel[i + 1][j] - pixel[i][j]) &lt;= TOL)continue;
+			if (i !=N-1 &amp;&amp; j!=M-1 &amp;&amp;abs(pixel[i + 1][j + 1] - pixel[i][j]) &lt;= TOL)continue;
+			if (num == 0){
+				num++;
+				x = i + 1;
+				y = j + 1;
+			}
+			else{
+				num++;
+			}
+		}
+	}
+	if (num == 1)cout&lt;&lt;&quot;(&quot; &lt;&lt; y &lt;&lt; &quot;, &quot; &lt;&lt; x &lt;&lt; &quot;) :&quot; &lt;&lt; pixel[x - 1][y - 1];
+	else if (num == 0)cout &lt;&lt; &quot;Not Exist&quot;;
+	else cout &lt;&lt; &quot;Not Unique&quot;;
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
+<p>##1069 微博转发抽奖 （20 分）
+小明 PAT 考了满分，高兴之余决定发起微博转发抽奖活动，从转发的网友中按顺序每隔 N 个人就发出一个红包。请你编写程序帮助他确定中奖名单。</p>
+<p>输入格式：
+输入第一行给出三个正整数 M（≤ 1000）、N 和 S，分别是转发的总量、小明决定的中奖间隔、以及第一位中奖者的序号（编号从 1 开始）。随后 M 行，顺序给出转发微博的网友的昵称（不超过 20 个字符、不包含空格回车的非空字符串）。
+注意：可能有人转发多次，但不能中奖多次。所以如果处于当前中奖位置的网友已经中过奖，则跳过他顺次取下一位。</p>
+<p>输出格式：
+按照输入的顺序输出中奖名单，每个昵称占一行。如果没有人中奖，则输出 Keep going...。</p>
+<p>输入样例 1：</p>
+<blockquote>
+<p>9 3 2
+Imgonnawin!
+PickMe
+PickMeMeMeee
+LookHere
+Imgonnawin!
+TryAgainAgain
+TryAgainAgain
+Imgonnawin!
+TryAgainAgain</p>
+</blockquote>
+<p>输出样例 1：</p>
+<blockquote>
+<p>PickMe
+Imgonnawin!
+TryAgainAgain</p>
+</blockquote>
+<p>输入样例 2：</p>
+<blockquote>
+<p>2 3 5
+Imgonnawin!
+PickMe</p>
+</blockquote>
+<p>输出样例 2：</p>
+<blockquote>
+<p>Keep going...</p>
+</blockquote>
+<pre><code>#include&lt;string&gt;
+#include&lt;iostream&gt;
+#include&lt;cstdlib&gt;
+#include&lt;vector&gt;
+#include&lt;map&gt;
+using namespace std;
+int main(){
+	int M, N, S;
+	cin &gt;&gt; M &gt;&gt; N &gt;&gt; S;
+	string str;
+	vector&lt;string&gt;list;
+	map&lt;string, int&gt;mp;
+	for (int i = 0; i &lt; M; i++){
+		cin &gt;&gt; str;
+		list.push_back(str);
+	}
+	int distance = N-1;
+	for (int i = S-1; i &lt; list.size(); i++){
+		if (mp[list[i]] == 1)continue;
+		else distance++;
+		if (distance == N){
+			cout &lt;&lt; list[i]&lt;&lt;endl;
+			mp[list[i]] = 1;
+			distance = 0;
+		}
+	}
+	if (S&gt;M)cout &lt;&lt; &quot;Keep going...&quot;;
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
+<p>##1080 MOOC期终成绩 （25 分）
+对于在中国大学MOOC（http://www.icourse163.org/ ）学习“数据结构”课程的学生，想要获得一张合格证书，必须首先获得不少于200分的在线编程作业分，然后总评获得不少于60分（满分100）。总评成绩的计算公式为 G=(Gmid−term ×40%+Gfinal×60%)，如果 Gmid−term&gt;Gfinal；否则总评 G 就是 Gfinal。这里 Gmid−term和 Gfinal分别为学生的期中和期末成绩。
+现在的问题是，每次考试都产生一张独立的成绩单。本题就请你编写程序，把不同的成绩单合为一张。</p>
+<p>输入格式：
+输入在第一行给出3个整数，分别是 P（做了在线编程作业的学生数）、M（参加了期中考试的学生数）、N（参加了期末考试的学生数）。每个数都不超过10000。
+接下来有三块输入。第一块包含 P 个在线编程成绩 G​p；第二块包含 M 个期中考试成绩 Gmid−term；第三块包含 N 个期末考试成绩 Gfinal
+​​ 。每个成绩占一行，格式为：学生学号 分数。其中学生学号为不超过20个字符的英文字母和数字；分数是非负整数（编程总分最高为900分，期中和期末的最高分为100分）。</p>
+<p>输出格式：
+打印出获得合格证书的学生名单。每个学生占一行，格式为：
+学生学号 G​p Gmid−term Gfinal G
+如果有的成绩不存在（例如某人没参加期中考试），则在相应的位置输出“−1”。输出顺序为按照总评分数（四舍五入精确到整数）递减。若有并列，则按学号递增。题目保证学号没有重复，且至少存在1个合格的学生。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>6 6 7
+01234 880
+a1903 199
+ydjh2 200
+wehu8 300
+dx86w 220
+missing 400
+ydhfu77 99
+wehu8 55
+ydjh2 98
+dx86w 88
+a1903 86
+01234 39
+ydhfu77 88
+a1903 66
+01234 58
+wehu8 84
+ydjh2 82
+missing 99
+dx86w 81</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>missing 400 -1 99 99
+ydjh2 200 98 82 88
+dx86w 220 88 81 84
+wehu8 300 55 84 84</p>
+</blockquote>
+<pre><code>#include&lt;string&gt;
+  #include&lt;stdio.h&gt;
+  #include&lt;stdlib.h&gt;
+  #include&lt;iostream&gt;
+  #include&lt;map&gt;
+  #include&lt;cmath&gt;
+  #include&lt;utility&gt;					//注意
+  #include&lt;vector&gt;
+  #include&lt;algorithm&gt;
+  using namespace std;
+  #pragma warning(disable:4996)
+  struct stu{
+    int gp = -1, gmid = -1, gfinal = -1, gtotal = -1;
+  };
+  bool cmp(pair&lt; string,stu&gt; a ,pair&lt; string,stu&gt; b){ //注意
+    if (a.second.gtotal == b.second.gtotal)return a.first &lt; b.first;
+    else return a.second.gtotal &gt; b.second.gtotal;
+  }
+  int main(){
+    int P,M,N,score;
+    cin &gt;&gt; P &gt;&gt; M &gt;&gt; N;
+    string id;
+    map&lt;string, stu&gt;mp;
+    for (int i = 0; i &lt; P; i++){// online programming assignments
+      cin &gt;&gt; id &gt;&gt;score;
+      if (score &gt;= 200)mp[id].gp = score;
+    }
+    for (int i = 0; i &lt; M; i++){// mid-test
+      cin &gt;&gt; id &gt;&gt; score;
+      if (mp[id].gp!=-1)mp[id].gmid = score;
+    }
+    for (int i = 0; i &lt; N; i++){// final-test and calculate the total grade
+      cin &gt;&gt; id &gt;&gt; score;
+      if (mp[id].gp != -1){
+        mp[id].gfinal = score;
+        if (mp[id].gmid&gt;mp[id].gfinal)mp[id].gtotal = round(0.4*mp[id].gmid + 0.6*mp[id].gfinal);
+        else mp[id].gtotal = mp[id].gfinal;
+      }
+    }
+    vector&lt;pair&lt;string,stu&gt; &gt;rank(mp.begin(), mp.end());//将值转存入pair用vector进行排序，注意！
+    sort(rank.begin(), rank.end(), cmp);
+    for (int i = 0; i &lt; rank.size();i++){//这里就不要用迭代器写了
+      if (rank[i].second.gtotal&lt;60)break;
+      cout &lt;&lt;rank[i].first &lt;&lt; &quot; &quot; &lt;&lt; rank[i].second.gp &lt;&lt; &quot; &quot; &lt;&lt; rank[i].second.gmid &lt;&lt; &quot; &quot; &lt;&lt; rank[i].second.gfinal &lt;&lt; &quot; &quot; &lt;&lt; rank[i].second.gtotal &lt;&lt; endl;
+    }
+    system(&quot;pause&quot;);
+    return 0;
+  }
+</code></pre>
+<p>用pair对其进行排序。</p>
+<pre><code>#include&lt;utility&gt;
+vector&lt;pair&lt;int ,int &gt;&gt;rank(mp.begin(),mp.end())
+</code></pre>
+<hr>
+<p>##1085 PAT单位排行 （25 分）
+每次 PAT 考试结束后，考试中心都会发布一个考生单位排行榜。本题就请你实现这个功能。</p>
+<p>输入格式：
+输入第一行给出一个正整数 N（≤10^​5），即考生人数。随后 N 行，每行按下列格式给出一个考生的信息：
+准考证号 得分 学校
+其中准考证号是由 6 个字符组成的字符串，其首字母表示考试的级别：B代表乙级，A代表甲级，T代表顶级；得分是 [0, 100] 区间内的整数；学校是由不超过 6 个英文字母组成的单位码（大小写无关）。注意：题目保证每个考生的准考证号是不同的。</p>
+<p>输出格式：
+首先在一行中输出单位个数。随后按以下格式非降序输出单位的排行榜：
+排名 学校 加权总分 考生人数
+其中排名是该单位的排名（从 1 开始）；学校是全部按小写字母输出的单位码；加权总分定义为乙级总分/1.5 + 甲级总分 + 顶级总分*1.5的整数部分；考生人数是该属于单位的考生的总人数。
+学校首先按加权总分排行。如有并列，则应对应相同的排名，并按考生人数升序输出。如果仍然并列，则按单位码的字典序输出。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>10
+A57908 85 Au
+B57908 54 LanX
+A37487 60 au
+T28374 67 CMU
+T32486 24 hypu
+A66734 92 cmu
+B76378 71 AU
+A47780 45 lanx
+A72809 100 pku
+A03274 45 hypu</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>5
+1 cmu 192 2
+1 au 192 3
+3 pku 100 1
+4 hypu 81 2
+4 lanx 81 2</p>
+</blockquote>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdlib&gt;
+#include&lt;string&gt;
+#include&lt;cmath&gt;
+using namespace std;
+#pragma warning(disable:4996)
+#include&lt;algorithm&gt;
+#include&lt;map&gt;
+#include&lt;vector&gt;
+struct school{
+	string name;
+	int sum = 0, num = 0, rank;
+	double ssum = 0;
+};
+bool cmp(school a, school b){
+	if(a.sum!=b.sum)return a.sum &gt; b.sum;
+	else if (a.num != b.num)return a.num &lt; b.num;
+	else return a.name &lt; b.name;
+}
+int main(){//第一题20min,第二题5min,第三题15mim,第四题11min,第五题25min
+	int n;
+	cin &gt;&gt; n;
+	vector&lt;school&gt;list;
+	map&lt;string, school&gt;mp;
+	for (int i = 0; i &lt; n; i++){
+		string id,school;
+		int grade;
+		cin &gt;&gt; id &gt;&gt; grade &gt;&gt; school;
+		char classno = id[0];
+		for (int j = 0; j &lt; school.length(); j++){
+			if (school[j] &lt;= 'Z'&amp;&amp;school[j] &gt;= 'A')school[j] = school[j] - 'A' + 'a';
+		}
+		mp[school].num++;
+		mp[school].name = school;//把键写进值
+		if (classno == 'B')mp[school].ssum += grade / 1.5;  //可能是要到最后(排序前）再四舍五入!!!
+		else if (classno == 'A')mp[school].ssum += grade;
+		else mp[school].ssum +=grade * 1.5;
+	}
+	for (auto it = mp.begin(); it != mp.end(); it++){//把值提出来去排序
+		it-&gt;second.sum = floor(it-&gt;second.ssum);
+		list.push_back(it-&gt;second);
+	}
+	sort(list.begin(), list.end(),cmp);
+	cout &lt;&lt; list.size() &lt;&lt; endl;
+	for (int i = 0; i &lt; list.size(); i++){
+		if (i&amp;&amp;list[i].sum == list[i - 1].sum)list[i].rank = list[i - 1].rank;//把排名也加进去，
+		else list[i].rank = i + 1;
+		cout &lt;&lt; list[i].rank &lt;&lt; &quot; &quot; &lt;&lt; list[i].name &lt;&lt; &quot; &quot; &lt;&lt; list[i].sum &lt;&lt; &quot; &quot; &lt;&lt; list[i].num &lt;&lt; endl;
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<p>要到最后(排序前）再四舍五入!!!
+把键写进值。
+把值提出到vector去排序。</p>
+<hr>
+<p>##1090 危险品装箱 （25 分）
+集装箱运输货物时，我们必须特别小心，不能把不相容的货物装在一只箱子里。比如氧化剂绝对不能跟易燃液体同箱，否则很容易造成爆炸。
+本题给定一张不相容物品的清单，需要你检查每一张集装箱货品清单，判断它们是否能装在同一只箱子里。</p>
+<p>输入格式：
+输入第一行给出两个正整数：N (≤10^​4) 是成对的不相容物品的对数；M (≤100) 是集装箱货品清单的单数。
+随后数据分两大块给出。第一块有 N 行，每行给出一对不相容的物品。第二块有 M 行，每行给出一箱货物的清单，格式如下：
+K G[1] G[2] ... G[K]
+其中 K (≤1000) 是物品件数，G[i] 是物品的编号。简单起见，每件物品用一个 5 位数的编号代表。两个数字之间用空格分隔。</p>
+<p>输出格式：
+对每箱货物清单，判断是否可以安全运输。如果没有不相容物品，则在一行中输出 Yes，否则输出 No。</p>
+<p>输入样例：</p>
+<blockquote>
+<p>6 3
+20001 20002
+20003 20004
+20005 20006
+20003 20001
+20005 20004
+20004 20006
+4 00001 20004 00002 20003
+5 98823 20002 20003 20006 10010
+3 12345 67890 23333</p>
+</blockquote>
+<p>输出样例：</p>
+<blockquote>
+<p>No
+Yes
+Yes</p>
+</blockquote>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;string&gt;
+#include&lt;cstdlib&gt;
+#include&lt;set&gt;
+#include&lt;map&gt;
+#include&lt;algorithm&gt;
+#pragma warning(disable:4996)
+using namespace std;
+int main(){
+	vector&lt;string&gt;list[20002];
+	int N, M;
+	cin &gt;&gt; N &gt;&gt; M;
+	string a, b;
+	map&lt;string, int&gt;mp;
+	for (int i = 0; i &lt; N; i++){
+		cin &gt;&gt; a &gt;&gt; b;
+		if(mp[a]==0)mp[a] = 2 * i+ 1;
+		if(mp[b]==0)mp[b] = 2 * i + 2;
+		list[mp[a]].push_back(b);
+		list[mp[b]].push_back(a);
+	}
+	for (int i = 0; i &lt; M; i++){
+		int num, flag = 1;
+		string a;
+		cin &gt;&gt; num;
+		vector&lt;string&gt;ship;
+		for (int j = 0; j &lt; num; j++){
+			cin &gt;&gt; a;
+			for(int k = 0; k &lt; list[mp[a]].size()&amp;&amp;flag; k++){
+				for (int m = 0; m &lt; ship.size()&amp;&amp;flag; m++){
+					if (list[mp[a]][k] == ship[m]){
+						cout &lt;&lt; &quot;No&quot; &lt;&lt; endl;
+						flag = 0;
+					}
+				}
+			}
+			ship.push_back(a);
+		}
+		if (flag)cout &lt;&lt; &quot;Yes&quot; &lt;&lt; endl;
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<p>写个2维变长vector会比较好点，这里就直接用map对应一维变长的vector了</p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://www.wusanwan.xyz">吴三万</a>
+            <p>原文链接：<a href="http://www.wusanwan.xyz/2019/02/28/PAT乙级题目集4-数学问题-STL-链表/">http://www.wusanwan.xyz/2019/02/28/PAT乙级题目集4-数学问题-STL-链表/</a>
+            <p>发表日期：<a href="http://www.wusanwan.xyz/2019/02/28/PAT乙级题目集4-数学问题-STL-链表/">February 28th 2019, 11:40:01 am</a>
+            <p>更新日期：<a href="http://www.wusanwan.xyz/2019/02/28/PAT乙级题目集4-数学问题-STL-链表/">March 8th 2019, 9:19:57 pm</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2019/03/02/越努力越菜鸡/" title= "PAT乙-越努力越菜鸡">
+                    <div class="nextTitle">PAT乙-越努力越菜鸡</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/02/23/git学习实验报告/" title= "git学习实验报告">
+                    <div class="prevTitle">git学习实验报告</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "LBBQupBMJM5xUoIbNjmi43JO-gzGzoHsz",
+        appKey: "zs5uR8OAi9BWaa9pQGtewrFj",
+        placeholder: "来侃大山",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:wuwenxi_2011@126.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/wusanwan" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.douban.com/people/147344298/" class="iconfont-archer douban" target="_blank" title=douban></a>
+            
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://instagram.com/sanw5win7" class="iconfont-archer instagram" target="_blank" title=instagram></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/绿鲤鱼与驴三万" class="iconfont-archer steam" target="_blank" title=steam></a>
+            
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    <br>
+    <!-- 计时  用一个css-->
+
+      <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date();
+      function createtime() {
+          var grt= new Date("09/21/2018 13:21:12");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+      }
+  setInterval("createtime()",250);
+  </script>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+    
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+
+
+</footer>
+
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">#vector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">#set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">#map</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.</span> <span class="toc-text">排序</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 14
+        </div>
+        <!-- search  -->
+        
+            <div class="site-search popup-trigger">
+                <span class="iconfont-archer search-icon">&#xe627;</span>
+            </div>
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2019/03/03/Image-and-Video-Processing课程笔记1/" >Image and Video Processing课程笔记1</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/02</span><a class="archive-post-title" href= "/2019/03/02/越努力越菜鸡/" >PAT乙-越努力越菜鸡</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span><a class="archive-post-title" href= "/2019/02/28/PAT乙级题目集4-数学问题-STL-链表/" >PAT乙级题目集4 数学问题 STL 链表</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2019/02/23/git学习实验报告/" >git学习实验报告</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/22</span><a class="archive-post-title" href= "/2019/02/22/PAT乙集问题集3-贪心-散列-two-pointers-二分/" >PAT乙集题目集3  贪心，散列，二分法，two pointers</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span><a class="archive-post-title" href= "/2019/02/21/PAT乙级题目集2-字符串处理/" >PAT乙级题目集2 字符串处理 排序</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/18</span><a class="archive-post-title" href= "/2019/02/18/PAT乙级题目集1-简单模拟/" >PAT乙级题目集1 简单模拟</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/01</span><a class="archive-post-title" href= "/2019/02/01/通过两地经纬度计算距离/" >通过经纬度计算两地距离</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span><a class="archive-post-title" href= "/2018/11/11/LaTeX一些要注意的地方/" >LaTeX错误合集</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span><a class="archive-post-title" href= "/2018/11/11/文献管理与信息分析课程笔记/" >《文献管理与信息分析》课程笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2018/11/09/科研工具一网打尽/" >科研工具一网打尽😎</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/06</span><a class="archive-post-title" href= "/2018/11/06/模糊函数/" >模糊函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span><a class="archive-post-title" href= "/2018/10/22/论文笔记 GSR-TNNM/" >论文笔记：Truncated Nuclear Norm Minimization Based Group Sparsity Representation For Image Restoration</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/21</span><a class="archive-post-title" href= "/2018/09/21/BLOG搭建/" >BLOG搭建</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
+    
+        <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
+    
+        <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="数学问题，STL,链表"><span class="iconfont-archer">&#xe606;</span>数学问题，STL,链表</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+    
+        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+    
+        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
+    
+        <span class="sidebar-tag-name" data-tags="感悟"><span class="iconfont-archer">&#xe606;</span>感悟</span>
+    
+        <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
+    
+        <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "吴三万"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+        <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="iconfont-archer">&#xe609;</i>
+    </span>
+  </div>
+</div>
+        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.8.0/dist/instantsearch.min.js" defer></script>
+        <script src="/scripts/search.js" defer></script>
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end --></body>
+</html>
+
+
