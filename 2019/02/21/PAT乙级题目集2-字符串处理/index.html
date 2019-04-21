@@ -289,7 +289,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">6.1k</span>阅读时长: <span class="post-count reading-time">28 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">6.6k</span>阅读时长: <span class="post-count reading-time">30 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -888,6 +888,90 @@ int main(){
 }
 </code></pre>
 <p>要注意a比b长和b比a长的情况，要在前面补0。</p>
+<hr>
+<p>##1054 求平均值 （20 分）
+本题的基本要求非常简单：给定 N 个实数，计算它们的平均值。但复杂的是有些输入数据可能是非法的。一个“合法”的输入是 [−1000,1000] 区间内的实数，并且最多精确到小数点后 2 位。当你计算平均值的时候，不能把那些非法的数据算在内。</p>
+<p>输入格式：
+输入第一行给出正整数 N（≤100）。随后一行给出 N 个实数，数字间以一个空格分隔。</p>
+<p>输出格式：
+对每个非法输入，在一行中输出 ERROR: X is not a legal number，其中 X 是输入。最后在一行中输出结果：The average of K numbers is Y，其中 K 是合法输入的个数，Y 是它们的平均值，精确到小数点后 2 位。如果平均值无法计算，则用 Undefined 替换 Y。如果 K 为 1，则输出 The average of 1 number is Y。</p>
+<p>输入样例 1：</p>
+<blockquote>
+<p>7
+5 -3.2 aaa 9999 2.3.4 7.123 2.35</p>
+</blockquote>
+<p>输出样例 1：</p>
+<blockquote>
+<p>ERROR: aaa is not a legal number
+ERROR: 9999 is not a legal number
+ERROR: 2.3.4 is not a legal number
+ERROR: 7.123 is not a legal number
+The average of 3 numbers is 1.38</p>
+</blockquote>
+<p>输入样例 2：</p>
+<blockquote>
+<p>2
+aaa -9999</p>
+</blockquote>
+<p>输出样例 2：</p>
+<blockquote>
+<p>ERROR: aaa is not a legal number
+ERROR: -9999 is not a legal number
+The average of 0 numbers is Undefined</p>
+</blockquote>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+#include&lt;string.h&gt;
+#include&lt;cmath&gt;
+#pragma warning(disable:4996)
+using namespace std;
+bool IsLegal(string s){
+	int count=0;//count of .
+	int pos; //pos of .
+	float num;
+	for (int i = 0; i &lt; s.length(); i++){
+		if (s[i] &gt;= '0' &amp;&amp; s[i]  &lt;= '9'){
+			if (count == 1 &amp;&amp; i - pos&gt;2)
+				 return false;
+		}
+		else if(s[i] == '.'&amp;&amp;i!= 0){
+			count++;
+			if (count == 1)pos = i;
+			if (count == 2)return false;
+		}
+		else if (s[i] == '-'&amp;&amp;i == 0);
+		else {
+			return false;		
+		}
+	}
+	sscanf( s.c_str(),&quot;%f&quot;, &amp;num);
+	if (fabs(num)&lt;=1000)
+		return true;
+	else return false;
+}
+int main(){
+	int N,count=0;
+	float temp,sum=0;
+	scanf(&quot;%d&quot;, &amp;N);
+	string str;
+	for (int i = 0; i &lt; N; i++){
+		cin &gt;&gt; str;
+		if (IsLegal(str)){
+			sscanf(str.c_str(), &quot;%f&quot;, &amp;temp);
+			sum += temp;
+			count++;
+		}
+		else printf(&quot;ERROR: %s is not a legal number\n&quot;, str.c_str());
+	}
+	if (count == 0)printf(&quot;The average of 0 numbers is Undefined&quot;);
+	else if (count == 1)printf(&quot;The average of %d number is %.2f&quot;, count, sum / count);
+	else printf(&quot;The average of %d numbers is %.2f&quot;, count, sum / count);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre>
+<hr>
 <p>##1081 检查密码 （15 分）
 本题要求你帮助某网站的用户注册模块写一个密码合法性检查的小功能。该网站要求用户设置的密码必须由不少于6个字符组成，并且只能有英文字母、数字和小数点 .，还必须既有字母也有数字。</p>
 <p>输入格式：
@@ -1223,7 +1307,7 @@ int main(){
             <p>原文作者：<a href="http://www.wusanwan.xyz">吴三万</a>
             <p>原文链接：<a href="http://www.wusanwan.xyz/2019/02/21/PAT乙级题目集2-字符串处理/">http://www.wusanwan.xyz/2019/02/21/PAT乙级题目集2-字符串处理/</a>
             <p>发表日期：<a href="http://www.wusanwan.xyz/2019/02/21/PAT乙级题目集2-字符串处理/">February 21st 2019, 12:48:52 am</a>
-            <p>更新日期：<a href="http://www.wusanwan.xyz/2019/02/21/PAT乙级题目集2-字符串处理/">March 8th 2019, 8:50:14 pm</a>
+            <p>更新日期：<a href="http://www.wusanwan.xyz/2019/02/21/PAT乙级题目集2-字符串处理/">March 10th 2019, 10:32:26 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -1232,8 +1316,8 @@ int main(){
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2019/02/22/PAT乙集问题集3-贪心-散列-two-pointers-二分/" title= "PAT乙集题目集3  贪心，散列，二分法，two pointers">
-                    <div class="nextTitle">PAT乙集题目集3  贪心，散列，二分法，two pointers</div>
+                <a href= "/2019/02/22/PAT乙集问题集3-贪心-散列-two-pointers-二分/" title= "PAT乙集题目集3  贪心 散列 二分法 two pointers">
+                    <div class="nextTitle">PAT乙集题目集3  贪心 散列 二分法 two pointers</div>
                 </a>
             
         </li>
@@ -1554,26 +1638,9 @@ top:50vh;
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 14
+        Total : 13
         </div>
         <!-- search  -->
         
@@ -1593,12 +1660,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2019/03/03/Image-and-Video-Processing课程笔记1/" >Image and Video Processing课程笔记1</a>
+            <span class="archive-post-date">04/03</span><a class="archive-post-title" href= "/2019/04/03/Python实现微信机器人/" >基于Python wxpy库 的微信改造</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/02</span><a class="archive-post-title" href= "/2019/03/02/越努力越菜鸡/" >PAT乙-越努力越菜鸡</a>
+            <span class="archive-post-date">03/02</span><a class="archive-post-title" href= "/2019/03/02/越努力越菜鸡/" >PAT乙感想越学越菜🐔+PAT乙级题目目录</a>
         </li>
     
     
@@ -1608,12 +1675,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2019/02/23/git学习实验报告/" >git学习实验报告</a>
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2019/02/23/git学习实验报告/" >git入门报告</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/22</span><a class="archive-post-title" href= "/2019/02/22/PAT乙集问题集3-贪心-散列-two-pointers-二分/" >PAT乙集题目集3  贪心，散列，二分法，two pointers</a>
+            <span class="archive-post-date">02/22</span><a class="archive-post-title" href= "/2019/02/22/PAT乙集问题集3-贪心-散列-two-pointers-二分/" >PAT乙集题目集3  贪心 散列 二分法 two pointers</a>
         </li>
     
     
@@ -1642,7 +1709,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">11/11</span><a class="archive-post-title" href= "/2018/11/11/LaTeX一些要注意的地方/" >LaTeX错误合集</a>
+            <span class="archive-post-date">11/11</span><a class="archive-post-title" href= "/2018/11/11/LaTeX一些要注意的地方/" >LaTeX错误合集❗</a>
         </li>
     
     
@@ -1653,11 +1720,6 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2018/11/09/科研工具一网打尽/" >科研工具一网打尽😎</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/06</span><a class="archive-post-title" href= "/2018/11/06/模糊函数/" >模糊函数</a>
         </li>
     
     
@@ -1675,27 +1737,29 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
+        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+    
+        <span class="sidebar-tag-name" data-tags="玩具"><span class="iconfont-archer">&#xe606;</span>玩具</span>
+    
+        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
+    
+        <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
     
-        <span class="sidebar-tag-name" data-tags="数学问题，STL,链表"><span class="iconfont-archer">&#xe606;</span>数学问题，STL,链表</span>
-    
-        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
-    
-        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
-    
         <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+    
+        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
     
         <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
     
         <span class="sidebar-tag-name" data-tags="感悟"><span class="iconfont-archer">&#xe606;</span>感悟</span>
     
-        <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
-    
         <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1802,25 +1866,8 @@ jsonContent:
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end --></body>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
 
 
