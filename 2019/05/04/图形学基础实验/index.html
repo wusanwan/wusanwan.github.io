@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>about · 菜鸡小万。</title>
+    <title>图形学基础实验 · 菜鸡小万。</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -218,7 +218,7 @@
 </head>
 
     
-        <body class="about-body">
+        <body class="post-body">
     
     
 <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
@@ -226,6 +226,15 @@
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >菜鸡小万。</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">图形学基础实验</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>菜鸡小万。</a>
 </header>
@@ -244,23 +253,67 @@ height:50vh;
     <!-- 主页  -->
     
     
+    <!-- 404页  -->
     
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/about-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            about
+            图形学基础实验
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "图形学">图形学</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.6k</span>阅读时长: <span class="post-count reading-time">8 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/05/04</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -362,12 +415,491 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <!-- 不可以删除，否则会调用post的layout  -->
-<main class="main about-page">
+            <main class="main post-page">
     <article class="article-entry">
-        <p>你来了，我是三万，是一只菜鸡。<br>对于有趣事物，我喜欢探索(瞎折腾)，也喜欢记录，更喜欢挑战。<br>我是美好事物的追求者，有一些不切实际的梦。<br>敬请期待。    </p>
+        <h1 id="直线的扫描转换"><a href="#直线的扫描转换" class="headerlink" title="直线的扫描转换"></a>直线的扫描转换</h1><p>用三种算法实现了各个斜率的直线扫描转换，除此之外在环境配置上添加了菜单项供算法的选择使用，同时增加了键盘响应函数（只能移动第二个点）和鼠标点击响应函数，实现了鼠标以及键盘的交互，鼠标移动响应函数因为效果不好被删去（bresenham算法里如果dx&lt;0会交换两点）。</p>
+<h2 id="DDA数值微分法"><a href="#DDA数值微分法" class="headerlink" title="DDA数值微分法"></a>DDA数值微分法</h2><p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/DDA.png"></p>
+<pre><code>void DDALine(){
+    int dx, dy, epsl,type;
+    float x, y, xIncre, yIncre,k;
+    dx = x1 - x0;dy = y1 - y0;        //确定位移
+    x = x0;y = y0;                //确定起始点
+    if (abs(dx) &gt; abs(dy))epsl = abs(dx); //选择主方向
+    else epsl = abs(dy);
+    xIncre = (float)dx / (float)epsl;        //确定步长
+    yIncre = (float)dy / (float)epsl;
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glPointSize(1);
+    for (k = 0; k &lt; epsl; k++){
+        glBegin(GL_POINTS);
+        glVertex2i(int(x + 0.5), (int)(y + 0.5));    //四舍五入画点
+        glEnd();
+        x += xIncre;
+        y += yIncre;
+    }
+    glFlush();
+}
+</code></pre><h2 id="中点Bresenham算法"><a href="#中点Bresenham算法" class="headerlink" title="中点Bresenham算法"></a>中点Bresenham算法</h2><p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/MidBresenhamLine.png"></p>
+<pre><code>void MidBresenhamLine(){
+    int dx, dy, UpIncre, DownIncre, x, y, d, flag=0;
+    if (x0&gt;x1){
+        int temp;
+        temp = x0; x0 = x1; x1 = temp;
+        temp = y0; y0 = y1; y1 = temp;
+    }
+    x = x0; y = y0;
+    dx = x1 - x0;
+    dy = y1 - y0;
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glPointSize(1);
+    if (dx &gt; abs(dy)){//斜率（0,1）
+        flag = 0;
+        if (dy &lt; 0){//斜率为负的情况
+            dy = -dy;
+            flag = 1;
+        }
+        d = dx - 2 * dy;
+        UpIncre = 2 * dx - 2 * dy;        
+        DownIncre = -2 * dy;            
+        while (x &lt;= x1){
+            glBegin(GL_POINTS);
+            glVertex2i(x, y);
+            glEnd();
+            x++;
+            if (d &lt; 0){
+                if (flag) y--;
+                else y++;
+                d += UpIncre;
+            }
+            else d += DownIncre;
+        }
+    }
+    else{//补全斜率&gt;1的情况
+        flag = 0;
+        if (dy &lt; 0){//斜率为负的情况
+            dy = -dy;
+            flag = 1;
+        }
+        d = dy - 2 * dx;
+        UpIncre = 2 * dy - 2 * dx;        
+        DownIncre = -2 * dx;            
 
+        if (flag) {
+            while (y &gt;= y1){
+                glBegin(GL_POINTS);
+                glVertex2i(x, y);
+                glEnd();
+                y--;
+                if (d &lt; 0){
+                    x++;
+                    d += UpIncre;
+                }
+                else d += DownIncre;
+            }
+        }
+        else {
+            while (y &lt;= y1){
+                glBegin(GL_POINTS);
+                glVertex2i(x, y);
+                glEnd();
+                y++;
+                if (d &lt; 0){
+                    x++;
+                    d += UpIncre;
+                }
+                else d += DownIncre;
+            }
+        }
+    }
+}
+</code></pre><h2 id="Bresenham算法"><a href="#Bresenham算法" class="headerlink" title="Bresenham算法"></a>Bresenham算法</h2><p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/BresenhamLine.png"></p>
+<pre><code>void BresenhamLine(){
+    int dx, dy, e, x, y, flag = 0;
+    if (x0 &gt; x1){
+        int temp;
+        temp = x0; x0 = x1; x1 = temp;
+        temp = y0; y0 = y1; y1 = temp;
+    }
+    x = x0; y = y0;
+    dx = x1 - x0; dy = y1 - y0;
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glPointSize(1);
+    if (dx &gt; abs(dy)){//斜率（0,1）
+        e = -dx;
+        flag = 0;
+        if (dy &lt; 0){ //斜率为负的情况
+            dy = -dy;
+            flag = 1;
+        }
+        while (x &lt;= x1){
+            glBegin(GL_POINTS);
+            glVertex2i(x, y);
+            glEnd();
+            x++;
+            e = e + 2 * dy;
+            if (e &gt; 0){
+                if (flag)y--;
+                else y++;
+                e = e - 2 * dx;
+            }
+        }
+    }
+    else{ //补全斜率&gt;1的情况
+        flag = 0;
+        if (dy &lt; 0)
+        { //斜率为负的情况
+            dy = -dy;
+            flag = 1;
+        }
+        e = -dy;
+        if (flag){
+            while (y &gt;= y1){
+                glBegin(GL_POINTS);
+                glVertex2i(x, y);
+                glEnd();
+                y--;
+                e = e + 2 * dx;
+                if (e &gt; 0){
+                    x++;
+                    e = e - 2 * dy;
+                }
+            }
+        }
+        else{//斜率为负的情况
+            while (y &lt;= y1){
+                glBegin(GL_POINTS);
+                glVertex2i(x, y);
+                glEnd();
+                y++;
+                e = e + 2 * dx;
+                if (e &gt; 0){
+                    x++;
+                    e = e - 2 * dy;
+                }
+            }
+        }
+    }
+}
+</code></pre><h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><pre><code>#include&lt;glut.h&gt;
+#include&lt;gl/GL.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;windows.h&gt;
+#include&lt;graphics.h&gt;
+#include&lt;gl/GLU.h&gt;
+
+float x0 = 200, y0 = 200;        //C位
+float x1 = 250, y1 = 150;        //初始位置
+int iMode = 1;
+int pointcount = 0;
+int WinHeight = 400, WinWidth = 400;
+
+void DDALine(){
+    int dx, dy, epsl,type;
+    float x, y, xIncre, yIncre,k;
+    dx = x1 - x0;dy = y1 - y0;            //确定位移
+    x = x0;y = y0;                        //确定起始点
+    if (abs(dx) &gt; abs(dy))epsl = abs(dx); //选择主方向
+    else epsl = abs(dy);
+    xIncre = (float)dx / (float)epsl;        //确定步长
+    yIncre = (float)dy / (float)epsl;
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glPointSize(1);
+    for (k = 0; k &lt; epsl; k++){
+        glBegin(GL_POINTS);
+        glVertex2i(int(x + 0.5), (int)(y + 0.5));    //四舍五入画点
+        glEnd();
+        x += xIncre;
+        y += yIncre;
+    }
+    glFlush();
+}
+
+void MidBresenhamLine(){
+    int dx, dy, UpIncre, DownIncre, x, y, d, flag=0;
+    if (x0&gt;x1){
+        int temp;
+        temp = x0; x0 = x1; x1 = temp;
+        temp = y0; y0 = y1; y1 = temp;
+    }
+    x = x0; y = y0;
+    dx = x1 - x0;
+    dy = y1 - y0;
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glPointSize(1);
+    if (dx &gt; abs(dy)){//斜率（0,1）
+        flag = 0;
+        if (dy &lt; 0){//斜率为负的情况
+            dy = -dy;
+            flag = 1;
+        }
+        d = dx - 2 * dy;
+        UpIncre = 2 * dx - 2 * dy;        
+        DownIncre = -2 * dy;            
+        while (x &lt;= x1){
+            glBegin(GL_POINTS);
+            glVertex2i(x, y);
+            glEnd();
+            x++;
+            if (d &lt; 0){
+                if (flag) y--;
+                else y++;
+                d += UpIncre;
+            }
+            else d += DownIncre;
+        }
+    }
+    else{//补全斜率&gt;1的情况
+        flag = 0;
+        if (dy &lt; 0){//斜率为负的情况
+            dy = -dy;
+            flag = 1;
+        }
+        d = dy - 2 * dx;
+        UpIncre = 2 * dy - 2 * dx;        
+        DownIncre = -2 * dx;            
+
+        if (flag) {
+            while (y &gt;= y1){
+                glBegin(GL_POINTS);
+                glVertex2i(x, y);
+                glEnd();
+                y--;
+                if (d &lt; 0){
+                    x++;
+                    d += UpIncre;
+                }
+                else d += DownIncre;
+            }
+        }
+        else {
+            while (y &lt;= y1){
+                glBegin(GL_POINTS);
+                glVertex2i(x, y);
+                glEnd();
+                y++;
+                if (d &lt; 0){
+                    x++;
+                    d += UpIncre;
+                }
+                else d += DownIncre;
+            }
+        }
+    }
+}
+
+void BresenhamLine(){
+    int dx, dy, e, x, y, flag = 0;
+    if (x0 &gt; x1){
+        int temp;
+        temp = x0; x0 = x1; x1 = temp;
+        temp = y0; y0 = y1; y1 = temp;
+    }
+    x = x0; y = y0;
+    dx = x1 - x0; dy = y1 - y0;
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glPointSize(1);
+    if (dx &gt; abs(dy)){//斜率（0,1）
+        e = -dx;
+        flag = 0;
+        if (dy &lt; 0){ //斜率为负的情况
+            dy = -dy;
+            flag = 1;
+        }
+        while (x &lt;= x1){
+            glBegin(GL_POINTS);
+            glVertex2i(x, y);
+            glEnd();
+            x++;
+            e = e + 2 * dy;
+            if (e &gt; 0){
+                if (flag)y--;
+                else y++;
+                e = e - 2 * dx;
+            }
+        }
+    }
+    else{ //补全斜率&gt;1的情况
+        flag = 0;
+        if (dy &lt; 0)
+        { //斜率为负的情况
+            dy = -dy;
+            flag = 1;
+        }
+        e = -dy;
+        if (flag){
+            while (y &gt;= y1){
+                glBegin(GL_POINTS);
+                glVertex2i(x, y);
+                glEnd();
+                y--;
+                e = e + 2 * dx;
+                if (e &gt; 0){
+                    x++;
+                    e = e - 2 * dy;
+                }
+            }
+        }
+        else{//斜率为负的情况
+            while (y &lt;= y1){
+                glBegin(GL_POINTS);
+                glVertex2i(x, y);
+                glEnd();
+                y++;
+                e = e + 2 * dx;
+                if (e &gt; 0){
+                    x++;
+                    e = e - 2 * dy;
+                }
+            }
+        }
+    }
+}
+
+void Display(void){
+    glClear(GL_COLOR_BUFFER_BIT);                //用当前背景色填充窗口
+    glColor3f(1.0f, 0.0f, 0.0f);    //指定当前的绘图颜色
+    if (iMode == 1)DDALine();
+    else if (iMode == 2) MidBresenhamLine();
+    else BresenhamLine();
+    glFlush();                    //执行前面的OPENGL命令
+}
+void Keyboard(unsigned char key, int x, int y){//键盘交互函数
+    switch (key){
+        case&#39;W&#39;:   //上移
+        case &#39;w&#39;:
+            y1 += 10;
+            Display();
+            break;
+        case&#39;S&#39;:   //下移
+        case&#39;s&#39;:
+            y1 -= 10;
+            Display();
+            break;
+        case&#39;A&#39;:  //左移
+        case&#39;a&#39;:
+            x1 -= 10;
+            Display();
+            break;
+        case&#39;D&#39;:   //右移
+        case&#39;d&#39;:
+            x1 += 10;
+            Display();
+            break;
+    }
+}
+
+void Init(){
+    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glShadeModel(GL_FLAT);
+}
+
+void Reshape(int w, int h){
+    int winWidth = w;
+    int winHeight = h;
+    glViewport(0, 0, w, h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0.0, winWidth, 0.0, winHeight);
+}
+void MousePlot(GLint button, GLint action, GLint xMouse, GLint yMouse){//确定直线的两点
+    if (button == GLUT_LEFT_BUTTON&amp;&amp;action == GLUT_DOWN){    //左键确定端点
+        if (pointcount == 0 || pointcount == 2){
+            pointcount = 1;
+            x0 = xMouse;
+            y0 = WinHeight - yMouse;
+        }
+        else{
+            pointcount = 2;
+            x1 = xMouse;
+            y1 = WinWidth - yMouse;
+            glutPostRedisplay();            //指定窗口重新绘制
+        }
+    }
+}
+void ProcessMenu(int value){
+    iMode = value;
+    glutPostRedisplay();
+}
+int main(int argc, char* argv[]){
+    //初始化
+    glutInit(&amp;argc, argv);                            //初始化GLUT库
+    glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);    //设置窗口的显示模型
+    glutInitWindowPosition(100, 100);                //设定窗口位置
+    glutInitWindowSize(400, 400);                    //设定窗口大小
+    glutCreateWindow(&quot;直线的扫描转换&quot;);
+    //菜单项
+    glutCreateMenu(ProcessMenu);
+    glutAddMenuEntry(&quot;DDA算法&quot;, 1);
+    glutAddMenuEntry(&quot;中点Bresenham算法&quot;, 2);
+    glutAddMenuEntry(&quot;Bresenham算法&quot;, 3);
+    glutAttachMenu(GLUT_RIGHT_BUTTON);
+    //运行
+    Init();                
+    glutDisplayFunc(&amp;Display);                        //将myDisplay指定为当前窗口的显示内容函数（每次窗口重绘时调用）
+    glutReshapeFunc(Reshape);
+    glutMouseFunc(MousePlot);                        //鼠标响应函数
+    //移动响应函数因为效果问题被删去
+    glutKeyboardFunc(Keyboard);                        //键盘注册回调函数
+    glutMainLoop();
+    glutPostRedisplay();
+    return 0;
+}
+</code></pre>
     </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://www.wusanwan.xyz">吴三万</a>
+            <p>原文链接：<a href="http://www.wusanwan.xyz/2019/05/04/图形学基础实验/">http://www.wusanwan.xyz/2019/05/04/图形学基础实验/</a>
+            <p>发表日期：<a href="http://www.wusanwan.xyz/2019/05/04/图形学基础实验/">五月 4日 2019, 3:51:51 下午</a>
+            <p>更新日期：<a href="http://www.wusanwan.xyz/2019/05/04/图形学基础实验/">May 5th 2019, 6:52:11 pm</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/04/03/Python实现微信机器人/" title= "基于Python wxpy库 的微信改造">
+                    <div class="prevTitle">基于Python wxpy库 的微信改造</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "LBBQupBMJM5xUoIbNjmi43JO-gzGzoHsz",
+        appKey: "zs5uR8OAi9BWaa9pQGtewrFj",
+        placeholder: "来侃大山",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -480,6 +1012,24 @@ height:50vh;
 
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#直线的扫描转换"><span class="toc-number">1.</span> <span class="toc-text">直线的扫描转换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DDA数值微分法"><span class="toc-number">1.1.</span> <span class="toc-text">DDA数值微分法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中点Bresenham算法"><span class="toc-number">1.2.</span> <span class="toc-text">中点Bresenham算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bresenham算法"><span class="toc-number">1.3.</span> <span class="toc-text">Bresenham算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整代码"><span class="toc-number">1.4.</span> <span class="toc-text">完整代码</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -869,6 +1419,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
