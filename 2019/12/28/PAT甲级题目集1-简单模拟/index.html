@@ -1,0 +1,3025 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="吴三万">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="吴三万">
+    
+    <meta name="keywords" content="个人博客">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>菜鸡小万。</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+        <!-- algolia -->
+        <script>
+            
+            var hits = JSON.parse('{"per_page":10}')
+            var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"We did not find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}')
+
+            var algolia = {
+                applicationID: 'WUWVPBKO6N',
+                apiKey: 'e0afed75eb96c871bd883e9bc8eea39c',
+                indexName: 'sanw',
+                hits: hits,
+                labels: labels
+            }
+        </script>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >菜鸡小万。</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name"></a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>菜鸡小万。</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            [Untitled Post]
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">14.7k</span>阅读时长: <span class="post-count reading-time">91 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/12/28</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <!DOCTYPE html><html><head>
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><title>PAT&#x7532;&#x7EA7;&#x9898;&#x76EE;&#x96C6;1-&#x7B80;&#x5355;&#x6A21;&#x62DF;</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///C:\Users\sanw\.atom\packages\markdown-preview-enhanced\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+ 
+      </style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </head>
+    <body for="html-export">
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="mume markdown-preview   ">
+      <p>&#x4E0D;&#x662F;&#x6309;&#x987A;&#x5E8F;&#x5237;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x6309;&#x6570;&#x5B57;&#x5347;&#x5E8F;&#x6392;&#x7684;&#xFF0C;&#x6709;&#x4E9B;&#x4E4B;&#x524D;&#x9047;&#x5230;&#x8FC7;&#x7684;&#x95EE;&#x9898;&#x5C31;&#x4E0D;&#x518D;&#x7279;&#x5730;&#x6807;&#x660E;&#x4E86;&#x3002;<br>
+&#x53C2;&#x8003;&#x300A;&#x7B97;&#x6CD5;&#x7B14;&#x8BB0;&#x300B;&#x7B2C;&#x4E09;&#x7AE0;&#x3002;</p>
+<ul>
+<li><a href="#%E7%AE%80%E5%8D%95%E6%A8%A1%E6%8B%9F">&#x7B80;&#x5355;&#x6A21;&#x62DF;</a>
+<ul>
+<li><a href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9">&#x77E5;&#x8BC6;&#x8981;&#x70B9;</a></li>
+<li><a href="#1002-ab-for-polynomials25">1002 A+B for Polynomials(25)</a></li>
+<li><a href="#1008-elevator20">1008 Elevator(20)</a></li>
+<li><a href="#1009-product-of-polynomials25">1009 Product of Polynomials(25)</a></li>
+<li><a href="#1011-world-cup-betting20">1011 World Cup Betting(20)</a></li>
+<li><a href="#1036-boys-vs-girls25">1036 Boys vs Girls(25)</a></li>
+<li><a href="#1042-shuffling-machine20">1042 Shuffling Machine(20)</a></li>
+<li><a href="#1046-shortest-distance20">1046 Shortest Distance(20)</a></li>
+<li><a href="#1049-counting-ones30">1049 Counting Ones(30)</a></li>
+<li><a href="#1069-the-black-hole-of-numbers20">1069 The Black Hole of Numbers(20)</a></li>
+<li><a href="#1093-count-pats-25">1093 Count PAT&apos;s (25)</a></li>
+<li><a href="#1104-sum-of-number-segments20">1104 Sum of Number Segments(20)</a></li>
+<li><a href="#1109-group-photo25">1109 Group Photo(25)</a></li>
+<li><a href="#1113-integer-set-partition-25">1113 Integer Set Partition (25)</a></li>
+<li><a href="#1117-eddington-number25">1117 Eddington Number(25)</a></li>
+<li><a href="#1128-n-queens-puzzle20">1128 N Queens Puzzle(20)</a></li>
+<li><a href="#1132-cut-integer20">1132 Cut Integer(20)</a></li>
+<li><a href="#1148-werewolf-simple-version-20">1148 Werewolf - Simple Version (20)</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%BE%E5%BD%A2%E8%BE%93%E5%87%BA">&#x56FE;&#x5F62;&#x8F93;&#x51FA;</a>
+<ul>
+<li><a href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-1">&#x77E5;&#x8BC6;&#x8981;&#x70B9;</a></li>
+<li><a href="#1031-hello-world-for-u20">1031 Hello World for U(20)</a></li>
+<li><a href="#1105-spiral-matrix25">1105 Spiral Matrix(25)</a></li>
+</ul>
+</li>
+<li><a href="#%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86">&#x65F6;&#x95F4;&#x5904;&#x7406;</a>
+<ul>
+<li><a href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-2">&#x77E5;&#x8BC6;&#x8981;&#x70B9;</a></li>
+<li><a href="#1006-sign-in-and-sign-out25">1006 Sign In and Sign Out(25)</a></li>
+<li><a href="#1017-queueing-at-bank25">1017 Queueing at Bank(25)</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2">&#x8FDB;&#x5236;&#x8F6C;&#x6362;</a>
+<ul>
+<li><a href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-3">&#x77E5;&#x8BC6;&#x8981;&#x70B9;</a></li>
+<li><a href="#1019-general-palindromic-number20">1019 General Palindromic Number(20)</a></li>
+<li><a href="#1027-colors-in-mars-20">1027 Colors in Mars (20)</a></li>
+<li><a href="#1058-ab-in-hogwarts20">1058 A+B in Hogwarts(20)</a></li>
+</ul>
+</li>
+</ul>
+<h1 class="mume-header" id="%E7%AE%80%E5%8D%95%E6%A8%A1%E6%8B%9F">&#x7B80;&#x5355;&#x6A21;&#x62DF;</h1>
+
+<hr>
+<h2 class="mume-header" id="%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9">&#x77E5;&#x8BC6;&#x8981;&#x70B9;</h2>
+
+<p>&#x7EDF;&#x8BA1;&#x6570;&#x5B57;&#x4F4D;&#x6570;k%10,k/10</p>
+<hr>
+<h2 class="mume-header" id="1002-ab-for-polynomials25">1002 A+B for Polynomials(25)</h2>
+
+<p>This time, you are supposed to find A+B where A and B are two polynomials.<br>
+Input Specification:</p>
+<p>Each input file contains one test case. Each case occupies 2 lines, and each line contains the information of a polynomial:K N1 aN1 N2 aN2 &#x2026; NK aNK,where K is the number of nonzero terms in the polynomial, Ni and aNi(i=1,2,&#x22EF;,K) are the exponents and coefficients, respectively. It is given that 1&#x2264;K&#x2264;10&#xFF0C;0&#x2264;NK&lt;&#x2026;&lt;N2&lt;N1&#x2264;1000.<br>
+Output Specification:</p>
+<p>For each test case you should output the sum of A and B in one line, with the same format as the input. Notice that there must be NO extra space at the end of each line. Please be accurate to 1 decimal place.<br>
+Sample Input:</p>
+<blockquote>
+<p>2 1 2.4 0 3.2<br>
+2 2 1.5 1 0.5</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>3 2 1.5 1 2.9 0 3.2</p>
+</blockquote>
+<pre class="language-text">  //1002 A+B for Polynomials
+  #pragma warning(disable:4996)
+  #define eps 1E-6
+  #include&lt;cstdio&gt;
+  #include&lt;algorithm&gt;
+  #include&lt;cmath&gt;
+  using namespace std;
+  int main(){
+  	float poly[1001];
+  	fill(poly, poly + 1001, 0.0);
+  	int terms, exponent,sumterms=0;
+  	float cofficient;
+  	for(int i=0;i&lt;2;i++){
+  		scanf(&quot;%d&quot;, &amp;terms);
+  		for (int i = 0; i &lt; terms; i++){
+  			scanf(&quot; %d %f&quot;, &amp;exponent, &amp;cofficient);
+  			if (fabs(poly[exponent])&lt;eps&amp;&amp;fabs(cofficient)&gt;eps)sumterms++;
+  			poly[exponent] += cofficient;
+  			if (fabs(poly[exponent]) &lt; eps)sumterms--;
+  		}
+  	}
+  	//output
+  	printf(&quot;%d&quot;, sumterms);
+  	for (int i = 1000; i &gt;= 0; i--){
+  		if (fabs(poly[i])&gt;eps)printf(&quot; %.1d %.1f&quot;, i, poly[i]);
+  	}
+  	system(&quot;pause&quot;);
+  	return 0;
+  }
+</pre>
+<p>&#x7B80;&#x5355;&#x6A21;&#x62DF;&#x9898;&#xFF0C;&#x601D;&#x8DEF;&#x662F;&#x6293;&#x4F4F;&#x591A;&#x9879;&#x5F0F;&#x76F8;&#x52A0;&#x7684;&#x672C;&#x8D28;&#xFF0C;&#x9879;&#x6570;&#x7684;&#x8BDD;&#xFF0C;&#x6B63;&#x8D1F;&#x76F8;&#x52A0;&#x76F8;&#x62B5;&#x6D88;&#x540E;&#x9879;&#x6570;&#x8981;-1&#xFF0C;&#x8BFB;&#x5165;&#x65B0;&#x9879;&#x8981;+1&#xFF0C;&#x5176;&#x5B9E;&#x4E5F;&#x53EF;&#x4EE5;&#x5168;&#x90E8;&#x52A0;&#x5B8C;&#x518D;&#x904D;&#x5386;&#x4E00;&#x904D;&#x4E48;&#x3002;&#x505A;&#x5B8C;&#x8FD9;&#x9053;&#x9898;&#x7684;&#x611F;&#x60F3;&#x662F;&#xFF1A;&#x8981;&#x597D;&#x597D;&#x5BA1;&#x9898;&#xFF0C;&#x6293;&#x4F4F;&#x91CD;&#x70B9;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#x95EE;&#x9898;</p>
+<ol>
+<li>&#x786E;&#x5B9A;&#x6D6E;&#x70B9;&#x6570;0&#x3002;  #define eps 1E-6</li>
+<li>(&#x5BA1;&#x9898;&#x9519;&#x8BEF;)&#x4E0D;&#x9650;&#x5B9A;&#x8F93;&#x5165;&#x4E2A;&#x6570;&#x7684;&#x8F93;&#x5165;&#x5904;&#x7406;&#xFF0C;while(scanf()!=EOF)(&#x8C03;&#x8BD5;&#x7684;&#x65F6;&#x5019;&#x6362;&#x884C;&#x518D;ctrl+Z&#xFF09;</li>
+</ol>
+<hr>
+<h2 class="mume-header" id="1008-elevator20">1008 Elevator(20)</h2>
+
+<p>The highest building in our city has only one elevator. A request list is made up with N positive numbers. The numbers denote at which floors the elevator will stop, in specified order. It costs 6 seconds to move the elevator up one floor, and 4 seconds to move down one floor. The elevator will stay for 5 seconds at each stop.<br>
+For a given request list, you are to compute the total time spent to fulfill the requests on the list. The elevator is on the 0th floor at the beginning and does not have to return to the ground floor when the requests are fulfilled.<br>
+Input Specification:</p>
+<p>Each input file contains one test case. Each case contains a positive integer N, followed by N positive numbers. All the numbers in the input are less than 100.<br>
+Output Specification:</p>
+<p>For each test case, print the total time on a single line.<br>
+Sample Input:</p>
+<blockquote>
+<p>3 2 3 1</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>41</p>
+</blockquote>
+<pre class="language-text">  #pragma warning(disable:4996)
+  #include&lt;cstdio&gt;
+  #include&lt;vector&gt;
+  using namespace std;
+  int main(){
+  	int floor[101];
+  	floor[0] = 0;  //&#x8003;&#x8651;&#x4E00;&#x5F00;&#x59CB;&#x7684;&#x60C5;&#x51B5;&#x3002;
+  	int N,TotalTime=0,TotalUp=0,TotalDown=0;
+  	//&#x5C06;&#x95EE;&#x9898;&#x62C6;&#x5206;&#x4E3A;&#x4E0A;&#x697C;&#x548C;&#x4E0B;&#x697C;&#x4E24;&#x4E2A;&#x8FC7;&#x7A0B;
+  	vector&lt;int&gt;up;
+  	vector&lt;int&gt;down;
+  	scanf(&quot;%d&quot;, &amp;N);
+  	for (int i = 1; i &lt; N+1; i++){
+  		scanf(&quot;%d&quot;, &amp;floor[i]);
+  		int diff = floor[i] - floor[i - 1];
+  		if (diff &gt;= 0)
+  			up.push_back(diff);
+  		else
+  			down.push_back(0 - diff);
+  	}
+  	for (vector&lt;int&gt;::iterator it = up.begin(); it!= up.end(); it++)
+  		TotalUp += * it;
+  	for (vector&lt;int&gt;::iterator it = down.begin(); it!= down.end(); it++)
+  		TotalDown += * it;
+  	TotalTime = N * 5 + TotalUp * 6 + TotalDown * 4;
+  	printf(&quot;%d&quot;, TotalTime);
+  	//system(&quot;pause&quot;);
+  	return 0;
+  }
+</pre>
+<p>&#x7B80;&#x5355;&#x9898;&#xFF0C;&#x601D;&#x8DEF;&#x662F;&#x628A;&#x8FC7;&#x7A0B;&#x62C6;&#x5206;&#x4E3A;&#x4E0A;&#x697C;&#x548C;&#x4E0B;&#x697C;&#x4E24;&#x4E2A;&#x8FC7;&#x7A0B;&#xFF0C;&#x5206;&#x522B;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#x3002;&#x4F46;&#x4EE3;&#x7801;&#x4E0D;&#x591F;&#x7CBE;&#x70BC;&#xFF0C;push&#x8FDB;vector&#x7684;&#x6B65;&#x9AA4;&#x8FD8;&#x4E0D;&#x5982;&#x76F4;&#x63A5;&#x8BA1;&#x7B97;&#x6240;&#x9700;&#x65F6;&#x95F4;&#x4E86;,&#x6D6A;&#x8D39;&#x65F6;&#x95F4;&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x3002;&#xFF08;&#x6211;&#x5C31;&#x662F;&#x60F3;&#x7528;vector&#x8BD5;&#x8BD5;&#x770B;&#xFF09;</p>
+<ol>
+<li>vs2013&#x7684;scanf&#x62A5;&#x9519;&#x95EE;&#x9898;<br>
+&#x8981;&#x4E48;&#x52A0;&#x4E0A;  #pragma warning(disable:4996)&#xFF0C;&#x8981;&#x4E48;&#x6BCF;&#x6B21;&#x63D0;&#x4EA4;&#x7684;&#x65F6;&#x5019;&#x628A;_s&#x5220;&#x6389;&#x3002;</li>
+<li>&#x5C3D;&#x53EF;&#x80FD;&#x7CBE;&#x70BC;&#x3002;</li>
+</ol>
+<hr>
+<h2 class="mume-header" id="1009-product-of-polynomials25">1009 Product of Polynomials(25)</h2>
+
+<p>This time, you are supposed to find A&#xD7;B where A and B are two polynomials.<br>
+Input Specification:</p>
+<p>Each input file contains one test case. Each case occupies 2 lines, and each line contains the information of a polynomial:K N1 aN1 N2 aN2 &#x2026; NK aNK,where K is the number of nonzero terms in the polynomial, Ni and aNi(i=1,2,&#x22EF;,K) are the exponents and coefficients, respectively. It is given that 1&#x2264;K&#x2264;10&#xFF0C;0&#x2264;NK&lt;&#x2026;&lt;N2&lt;N1&#x2264;1000.<br>
+Output Specification:</p>
+<p>For each test case you should output the product of A and B in one line, with the same format as the input. Notice that there must be NO extra space at the end of each line. Please be accurate up to 1 decimal place.<br>
+Sample Input:</p>
+<blockquote>
+<p>2 1 2.4 0 3.2<br>
+2 2 1.5 1 0.5</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>3 3 3.6 2 6.0 1 1.6</p>
+</blockquote>
+<pre class="language-text">  //1009 Product of Polynomials
+  #pragma warning(disable:4996)
+  #define eps 1E-6
+  #include&lt;cstdio&gt;
+  #include&lt;algorithm&gt;
+  #include&lt;cmath&gt;
+  using namespace std;
+  struct poly{
+  	int term;
+  	int exponent[10];
+  	float cofficient[10];
+  };
+  int main(){
+  	float result[2001];
+  	fill(result, result + 2001, 0.0);
+  	int _term,_exponent,sumterms=0;//_&#x8868;&#x793A;&#x662F;&#x7B2C;&#x4E8C;&#x4E2A;
+  	poly first;
+  	float _cofficient;
+  	scanf(&quot;%d&quot;, &amp;first.term);
+  	for (int i = 0; i &lt;first.term; i++){
+  		scanf(&quot; %d %f&quot;, &amp;first.exponent[i], &amp;first.cofficient[i]);
+  	}
+  	scanf(&quot;%d&quot;, &amp;_term);
+  	for (int i = 0; i&lt;_term; i++){
+  		scanf(&quot; %d %f&quot;, &amp;_exponent, &amp;_cofficient);
+  		for (int j = 0; j &lt; first.term; j++){
+  			result[_exponent + first.exponent[j]]+= _cofficient*first.cofficient[j];
+  		}
+  	}
+  	//&#x7EDF;&#x8BA1;&#x603B;&#x6570;
+  	for (int i = 0; i&lt;2001; i++)
+  		if (fabs(result[i])&gt;eps)sumterms++;
+  	//output
+  	printf(&quot;%d&quot;, sumterms);
+  	for (int i = 2000; i &gt;= 0; i--){
+  		if (fabs(result[i])&gt;eps)printf(&quot; %.1d %.1f&quot;, i, result[i]);
+  	}
+  	system(&quot;pause&quot;);
+  	return 0;
+  }
+</pre>
+<p>&#x601D;&#x8DEF;&#xFF1A;&#x5B58;&#x4E00;&#x7EC4;&#x591A;&#x9879;&#x5F0F;&#xFF0C;&#x53E6;&#x4E00;&#x7EC4;&#x8FB9;&#x8BFB;&#x5165;&#x8FB9;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#xFF0C;&#x6700;&#x540E;&#x904D;&#x5386;&#x7EDF;&#x8BA1;&#x9879;&#x6570;&#x3002;</p>
+<ol>
+<li>&#x8981;&#x6CE8;&#x610F;&#x8FD9;&#x8FB9;&#x4E58;&#x7684;&#x8BDD;&#x8303;&#x56F4;&#x53D8;&#x4E86;&#x3002;</li>
+</ol>
+<hr>
+<h2 class="mume-header" id="1011-world-cup-betting20">1011 World Cup Betting(20)</h2>
+
+<p>With the 2010 FIFA World Cup running, football fans the world over were becoming increasingly excited as the best players from the best teams doing battles for the World Cup trophy in South Africa. Similarly, football betting fans were putting their money where their mouths were, by laying all manner of World Cup bets.<br>
+Chinese Football Lottery provided a &quot;Triple Winning&quot; game. The rule of winning was simple: first select any three of the games. Then for each selected game, bet on one of the three possible results -- namely W for win, T for tie, and L for lose. There was an odd assigned to each result. The winner&apos;s odd would be the product of the three odds times 65%.<br>
+For example, 3 games&apos; odds are given as the following:</p>
+<blockquote>
+<p>W    T    L<br>
+1.1  2.5  1.7<br>
+1.2  3.1  1.6<br>
+4.1  1.2  1.1</p>
+</blockquote>
+<p>To obtain the maximum profit, one must buy W for the 3rd game, T for the 2nd game, and T for the 1st game. If each bet takes 2 yuans, then the maximum profit would be (4.1&#xD7;3.1&#xD7;2.5&#xD7;65%&#x2212;1)&#xD7;2=39.31 yuans (accurate up to 2 decimal places).<br>
+Input Specification:</p>
+<p>Each input file contains one test case. Each case contains the betting information of 3 games. Each game occupies a line with three distinct odds corresponding to W, T and L.<br>
+Output Specification:</p>
+<p>For each test case, print in one line the best bet of each game, and the maximum profit accurate up to 2 decimal places. The characters and the number must be separated by one space.<br>
+Sample Input:</p>
+<blockquote>
+<p>1.1 2.5 1.7<br>
+1.2 3.1 1.6<br>
+4.1 1.2 1.1</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>T T W 39.31</p>
+</blockquote>
+<pre class="language-text">//1011 World Cup Betting &#xFF08;20 &#x5206;&#xFF09;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#pragma warning(disable:4996)
+int main(){
+	float odds[3][3], product = 1;
+	int decision[3];
+	fill(decision, decision + 3, 0);//&#x8BED;&#x6CD5;&#x4E0A;&#x4E5F;&#x662F;&#x5DE6;&#x95ED;&#x53F3;&#x5F00;
+	char a[4] = &quot;WTL&quot;; //&#x8BB0;&#x5F97;&#x7559;&#x4E00;&#x4E2A;&#x7A7A;
+	for (int i = 0; i &lt; 3; i++){
+		for (int j = 0; j &lt; 3; j++){
+			scanf(&quot;%f&quot;, &amp;odds[i][j]);
+			if (odds[i][decision[i]] &lt; odds[i][j])decision[i] = j;
+		}
+		product *= odds[i][decision[i]];
+		printf(&quot;%c&quot;,a[decision[i]]);
+	}
+	printf(&quot;%.2f&quot;, product*0.65*2 - 2);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x601D;&#x8DEF;&#xFF1A;&#x6BCF;&#x884C;&#x8FB9;&#x8BFB;&#x8FB9;&#x627E;&#x6700;&#x5927;&#x503C;&#xFF0C;&#x592A;&#x7B80;&#x5355;&#x4E86;&#x6CA1;&#x5565;&#x597D;&#x8BF4;&#x7684;&#xFF0C;&#x8BB0;&#x5F97;scanf&#x52A0;&amp;&#x3002;</p>
+<ol>
+<li>LTW&#x90A3;&#x6BB5;&#x8FD8;&#x662F;&#x53EF;&#x4EE5;&#x5199;&#x6210;char a[4]=&quot;WTL&quot;,&#x5C31;&#x662F;&#x6700;&#x7B80;&#x5355;&#x7684;&#x6570;&#x5B57;&#x5B57;&#x7B26;&#x6620;&#x5C04;&#x5566;&#xFF01;&#xFF08;&#x4EE5;&#x540E;&#x518D;&#x4E00;&#x4E2A;&#x4E2A;&#x6253;if&#x6211;&#x662F;&#x732A;&#xFF09;</li>
+<li>&#x5B57;&#x7B26;&#x4E32;&#x8BB0;&#x5F97;&#x8981;&#x7A7A;&#x4E00;&#x4E2A;</li>
+</ol>
+<hr>
+<h2 class="mume-header" id="1036-boys-vs-girls25">1036 Boys vs Girls(25)</h2>
+
+<p>1036 Boys vs Girls &#xFF08;25 &#x5206;&#xFF09;<br>
+This time you are asked to tell the difference between the lowest grade of all the male students and the highest grade of all the female students.<br>
+Input Specification:</p>
+<p>Each input file contains one test case. Each case contains a positive integer N, followed by N lines of student information. Each line contains a student&apos;s name, gender, ID and grade, separated by a space, where name and ID are strings of no more than 10 characters with no space, gender is either F (female) or M (male), and grade is an integer between 0 and 100. It is guaranteed that all the grades are distinct.</p>
+<p>Output Specification:</p>
+<p>For each test case, output in 3 lines. The first line gives the name and ID of the female student with the highest grade, and the second line gives that of the male student with the lowest grade. The third line gives the difference gradeF&#x2212;gradeM . If one such kind of student is missing, output Absent in the corresponding line, and output NA in the third line instead.</p>
+<p>Sample Input 1:</p>
+<blockquote>
+<p>3<br>
+Joe M Math990112 89<br>
+Mike M CS991301 100<br>
+Mary F EE990830 95</p>
+</blockquote>
+<p>Sample Output 1:</p>
+<blockquote>
+<p>Mary EE990830<br>
+Joe Math990112<br>
+6</p>
+</blockquote>
+<p>Sample Input 2:</p>
+<blockquote>
+<p>1<br>
+Jean M AA980920 60</p>
+</blockquote>
+<p>Sample Output 2:</p>
+<blockquote>
+<p>Absent<br>
+Jean AA980920<br>
+NA</p>
+</blockquote>
+<pre class="language-text">    //1036 Boys vs Girls &#xFF08;25 &#x5206;&#xFF09;
+    #pragma warning(disable:4996)
+    #include&lt;stdio.h&gt;
+    #include&lt;stdlib.h&gt;
+    struct student{
+    	char name[11];
+    	char gender;
+    	char ID[11];
+    	int grade;
+    };
+    int main(){
+    	int N,boy=1000,girl=1001;
+    	student stu[1002];
+    	scanf(&quot;%d&quot;, &amp;N);
+    	//&#x8BBE;&#x7F6E;&#x4E86;&#x4E24;&#x4E2A;&#x5047;&#x4EBA;
+    	stu[1000].gender = &apos;M&apos;;
+    	stu[1000].grade = 101;
+    	stu[1001].gender = &apos;F&apos;;
+    	stu[1001].grade = -1;
+    	for (int i = 0; i &lt; N; i++){
+    		scanf(&quot;%s %c %s %d&quot;, &amp;stu[i].name, &amp;stu[i].gender, &amp;stu[i].ID, &amp;stu[i].grade);
+    		if (stu[i].gender == &apos;M&apos;&amp;&amp;stu[i].grade &lt; stu[boy].grade)boy = i;
+    		if (stu[i].gender == &apos;F&apos;&amp;&amp;stu[i].grade &gt; stu[girl].grade)girl = i;
+    	}
+    	//output
+    	if (girl == 1001)printf(&quot;Absent\n&quot;);
+    	else printf(&quot;%s %s\n&quot;, stu[girl].name, stu[girl].ID);
+    	if(boy == 1000)printf(&quot;Absent\n&quot;);
+    	else printf(&quot;%s %s\n&quot;, stu[boy].name, stu[boy].ID);
+    	if (girl == 1001 || boy == 1000)printf(&quot;NA&quot;);
+    	else printf(&quot;%d&quot;, stu[girl].grade - stu[boy].grade);
+    	system(&quot;pause&quot;);
+    	return 0;
+    }
+</pre>
+<p>&#x7B80;&#x5355;&#x9898;&#x3002;&#x601D;&#x8DEF;&#xFF1A;&#x8BBE;&#x7F6E;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x8FB9;&#x8BFB;&#x8FB9;&#x6BD4;&#x8F83;&#xFF0C;&#x8BBE;&#x7F6E;&#x5047;&#x4EBA;&#x68C0;&#x5B9A;&#x6709;&#x65E0;&#x3002;</p>
+<ol>
+<li>&#x4E5F;&#x53EF;&#x4EE5;&#x8FB9;&#x8BFB;&#x8FB9;&#x6BD4;&#xFF0C;&#x53EA;&#x5B58;&#x50A8;&#x5F53;&#x524D;&#x7684;&#x6700;&#x503C;&#x6570;&#x636E;&#xFF0C;&#x8BB0;&#x5F55;&#x4E0B;&#x7537;&#x5973;&#x751F;&#x4EBA;&#x6570;&#x3002;</li>
+<li>&#x4ECE;&#x6700;&#x503C;&#x6210;&#x7EE9;&#x7684;&#x89D2;&#x5EA6;&#x770B;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x518D;&#x5B58;&#x50A8;&#x4E00;&#x4E2A;&#x6700;&#x503C;&#x6210;&#x7EE9;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4E0D;&#x7528;&#x8BBE;&#x5047;&#x4EBA;&#x5B9A;&#x521D;&#x503C;&#x4E86;&#x3002;</li>
+</ol>
+<hr>
+<h2 class="mume-header" id="1042-shuffling-machine20">1042 Shuffling Machine(20)</h2>
+
+<p>Shuffling is a procedure used to randomize a deck of playing cards. Because standard shuffling techniques are seen as weak, and in order to avoid &quot;inside jobs&quot; where employees collaborate with gamblers by performing inadequate shuffles, many casinos employ automatic shuffling machines. Your task is to simulate a shuffling machine.<br>
+The machine shuffles a deck of 54 cards according to a given random order and repeats for a given number of times. It is assumed that the initial status of a card deck is in the following order:<br>
+S1, S2, ..., S13,<br>
+H1, H2, ..., H13,<br>
+C1, C2, ..., C13,<br>
+D1, D2, ..., D13,<br>
+J1, J2<br>
+where &quot;S&quot; stands for &quot;Spade&quot;, &quot;H&quot; for &quot;Heart&quot;, &quot;C&quot; for &quot;Club&quot;, &quot;D&quot; for &quot;Diamond&quot;, and &quot;J&quot; for &quot;Joker&quot;. A given order is a permutation of distinct integers in [1, 54]. If the number at the i-th position is j, it means to move the card from position i to position j. For example, suppose we only have 5 cards: S3, H5, C1, D13 and J2. Given a shuffling order {4, 2, 5, 3, 1}, the result will be: J2, H5, D13, S3, C1. If we are to repeat the shuffling again, the result will be: C1, H5, S3, J2, D13.<br>
+Input Specification:</p>
+<p>Each input file contains one test case. For each case, the first line contains a positive integer K (&#x2264;20) which is the number of repeat times. Then the next line contains the given order. All the numbers in a line are separated by a space.<br>
+Output Specification:</p>
+<p>For each test case, print the shuffling results in one line. All the cards are separated by a space, and there must be no extra space at the end of the line.</p>
+<p>Sample Input:</p>
+<blockquote>
+<p>2<br>
+36 52 37 38 3 39 40 53 54 41 11 12 13 42 43 44 2 4 23 24 25 26 27 6 7 8 48 49 50 51 9 10 14 15 16 5 17 18 19 1 20 21 22 28 29 30 31 32 33 34 35 45 46 47</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>S7 C11 C10 C12 S1 H7 H8 H9 D8 D9 S11 S12 S13 D10 D11 D12 S3 S4 S6 S10 H1 H2 C13 D2 D3 D4 H6 H3 D13 J1 J2 C1 C2 C3 C4 D1 S5 H5 H11 H12 C6 C7 C8 C9 S2 S8 S9 H10 D5 D6 D7 H4 H13 C5</p>
+</blockquote>
+<pre class="language-text">//1042 Shuffling Machine
+#include&lt;cstdio&gt;
+#include &lt;stdlib.h&gt;
+using namespace std;
+void shuffle(int order[], int result[], int RepeatTime){
+	//order&#x662F;&#x7ED9;&#x5B9A;&#x5FAA;&#x73AF;&#x987A;&#x5E8F;&#xFF0C;result&#x662F;&#x5BF9;&#x5E94;&#x5E8F;&#x53F7;&#x6240;&#x5728;&#x4F4D;&#x7F6E;&#x3002;
+	//&#x521D;&#x59CB;&#x5316;
+	for (int i = 0; i &lt; 54; i++)
+		result[i] = i;
+	//shuffle
+	for (int i = 1; i &lt;= RepeatTime; i++){
+		for (int j = 0; j &lt; 54; j++){
+			result[j] = order[result[j]]-1;//&#x6CE8;&#x610F;&#x7ED9;&#x7684;order&#x662F;&#x548C;&#x6570;&#x7EC4;&#x5E8F;&#x53F7;&#x4E0D;&#x5BF9;&#x5E94;&#x7684;
+		}
+	}
+}
+int main(){
+	//input
+	int RepeatTime;
+	scanf(&quot;%d&quot;, &amp;RepeatTime);
+	int order[54];
+	for (int i = 0; i &lt; 54; i++){
+		scanf(&quot;%d&quot;, &amp;order[i]);
+	}
+	//shuffling
+	int result[54];
+	shuffle(order, result, RepeatTime);
+	//output &#x5176;&#x5B9E;&#x4E5F;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x5199;&#x7ED3;&#x6784;&#x4F53;,&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;&#x4EC0;&#x4E48;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;54&#x4E0D;&#x7B97;&#x5927;&#x8FD9;&#x91CC;&#x5C31;&#x76F4;&#x63A5;&#x641E;&#x4E86;&#x3002;
+	for (int i = 0; i &lt; 54; i++){
+		int pos;
+		for (int j = 0; j &lt; 54; j++){//&#x5BFB;&#x627E;&#x4F4D;&#x7F6E;
+			if (result[j] == i) {
+				pos = j;
+				break;
+			}
+		}
+		if (0 &lt;= pos &amp;&amp; pos &lt; 13)            //&#x522B;&#x5199;&#x6210;0 &lt;= pos &lt; 13&#x4E86;&#xFF01;&#xFF01;
+			printf(&quot;S%d&quot;, pos + 1);
+		else if (13 &lt;= pos &amp;&amp; pos &lt; 26)
+			printf(&quot;H%d&quot;, pos - 12);
+		else if (26 &lt;= pos&amp;&amp; pos  &lt; 39)
+			printf(&quot;C%d&quot;, pos - 25);
+		else if (39 &lt;= pos &amp;&amp; pos &lt; 52)
+			printf(&quot;D%d&quot;, pos - 38);
+		else
+			printf(&quot;J%d&quot;, pos - 51);
+		if (i != 53)printf(&quot; &quot;);//&#x8FFD;&#x52A0;&#x7A7A;&#x683C;
+	}
+	system(&quot;pause&quot;);  //&#x627E;&#x4E0D;&#x5230;&#x6807;&#x8BC6;&#x7B26; include#include &lt;stdlib.h&gt;
+	return 0;
+}
+</pre>
+<p>&#x7B80;&#x5355;&#x6A21;&#x62DF;&#x9898;&#xFF0C;&#x601D;&#x8DEF;&#x662F;&#x4E0D;&#x505C;&#x5FAA;&#x73AF;&#x5F97;&#x51FA;&#x7ED3;&#x679C;&#x6570;&#x7EC4;result,&#x5176;&#x4E2D;index&#x4EE3;&#x8868;&#x5177;&#x4F53;&#x7684;&#x724C;&#xFF0C;result[index]&#x4EE3;&#x8868;&#x67D0;&#x5F20;&#x724C;&#x6240;&#x5904;&#x4F4D;&#x7F6E;&#xFF0C;&#x6700;&#x540E;&#x518D;&#x5FAA;&#x73AF;&#x904D;&#x5386;&#x6570;&#x7EC4;&#xFF0C;&#x6839;&#x636E;result[index]&#x503C;&#x7684;&#x987A;&#x5E8F;&#x8FDB;&#x884C;&#x8F93;&#x51FA;&#x3002;&#x8FD9;&#x91CC;&#x57FA;&#x4E8E;&#x724C;&#x6570;&#x662F;54&#x5199;&#x5F97;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x4E86;&#x70B9;&#xFF0C;&#x8981;&#x662F;&#x724C;&#x6570;&#x4E00;&#x591A;&#x53EF;&#x4EE5;&#x5199;&#x6210;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;&#x4E4B;&#x7C7B;&#x7684;&#xFF0C;&#x53EF;&#x6839;&#x636E;result&#x7684;&#x4F4D;&#x7F6E;&#x503C;&#x76F4;&#x63A5;&#x8FDB;&#x884C;sort&#x8F93;&#x51FA;&#x800C;&#x4E0D;&#x662F;&#x6BCF;&#x6B21;&#x8F93;&#x51FA;&#x90FD;&#x904D;&#x5386;&#x6570;&#x7EC4;&#x5BFB;&#x627E;&#xFF0C;&#x8F93;&#x51FA;&#x4E5F;&#x53EF;&#x4EE5;&#x5199;&#x6210;char a[6]=&quot;SHCDJ&quot;&#xFF0C;&#x518D;&#x628A;&#x6570;&#x5B57;&#x5BF9;&#x5E94;&#x5230;&#x724C;&#x4E0A;&#x3002;&#x6240;&#x4EE5;&#x66B4;&#x9732;&#x7684;&#x95EE;&#x9898;&#x662F;&#x7A0B;&#x5E8F;&#x4E0D;&#x591F;&#x7ED3;&#x6784;&#x5316;&#xFF1F;</p>
+<ol>
+<li>&#x627E;&#x4E0D;&#x5230;&#x6807;&#x8BC6;&#x7B26;system<br>
+include&lt;stdlib.h&gt;</li>
+<li>&#x6CE8;&#x610F;&#x533A;&#x95F4;&#x8981;&#x5199;&#x6210;&#xFF08;a&lt;x&amp;&amp;x&lt;b)&#x7684;&#x5F62;&#x5F0F;&#x3002;</li>
+<li>&#x5C3D;&#x53EF;&#x80FD;&#x7ED3;&#x6784;&#x5316;&#x3002;</li>
+</ol>
+<hr>
+<h2 class="mume-header" id="1046-shortest-distance20">1046 Shortest Distance(20)</h2>
+
+<p>The task is really simple: given N exits on a highway which forms a simple cycle, you are supposed to tell the shortest distance between any pair of exits.<br>
+Input Specification:</p>
+<p>Each input file contains one test case. For each case, the first line contains an integer N (in [3,10^5]), followed by N integer distances D1,D2&#x2026;&#x2026;DN,where Di is the distance between the i-th and the (i+1)-st exits, and DN is between the N-th and the 1st exits. All the numbers in a line are separated by a space. The second line gives a positive integer M (&#x2264;10<br>
+&#x200B;4), with M lines follow, each contains a pair of exit numbers, provided that the exits are numbered from 1 to N. It is guaranteed that the total round trip distance is no more than 10<br>
+&#x200B;7.<br>
+Output Specification:<br>
+For each test case, print your results in M lines, each contains the shortest distance between the corresponding given pair of exits.</p>
+<p>Sample Input:</p>
+<blockquote>
+<p>5 1 2 4 14 9<br>
+3<br>
+1 3<br>
+2 5<br>
+4 1</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>3<br>
+10<br>
+7</p>
+</blockquote>
+<pre class="language-text">//1046 Shortest Distance &#xFF08;20 &#x5206;&#xFF09;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std; //&#x7528;&#x5E93;&#x5343;&#x4E07;&#x522B;&#x5FD8;
+int ShortestDistances(int mark[], int start, int end,int length){
+	int leftway=0, rightway=0;
+	if (start &gt; end)swap(start, end);
+	if (start == end)return 0;
+	rightway = mark[end - 1] - mark[start - 1];
+	leftway = length - rightway;
+	return min(leftway, rightway);
+}
+int main(){
+	//input
+	int exits,questions,length=0;
+	scanf(&quot;%d&quot;, &amp;exits);
+	int circle[100000];
+	int mark[100001];
+	mark[0] = 0;
+	for (int i = 0; i &lt; exits; i++){
+		scanf(&quot;%d&quot;, &amp;circle[i]);
+		mark[i+1] = mark[i] + circle[i];
+	}
+	length = mark[exits];
+	scanf(&quot;%d&quot;, &amp;questions);
+	//process
+	for (int i = 0; i &lt; questions; i++){
+		int start, end;
+		scanf(&quot;%d %d&quot;, &amp;start,&amp;end);
+		printf(&quot;%d\n&quot;, ShortestDistances(mark,start,end,length));
+	}
+	//system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x6A21;&#x62DF;&#x9898;&#xFF0C;&#x96BE;&#x70B9;&#x5728;&#x5BB9;&#x6613;&#x8D85;&#x65F6;&#x3002;&#x6700;&#x7B80;&#x5355;&#x7684;&#x601D;&#x8DEF;&#x5E94;&#x8BE5;&#x662F;&#x987A;&#x65F6;&#x9488;&#x9006;&#x65F6;&#x9488;&#x5206;&#x522B;&#x7D2F;&#x52A0;&#xFF0C;&#x4F18;&#x5316;&#x65F6;&#x95F4;&#x6709;2&#x4E2A;&#x65B9;&#x9762;&#xFF0C;1&#x662F;&#x56E0;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;&#x5706;&#x6240;&#x4EE5;&#x53EA;&#x8981;&#x7B97;&#x51FA;&#x4E00;&#x6761;&#x8DEF;&#x7684;&#xFF0C;&#x53E6;&#x4E00;&#x6761;&#x8DEF;&#x53EA;&#x8981;&#x7528;&#x5468;&#x957F;&#x76F8;&#x51CF;&#x5373;&#x53EF;&#xFF0C;&#x8FD9;&#x4E2A;&#x5982;&#x679C;&#x7528;&#x8349;&#x7A3F;&#x7EB8;&#x753B;&#x4E00;&#x753B;&#x4F1A;&#x5F88;&#x5BB9;&#x6613;&#x60F3;&#x5230;&#x3002;2&#x662F;&#x7D2F;&#x52A0;&#x8FD8;&#x662F;&#x8D39;&#x65F6;&#x95F4;&#xFF0C;&#x6700;&#x8017;&#x8D39;&#x65F6;&#x95F4;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5E94;&#x8BE5;&#x662F;&#x8981;&#x5FAA;&#x73AF;(exits-1)*questions,&#x7B97;O(n^2)&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x4E4B;&#x524D;&#x8BFB;&#x5165;&#x7684;&#x5FAA;&#x73AF;&#x91CC;&#x628A;&#x6BCF;&#x4E2A;&#x70B9;&#x5230;1&#x7684;&#x8DDD;&#x79BB;&#x7B97;&#x51FA;&#x6765;&#x4F5C;&#x4E3A;&#x5EA6;&#x91CF;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x628A;&#x5706;&#x73AF;&#x526A;&#x5F00;&#xFF0C;&#x7528;&#x7684;&#x65F6;&#x5019;&#x53EA;&#x9700;&#x76F8;&#x51CF;&#x5373;&#x53EF;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x662F;mark&#x76F8;&#x51CF;&#xFF0C;&#x8FD9;&#x6837;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x5C31;&#x662F;O(n)&#x3002;</p>
+<ol>
+<li>&#x8003;&#x8651;&#x9898;&#x76EE;&#x7684;&#x7279;&#x70B9;&#xFF0C;&#x5FC5;&#x8981;&#x65F6;&#x591A;&#x753B;&#x4E00;&#x753B;&#xFF0C;&#x901A;&#x8FC7;&#x66F4;&#x6539;&#x5EA6;&#x91CF;&#x7B80;&#x5316;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x3002;</li>
+<li>&#x7528;&#x5404;&#x79CD;&#x5E93;&#x7684;&#x65F6;&#x5019;&#x8981;&#x8BB0;&#x5F97;using namespace std;</li>
+<li>&#x770B;&#x4E86;&#x4E0B;&#x5B98;&#x65B9;FAQ&#xFF0C;&#x597D;&#x50CF;system(&quot;pause&quot;)&#x4E5F;&#x4F1A;&#x9020;&#x6210;&#x8D85;&#x65F6;&#xFF0C;&#x4E4B;&#x524D;&#x7684;&#x63D0;&#x4EA4;&#x4E2D;&#x6211;&#x662F;&#x6CA1;&#x9047;&#x5230;&#x2026;&#x2026;</li>
+<li>&#x4E5F;&#x662F;&#x5B98;&#x65B9;FAQ&#xFF0C;&#x8BF4;&#x662F;&#x4E0D;&#x80FD;&#x7528;&#x4E2D;&#x6587;&#x6CE8;&#x91CA;&#xFF0C;&#x8FD9;&#x4E2A;&#x6211;&#x4E5F;&#x6CA1;&#x9047;&#x5230;&#x2026;&#x2026;</li>
+</ol>
+<hr>
+<h2 class="mume-header" id="1049-counting-ones30">1049 Counting Ones(30)</h2>
+
+<p>The task is simple: given any positive integer N, you are supposed to count the total number of 1&apos;s in the decimal form of the integers from 1 to N. For example, given N being 12, there are five 1&apos;s in 1, 10, 11, and 12.<br>
+Input Specification:<br>
+Each input file contains one test case which gives the positive N (&#x2264;2^&#x200B;30).</p>
+<p>Output Specification:<br>
+For each test case, print the number of 1&apos;s in one line.</p>
+<p>Sample Input:<br>
+12</p>
+<p>Sample Output:<br>
+5</p>
+<p>&#x8FD9;&#x9053;&#x9898;&#x6211;&#x81EA;&#x5DF1;&#x7684;&#x601D;&#x8DEF;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;<strong>&#x628A;&#x6570;&#x5B57;&#x62C6;&#x6210;&#x82E5;&#x5E72;&#x4E2A;10&#x7684;n&#x6B21;&#x65B9;</strong>&#x3002;<br>
+&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50; 234&#xFF1A;0-199,200-229,230-234&#xFF0C;&#x5728;&#x540E;&#x9762;&#x6570;&#x5B57;&#x65E0;1&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x770B;&#x6210;0-199,0-29&#xFF0C;0-4&#x3002;</p>
+<ol>
+<li>&#x4EE5;10&#x7684;n&#x6B21;&#x65B9;-1&#x4E3A;&#x6700;&#x5C0F;&#x5355;&#x4F4D;&#x3002;&#x5373;0-9,0-99,0-999&#x2026;&#x5176;&#x4E2D;&#x6BCF;&#x4E2A;&#x5355;&#x4F4D;&#x4E2D;1&#x7684;&#x6570;&#x76EE;&#x8BB0;&#x4E3A;count[i]&#x3002;count[i]=count[i-1]*10+10^i; &#x6BD4;&#x5982;0-99&#x91CC;&#x6709;10&#x4E2A;0-9&#xFF0C;&#x518D;&#x52A0;&#x4E0A;10-19&#x91CC;&#x9762;&#x7684;10^1&#x4E2A;1&#xFF0C;0-999&#x91CC;&#x5C31;&#x662F;10&#x4E2A;0-99+10 ^2&#x3002;</li>
+<li>&#x6C42;&#x5F97;&#x6BCF;&#x4E2A;&#x5355;&#x4F4D;&#x7684;&#x6570;&#x503C;&#x540E;&#xFF0C;&#x6570;&#x503C;&#x5927;&#x4E8E;1&#x7684;&#x5C31;&#x7528;&#x6570;&#x503C;&#x4E58;&#x4EE5;&#x5355;&#x4F4D;&#x7684;&#x503C;&#xFF0C;&#x518D;&#x52A0;&#x4E0A;10&#x7684;i&#x6B21;&#x65B9;&#x3002;&#x6BD4;&#x5982;0-79&#x91CC;&#x6709;8&#x4E2A;0-9+10-19&#x91CC;&#x9762;&#x7684;1^10&#x4E2A;1&#x3002;&#x6570;&#x503C;&#x7B49;&#x4E8E;1&#x7684;&#xFF0C;&#x5C31;&#x662F;&#x62FF;count[i-1]&#xFF1A;0-9&#x5C31;&#x662F;&#x62FF;count[0]&#x3002;</li>
+<li>&#x56E0;&#x4E3A;&#x8FD9;&#x79CD;&#x7B49;&#x4EF7;&#x8F6C;&#x6362;&#x662F;&#x5728;&#x6CA1;&#x6709;&#x6570;&#x4F4D;&#x4E3A;1&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x505A;&#x51FA;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5BF9;&#x6709;1&#x7684;&#x60C5;&#x51B5;&#x8FDB;&#x884C;&#x8865;&#x5145;&#x3002;&#x5982;13&#xFF0C;&#x6309;&#x7167;&#x524D;&#x6587;&#x5206;&#x6790;&#x5E94;&#x8BE5;&#x4E3A;0-9&#x548C;0-3,1&#x7684;&#x90E8;&#x5206;&#x7ED9;&#x4E86;count[0]&#x5373;1&#x4E2A;1,3&#x7684;&#x90E8;&#x5206;&#x7ED9;&#x4E86;1&#x4E2A;1&#xFF0C;&#x53EF;&#x89C1;10,11,12,13&#x5341;&#x4F4D;&#xFF08;&#x5373;&#x4E3A;1&#x7684;&#x4F4D;&#xFF09;&#x4E0A;&#x7684;1&#x7F3A;&#x4E86;&#x540E;&#x9762;&#x6570;&#x5B57;+1&#x4E2A;1&#x3002;&#x6BD4;&#x5982;134&#x5C31;&#x662F;&#x7F3A;&#x4E86;34+1&#x4E2A;1&#x3002;</li>
+</ol>
+<p>&#x5C06;&#x4EE5;&#x4E0A;&#x7834;&#x70C2;&#x903B;&#x8F91;&#x8F6C;&#x6362;&#x6210;&#x7834;&#x70C2;&#x4EE3;&#x7801;&#x662F;&#x8FD9;&#x6837;&#x7684;&#x3002;</p>
+<pre class="language-text">//1049 Counting Ones &#xFF08;30 &#x5206;&#xFF09;&#x81EA;&#x5DF1;&#x7684;&#x7834;&#x70C2;&#x903B;&#x8F91;
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#pragma warning(disable:4996)
+using namespace std;
+int main(){
+	int N,result=0;
+	scanf(&quot;%d&quot;, &amp;N);
+	int counts[10];//0-10^index-1,10^index&#x7B97;&#x5728;1&#x91CC;&#x9762;
+	counts[0] = 1;
+	int value[10],IsOne[10];
+	fill(IsOne, IsOne + 10, 0);
+	for (int i = 1; i&lt;10; i++)
+		counts[i] = counts[i - 1] * 10 + pow(10, i);
+	for (int i = 9; i &gt; 0; i--){//&#x8BA1;&#x7B97;&#x6BCF;&#x4F4D;&#x4E0A;&#x7684;&#x503C;,&#x4E2A;&#x4F4D;&#x5C31;&#x662F;N&#x4E86;
+		value[i] = N / pow(10, i);
+		N = N - value[i] * pow(10, i);
+		if (value[i] &gt; 1){
+			result += counts[i - 1] * value[i]+ pow(10,i);
+		}
+		if (value[i] == 1){
+			result += counts[i - 1];
+			IsOne[i] =1;
+		}
+	}
+	//&#x8BA1;&#x7B97;&#x4E2A;&#x4F4D;&#x6570;
+	if(N &gt;= 1)result++;
+	//&#x8FFD;&#x52A0;&#x56E0;&#x4E3A;1&#x9020;&#x6210;&#x7684;&#x589E;&#x52A0;
+	int temp=N;
+	for (int i = 1; i &lt; 10; i++){
+		if (IsOne[i])result = temp + result +1;
+		temp += value[i] * pow(10, i);
+	}
+	printf(&quot;%d&quot;, result);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x6DF1;&#x5316;&#x7684;&#x601D;&#x8DEF;&#xFF1A;<a href="https://blog.csdn.net/SJF0115/article/details/8600599" target="_blank" rel="noopener">https://blog.csdn.net/SJF0115/article/details/8600599</a><br>
+&#x8FD9;&#x79CD;&#x601D;&#x8DEF;&#x662F;<strong>&#x628A;1&#x7684;&#x4E2A;&#x6570;&#x5206;&#x644A;&#x5230;&#x6BCF;&#x4E2A;&#x6570;&#x4F4D;&#x4E0A;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;</strong>&#xFF0C;&#x800C;&#x6BCF;&#x4E2A;&#x6570;&#x4F4D;&#x4E0A;1&#x7684;&#x4E2A;&#x6570;&#x548C;&#x5B83;&#x672C;&#x8EAB;&#xFF0C;&#x5B83;&#x4E4B;&#x524D;&#x4E4B;&#x540E;&#x7684;&#x6570;&#x76F8;&#x5173;&#xFF0C;&#x7B80;&#x6D01;&#x660E;&#x4E86;&#xFF01;&#x5389;&#x5BB3;&#xFF01;<br>
+&#x7528;&#x8FD9;&#x79CD;&#x903B;&#x8F91;&#x4E5F;&#x5199;&#x4E86;&#x4E00;&#x7248;&#x4EE3;&#x7801;&#x3002;</p>
+<pre class="language-text">//1049 Counting Ones &#xFF08;30 &#x5206;&#xFF09; &#x5411;&#x524D;&#x5411;&#x540E;&#x7248;
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;cmath&gt;
+#pragma warning(disable:4996)
+using namespace std;
+int main(){
+	int N, result = 0, digit = 9,high=0,low;
+	scanf(&quot;%d&quot;, &amp;N);
+	int value[10];
+	low = N;
+	for (int i = 9; i &gt;=0; i--){//&#x8BA1;&#x7B97;&#x6BCF;&#x4F4D;&#x7684;&#x503C;
+		value[i] = low / pow(10, i);
+		result += high * pow(10,i);
+		high = high * 10 + value[i];
+		low -= pow(10, i)*value[i];
+		if (value[i] &gt; 1){
+			result += pow(10, i);
+		}
+		else if (value[i] == 1){
+			result += low;
+			result++;
+		}
+		else{
+			continue;
+		}
+	}
+	printf(&quot;%d&quot;, result);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<hr>
+<h2 class="mume-header" id="1069-the-black-hole-of-numbers20">1069 The Black Hole of Numbers(20)</h2>
+
+<p>For any 4-digit integer except the ones with all the digits being the same, if we sort the digits in non-increasing order first, and then in non-decreasing order, a new number can be obtained by taking the second number from the first one. Repeat in this manner we will soon end up at the number 6174 -- the black hole of 4-digit numbers. This number is named Kaprekar Constant.<br>
+For example, start from 6767, we&apos;ll get:<br>
+7766 - 6677 = 1089<br>
+9810 - 0189 = 9621<br>
+9621 - 1269 = 8352<br>
+8532 - 2358 = 6174<br>
+7641 - 1467 = 6174<br>
+... ...<br>
+Given any 4-digit number, you are supposed to illustrate the way it gets into the black hole.<br>
+Input Specification:<br>
+Each input file contains one test case which gives a positive integer N in the range (0,10<br>
+&#x200B;^4&#x200B; ).<br>
+Output Specification:<br>
+If all the 4 digits of N are the same, print in one line the equation N - N = 0000. Else print each step of calculation in a line until 6174 comes out as the difference. All the numbers must be printed as 4-digit numbers.</p>
+<p>Sample Input 1:</p>
+<blockquote>
+<p>6767</p>
+</blockquote>
+<p>Sample Output 1:</p>
+<blockquote>
+<p>7766 - 6677 = 1089<br>
+9810 - 0189 = 9621<br>
+9621 - 1269 = 8352<br>
+8532 - 2358 = 6174</p>
+</blockquote>
+<p>Sample Input 2:</p>
+<blockquote>
+<p>2222</p>
+</blockquote>
+<p>Sample Output 2:</p>
+<blockquote>
+<p>2222 - 2222 = 0000</p>
+</blockquote>
+<pre class="language-text">//1069 The Black Hole of Numbers
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+int main(){
+	int origin;
+	scanf_s(&quot;%d&quot;, &amp;origin);
+	int flag = 0;
+	int pos[4];
+	do {
+		for (int i = 0; i &lt; 4; i++){
+			pos[i] = origin / pow(10, 3 - i);
+			origin -= pos[i] * pow(10, 3 - i);
+		}
+		int bigger = 0, smaller = 0;
+		sort(pos, pos + 4);
+		for (int i = 0; i &lt; 4; i++){
+			smaller += pos[i] * pow(10, 3 - i);
+			bigger += pos[i] * pow(10, i);
+		}
+		int diff = bigger - smaller;
+		printf(&quot;%04d - %04d = %04d\n&quot;, bigger, smaller, diff);  //&#x7528;%0md&#x8865;&#x8DB3;&#x96F6;
+		if (diff == 0 || diff == 6174)flag = 1;
+		else origin = diff;
+	} while (!flag);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x7B80;&#x5355;&#x9898; &#x3002;</p>
+<ol>
+<li>&#x7528;%0md&#x8865;&#x8DB3;&#x96F6;&#x3002;</li>
+</ol>
+<hr>
+<h2 class="mume-header" id="1093-count-pats-25">1093 Count PAT&apos;s (25)</h2>
+
+<p>The string APPAPT contains two PAT&apos;s as substrings. The first one is formed by the 2nd, the 4th, and the 6th characters, and the second one is formed by the 3rd, the 4th, and the 6th characters.<br>
+Now given any string, you are supposed to tell the number of PAT&apos;s contained in the string.</p>
+<p>Input Specification:<br>
+Each input file contains one test case. For each case, there is only one line giving a string of no more than 10^5<br>
+&#x200B;&#x200B;  characters containing only P, A, or T.</p>
+<p>Output Specification:<br>
+For each test case, print in one line the number of PAT&apos;s contained in the string. Since the result may be a huge number, you only have to output the result moded by 1000000007.</p>
+<p>Sample Input:</p>
+<blockquote>
+<p>APPAPT</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>2</p>
+</blockquote>
+<pre class="language-text">//1093 Count PAT&apos;s
+#pragma warning(disable:4996)
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;cstdlib&gt;
+#include&lt;iostream&gt;
+using namespace std;
+int main(){
+	string str;
+	cin &gt;&gt; str;
+	long long a = 0, t = 0, sumP=0,sumA=0;
+	for (int i = str.length() - 1; i &gt;= 0; i--){
+		if (str[i] == &apos;T&apos;){//&#x5F53;&#x524D;T&#x7684;&#x6570;&#x76EE;
+			t++;
+		}
+		else if (str[i] == &apos;A&apos;){//&#x5BF9;&#x4E8E;&#x5F53;&#x524D;&#x8FD9;&#x4E2A;A&#x800C;&#x8A00;&#xFF0C;T&#x6709;&#x51E0;&#x4E2A;&#x5C31;&#x6709;&#x51E0;&#x79CD;AT&#x7684;&#x53EF;&#x80FD;
+			sumA += t;//sumA &#x8868;&#x793A;&#x5F53;&#x524D;&#x6240;&#x6709;AT&#x7EC4;&#x5408;&#x7684;&#x6570;&#x76EE;
+		}
+		else if (str[i] == &apos;P&apos;){//&#x5BF9;&#x4E8E;&#x5F53;&#x524D;&#x8FD9;&#x4E2A;P&#x800C;&#x8A00;&#xFF0C;AT&#x6709;&#x51E0;&#x4E2A;&#x5C31;&#x6709;&#x51E0;&#x79CD;PAT&#x7684;&#x53EF;&#x80FD;
+			sumP += sumA;//sumP &#x8868;&#x793A;&#x5F53;&#x524D;&#x6240;&#x6709;PAT&#x7EC4;&#x5408;&#x7684;&#x6570;&#x76EE;
+		}
+		else
+			continue;
+	}
+	printf(&quot;%lld&quot;, sumP % 1000000007);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x601D;&#x8DEF;&#xFF1A;&#x4ECE;&#x53F3;&#x5F80;&#x5DE6;&#x904D;&#x5386;&#xFF0C;&#x7136;&#x540E;&#x2026;&#x2026;&#x770B;&#x6CE8;&#x91CA;&#x3002;&#x8FD9;&#x662F;P&#x5B9A;&#x7ED3;&#x679C;&#x7684;&#xFF0C;&#x770B;&#x522B;&#x4EBA;&#x7B54;&#x6848;&#x4E5F;&#x53EF;&#x4EE5;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;A&#xFF0C;&#x8BA1;&#x7B97;&#x524D;&#x540E;&#x7684;P&#x548C;T&#x7684;&#x6570;&#x76EE;&#x76F8;&#x4E58;&#x3002;</p>
+<hr>
+<h2 class="mume-header" id="1104-sum-of-number-segments20">1104 Sum of Number Segments(20)</h2>
+
+<p>Given a sequence of positive numbers, a segment is defined to be a consecutive subsequence. For example, given the sequence { 0.1, 0.2, 0.3, 0.4 }, we have 10 segments: (0.1) (0.1, 0.2) (0.1, 0.2, 0.3) (0.1, 0.2, 0.3, 0.4) (0.2) (0.2, 0.3) (0.2, 0.3, 0.4) (0.3) (0.3, 0.4) and (0.4).<br>
+Now given a sequence, you are supposed to find the sum of all the numbers in all the segments. For the previous example, the sum of all the 10 segments is 0.1 + 0.3 + 0.6 + 1.0 + 0.2 + 0.5 + 0.9 + 0.3 + 0.7 + 0.4 = 5.0.<br>
+Input Specification:</p>
+<p>Each input file contains one test case. For each case, the first line gives a positive integer N, the size of the sequence which is no more than 10<br>
+&#x200B;5<br>
+&#x200B;&#x200B; . The next line contains N positive numbers in the sequence, each no more than 1.0, separated by a space.<br>
+Output Specification:</p>
+<p>For each test case, print in one line the sum of all the numbers in all the segments, accurate up to 2 decimal places.<br>
+Sample Input:</p>
+<blockquote>
+<p>4<br>
+0.1 0.2 0.3 0.4</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>5.00</p>
+</blockquote>
+<pre class="language-text">//1104 Sum of Number Segments &#xFF08;20 &#x5206;&#xFF09;
+#include&lt;cstdio&gt;
+#include&lt;stdlib.h&gt;
+#pragma warning(disable:4996)
+int main(){
+	int N;//&#x672C;&#x8D28;&#x4E0D;&#x662F;&#x600E;&#x4E48;&#x6392;&#x5E8F;&#x800C;&#x662F;0.1&#xFF0C;0.2&#xFF0C;0.3&#xFF0C;0.4&#x8FD9;&#x79CD;&#x5404;&#x51FA;&#x73B0;&#x51E0;&#x6B21;
+	float temp,sum = 0;
+	scanf(&quot;%d&quot;, &amp;N);
+	for (int i = 0; i &lt; N; i++){
+		scanf(&quot;%f&quot;, &amp;temp);
+		sum += temp*(N - i)*(i + 1);
+	}
+	printf(&quot;%.2f&quot;, sum);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x601D;&#x8DEF;&#xFF1A;&#x7B80;&#x5355;&#x6570;&#x5B66;&#x89C4;&#x5F8B;&#x9898;&#xFF0C;&#x627E;&#x5230;&#x89C4;&#x5F8B;&#x5373;&#x53EF;&#xFF0C;&#x7528;float&#x4F1A;&#x901A;&#x4E0D;&#x8FC7;&#xFF0C;&#x4EE5;&#x540E;&#x7528;double&#x4E86;&#x3002;</p>
+<hr>
+<h2 class="mume-header" id="1109-group-photo25">1109 Group Photo(25)</h2>
+
+<p>Formation is very important when taking a group photo. Given the rules of forming K rows with N people as the following:<br>
+The number of people in each row must be N/K (round down to the nearest integer), with all the extra people (if any) standing in the last row;<br>
+All the people in the rear row must be no shorter than anyone standing in the front rows;<br>
+In each row, the tallest one stands at the central position (which is defined to be the position (m/2+1), where m is the total number of people in that row, and the division result must be rounded down to the nearest integer);<br>
+In each row, other people must enter the row in non-increasing order of their heights, alternately taking their positions first to the right and then to the left of the tallest one (For example, given five people with their heights 190, 188, 186, 175, and 170, the final formation would be 175, 188, 190, 186, and 170. Here we assume that you are facing the group so your left-hand side is the right-hand side of the one at the central position.);<br>
+When there are many people having the same height, they must be ordered in alphabetical (increasing) order of their names, and it is guaranteed that there is no duplication of names.<br>
+Now given the information of a group of people, you are supposed to write a program to output their formation.</p>
+<p>Input Specification:<br>
+Each input file contains one test case. For each test case, the first line contains two positive integers N (&#x2264;10^4<br>
+), the total number of people, and K (&#x2264;10), the total number of rows. Then N lines follow, each gives the name of a person (no more than 8 English letters without space) and his/her height (an integer in [30, 300]).</p>
+<p>Output Specification:<br>
+For each case, print the formation -- that is, print the names of people in K lines. The names must be separated by exactly one space, but there must be no extra space at the end of each line. Note: since you are facing the group, people in the rear rows must be printed above the people in the front rows.</p>
+<p>Sample Input:</p>
+<blockquote>
+<p>10 3<br>
+Tom 188<br>
+Mike 170<br>
+Eva 168<br>
+Tim 160<br>
+Joe 190<br>
+Ann 168<br>
+Bob 175<br>
+Nick 186<br>
+Amy 160<br>
+John 159</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>Bob Tom Joe Nick<br>
+Ann Mike Eva<br>
+Tim Amy John</p>
+</blockquote>
+<pre class="language-text">//1109 Group Photo
+#include&lt;cstdio&gt;
+#include&lt;string.h&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+#pragma warning(disable:4996)
+struct person{
+	char name[12];
+	int height;
+};
+bool cmp(person a, person b){//
+	if (a.height == b.height &amp;&amp; strcmp(b.name, a.name)&gt;0)return true;
+	else return a.height &gt; b.height;
+}
+int main(){
+	int N, K,first,last,count=0;
+	scanf(&quot;%d %d&quot;, &amp;N, &amp;K);
+	person list[10100];
+	int pos[10100];
+	for (int i = 0; i &lt; N; i++)
+		scanf(&quot;%s %d&quot;, &amp;list[i].name, &amp;list[i].height);
+	sort(list, list + N, cmp);
+	first = round(N / K);
+	last = N - first * (K-1);
+	for (int i= 0; i &lt; K; i++){//&#x5BF9;&#x4E8E;&#x6BCF;&#x884C;
+		int center,rowK;
+		if (!i)rowK = last;//&#x9009;&#x62E9;&#x961F;&#x5217;&#x957F;&#x5EA6;
+		else rowK = first;
+		center = rowK / 2 ; //&#x9009;&#x62E9;&#x961F;&#x5217;&#x4E2D;&#x5FC3;
+		for (int j = 0; j &lt; rowK; j++){//&#x5B89;&#x6392;&#x4F4D;&#x7F6E;&#x987A;&#x5E8F;
+			center += pow(-1, j)*j;
+			pos[center] = j;
+		}
+		for (int j = 0; j &lt; rowK; j++){//&#x8F93;&#x51FA;&#x5B89;&#x6392;
+			if (j == rowK - 1)printf(&quot;%s&quot;, list[pos[j] + count].name);
+			else printf(&quot;%s &quot;,list[pos[j]+count].name);
+		}
+		printf(&quot;\n&quot;);
+		count += rowK;
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x601D;&#x8DEF;&#xFF1A;&#x5148;&#x786E;&#x5B9A;&#x6BCF;&#x6392;&#x4EBA;&#x6570;&#xFF0C;&#x518D;&#x5BF9;&#x4EBA;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF0C;&#x6309;&#x7167;&#x6392;&#x8FDB;&#x884C;&#x5206;&#x5272;&#xFF0C;&#x5728;&#x6BCF;&#x4E2A;&#x5C0F;&#x533A;&#x95F4;&#x5185;&#x518D;&#x6B21;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x3002;</p>
+<hr>
+<h2 class="mume-header" id="1113-integer-set-partition-25">1113 Integer Set Partition (25)</h2>
+
+<p>Given a set of N (&gt;1) positive integers, you are supposed to partition them into two disjoint sets A1 and A2 of n1 and n2 numbers,respectively.let S1 and S2 denote the sums of all the numbers in A1 and A2,respectively. You are supposed to make the partition so that | n1-n2| is minimized first, and then | S1-S2| is maximumed.<br>
+&#x200B;<br>
+Input Specification:<br>
+Each input file contains one test case. For each case, the first line gives an integer N (2&#x2264;N&#x2264;10^5&#x200B;&#x200B; ), and then N positive integers follow in the next line, separated by spaces. It is guaranteed that all the integers and their sum are less than 2^31.</p>
+<p>Output Specification:<br>
+For each case, print in a line two numbers: |n1-n2| and |s1-s2|, separated by exactly one space.</p>
+<p>Sample Input 1:</p>
+<blockquote>
+<p>10<br>
+23 8 10 99 46 2333 46 1 666 555</p>
+</blockquote>
+<p>Sample Output 1:</p>
+<blockquote>
+<p>0 3611</p>
+</blockquote>
+<p>Sample Input 2:</p>
+<blockquote>
+<p>13<br>
+110 79 218 69 3721 100 29 135 2 6 13 5188 85</p>
+</blockquote>
+<p>Sample Output 2:</p>
+<blockquote>
+<p>1 9359</p>
+</blockquote>
+<pre class="language-text">//1113 Integer Set Partition
+#pragma warning(disable:4996)
+#include&lt;cstdio&gt;
+#include&lt;cstdlib&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int main(){
+	int N,clip,s1=0,s2=0,j;
+	scanf(&quot;%d&quot;, &amp;N);
+	int list[100000];
+	for (int i = 0; i &lt; N; i++)
+		scanf(&quot;%d&quot;, &amp;list[i]);
+	sort(list, list + N);
+	clip= ceil(N / 2.0);	//&#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x662F;N/2.0
+	for (j = 0; j &lt; N - clip; j++)
+		s1 += list[j];
+	for (; j &lt; N; j++)
+		s2 += list[j];
+	printf(&quot;%d %d&quot;, 2 * clip - N, abs(s2 - s1));
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x7B80;&#x5355;&#x9898;&#xFF0C;&#x8FD9;&#x91CC;2*clip-N&#x5176;&#x5B9E;&#x5C31;&#x662F;N%2.</p>
+<hr>
+<h2 class="mume-header" id="1117-eddington-number25">1117 Eddington Number(25)</h2>
+
+<p>British astronomer Eddington liked to ride a bike. It is said that in order to show off his skill, he has even defined an &quot;Eddington number&quot;, E -- that is, the maximum integer E such that it is for E days that one rides more than E miles. Eddington&apos;s own E was 87.<br>
+Now given everyday&apos;s distances that one rides for N days, you are supposed to find the corresponding E (&#x2264;N).<br>
+Input Specification:<br>
+Each input file contains one test case. For each case, the first line gives a positive integer N (&#x2264;10^5), the days of continuous riding. Then N non-negative integers are given in the next line, being the riding distances of everyday.</p>
+<p>Output Specification:<br>
+For each case, print in a line the Eddington number for these N days.<br>
+Sample Input:</p>
+<blockquote>
+<p>10<br>
+6 7 6 9 3 10 8 2 7 8</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>6</p>
+</blockquote>
+<pre class="language-text">//1117 Eddington Number
+#pragma warning(disable:4996)
+#include&lt;stdio.h&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int main(){
+	int rides[100000];//int&#x6709;10^9
+	int N;
+	scanf(&quot;%d&quot;, &amp;N);
+	for (int i = 0; i &lt; N; i++)
+		scanf(&quot;%d&quot;, &amp;rides[i]);
+	sort(rides, rides + N);//&#x9ED8;&#x8BA4;&#x9012;&#x589E;&#x6392;&#x5E8F;
+	int i;
+	for (i = N; i &gt;= 0; i--){
+		if (rides[N-i]&gt;i)break;
+	}
+	if (i==-1)printf(&quot;0&quot;);
+	else printf(&quot;%d&quot;, i);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x7B80;&#x5355;&#x9898;&#xFF0C;&#x4E3B;&#x8981;&#x8FD8;&#x662F;&#x5F97;&#x7406;&#x89E3;&#x9898;&#x76EE;&#x610F;&#x601D;&#xFF0C;&#x601D;&#x8DEF;&#x662F;&#x6392;&#x5E8F;&#x7136;&#x540E;&#x5012;&#x5E8F;&#x627E;E&#x7684;&#x503C;&#x3002;</p>
+<ol>
+<li>&#x56E0;&#x4E3A;&#x773C;&#x778E;&#x6CA1;&#x770B;&#x89C1;&#x8303;&#x56F4;&#xFF0C;&#x89E3;&#x9501;&#x4E86;&#x6BB5;&#x9519;&#x8BEF;&#xFF0C;&#x539F;&#x6765;&#x6BB5;&#x9519;&#x8BEF;&#x662F;&#x5F00;&#x7684;&#x6570;&#x7EC4;&#x592A;&#x5C0F;&#x7684;&#x95EE;&#x9898;&#x3002;</li>
+<li>&#x5F97;&#x8003;&#x8651;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x5168;&#x662F;0&#x4E0D;&#x51FA;&#x95E8;&#x7684;&#x65E5;&#x5B50;&#x3002;</li>
+<li>int&#x6709;10&#x7684;9&#x6B21;&#x65B9;&#x3002;</li>
+<li>sort&#x9ED8;&#x8BA4;&#x589E;&#x5E8F;&#x3002;</li>
+</ol>
+<hr>
+<h2 class="mume-header" id="1128-n-queens-puzzle20">1128 N Queens Puzzle(20)</h2>
+
+<p>The &quot;eight queens puzzle&quot; is the problem of placing eight chess queens on an 8&#xD7;8 chessboard so that no two queens threaten each other. Thus, a solution requires that no two queens share the same row, column, or diagonal. The eight queens puzzle is an example of the more general N queens problem of placing N non-attacking queens on an N&#xD7;N chessboard. (From Wikipedia - &quot;Eight queens puzzle&quot;.)<br>
+Here you are NOT asked to solve the puzzles. Instead, you are supposed to judge whether or not a given configuration of the chessboard is a solution. To simplify the representation of a chessboard, let us assume that no two queens will be placed in the same column. Then a configuration can be represented by a simple integer sequence (Q1,Q2,,&#x22EF;,QN), where Q&#x200B;i is the row number of the queen in the i-th column. For example, Figure 1 can be represented by (4, 6, 8, 2, 7, 1, 3, 5) and it is indeed a solution to the 8 queens puzzle; while Figure 2 can be represented by (4, 6, 7, 2, 8, 1, 9, 5, 3) and is NOT a 9 queens&apos; solution.</p>
+<p>Input Specification:</p>
+<p>Each input file contains several test cases. The first line gives an integer K (1&lt;K&#x2264;200). Then K lines follow, each gives a configuration in the format &quot;N Q1 Q2  ... QN&quot;, where 4&#x2264;N&#x2264;1000 and it is guaranteed that 1&#x2264;Q&#x200B;i&#x2264;N for all i=1,&#x22EF;,N. The numbers are separated by spaces.</p>
+<p>Output Specification:<br>
+For each configuration, if it is a solution to the N queens problem, print YES in a line; or NO if not.</p>
+<p>Sample Input:</p>
+<blockquote>
+<p>4<br>
+8 4 6 8 2 7 1 3 5<br>
+9 4 6 7 2 8 1 9 5 3<br>
+6 1 5 2 6 4 3<br>
+5 1 3 5 2 4</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>YES<br>
+NO<br>
+NO<br>
+YES</p>
+</blockquote>
+<pre class="language-text">//1128 N Queens Puzzle
+#include&lt;cstdio&gt;
+#include&lt;stdlib.h&gt;
+#pragma warning(disable:4996)
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+bool IsNQueen(int queen[], int num){
+	for (int i = 0; i &lt; num - 1; i++)//diag
+		for (int j = i + 1; j &lt; num; j++)
+			if (j - i == abs(queen[i] - queen[j]))return false;
+	sort(queen, queen + num);
+	for (int i = 0; i &lt; num - 1; i++)if (queen[i] == queen[i + 1])return false;//equal row
+	return true;
+}
+int main(){
+	int N;
+	int queen[200][1000];
+	int num[200];
+	scanf(&quot;%d&quot;, &amp;N);
+	for (int i = 0; i &lt; N; i++){
+		scanf(&quot;%d&quot;, &amp;num[i]);
+		for (int j = 0; j &lt; num[i]; j++){
+			scanf(&quot;%d&quot;, &amp;queen[i][j]);
+		}
+		if (IsNQueen(queen[i],num[i]))printf(&quot;YES\n&quot;);
+		else printf(&quot;NO\n&quot;);
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x601D;&#x8DEF;&#xFF1A;&#x56E0;&#x4E3A;&#x4E0D;&#x5728;&#x4E00;&#x5217;&#x4E0A;&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x9700;&#x9A8C;&#x8BC1;&#x4E0D;&#x5728;&#x4E00;&#x884C;&#x4E0A;&#x4EE5;&#x53CA;&#x4E0D;&#x5728;&#x659C;&#x7EBF;&#x4E0A;&#x3002;&#x4E0D;&#x5728;&#x4E00;&#x884C;&#x7684;&#x9A8C;&#x8BC1;&#x662F;&#x627E;&#x91CD;&#x590D;&#xFF0C;&#x8FD9;&#x91CC;&#x7528;sort&#x518D;&#x5FAA;&#x73AF;&#x6BD4;&#x8F83;&#x6BCF;&#x8FDE;&#x7EED;2&#x4E2A;&#x662F;&#x5426;&#x76F8;&#x540C;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x641E;&#x4E2A;visited&#x6570;&#x7EC4;&#x4EC0;&#x4E48;&#x7684;&#x3002;&#x786E;&#x5B9E;&#x8FD9;&#x8FB9;&#x5F00;&#x4E2A;&#x4E00;&#x7EF4;&#x6570;&#x7EC4;queen[200]&#x5C31;&#x591F;&#x4E86;&#x3002;&#x8FD9;&#x4E2A;&#x601D;&#x8DEF;&#x662F;&#x57FA;&#x4E8E;&#x68CB;&#x5B50;&#x7684;&#x76F8;&#x5BF9;&#x4F4D;&#x7F6E;&#x60F3;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4ECE;&#x68CB;&#x76D8;&#x8986;&#x76D6;&#x7684;&#x89D2;&#x5EA6;&#x60F3;&#x3002;</p>
+<hr>
+<h2 class="mume-header" id="1132-cut-integer20">1132 Cut Integer(20)</h2>
+
+<p>Cutting an integer means to cut a K digits lone integer Z into two integers of (K/2) digits long integers A and B. For example, after cutting Z = 167334, we have A = 167 and B = 334. It is interesting to see that Z can be devided by the product of A and B, as 167334 / (167 &#xD7; 334) = 3. Given an integer Z, you are supposed to test if it is such an integer.<br>
+Input Specification:<br>
+Each input file contains one test case. For each case, the first line gives a positive integer N (&#x2264; 20). Then N lines follow, each gives an integer Z (10 &#x2264; Z &lt;2^31). It is guaranteed that the number of digits of Z is an even number.</p>
+<p>Output Specification:<br>
+For each case, print a single line Yes if it is such a number, or No if not.</p>
+<p>Sample Input:</p>
+<blockquote>
+<p>3<br>
+167334<br>
+2333<br>
+12345678</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>Yes<br>
+No<br>
+No</p>
+</blockquote>
+<pre class="language-text">//1132 Cut Integer
+#include&lt;cstdio&gt;
+#include&lt;stdlib.h&gt;
+#pragma warning(disable:4996)
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+bool CanWeCutIt(int num){
+	int digit = 10;
+	int left = 0, right, val, init = num;
+	while (digit){//&#x627E;&#x5230;&#x4F4D;&#x6570;
+		if (num / pow(10, digit-1) &gt; 1)break;
+		else digit--;
+	}
+	for (int i = digit; i &gt; digit / 2; i--){
+		val = num / pow(10, i - 1);
+		num = num - val*pow(10, i - 1);
+		left = left * 10 + val;
+	}
+	right = init - left*pow(10, digit / 2);
+	if (left*right == 0)return false;
+	if (init % (left*right) == 0)return true;
+	else return false;
+}
+int main(){
+	int N,num;
+	scanf(&quot;%d&quot;, &amp;N);
+	for (int i = 0; i &lt; N; i++){
+		scanf(&quot;%d&quot;, &amp;num);
+		if (CanWeCutIt(num))printf(&quot;Yes\n&quot;);
+		else printf(&quot;No\n&quot;);
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x601D;&#x8DEF;&#xFF1A;&#x6570;&#x5B57;&#x7684;&#x601D;&#x8DEF;&#xFF0C;&#x770B;&#x4E86;&#x522B;&#x4EBA;&#x7684;&#x5199;&#x6CD5;&#x53D1;&#x73B0;&#x8FD8;&#x662F;&#x770B;&#x4F5C;&#x5B57;&#x7B26;&#x4E32;&#x518D;sscanf&#x6BD4;&#x8F83;&#x5FEB;&#x4E00;&#x70B9;&#xFF01;</p>
+<hr>
+<h2 class="mume-header" id="1148-werewolf-simple-version-20">1148 Werewolf - Simple Version (20)</h2>
+
+<p>Werewolf&#xFF08;&#x72FC;&#x4EBA;&#x6740;&#xFF09; is a game in which the players are partitioned into two parties: the werewolves and the human beings. Suppose that in a game,<br>
+player #1 said: &quot;Player #2 is a werewolf.&quot;;<br>
+player #2 said: &quot;Player #3 is a human.&quot;;<br>
+player #3 said: &quot;Player #4 is a werewolf.&quot;;<br>
+player #4 said: &quot;Player #5 is a human.&quot;; and<br>
+player #5 said: &quot;Player #4 is a human.&quot;.<br>
+Given that there were 2 werewolves among them, at least one but not all the werewolves were lying, and there were exactly 2 liars. Can you point out the werewolves?<br>
+Now you are asked to solve a harder version of this problem: given that there were N players, with 2 werewolves among them, at least one but not all the werewolves were lying, and there were exactly 2 liars. You are supposed to point out the werewolves.<br>
+Input Specification:</p>
+<p>Each input file contains one test case. For each case, the first line gives a positive integer N (5&#x2264;N&#x2264;100). Then N lines follow and the i-th line gives the statement of the i-th player (1&#x2264;i&#x2264;N), which is represented by the index of the player with a positive sign for a human and a negative sign for a werewolf.<br>
+Output Specification:</p>
+<p>If a solution exists, print in a line in ascending order the indices of the two werewolves. The numbers must be separated by exactly one space with no extra spaces at the beginning or the end of the line. If there are more than one solution, you must output the smallest solution sequence -- that is, for two sequences A=a[1],...,a[M] and B=b[1],...,b[M], if there exists 0&#x2264;k&lt;M such that a[i]=b[i] (i&#x2264;k) and a[k+1]&lt;b[k+1], then A is said to be smaller than B. In case there is no solution, simply print No Solution.<br>
+Sample Input 1:</p>
+<p>5<br>
+-2<br>
++3<br>
+-4<br>
++5<br>
++4<br>
+Sample Output 1:</p>
+<blockquote>
+<p>1 4</p>
+</blockquote>
+<p>Sample Input 2:</p>
+<blockquote>
+<p>6<br>
++6<br>
++3<br>
++1<br>
+-5<br>
+-2<br>
++4</p>
+</blockquote>
+<p>Sample Output 2 (the solution is not unique):</p>
+<blockquote>
+<p>1 5</p>
+</blockquote>
+<p>Sample Input 3:</p>
+<blockquote>
+<p>5<br>
+-2<br>
+-3<br>
+-4<br>
+-5<br>
+-1</p>
+</blockquote>
+<p>Sample Output 3:</p>
+<blockquote>
+<p>No Solution</p>
+</blockquote>
+<pre class="language-text">//1148werewolf
+#pragma warning(disable:4996)
+#include&lt;stdlib.h&gt;
+#include&lt;cstdio&gt;
+#include&lt;cmath&gt;
+bool WereWolf(int word[], int N,int a, int b){//&#x5047;&#x8BBE;a,b&#x72FC;&#x4EBA;&#x3002;&#x77DB;&#x76FE;&#x5373;&#x4E3A;&#x8BF4;&#x8C0E;&#xFF0C;&#x5224;&#x65AD;&#x6807;&#x51C6;1&#xFF0C;&#x8BF4;&#x8C0E;&#x7684;&#x4EBA;&#x6709;&#x4E00;&#x4E2A;&#x4E3A;&#x72FC;&#x4EBA; 2.2&#x4E2A;&#x8BF4;&#x8C0E;&#x7684;&#x4EBA;liarwolf = false;
+	int  liars = 0, liarwolf = 0;
+	for (int i = 0; i &lt; N; i++){//&#x8BF4;1&#x662F;0&#xFF0C;&#x8BF4;0&#x662F;1,&#x8FD9;&#x91CC;&#x5176;&#x5B9E;word[i]
+		if ((abs(word[i]) == a+1 &amp;&amp; word[i]&gt;0 || abs(word[i]) == b+1 &amp;&amp; word[i] &gt; 0) || (abs(word[i]) != a+1 &amp;&amp; abs(word[i]) != b+1 &amp;&amp; word[i]&lt;0)){//liar
+			liars++;
+			if (i == a || i == b)liarwolf++;
+		}
+		if (liars &gt; 2 &amp;&amp; liarwolf&gt;1 )return false;
+	}
+	if (liars == 2 &amp;&amp; liarwolf){
+		printf(&quot;%d %d&quot;, a+1, b+1);
+		return true;
+	}
+	else return false;
+}
+int main(){
+	int N,flag=0;
+	scanf(&quot;%d&quot;, &amp;N);
+	int word[100];
+	for (int i = 0; i &lt; N; i++)scanf(&quot;%d&quot;, &amp;word[i]);
+	for (int i = 0; i &lt; N - 1 &amp;&amp; !flag; i++) //i,j&#x4F4D;&#x4E3A;&#x72FC;&#x4EBA;
+		for (int j = i + 1; j &lt; N &amp;&amp; !flag; j++)
+			if (WereWolf(word,N, i, j))flag = 1;
+	if (!flag)printf(&quot;No Solution&quot;);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x601D;&#x8DEF;&#xFF1A;&#x5C31;&#x662F;&#x679A;&#x4E3E;&#x4E24;&#x4E2A;&#x72FC;&#x4EBA;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x8BDD;&#x603B;&#x4F53;&#x7684;&#x60C5;&#x51B5;&#x662F;&#x786E;&#x5B9A;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x77DB;&#x76FE;&#x5C31;&#x662F;&#x8BF4;&#x8C0E;&#x3002;(&#x800C;&#x4E0D;&#x662F;&#x679A;&#x4E3E;&#x4E24;&#x4E2A;&#x8BF4;&#x8C0E;&#x8005;&#xFF0C;&#x90A3;&#x6837;&#x7684;&#x8BDD;&#x9EBB;&#x70E6;&#x6B7B;&#x4E86;)</p>
+<hr>
+<h1 class="mume-header" id="%E5%9B%BE%E5%BD%A2%E8%BE%93%E5%87%BA">&#x56FE;&#x5F62;&#x8F93;&#x51FA;</h1>
+
+<hr>
+<h2 class="mume-header" id="%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-1">&#x77E5;&#x8BC6;&#x8981;&#x70B9;</h2>
+
+<p>&#x6709;&#x4E24;&#x79CD;&#x505A;&#x6CD5;&#x3002;</p>
+<ol>
+<li>&#x901A;&#x8FC7;&#x89C4;&#x5F8B;&#xFF0C;&#x76F4;&#x63A5;&#x8FDB;&#x884C;&#x8F93;&#x51FA;&#x3002;</li>
+<li>&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x4E8C;&#x7EF4;&#x5B57;&#x7B26;&#x6570;&#x7EC4;&#xFF0C;&#x901A;&#x8FC7;&#x89C4;&#x5F8B;&#x586B;&#x5145;&#x4E4B;&#xFF0C;&#x7136;&#x540E;&#x8F93;&#x51FA;&#x6574;&#x4E2A;&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;&#x3002;</li>
+</ol>
+<hr>
+<h2 class="mume-header" id="1031-hello-world-for-u20">1031 Hello World for U(20)</h2>
+
+<p>Given any string of N (&#x2265;5) characters, you are asked to form the characters into the shape of U. For example, helloworld can be printed as:<br>
+h&#xA0;&#xA0;&#xA0;d<br>
+e&#xA0;&#xA0;&#xA0;l<br>
+l&#xA0;&#xA0;&#xA0; r<br>
+lowo<br>
+That is, the characters must be printed in the original order, starting top-down from the left vertical line with n1 characters, then left to right along the bottom line with n2 characters, and finally bottom-up along the vertical line with n3 characters. And more, we would like U to be as squared as possible -- that is, it must be satisfied that n1=n3=max { k | k&#x2264;n2 for all 3&#x2264;n2&#x2264;N } with n1 +n2 +n3&#x2212;2=N.</p>
+<p>Input Specification:<br>
+Each input file contains one test case. Each case contains one string with no less than 5 and no more than 80 characters in a line. The string contains no white space.</p>
+<p>Output Specification:<br>
+For each test case, print the input string in the shape of U as specified in the description.</p>
+<p>Sample Input:<br>
+helloworld!</p>
+<p>Sample Output:</p>
+<blockquote>
+<p>h&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;!<br>
+e&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;d<br>
+l&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;  l<br>
+lowor</p>
+</blockquote>
+<pre class="language-text">//1031 Hello World for U &#xFF08;20 &#x5206;&#xFF09;
+#include&lt;stdio.h&gt;
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+#pragma warning(disable:4996)
+using namespace std;
+int main(){
+	string str;
+	cin &gt;&gt; str;
+	int x = (str.length() + 2) / 3;		//&#x9AD8;
+	int y = str.length() - 2 * x + 2;		//&#x5BBD;
+	for (int i = 0; i &lt; x; i++){
+		for (int j = 0; j &lt; y; j++){
+			if (i == x - 1)		//&#x6700;&#x5E95;&#x4E0B;&#x90A3;&#x6392;
+				putchar(str[x - 1 + j]);
+			else{//&#x5176;&#x4ED6;&#x6392;
+				if (j == 0)putchar(str[i]);
+				else if (j == y - 1)printf(&quot;%c\n&quot;,str[str.length() - 1 - i]);
+				else putchar(&apos; &apos;);
+			}
+		}
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x601D;&#x8DEF;&#xFF1A;&#x6309;&#x7167;&#x6392;&#x6765;&#x5904;&#x7406;&#x3002;</p>
+<hr>
+<h2 class="mume-header" id="1105-spiral-matrix25">1105 Spiral Matrix(25)</h2>
+
+<p>This time your job is to fill a sequence of N positive integers into a spiral matrix in non-increasing order. A spiral matrix is filled in from the first element at the upper-left corner, then move in a clockwise spiral. The matrix has m rows and n columns, where m and n satisfy the following: m&#xD7;n must be equal to N; m&#x2265;n; and m&#x2212;n is the minimum of all the possible values.<br>
+Input Specification:</p>
+<p>Each input file contains one test case. For each case, the first line gives a positive integer N. Then the next line contains N positive integers to be filled into the spiral matrix. All the numbers are no more than 10<br>
+&#x200B;4<br>
+&#x200B;&#x200B; . The numbers in a line are separated by spaces.<br>
+Output Specification:</p>
+<p>For each test case, output the resulting matrix in m lines, each contains n numbers. There must be exactly 1 space between two adjacent numbers, and no extra space at the end of each line.</p>
+<p>Sample Input:</p>
+<blockquote>
+<p>12<br>
+37 76 20 98 76 42 53 95 60 81 58 93</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>98 95 93<br>
+42 37 81<br>
+53 20 76<br>
+58 60 76</p>
+</blockquote>
+<pre class="language-text">//1105 Spiral Matrix &#xFF08;25 &#x5206;&#xFF09;
+#pragma warning (disable:4996)
+#include&lt;algorithm&gt;
+#include&lt;cstdio&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;cmath&gt;
+using namespace std;
+bool cmp(int a, int b){
+	return a &gt; b;
+}
+int main(){
+	int N,num[10000];
+	scanf(&quot;%d&quot;, &amp;N);
+	for (int i = 0; i &lt; N; i++){
+		scanf(&quot;%d&quot;, &amp;num[i]);
+	}
+	sort(num, num +	N,cmp);
+	//&#x627E;&#x6700;&#x9002;&#x5408;&#x957F;&#x5BBD;,&#x5982;&#x679C;&#x4ECE;sqrt&#x4E2D;&#x95F4;&#x627E;&#x4F1A;&#x66F4;&#x5FEB;&#x70B9;
+	int row, col;
+	for (row = ceil(sqrt(N)); row&lt;=N; row++){
+		if (N%row == 0)break;
+	}
+	col = N / row;
+	//output
+	int out[200][200],r=row,c=col,start=0,circle,round=0;
+	for (int i = 0; i &lt; N; i++){
+		circle = r * 2 + c * 2 - 4;
+		if (i - start &lt; c)out[round][round+i-start] = num[i];
+		else if (i - start &lt; r + c - 1)out[round + i - start - c + 1][round+ c - 1] = num[i];
+		else if (i - start &lt; r + 2 * c - 2)out[round+r - 1][round+c-(i-start-r-c+1)-2] = num[i];
+		else if (i - start &lt; circle - 1)out[round+r - (i - start - r - 2 * c + 4)][round] = num[i];
+		else {//i-start==circle-1
+			out[round+r - (i - start - r - 2 * c + 4)][round] = num[i];
+			start += circle;
+			round++;
+			r -= 2;
+			c -= 2;
+		}
+	}
+	for (int i = 0; i &lt; row; i++){
+		for (int j = 0; j &lt; col; j++){
+			printf(&quot;%d&quot;, out[i][j]);
+			if (j != col - 1)printf(&quot; &quot;);
+			else printf(&quot;\n&quot;);
+		}
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x6211;&#x2026;&#x2026;&#x6211;&#x5199;&#x7684;&#x597D;&#x7C97;&#x66B4;&#x554A;&#x2026;&#x2026;&#x4E0D;&#x60F3;&#x4F18;&#x5316;&#x8FD9;&#x8FB9;&#x4E00;&#x5927;&#x5768;&#x4E86;&#x2026;&#x2026;<br>
+emmmm&#x5176;&#x5B9E;&#x8FD9;&#x8FB9;&#x7684;&#x8F93;&#x51FA;&#x662F;&#x4E00;&#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x6BCF;&#x4E24;&#x4E2A;&#x4E4B;&#x95F4;&#x5C31;&#x662F;&#x884C;&#x6216;&#x5217;&#x5DEE;1&#xFF0C;&#x9650;&#x5B9A;&#x8FB9;&#x754C;&#x4E0D;&#x65AD;++&#x6539;&#x53D8;&#x65B9;&#x5411;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;&#xFF08;&#x56DB;&#x79CD;&#x65B9;&#x5411;&#x4E0B;&#x7684;&#x884C;&#x5217;&#x4E0B;&#x6807;&#x90FD;&#x662F;&#x76F8;&#x5173;&#x7684;&#xFF0C;&#x6CA1;&#x5FC5;&#x8981;&#x641E;&#x8FD9;&#x4E48;&#x591A;&#x53C2;&#x6570;&#x6211;&#x54ED;&#x592A;&#x50BB;&#x4E86;&#xFF08;&#x6211;&#x5C31;&#x4E00;&#x5FC3;&#x8981;&#x628A;&#x87BA;&#x65CB;&#x7684;&#x5C55;&#x5E73;&#x4E86;&#x7528;&#x6570;&#x5B66;&#x5F0F;&#x6765;&#x63CF;&#x8FF0;&#x4E86;&#x8FDC;&#x4E0D;&#x5982;&#x522B;&#x4EBA;&#x641E;&#x81EA;&#x52A8;++&#x7684;&#x7B80;&#x5355;&#x3002;<br>
+&#x66F4;&#x4F18;&#x96C5;&#x7684;&#x5199;&#x6CD5;&#xFF1A;<a href="https://blog.csdn.net/richenyunqi/article/details/79530619" target="_blank" rel="noopener">https://blog.csdn.net/richenyunqi/article/details/79530619</a><br>
+&#x6211;&#x597D;&#x83DC;&#x554A;&#x3002;</p>
+<hr>
+<h1 class="mume-header" id="%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86">&#x65F6;&#x95F4;&#x5904;&#x7406;</h1>
+
+<hr>
+<h2 class="mume-header" id="%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-2">&#x77E5;&#x8BC6;&#x8981;&#x70B9;</h2>
+
+<ul>
+<li>&#x65E5;&#x6570;&#x636E;&#x7684;&#x8BDD;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5199;&#x51FD;&#x6570;&#x6BD4;&#x8F83;&#xFF0C;&#x4E5F;&#x53EF;&#x8BFB;&#x5165;&#x5B57;&#x7B26;&#x4E32;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;&#x51FD;&#x6570;&#xFF0C;&#x4E5F;&#x53EF;&#x8F6C;&#x5316;&#x4E3A;&#x5206;/&#x79D2;&#x76F4;&#x63A5;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x3002;</li>
+<li>&#x5E74;&#x6570;&#x636E;&#x8981;&#x8003;&#x8651;&#x5E73;&#x5E74;&#x95F0;&#x5E74;&#xFF0C;&#x5927;&#x5C0F;&#x6708;&#x7B49;&#x3002;</li>
+<li>&#x4E0B;&#x9762;&#x8FD9;&#x4E24;&#x9053;&#x9898;&#x4E5F;&#x53EF;&#x4EE5;&#x653E;&#x5728;&#x6392;&#x5E8F;&#x90A3;&#x91CC;&#x3002;</li>
+<li>&#x53EF;&#x4EE5;&#x770B;&#x4E0B;1016&#x7684;&#x65F6;&#x95F4;&#x5904;&#x7406;&#x3002;</li>
+</ul>
+<hr>
+<h2 class="mume-header" id="1006-sign-in-and-sign-out25">1006 Sign In and Sign Out(25)</h2>
+
+<p>At the beginning of every day, the first person who signs in the computer room will unlock the door, and the last one who signs out will lock the door. Given the records of signing in&apos;s and out&apos;s, you are supposed to find the ones who have unlocked and locked the door on that day.<br>
+Input Specification:<br>
+Each input file contains one test case. Each case contains the records for one day. The case starts with a positive integer M, which is the total number of records, followed by M lines, each in the format:</p>
+<blockquote>
+<p>ID_number Sign_in_time Sign_out_time</p>
+</blockquote>
+<p>where times are given in the format HH:MM:SS, and ID_number is a string with no more than 15 characters.</p>
+<p>Output Specification:<br>
+For each test case, output in one line the ID numbers of the persons who have unlocked and locked the door on that day. The two ID numbers must be separated by one space.<br>
+Note: It is guaranteed that the records are consistent. That is, the sign in time must be earlier than the sign out time for each person, and there are no two persons sign in or out at the same moment.</p>
+<p>Sample Input:</p>
+<blockquote>
+<p>3<br>
+CS301111 15:30:28 17:00:10<br>
+SC3021234 08:00:00 11:25:25<br>
+CS301133 21:45:00 21:58:40</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>SC3021234 CS301133</p>
+</blockquote>
+<pre class="language-text">//1006 Sign In and Sign Out
+#pragma warning(disable:4996)
+#include&lt;cstdio&gt;
+#include&lt;stdlib.h&gt;
+struct time{
+	int hour;
+	int minute;
+	int second;
+};
+struct item{
+	char IDnumber[15];
+	time in;
+	time out;
+};
+bool cmptime(time a,time b){//a is earlier than b.
+	if (a.hour &lt; b.hour)return true;
+	else if (a.hour&gt;b.hour)return false;
+	else if (a.minute &lt; b.minute)return true;
+	else if (a.minute&gt;b.minute)return false;
+	else if (a.second &lt; b.second)return true;
+	else return false;
+}
+int main(){
+	//input
+	int num;//number of items
+	scanf(&quot;%d&quot;, &amp;num);
+	item item1[1000];
+	int early=0, late=0;//index of the earliest,latest
+	for (int i = 0; i &lt; num; i++){
+		scanf(&quot;%s %d:%d:%d %d:%d:%d&quot;, &amp;item1[i].IDnumber, &amp;item1[i].in.hour, &amp;item1[i].in.minute, &amp;item1[i].in.second, &amp;item1[i].out.hour, &amp;item1[i].out.minute, &amp;item1[i].out.second);
+		//in-early
+		if (cmptime(item1[i].in, item1[early].in))early = i;
+		//out-late
+		if (cmptime(item1[late].out, item1[i].out))late = i;
+	}
+	printf(&quot;%s %s&quot;, item1[early].IDnumber, item1[late].IDnumber);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x7B80;&#x5355;&#x6A21;&#x62DF;&#x9898;&#xFF0C;&#x6709;&#x70B9;&#x65F6;&#x95F4;&#x5904;&#x7406;&#x7684;&#x8981;&#x7D20;&#x5C31;&#x5355;&#x72EC;&#x5F52;&#x4E00;&#x7C7B;&#x4E86;&#xFF0C;&#x65F6;&#x95F4;&#x5904;&#x7406;&#x7C7B;&#x7684;&#x9898;&#x611F;&#x89C9;&#x5C31;&#x662F;&#x7ED3;&#x6784;&#x4F53;&#x4E00;&#x7BA9;&#x7B50;&#x3002;<br>
+&#x601D;&#x8DEF;&#xFF1A;&#x95EE;&#x9898;&#x662F;&#x627E;&#x6700;&#x65E9;&#x548C;&#x6700;&#x8FDF;&#x7684;&#xFF0C;&#x5148;&#x5B9A;&#x4E49;&#x7ED3;&#x6784;&#x4F53;&#x8868;&#x793A;item&#x548C;time&#xFF0C;&#x5B9A;&#x4E49;&#x6BD4;&#x8F83;&#x65F6;&#x95F4;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x6700;&#x540E;&#x5FAA;&#x73AF;&#x4E00;&#x6B21;&#x8DD1;&#x51FA;&#x6700;&#x65E9;&#x6700;&#x8FDF;&#x3002;</p>
+<ol>
+<li>&#x9002;&#x5F53;&#x7B80;&#x5316;&#x53D8;&#x91CF;&#x540D;&#x5B57;&#xFF08;&#x6211;&#x4ECE;&#x4E00;&#x4E2A;&#x5B57;&#x6BCD;&#x5B9A;&#x4E49;&#x53D8;&#x91CF;&#x4E00;&#x56E2;&#x7CCA;&#x4EE5;&#x540E;&#xFF0C;&#x75DB;&#x6539;&#x524D;&#x975E;&#x6210;&#x4E86;&#x7F57;&#x91CC;&#x5427;&#x55E6;&#x53C8;&#x81ED;&#x53C8;&#x957F;&#x88F9;&#x811A;&#x5E03;&#x5F0F;&#x53D8;&#x91CF;&#x540D;&#xFF09;&#x3002;</li>
+<li>&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x6CA1;&#x521D;&#x59CB;&#x5316;&#x2014;&#x2014;scanf&#x662F;&#x4E0D;&#x662F;&#x5FD8;&#x8BB0;&#x52A0;&amp;&#x4E86;&#x3002;</li>
+<li>&#x8BB0;&#x5F97;&#x52A0;return0&#x554A;&#x3002;</li>
+<li>&#x8003;&#x8651;&#x5230;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8BFB;&#x5165;&#x7684;&#x5FAA;&#x73AF;&#x4E2D;&#x76F4;&#x63A5;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x3002;</li>
+<li>&#x4E5F;&#x53EF;&#x4EE5;&#x628A;&#x65F6;&#x95F4;&#x7EDF;&#x4E00;&#x5EA6;&#x91CF;&#x6210;&#x591A;&#x5C11;&#x5206;&#x949F;&#x8FD9;&#x6837;&#xFF0C;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x8BFB;&#x5165;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x7528;&#x5B57;&#x7B26;&#x4E32;strcmp&#x76F4;&#x63A5;&#x6BD4;&#x5C31;&#x4E0D;&#x7528;&#x5199;time&#x7684;&#x6BD4;&#x8F83;&#x51FD;&#x6570;&#x4E86;&#x3002;</li>
+</ol>
+<p>2.16&#x8FD9;&#x4E2A;cmptime&#x51FD;&#x6570;&#x5199;&#x7684;&#x597D;&#x50BB;&#x554A;</p>
+<hr>
+<h2 class="mume-header" id="1017-queueing-at-bank25">1017 Queueing at Bank(25)</h2>
+
+<p>Suppose a bank has K windows open for service. There is a yellow line in front of the windows which devides the waiting area into two parts. All the customers have to wait in line behind the yellow line, until it is his/her turn to be served and there is a window available. It is assumed that no window can be occupied by a single customer for more than 1 hour.<br>
+Now given the arriving time T and the processing time P of each customer, you are supposed to tell the average waiting time of all the customers.<br>
+Input Specification:</p>
+<p>Each input file contains one test case. For each case, the first line contains 2 numbers: N (&#x2264;10^&#x200B;4) - the total number of customers, and K (&#x2264;100) - the number of windows. Then N lines follow, each contains 2 times: HH:MM:SS - the arriving time, and P - the processing time in minutes of a customer. Here HH is in the range [00, 23], MM and SS are both in [00, 59]. It is assumed that no two customers arrives at the same time.<br>
+Notice that the bank opens from 08:00 to 17:00. Anyone arrives early will have to wait in line till 08:00, and anyone comes too late (at or after 17:00:01) will not be served nor counted into the average.<br>
+Output Specification:<br>
+For each test case, print in one line the average waiting time of all the customers, in minutes and accurate up to 1 decimal place.</p>
+<p>Sample Input:</p>
+<blockquote>
+<p>7 3<br>
+07:55:00 16<br>
+17:00:01 2<br>
+07:59:59 15<br>
+08:01:00 60<br>
+08:00:00 30<br>
+08:00:02 2<br>
+08:03:00 10</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>8.2</p>
+</blockquote>
+<pre class="language-text">//1017 Queueing at Bank &#xFF08;25 &#x5206;&#xFF09;
+#pragma warning(disable:4996)
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+struct custom{
+	float arrivetime;
+	float processtime;
+};
+bool cmp(custom a, custom b){//&#x522B;&#x5199;&#x9519;&#x4E86; &#x4E0D;&#x662F;if&#xFF08;&#xFF09;return a&lt;b&#x90A3;&#x5F97;&#x8FD0;&#x7B97;&#x7B26;&#x91CD;&#x8F7D;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x7B49;&#x4E8E;&#x5B9A;&#x4E49;&#x6392;&#x5E8F;&#x89C4;&#x5219;&#x5C31;&#x662F;&#x6309;&#x7167;arrivetime&#x6392;&#x7684;
+	return a.arrivetime &lt; b.arrivetime;
+}
+int main(){
+	//input
+	int N,customs, windows,hh,mm,ss,temp;
+	custom list[10000];
+	float window[100];//&#x5B58;&#x50A8;&#x7ED3;&#x675F;&#x65F6;&#x95F4;
+	scanf(&quot;%d %d&quot;, &amp;N, &amp;windows);
+	fill(window, window + windows, 480);
+	customs =0;
+	for (int i = 0; i &lt; N; i++){
+		scanf(&quot;%d:%d:%d %d&quot;, &amp;hh, &amp;mm, &amp;ss, &amp;temp);
+		float time = hh * 3600 + mm * 60 + ss;//&#x5426;&#x5219;&#x5BF9;&#x79D2;&#x4E0D;&#x654F;&#x611F;
+		if (time &lt;= 61200){//&#x522B;&#x4E00;&#x4E2A;&#x8BFB;&#x4E86;&#x53E6;&#x4E00;&#x4E2A;&#x6CA1;&#x8BFB;
+			list[customs].arrivetime = time / 60;
+			list[customs].processtime = temp;
+			customs++;
+		}
+	}
+	sort(list, list + customs, cmp);
+	//open door
+	float  sumtime = 0;
+	int nextindex = -1;
+	for (int order = 0; order &lt; customs; order++){
+		//&#x627E;&#x6700;&#x5FEB;&#x7A97;&#x53E3;
+		float nexttime = 9999;//&#x6BCF;&#x6B21;&#x90FD;&#x5F97;&#x8BBE;&#x7F6E;
+		for (int i = 0; i &lt; windows; i++){
+			if (window[i] &lt; nexttime){
+				nextindex = i;
+				nexttime = window[i];
+			}
+		}
+		if (list[order].arrivetime&gt;=nexttime){//&#x7A7A;&#x95F2;&#x76F4;&#x63A5;&#x53EF;&#x7528;,&#x65E0;&#x7B49;&#x5F85;&#x65F6;&#x95F4;
+			window[nextindex] = list[order].arrivetime + list[order].processtime;
+		}
+		else{//&#x5FD9;&#x788C;&#x7B49;&#x5F85;&#x4E2D;&#xFF0C;&#x5305;&#x62EC;&#x63D0;&#x65E9;&#x5230;&#x7684;&#x60C5;&#x51B5;
+			window[nextindex] = nexttime + list[order].processtime;
+			sumtime += nexttime - list[order].arrivetime;//&#x5305;&#x62EC;&#x65E9;&#x5230;&#x4E86;
+		}
+	}
+	printf(&quot;%.1f&quot;, sumtime / customs);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x6A21;&#x62DF;&#x7A97;&#x53E3;&#x529E;&#x7406;&#x4E1A;&#x52A1;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x601D;&#x8DEF;&#x662F;&#x8BFB;&#x5165;&#x6570;&#x636E;&#x65F6;&#x53BB;&#x6389;&#x8FDF;&#x5230;&#x987E;&#x5BA2;&#xFF0C;&#x6309;&#x987E;&#x5BA2;&#x5FAA;&#x73AF;&#x5148;&#x5230;&#x5148;&#x627E;&#x6700;&#x5FEB;&#x7684;&#x7A97;&#x53E3;&#xFF0C;&#x7136;&#x540E;&#x6839;&#x636E;&#x7A97;&#x53E3;&#x7A7A;&#x95F2;&#x4E0E;&#x5426;&#x5206;&#x522B;&#x66F4;&#x65B0;&#x7A97;&#x53E3;&#x60C5;&#x51B5;&#x4EE5;&#x53CA;&#x603B;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x3002;</p>
+<ol>
+<li>&#x6CE8;&#x610F;&#x4E0B;&#x8FD9;&#x91CC;&#x7ED3;&#x6784;&#x4F53;&#x6392;&#x5E8F;&#x6BD4;&#x8F83;&#x51FD;&#x6570;&#x7684;&#x5199;&#x6CD5;</li>
+<li>&#x5199;&#x7684;&#x65F6;&#x5019;&#x672C;&#x6765;&#x60F3;&#x7528;set&#x4F46;&#x662F;&#x662F;&#x6709;&#x53BB;&#x91CD;&#x5C31;&#x6CA1;&#x7528;&#xFF0C;&#x73B0;&#x5728;&#x4E00;&#x770B;&#x597D;&#x50CF;&#x8FD8;&#x53EF;&#x4EE5;&#x7528;multiset&#x548C;priority_queue&#x8FD9;&#x79CD;&#x5BB9;&#x5668;&#xFF0C;&#x672C;&#x8EAB;&#x6392;&#x961F;&#x7684;&#x9898;&#x7528;queue&#x5199;&#x5E94;&#x8BE5;&#x5C31;&#x662F;&#x5F88;&#x76F4;&#x89C2;&#x7684;&#xFF0C;&#x8FD9;&#x9053;&#x9898;&#x4F1A;&#x5728;&#x9898;&#x76EE;&#x96C6;4&#x4E2D;&#x7528;STL&#x91CD;&#x5199;&#x3002;</li>
+</ol>
+<hr>
+<h1 class="mume-header" id="%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2">&#x8FDB;&#x5236;&#x8F6C;&#x6362;</h1>
+
+<hr>
+<h2 class="mume-header" id="%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-3">&#x77E5;&#x8BC6;&#x8981;&#x70B9;</h2>
+
+<ul>
+<li>
+<p>X&#x8FDB;&#x5236;&#x6570;&#x8F6C;&#x5341;&#x8FDB;&#x5236;</p>
+<pre class="language-text">int y=0,product=1;
+while(num!=0){
+  y+=(num%10)*product;//num%10&#x6C42;&#x4E2A;&#x4F4D;
+  product*=x;
+}
+</pre>
+</li>
+<li>
+<p>&#x5341;&#x8FDB;&#x5236;&#x6570;&#x8F6C;X&#x8FDB;&#x5236;</p>
+<pre class="language-text"> do{
+   digit[k++]=num%X;
+   num=num/x;
+ }while(num!=0);//do while&#x800C;&#x4E0D;&#x662F;while&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;0&#x65F6;&#x7684;&#x9519;&#x8BEF;&#x3002;&#x5012;&#x7740;&#x8F93;&#x51FA;&#xFF01;
+</pre>
+</li>
+</ul>
+<hr>
+<h2 class="mume-header" id="1019-general-palindromic-number20">1019 General Palindromic Number(20)</h2>
+
+<p>A number that will be the same when it is written forwards or backwards is known as a Palindromic Number. For example, 1234321 is a palindromic number. All single digit numbers are palindromic numbers.<br>
+Although palindromic numbers are most often considered in the decimal system, the concept of palindromicity can be applied to the natural numbers in any numeral system. Consider a number N&gt;0 in base b&#x2265;2, where it is written in standard notation with k+1 digits. Here, as usual, 0&#x2264;ai&lt;b for all i and ak is non-zero. Then N is palindromic if and only if ai =ak&#x2212;i for all i. Zero is written 0 in any base and is also palindromic by definition.<br>
+Given any positive decimal integer N and a base b, you are supposed to tell if N is a palindromic number in base b.</p>
+<p>Input Specification:<br>
+Each input file contains one test case. Each case consists of two positive numbers N and b, where 0&lt;N&#x2264;10^9<br>
+&#x200B;&#x200B;  is the decimal number and 2&#x2264;b&#x2264;10^9 is the base. The numbers are separated by a space.</p>
+<p>Output Specification:<br>
+For each test case, first print in one line Yes if N is a palindromic number in base b, or No if not. Then in the next line, print N as the number in base b in the form &quot;a&#x200B;kak&#x2212;1 ... a0 &quot;. Notice that there must be no extra space at the end of output.</p>
+<p>Sample Input 1:</p>
+<blockquote>
+<p>27 2</p>
+</blockquote>
+<p>Sample Output 1:</p>
+<blockquote>
+<p>Yes<br>
+1 1 0 1 1</p>
+</blockquote>
+<p>Sample Input 2:</p>
+<blockquote>
+<p>121 5</p>
+</blockquote>
+<p>Sample Output 2:</p>
+<blockquote>
+<p>No<br>
+4 4 1</p>
+</blockquote>
+<pre class="language-text">//1019 General Palindromic Number
+#pragma warning(disable:4996)
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;string.h&gt;
+#include&lt;cstdlib&gt;
+using namespace std;
+bool IsPalindromic(int digit[], int i){
+	for (int j = 0; j &lt; i / 2; j++){
+		if (digit[j] != digit[i -1- j])return false;
+	}
+	return true;
+}
+int main(){
+	int num, base;
+	scanf(&quot;%d %d&quot;, &amp;num, &amp;base);
+	int digit[129];
+	int i = 0;
+	do{
+		digit[i] = num%base;
+		i++;
+		num = num / base;
+	} while (num != 0);
+	if (IsPalindromic(digit, i))printf(&quot;Yes\n&quot;);
+	else printf(&quot;No\n&quot;);
+	printf(&quot;%d&quot;, digit[i-1]);
+	i-=2;
+	for (; i &gt;= 0; i--)
+		printf(&quot; %d&quot;, digit[i]);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x7B80;&#x5355;&#x9898;&#x3002;</p>
+<h2 class="mume-header" id="1027-colors-in-mars-20">1027 Colors in Mars (20)</h2>
+
+<p>People in Mars represent the colors in their computers in a similar way as the Earth people. That is, a color is represented by a 6-digit number, where the first 2 digits are for Red, the middle 2 digits for Green, and the last 2 digits for Blue. The only difference is that they use radix 13 (0-9 and A-C) instead of 16. Now given a color in three decimal numbers (each between 0 and 168), you are supposed to output their Mars RGB values.</p>
+<p>Input Specification:<br>
+Each input file contains one test case which occupies a line containing the three decimal color values.</p>
+<p>Output Specification:<br>
+For each test case you should output the Mars RGB value in the following format: first output #, then followed by a 6-digit number where all the English characters must be upper-cased. If a single color is only 1-digit long, you must print a 0 to its left.</p>
+<p>Sample Input:</p>
+<blockquote>
+<p>15 43 71</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>#123456</p>
+</blockquote>
+<pre class="language-text">//1027 Colors in Mars
+#pragma warning(disable:4996)
+#include&lt;cstdio&gt;
+#include&lt;string.h&gt;
+#include&lt;cstdlib&gt;
+int main(){
+	int color[3];
+	scanf(&quot;%d %d %d&quot;, &amp;color[0], &amp;color[1], &amp;color[2]);
+	char radix[14] = &quot;0123456789ABC&quot;;
+	printf(&quot;#&quot;);
+	for (int i = 0; i &lt; 3; i++){
+		char num[2];
+		int k = 0;
+		do{
+			num[k++] = radix[color[i] % 13];
+			color[i] = color[i] / 13;
+		} while (color[i] != 0);
+		if (k == 1)printf(&quot;0%c&quot;, num[0]);
+		else printf(&quot;%c%c&quot;, num[1], num[0]);
+	}
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x7B80;&#x5355;&#x9898;&#x3002;</p>
+<hr>
+<h2 class="mume-header" id="1058-ab-in-hogwarts20">1058 A+B in Hogwarts(20)</h2>
+
+<p>If you are a fan of Harry Potter, you would know the world of magic has its own currency system -- as Hagrid explained it to Harry, &quot;Seventeen silver Sickles to a Galleon and twenty-nine Knuts to a Sickle, it&apos;s easy enough.&quot; Your job is to write a program to compute A+B where A and B are given in the standard form of Galleon.Sickle.Knut (Galleon is an integer in [0,10^7 ], Sickle is an integer in [0, 17), and Knut is an integer in [0, 29)).<br>
+Input Specification:<br>
+Each input file contains one test case which occupies a line with A and B in the standard form, separated by one space.<br>
+Output Specification:<br>
+For each test case you should output the sum of A and B in one line, with the same format as the input.</p>
+<p>Sample Input:</p>
+<blockquote>
+<p>3.2.1 10.16.27</p>
+</blockquote>
+<p>Sample Output:</p>
+<blockquote>
+<p>14.1.28</p>
+</blockquote>
+<pre class="language-text">//1058 A+B in Hogwarts
+#pragma warning(disable:4996)
+#include&lt;cstdio&gt;
+#include&lt;string.h&gt;
+#include&lt;cstdlib&gt;
+long long trans1(long long a, long long b, long long c){
+	return a * 17 * 29 + b * 29 + c;
+}
+void trans2(long long sum, long long &amp;a, long long&amp;b, long long&amp;c){
+	a = sum / (17 * 29);
+	sum -= a * 17 * 29;
+	b = sum / 29;
+	c = sum % 29;
+}
+int main(){
+	long long hogwarts[2][3];
+	for (int i = 0; i &lt; 2;i++)
+		scanf(&quot;%lld.%lld.%lld&quot;, &amp;hogwarts[i][0], &amp;hogwarts[i][1], &amp;hogwarts[i][2]);
+	long long sum;
+	sum = trans1(hogwarts[0][0], hogwarts[0][1], hogwarts[0][2]) + trans1(hogwarts[1][0], hogwarts[1][1], hogwarts[1][2]);
+	long long galleon, sickle, knut;
+	trans2(sum, galleon, sickle, knut);
+	printf(&quot;%lld.%lld.%lld&quot;, galleon, sickle, knut);
+	system(&quot;pause&quot;);
+	return 0;
+}
+</pre>
+<p>&#x8FD9;&#x8FB9;&#x7EDF;&#x4E00;&#x5EA6;&#x91CF;&#x4EE5;&#x540E;&#x6709;&#x4E00;&#x4E2A;&#x8FB9;&#x754C;&#x6EA2;&#x51FA;&#x95EE;&#x9898;&#xFF0C;&#x9700;&#x8981;&#x628A;&#x6240;&#x6709;&#x7684;&#x90FD;&#x8F6C;&#x6210;long long&#x3002;&#x66F4;&#x7B80;&#x5355;&#x7684;&#x601D;&#x8DEF;&#x662F;&#x4E24;&#x4E2A;&#x4E00;&#x52A0;&#x9022;x&#x8FDB;&#x4F4D;&#x3002;</p>
+<hr>
+
+      </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script></body></html>
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://www.wusanwan.xyz">吴三万</a>
+            <p>原文链接：<a href="http://www.wusanwan.xyz/2019/12/28/PAT甲级题目集1-简单模拟/">http://www.wusanwan.xyz/2019/12/28/PAT甲级题目集1-简单模拟/</a>
+            <p>发表日期：<a href="http://www.wusanwan.xyz/2019/12/28/PAT甲级题目集1-简单模拟/">December 28th 2019, 11:40:52 pm</a>
+            <p>更新日期：<a href="http://www.wusanwan.xyz/2019/12/28/PAT甲级题目集1-简单模拟/">December 28th 2019, 11:40:52 pm</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/12/17/学过的在线课程/" title= "学过的在线课程">
+                    <div class="prevTitle">学过的在线课程</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "LBBQupBMJM5xUoIbNjmi43JO-gzGzoHsz",
+        appKey: "zs5uR8OAi9BWaa9pQGtewrFj",
+        placeholder: "来侃大山",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:wuwenxi_2011@126.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/wusanwan" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.douban.com/people/147344298/" class="iconfont-archer douban" target="_blank" title=douban></a>
+            
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://instagram.com/sanw5win7" class="iconfont-archer instagram" target="_blank" title=instagram></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/绿鲤鱼与驴三万" class="iconfont-archer steam" target="_blank" title=steam></a>
+            
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    <br>
+    <!-- 计时  用一个css-->
+
+      <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+      var now = new Date();
+      function createtime() {
+          var grt= new Date("09/21/2018 13:21:12");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+      }
+  setInterval("createtime()",250);
+  </script>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+    
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+
+
+</footer>
+
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%A8%A1%E6%8B%9F"><span class="toc-number">1.</span> <span class="toc-text">简单模拟</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">知识要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1002-ab-for-polynomials25"><span class="toc-number">1.2.</span> <span class="toc-text">1002 A+B for Polynomials(25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1008-elevator20"><span class="toc-number">1.3.</span> <span class="toc-text">1008 Elevator(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1009-product-of-polynomials25"><span class="toc-number">1.4.</span> <span class="toc-text">1009 Product of Polynomials(25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1011-world-cup-betting20"><span class="toc-number">1.5.</span> <span class="toc-text">1011 World Cup Betting(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1036-boys-vs-girls25"><span class="toc-number">1.6.</span> <span class="toc-text">1036 Boys vs Girls(25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1042-shuffling-machine20"><span class="toc-number">1.7.</span> <span class="toc-text">1042 Shuffling Machine(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1046-shortest-distance20"><span class="toc-number">1.8.</span> <span class="toc-text">1046 Shortest Distance(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1049-counting-ones30"><span class="toc-number">1.9.</span> <span class="toc-text">1049 Counting Ones(30)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1069-the-black-hole-of-numbers20"><span class="toc-number">1.10.</span> <span class="toc-text">1069 The Black Hole of Numbers(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1093-count-pats-25"><span class="toc-number">1.11.</span> <span class="toc-text">1093 Count PAT&#39;s (25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1104-sum-of-number-segments20"><span class="toc-number">1.12.</span> <span class="toc-text">1104 Sum of Number Segments(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1109-group-photo25"><span class="toc-number">1.13.</span> <span class="toc-text">1109 Group Photo(25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1113-integer-set-partition-25"><span class="toc-number">1.14.</span> <span class="toc-text">1113 Integer Set Partition (25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1117-eddington-number25"><span class="toc-number">1.15.</span> <span class="toc-text">1117 Eddington Number(25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1128-n-queens-puzzle20"><span class="toc-number">1.16.</span> <span class="toc-text">1128 N Queens Puzzle(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1132-cut-integer20"><span class="toc-number">1.17.</span> <span class="toc-text">1132 Cut Integer(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1148-werewolf-simple-version-20"><span class="toc-number">1.18.</span> <span class="toc-text">1148 Werewolf - Simple Version (20)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E8%BE%93%E5%87%BA"><span class="toc-number">2.</span> <span class="toc-text">图形输出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-1"><span class="toc-number">2.1.</span> <span class="toc-text">知识要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1031-hello-world-for-u20"><span class="toc-number">2.2.</span> <span class="toc-text">1031 Hello World for U(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1105-spiral-matrix25"><span class="toc-number">2.3.</span> <span class="toc-text">1105 Spiral Matrix(25)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">时间处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-2"><span class="toc-number">3.1.</span> <span class="toc-text">知识要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1006-sign-in-and-sign-out25"><span class="toc-number">3.2.</span> <span class="toc-text">1006 Sign In and Sign Out(25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1017-queueing-at-bank25"><span class="toc-number">3.3.</span> <span class="toc-text">1017 Queueing at Bank(25)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.</span> <span class="toc-text">进制转换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-3"><span class="toc-number">4.1.</span> <span class="toc-text">知识要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1019-general-palindromic-number20"><span class="toc-number">4.2.</span> <span class="toc-text">1019 General Palindromic Number(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1027-colors-in-mars-20"><span class="toc-number">4.3.</span> <span class="toc-text">1027 Colors in Mars (20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1058-ab-in-hogwarts20"><span class="toc-number">4.4.</span> <span class="toc-text">1058 A+B in Hogwarts(20)</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 24
+        </div>
+        <!-- search  -->
+        
+            <div class="site-search popup-trigger">
+                <span class="iconfont-archer search-icon">&#xe627;</span>
+            </div>
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/28</span><a class="archive-post-title" href= "/2019/12/28/PAT甲级题目集1-简单模拟/" >[Untitled Post]</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/17</span><a class="archive-post-title" href= "/2019/12/17/学过的在线课程/" >学过的在线课程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/18</span><a class="archive-post-title" href= "/2019/07/18/PAT甲级题目集6-数学问题/" >PAT甲级题目集6-数学问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href= "/2019/07/17/PAT甲级题目集5-STL/" >PAT甲级题目集5-STL</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href= "/2019/07/17/PAT甲级题目集4-散列，二分法，two-pointers/" >PAT甲级题目集4-散列，二分法，two-pointers</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/13</span><a class="archive-post-title" href= "/2019/07/13/PAT甲级题目集3-排序和贪心/" >PAT甲级题目集3-排序和贪心</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/08</span><a class="archive-post-title" href= "/2019/07/08/PAT甲级题目集2-字符串处理/" >PAT甲级题目集2-字符串处理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/05</span><a class="archive-post-title" href= "/2019/07/05/PAT甲级题目集1-简单模拟/" >PAT甲级题目集1-简单模拟</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/04</span><a class="archive-post-title" href= "/2019/06/04/CrashCourse学习技能笔记/" >CrashCourse学习技能笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/openGL海绵宝宝小游戏/" >openGL海绵宝宝小游戏</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href= "/2019/05/04/图形学基础实验/" >图形学基础实验</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/03</span><a class="archive-post-title" href= "/2019/04/03/Python实现微信机器人/" >基于Python wxpy库 的微信改造</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/02</span><a class="archive-post-title" href= "/2019/03/02/越努力越菜鸡/" >PAT乙感想越学越菜🐔+PAT乙级题目目录</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span><a class="archive-post-title" href= "/2019/02/28/PAT乙级题目集4-数学问题-STL-链表/" >PAT乙级题目集4 数学问题 STL 链表</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2019/02/23/git学习实验报告/" >git入门报告</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/22</span><a class="archive-post-title" href= "/2019/02/22/PAT乙级题目集3-贪心-散列-two-pointers-二分/" >PAT乙级题目集3  贪心 散列 二分法 two pointers</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span><a class="archive-post-title" href= "/2019/02/21/PAT乙级题目集2-字符串处理/" >PAT乙级题目集2 字符串处理 排序</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/18</span><a class="archive-post-title" href= "/2019/02/18/PAT乙级题目集1-简单模拟/" >PAT乙级题目集1 简单模拟</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/01</span><a class="archive-post-title" href= "/2019/02/01/通过两地经纬度计算距离/" >通过经纬度计算两地距离</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span><a class="archive-post-title" href= "/2018/11/11/LaTeX一些要注意的地方/" >LaTeX错误合集❗</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span><a class="archive-post-title" href= "/2018/11/11/文献管理与信息分析课程笔记/" >《文献管理与信息分析》课程笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2018/11/09/科研工具一网打尽/" >科研工具一网打尽😎</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span><a class="archive-post-title" href= "/2018/10/22/论文笔记 GSR-TNNM/" >论文笔记：Truncated Nuclear Norm Minimization Based Group Sparsity Representation For Image Restoration</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/21</span><a class="archive-post-title" href= "/2018/09/21/BLOG搭建/" >BLOG搭建</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+    
+        <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
+    
+        <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
+    
+        <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
+    
+        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
+    
+        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+    
+        <span class="sidebar-tag-name" data-tags="玩具"><span class="iconfont-archer">&#xe606;</span>玩具</span>
+    
+        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
+    
+        <span class="sidebar-tag-name" data-tags="感悟"><span class="iconfont-archer">&#xe606;</span>感悟</span>
+    
+        <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
+    
+        <span class="sidebar-tag-name" data-tags="openGL"><span class="iconfont-archer">&#xe606;</span>openGL</span>
+    
+        <span class="sidebar-tag-name" data-tags="图形学"><span class="iconfont-archer">&#xe606;</span>图形学</span>
+    
+        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
+    
+        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="PAT"><span class="iconfont-archer">&#xe60a;</span>PAT</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "吴三万"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+        <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="iconfont-archer">&#xe609;</i>
+    </span>
+  </div>
+</div>
+        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.8.0/dist/instantsearch.min.js" defer></script>
+        <script src="/scripts/search.js" defer></script>
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script></body>
+</html>
+
+
