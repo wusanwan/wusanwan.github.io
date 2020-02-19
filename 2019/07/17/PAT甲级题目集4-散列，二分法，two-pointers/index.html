@@ -289,7 +289,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.4k</span>阅读时长: <span class="post-count reading-time">8 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.4k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -419,12 +419,18 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>参考《算法笔记》第四章。<br>[TOC]</p>
-<h1 id="散列"><a href="#散列" class="headerlink" title="散列"></a>散列</h1><hr>
-<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><p>不用map的情况下可以用数组实现int,int以及char,int的（其实只要是int,char,数组就都可以了，比如通过数组到结构体。</p>
-<h2 id="1041-Be-Unique-20"><a href="#1041-Be-Unique-20" class="headerlink" title="1041 Be Unique(20)"></a>1041 Be Unique(20)</h2><p>Being unique is so important to people on Mars that even their lottery is designed in a unique way. The rule of winning is simple: one bets on a number chosen from [1,10^4]. The first one who bets on a unique number wins. For example, if there are 7 people betting on { 5 31 5 88 67 88 17 }, then the second one who bets on 31 wins.</p>
-<p>Input Specification:<br>Each input file contains one test case. Each case contains a line which begins with a positive integer N (≤10^5) and then followed by N bets. The numbers are separated by a space.</p>
-<p>Output Specification:<br>For each test case, print the winning number in a line. If there is no winner, print None instead.</p>
+        <p>参考《算法笔记》第四章。
+[TOC]
+#散列</p>
+<hr>
+<p>##知识要点
+不用map的情况下可以用数组实现int,int以及char,int的（其实只要是int,char,数组就都可以了，比如通过数组到结构体。
+##1041 Be Unique(20)
+Being unique is so important to people on Mars that even their lottery is designed in a unique way. The rule of winning is simple: one bets on a number chosen from [1,10^4]. The first one who bets on a unique number wins. For example, if there are 7 people betting on { 5 31 5 88 67 88 17 }, then the second one who bets on 31 wins.</p>
+<p>Input Specification:
+Each input file contains one test case. Each case contains a line which begins with a positive integer N (≤10^5) and then followed by N bets. The numbers are separated by a space.</p>
+<p>Output Specification:
+For each test case, print the winning number in a line. If there is no winner, print None instead.</p>
 <p>Sample Input 1:</p>
 <blockquote>
 <p>7 5 31 5 88 67 88 17</p>
@@ -448,34 +454,41 @@ height:50vh;
 #pragma warning(disable:4996)
 using namespace std;
 int main(){
-    int N,temp;
-    scanf(&quot;%d&quot;, &amp;N);
-    int list[10000], input[100000];
-    fill(list, list + 10000, 0);
-    for (int i = 0; i &lt; N; i++){
-        scanf(&quot;%d&quot;, &amp;input[i]);
-        list[input[i] - 1]++;
-    }
-    int flag = 1;
-    for (int i = 0; i &lt; N; i++){
-        if (list[input[i] - 1] == 1){
-            flag = 0;
-            printf(&quot;%d&quot;, input[i]);
-            break;
-        }
-    }
-    if (flag)printf(&quot;None&quot;);
-    system(&quot;pause&quot;);
-    return 0;
+	int N,temp;
+	scanf(&quot;%d&quot;, &amp;N);
+	int list[10000], input[100000];
+	fill(list, list + 10000, 0);
+	for (int i = 0; i &lt; N; i++){
+		scanf(&quot;%d&quot;, &amp;input[i]);
+		list[input[i] - 1]++;
+	}
+	int flag = 1;
+	for (int i = 0; i &lt; N; i++){
+		if (list[input[i] - 1] == 1){
+			flag = 0;
+			printf(&quot;%d&quot;, input[i]);
+			break;
+		}
+	}
+	if (flag)printf(&quot;None&quot;);
+	system(&quot;pause&quot;);
+	return 0;
 }
-</code></pre><p>利用下标哈希。<br>现在一看好傻啊用map做占用空间小多了。</p>
+</code></pre>
+<p>利用下标哈希。
+现在一看好傻啊用map做占用空间小多了。</p>
 <hr>
-<p>1048 Find Coins （25 分）<br>Eva loves to collect coins from all over the universe, including some other planets like Mars. One day she visited a universal shopping mall which could accept all kinds of coins as payments. However, there was a special requirement of the payment: for each bill, she could only use exactly two coins to pay the exact amount. Since she has as many as 10^5 coins with her, she definitely needs your help. You are supposed to tell her, for any given amount of money, whether or not she can find two coins to pay for it.</p>
-<p>Input Specification:<br>Each input file contains one test case. For each case, the first line contains 2 positive numbers: N (≤10^​5, the total number of coins) and M (≤10^3 , the amount of money Eva has to pay). The second line contains N face values of the coins, which are all positive numbers no more than 500. All the numbers in a line are separated by a space.</p>
-<p>Output Specification:<br>For each test case, print in one line the two face values V1 and V2(separated by a space) such that V1+V2=M and V<br>​1≤V2. If such a solution is not unique, output the one with the smallest V1. If there is no solution, output No Solution instead.</p>
+<p>1048 Find Coins （25 分）
+Eva loves to collect coins from all over the universe, including some other planets like Mars. One day she visited a universal shopping mall which could accept all kinds of coins as payments. However, there was a special requirement of the payment: for each bill, she could only use exactly two coins to pay the exact amount. Since she has as many as 10^5 coins with her, she definitely needs your help. You are supposed to tell her, for any given amount of money, whether or not she can find two coins to pay for it.</p>
+<p>Input Specification:
+Each input file contains one test case. For each case, the first line contains 2 positive numbers: N (≤10^​5, the total number of coins) and M (≤10^3 , the amount of money Eva has to pay). The second line contains N face values of the coins, which are all positive numbers no more than 500. All the numbers in a line are separated by a space.</p>
+<p>Output Specification:
+For each test case, print in one line the two face values V1 and V2(separated by a space) such that V1+V2=M and V
+​1≤V2. If such a solution is not unique, output the one with the smallest V1. If there is no solution, output No Solution instead.</p>
 <p>Sample Input 1:</p>
 <blockquote>
-<p>8 15<br>1 2 8 7 2 4 11 15</p>
+<p>8 15
+1 2 8 7 2 4 11 15</p>
 </blockquote>
 <p>Sample Output 1:</p>
 <blockquote>
@@ -483,7 +496,8 @@ int main(){
 </blockquote>
 <p>Sample Input 2:</p>
 <blockquote>
-<p>7 14<br>1 8 7 2 4 11 15</p>
+<p>7 14
+1 8 7 2 4 11 15</p>
 </blockquote>
 <p>Sample Output 2:</p>
 <blockquote>
@@ -496,31 +510,40 @@ int main(){
 #include&lt;cstdio&gt;
 using namespace std;
 int main(){
-    int value[1000] = { 0 };
-    int N, M,temp;
-    scanf(&quot;%d %d&quot;, &amp;N, &amp;M);
-    set&lt;int&gt;solution;
-    for (int i = 0; i &lt; N; i++){
-        scanf(&quot;%d&quot;, &amp;temp);
-        if (M - temp &lt;= 0 )continue;
-        if(value[M-temp]==1){
-            solution.insert(temp);
-            solution.insert(M - temp);
-        }
-        else value[temp] = 1;
-    }
-    if (solution.size() == 0)printf(&quot;No Solution&quot;);
-    else printf(&quot;%d %d&quot;, *solution.begin(), M - *solution.begin());
-    system(&quot;pause&quot;);
-    return 0;
+	int value[1000] = { 0 };
+	int N, M,temp;
+	scanf(&quot;%d %d&quot;, &amp;N, &amp;M);
+	set&lt;int&gt;solution;
+	for (int i = 0; i &lt; N; i++){
+		scanf(&quot;%d&quot;, &amp;temp);
+		if (M - temp &lt;= 0 )continue;
+		if(value[M-temp]==1){
+			solution.insert(temp);
+			solution.insert(M - temp);
+		}
+		else value[temp] = 1;
+	}
+	if (solution.size() == 0)printf(&quot;No Solution&quot;);
+	else printf(&quot;%d %d&quot;, *solution.begin(), M - *solution.begin());
+	system(&quot;pause&quot;);
+	return 0;
 }
-</code></pre><p>本来value[]了501，但是后来段错误，一想M-temp会大于500就改了。<br>没有特地考虑到对半需要两个的情况，不过因为是写在输入循环里的配对，所以自动帮我解决了这个问题哈哈。幸好没在读入数据后吃的空先写value=1，不然又要想一会儿。</p>
+</code></pre>
+<p>本来value[]了501，但是后来段错误，一想M-temp会大于500就改了。
+没有特地考虑到对半需要两个的情况，不过因为是写在输入循环里的配对，所以自动帮我解决了这个问题哈哈。幸好没在读入数据后吃的空先写value=1，不然又要想一会儿。</p>
 <hr>
-<h2 id="1050-String-Subtraction-（20-分）"><a href="#1050-String-Subtraction-（20-分）" class="headerlink" title="1050 String Subtraction （20 分）"></a>1050 String Subtraction （20 分）</h2><p>Given two strings S1 and S2,S=S1-S2 is defined to be the remaining string after taking all the characters in S<br>​2 from S1.Your task is simply to calculate S1-S2 for any given strings. However, it might not be that simple to do it fast.</p>
-<p>Input Specification:<br>Each input file contains one test case. Each case consists of two lines which gives S1 and S2, respectively. The string lengths of both strings are no more than 10^4. It is guaranteed that all the characters are visible ASCII codes and white space, and a new line character signals the end of a string.</p>
-<p>Output Specification:<br>For each test case, print S1-S2in one line.</p>
-<p>Sample Input:<br>They are students.<br>aeiou</p>
-<p>Sample Output:<br>Thy r stdnts.</p>
+<p>##1050 String Subtraction （20 分）
+Given two strings S1 and S2,S=S1-S2 is defined to be the remaining string after taking all the characters in S
+​2 from S1.Your task is simply to calculate S1-S2 for any given strings. However, it might not be that simple to do it fast.</p>
+<p>Input Specification:
+Each input file contains one test case. Each case consists of two lines which gives S1 and S2, respectively. The string lengths of both strings are no more than 10^4. It is guaranteed that all the characters are visible ASCII codes and white space, and a new line character signals the end of a string.</p>
+<p>Output Specification:
+For each test case, print S1-S2in one line.</p>
+<p>Sample Input:
+They are students.
+aeiou</p>
+<p>Sample Output:
+Thy r stdnts.</p>
 <pre><code>//1050 String Subtraction
 #pragma warning(disable:4996)
 #include&lt;cstdlib&gt;
@@ -528,26 +551,34 @@ int main(){
 #include&lt;iostream&gt;
 using namespace std;
 int main(){
-    int chara[256] = { 0 };
-    string a, b;
-    getline(cin, a);
-    getline(cin, b);
-    for (int i = 0; i &lt; b.length(); i++)
-        chara[b[i]]++;
-    for (int i = 0; i &lt; a.length(); i++){
-        if (chara[a[i]] == 0)
-            cout &lt;&lt; a[i];
-    }
-    cout &lt;&lt;endl;
-    system(&quot;pause&quot;);
-    return 0;
+	int chara[256] = { 0 };
+	string a, b;
+	getline(cin, a);
+	getline(cin, b);
+	for (int i = 0; i &lt; b.length(); i++)
+		chara[b[i]]++;
+	for (int i = 0; i &lt; a.length(); i++){
+		if (chara[a[i]] == 0)
+			cout &lt;&lt; a[i];
+	}
+	cout &lt;&lt;endl;
+	system(&quot;pause&quot;);
+	return 0;
 }
-</code></pre><p>比起string在那里erase搞来搞去不如符合要求直接输出。<br>思维定势了写的本来是cout&lt;&lt;b;然后就报错了死活通不过一个点，b也是有空格的字符串啊。</p>
-<h2 id="1084-Broken-Keyboard-20"><a href="#1084-Broken-Keyboard-20" class="headerlink" title="1084 Broken Keyboard (20)"></a>1084 Broken Keyboard (20)</h2><p>On a broken keyboard, some of the keys are worn out. So when you type some sentences, the characters corresponding to those keys will not appear on screen.<br>Now given a string that you are supposed to type, and the string that you actually type out, please list those keys which are for sure worn out.<br>Input Specification:</p>
-<p>Each input file contains one test case. For each case, the 1st line contains the original string, and the 2nd line contains the typed-out string. Each string contains no more than 80 characters which are either English letters [A-Z] (case insensitive), digital numbers [0-9], or _ (representing the space). It is guaranteed that both strings are non-empty.<br>Output Specification:</p>
-<p>For each test case, print in one line the keys that are worn out, in the order of being detected. The English letters must be capitalized. Each worn out key must be printed once only. It is guaranteed that there is at least one worn out key.<br>Sample Input:</p>
+</code></pre>
+<p>比起string在那里erase搞来搞去不如符合要求直接输出。
+思维定势了写的本来是cout&lt;&lt;b;然后就报错了死活通不过一个点，b也是有空格的字符串啊。</p>
+<p>##1084 Broken Keyboard (20)
+On a broken keyboard, some of the keys are worn out. So when you type some sentences, the characters corresponding to those keys will not appear on screen.
+Now given a string that you are supposed to type, and the string that you actually type out, please list those keys which are for sure worn out.
+Input Specification:</p>
+<p>Each input file contains one test case. For each case, the 1st line contains the original string, and the 2nd line contains the typed-out string. Each string contains no more than 80 characters which are either English letters [A-Z] (case insensitive), digital numbers [0-9], or _ (representing the space). It is guaranteed that both strings are non-empty.
+Output Specification:</p>
+<p>For each test case, print in one line the keys that are worn out, in the order of being detected. The English letters must be capitalized. Each worn out key must be printed once only. It is guaranteed that there is at least one worn out key.
+Sample Input:</p>
 <blockquote>
-<p>7_This_is_a_test<br>_hs_s_a_es</p>
+<p>7_This_is_a_test
+_hs_s_a_es</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
@@ -560,28 +591,30 @@ int main(){
 #include&lt;iostream&gt;
 using namespace std;
 int main(){
-    string a, b;
-    cin &gt;&gt; a &gt;&gt; b;
-    bool chara[256] = { false };
-    for (int i = 0; i &lt; b.length(); i++){
-        if (b[i] &gt;= &#39;a&#39;&amp;&amp;b[i] &lt;= &#39;z&#39;)b[i] = b[i] - &#39;a&#39; + &#39;A&#39;;
-        chara[b[i]] = true;
-    }
-    for (int i = 0; i &lt; a.length(); i++){
-        if (a[i] &gt;= &#39;a&#39;&amp;&amp;a[i] &lt;= &#39;z&#39;)a[i] = a[i] - &#39;a&#39; + &#39;A&#39;;
-        if (chara[a[i]] == false){
-            cout &lt;&lt; a[i];
-            chara[a[i]] = true;
-        }
-    }
-    system(&quot;pause&quot;);
-    return 0;
+	string a, b;
+	cin &gt;&gt; a &gt;&gt; b;
+	bool chara[256] = { false };
+	for (int i = 0; i &lt; b.length(); i++){
+		if (b[i] &gt;= 'a'&amp;&amp;b[i] &lt;= 'z')b[i] = b[i] - 'a' + 'A';
+		chara[b[i]] = true;
+	}
+	for (int i = 0; i &lt; a.length(); i++){
+		if (a[i] &gt;= 'a'&amp;&amp;a[i] &lt;= 'z')a[i] = a[i] - 'a' + 'A';
+		if (chara[a[i]] == false){
+			cout &lt;&lt; a[i];
+			chara[a[i]] = true;
+		}
+	}
+	system(&quot;pause&quot;);
+	return 0;
 }
-</code></pre><hr>
-<h1 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h1><hr>
-<h2 id="知识要点-1"><a href="#知识要点-1" class="headerlink" title="知识要点"></a>知识要点</h2><hr>
-<h1 id="two-pointers"><a href="#two-pointers" class="headerlink" title="two pointers"></a>two pointers</h1><hr>
-<h2 id="知识要点-2"><a href="#知识要点-2" class="headerlink" title="知识要点"></a>知识要点</h2>
+</code></pre>
+<hr>
+<h2>#二分法</h2>
+<h2>##知识要点</h2>
+<h2>#two pointers</h2>
+<p>##知识要点</p>
+
     </article>
     <!-- license  -->
     
@@ -770,7 +803,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#散列"><span class="toc-number">1.</span> <span class="toc-text">散列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识要点"><span class="toc-number">1.1.</span> <span class="toc-text">知识要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1041-Be-Unique-20"><span class="toc-number">1.2.</span> <span class="toc-text">1041 Be Unique(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1050-String-Subtraction-（20-分）"><span class="toc-number">1.3.</span> <span class="toc-text">1050 String Subtraction （20 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1084-Broken-Keyboard-20"><span class="toc-number">1.4.</span> <span class="toc-text">1084 Broken Keyboard (20)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二分法"><span class="toc-number">2.</span> <span class="toc-text">二分法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识要点-1"><span class="toc-number">2.1.</span> <span class="toc-text">知识要点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#two-pointers"><span class="toc-number">3.</span> <span class="toc-text">two pointers</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识要点-2"><span class="toc-number">3.1.</span> <span class="toc-text">知识要点</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">#二分法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">##知识要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">#two pointers</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1061,9 +1094,50 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 24
+        Total : 25
         </div>
         <!-- search  -->
         
@@ -1078,13 +1152,27 @@ top:50vh;
     
     
     
-    <div class="archive-year"> 2019 </div>
+    <div class="archive-year"> 2020 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/28</span><a class="archive-post-title" href= "/2019/12/28/PAT甲级题目集1-简单模拟/" >[Untitled Post]</a>
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2020/02/19/爬虫实战之晋江榜单抓取以及数据分析/" >🕷爬虫实战之晋江榜单抓取以及数据分析</a>
         </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2020/01/30/CS61A/" >CS61A</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
     
     
         <li class="archive-post-item">
@@ -1217,13 +1305,23 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
     
+        <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
+    
+        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
+    
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
     
-        <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
+        <span class="sidebar-tag-name" data-tags="玩具"><span class="iconfont-archer">&#xe606;</span>玩具</span>
+    
+        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
         <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="openGL"><span class="iconfont-archer">&#xe606;</span>openGL</span>
+    
+        <span class="sidebar-tag-name" data-tags="图形学"><span class="iconfont-archer">&#xe606;</span>图形学</span>
     
         <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
     
@@ -1231,21 +1329,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
     
-        <span class="sidebar-tag-name" data-tags="玩具"><span class="iconfont-archer">&#xe606;</span>玩具</span>
-    
-        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
-    
-        <span class="sidebar-tag-name" data-tags="感悟"><span class="iconfont-archer">&#xe606;</span>感悟</span>
-    
-        <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
-    
-        <span class="sidebar-tag-name" data-tags="openGL"><span class="iconfont-archer">&#xe606;</span>openGL</span>
-    
-        <span class="sidebar-tag-name" data-tags="图形学"><span class="iconfont-archer">&#xe606;</span>图形学</span>
+        <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
     
         <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
     
         <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
+    
+        <span class="sidebar-tag-name" data-tags="感悟"><span class="iconfont-archer">&#xe606;</span>感悟</span>
+    
+        <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
