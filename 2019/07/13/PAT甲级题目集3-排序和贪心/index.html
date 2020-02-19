@@ -289,7 +289,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">5.3k</span>阅读时长: <span class="post-count reading-time">31 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">5.1k</span>阅读时长: <span class="post-count reading-time">30 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -419,55 +419,25 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>参考《算法笔记》第二章，第四章。
-[TOC]
-#排序</p>
-<hr>
-<p>##知识要点</p>
-<ul>
+        <p>参考《算法笔记》第二章，第四章。<br>[TOC]</p>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><hr>
+<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><ul>
 <li>可以直接sort,也可以用分数做下标，记录每个分数的人数算出排名。</li>
 <li>cmp函数字符串相等的时候，char数组的要用strcmp!!!要么就用string</li>
 <li>分类信息可以都放在结构体里。</li>
 </ul>
 <hr>
-<p>##1012 The Best Rank(25)
-To evaluate the performance of our first year CS majored students, we consider their grades of three courses only: C - C Programming Language, M - Mathematics (Calculus or Linear Algrbra), and E - English. At the mean time, we encourage students by emphasizing on their best ranks -- that is, among the four ranks with respect to the three courses and the average grade, we print the best rank for each student.
-For example, The grades of C, M, E and A - Average of 4 students are given as the following:
-StudentID  C  M  E  A
-310101     98 85 88 90
-310102     70 95 88 84
-310103     82 87 94 88
-310104     91 91 91 91</p>
-<p>Then the best ranks for all the students are No.1 since the 1st one has done the best in C Programming Language, while the 2nd one in Mathematics, the 3rd one in English, and the last one in average.
-Input Specification:</p>
+<h2 id="1012-The-Best-Rank-25"><a href="#1012-The-Best-Rank-25" class="headerlink" title="1012 The Best Rank(25)"></a>1012 The Best Rank(25)</h2><p>To evaluate the performance of our first year CS majored students, we consider their grades of three courses only: C - C Programming Language, M - Mathematics (Calculus or Linear Algrbra), and E - English. At the mean time, we encourage students by emphasizing on their best ranks — that is, among the four ranks with respect to the three courses and the average grade, we print the best rank for each student.<br>For example, The grades of C, M, E and A - Average of 4 students are given as the following:<br>StudentID  C  M  E  A<br>310101     98 85 88 90<br>310102     70 95 88 84<br>310103     82 87 94 88<br>310104     91 91 91 91</p>
+<p>Then the best ranks for all the students are No.1 since the 1st one has done the best in C Programming Language, while the 2nd one in Mathematics, the 3rd one in English, and the last one in average.<br>Input Specification:</p>
 <p>Each input file contains one test case. Each case starts with a line containing 2 numbers N and M (≤2000), which are the total number of students, and the number of students who would check their ranks, respectively. Then N lines follow, each contains a student ID which is a string of 6 digits, followed by the three integer grades (in the range of [0, 100]) of that student in the order of C, M and E. Then there are M lines, each containing a student ID.</p>
-<p>Output Specification:
-For each of the M students, print in one line the best rank for him/her, and the symbol of the corresponding rank, separated by a space.
-The priorities of the ranking methods are ordered as A &gt; C &gt; M &gt; E. Hence if there are two or more ways for a student to obtain the same best rank, output the one with the highest priority.
-If a student is not on the grading list, simply output N/A.</p>
+<p>Output Specification:<br>For each of the M students, print in one line the best rank for him/her, and the symbol of the corresponding rank, separated by a space.<br>The priorities of the ranking methods are ordered as A &gt; C &gt; M &gt; E. Hence if there are two or more ways for a student to obtain the same best rank, output the one with the highest priority.<br>If a student is not on the grading list, simply output N/A.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>5 6
-310101 98 85 88
-310102 70 95 88
-310103 82 87 94
-310104 91 91 91
-310105 85 90 90
-310101
-310102
-310103
-310104
-310105
-999999</p>
+<p>5 6<br>310101 98 85 88<br>310102 70 95 88<br>310103 82 87 94<br>310104 91 91 91<br>310105 85 90 90<br>310101<br>310102<br>310103<br>310104<br>310105<br>999999</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
-<p>1 C
-1 M
-1 E
-1 A
-3 A
-N/A</p>
+<p>1 C<br>1 M<br>1 E<br>1 A<br>3 A<br>N/A</p>
 </blockquote>
 <pre><code>//1012 The Best Rank （25 分）
 #pragma warning (disable:4996)
@@ -545,88 +515,29 @@ for (int i = 0; i &lt; M;i++){
 system(&quot;pause&quot;);
 return 0;
 }
-</code></pre>
-<p>思路:就是对每种成绩排序写入排名，再根据序号寻找到人再计算最优排名。
-这里AMCE部分是分开写的，为了排序也写了4个cmp函数，其实也可以利用数组只写一个，但是这个AMCE的种类不是在参数里体现的？？？这里flag是全局变量,难怪不用传参数。
-具体写法可以参考这个: https://github.com/liuchuo/PAT/blob/master/AdvancedLevel_C%2B%2B/1012.%20The%20Best%20Rank%20(25).cpp</p>
+</code></pre><p>  思路:就是对每种成绩排序写入排名，再根据序号寻找到人再计算最优排名。<br>  这里AMCE部分是分开写的，为了排序也写了4个cmp函数，其实也可以利用数组只写一个，但是这个AMCE的种类不是在参数里体现的？？？这里flag是全局变量,难怪不用传参数。<br>  具体写法可以参考这个: <a href="https://github.com/liuchuo/PAT/blob/master/AdvancedLevel_C%2B%2B/1012.%20The%20Best%20Rank%20(25).cpp" target="_blank" rel="noopener">https://github.com/liuchuo/PAT/blob/master/AdvancedLevel_C%2B%2B/1012.%20The%20Best%20Rank%20(25).cpp</a></p>
 <hr>
-<h2>1016 Phone Bills (25)</h2>
-<p>A long-distance telephone company charges its customers by the following rules:
-Making a long-distance call costs a certain amount per minute, depending on the time of day when the call is made. When a customer starts connecting a long-distance call, the time will be recorded, and so will be the time when the customer hangs up the phone. Every calendar month, a bill is sent to the customer for each minute called (at a rate determined by the time of day). Your job is to prepare the bills for each month, given a set of phone call records.
-Input Specification:
-Each input file contains one test case. Each case has two parts: the rate structure, and the phone call records.
-The rate structure consists of a line with 24 non-negative integers denoting the toll (cents/minute) from 00:00 - 01:00, the toll from 01:00 - 02:00, and so on for each hour in the day.
-The next line contains a positive number N (≤1000), followed by N lines of records. Each phone call record consists of the name of the customer (string of up to 20 characters without space), the time and date (mm:dd:hh:mm), and the word on-line or off-line.
-For each test case, all dates will be within a single month. Each on-line record is paired with the chronologically next record for the same customer provided it is an off-line record. Any on-line records that are not paired with an off-line record are ignored, as are off-line records not paired with an on-line record. It is guaranteed that at least one call is well paired in the input. You may assume that no two records for the same customer have the same time. Times are recorded using a 24-hour clock.
-Output Specification:
-For each test case, you must print a phone bill for each customer.
-Bills must be printed in alphabetical order of customers' names. For each customer, first print in a line the name of the customer and the month of the bill in the format shown by the sample. Then for each time period of a call, print in one line the beginning and ending time and date (dd:hh:mm), the lasting time (in minute) and the charge of the call. The calls must be listed in chronological order. Finally, print the total charge for the month in the format shown by the sample.</p>
+<h2 id="1016-Phone-Bills-25"><a href="#1016-Phone-Bills-25" class="headerlink" title="1016 Phone Bills (25)"></a>1016 Phone Bills (25)</h2><p>A long-distance telephone company charges its customers by the following rules:<br>Making a long-distance call costs a certain amount per minute, depending on the time of day when the call is made. When a customer starts connecting a long-distance call, the time will be recorded, and so will be the time when the customer hangs up the phone. Every calendar month, a bill is sent to the customer for each minute called (at a rate determined by the time of day). Your job is to prepare the bills for each month, given a set of phone call records.<br>Input Specification:<br>Each input file contains one test case. Each case has two parts: the rate structure, and the phone call records.<br>The rate structure consists of a line with 24 non-negative integers denoting the toll (cents/minute) from 00:00 - 01:00, the toll from 01:00 - 02:00, and so on for each hour in the day.<br>The next line contains a positive number N (≤1000), followed by N lines of records. Each phone call record consists of the name of the customer (string of up to 20 characters without space), the time and date (mm:dd:hh:mm), and the word on-line or off-line.<br>For each test case, all dates will be within a single month. Each on-line record is paired with the chronologically next record for the same customer provided it is an off-line record. Any on-line records that are not paired with an off-line record are ignored, as are off-line records not paired with an on-line record. It is guaranteed that at least one call is well paired in the input. You may assume that no two records for the same customer have the same time. Times are recorded using a 24-hour clock.<br>Output Specification:<br>For each test case, you must print a phone bill for each customer.<br>Bills must be printed in alphabetical order of customers’ names. For each customer, first print in a line the name of the customer and the month of the bill in the format shown by the sample. Then for each time period of a call, print in one line the beginning and ending time and date (dd:hh:mm), the lasting time (in minute) and the charge of the call. The calls must be listed in chronological order. Finally, print the total charge for the month in the format shown by the sample.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>10 10 10 10 10 10 20 20 20 15 15 15 15 15 15 15 20 30 20 15 15 10 10 10
-10
-CYLL 01:01:06:01 on-line
-CYLL 01:28:16:05 off-line
-CYJJ 01:01:07:00 off-line
-CYLL 01:01:08:03 off-line
-CYJJ 01:01:05:59 on-line
-aaa 01:01:01:03 on-line
-aaa 01:02:00:01 on-line
-CYLL 01:28:15:41 on-line
-aaa 01:05:02:24 on-line
-aaa 01:04:23:59 off-line</p>
+<p>10 10 10 10 10 10 20 20 20 15 15 15 15 15 15 15 20 30 20 15 15 10 10 10<br>10<br>CYLL 01:01:06:01 on-line<br>CYLL 01:28:16:05 off-line<br>CYJJ 01:01:07:00 off-line<br>CYLL 01:01:08:03 off-line<br>CYJJ 01:01:05:59 on-line<br>aaa 01:01:01:03 on-line<br>aaa 01:02:00:01 on-line<br>CYLL 01:28:15:41 on-line<br>aaa 01:05:02:24 on-line<br>aaa 01:04:23:59 off-line</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
-<p>CYJJ 01
-01:05:59 01:07:00 61  刀12.10<br>
-Total amount: 刀12.10
-CYLL 01
-01:06:01 01:08:03 122 刀24.40
-28:15:41 28:16:05 24 刀3.85
-Total amount: 刀28.25
-aaa 01
-02:00:01 04:23:59 4318 刀638.80
-Total amount: 刀638.80</p>
+<p>CYJJ 01<br>01:05:59 01:07:00 61  刀12.10<br>Total amount: 刀12.10<br>CYLL 01<br>01:06:01 01:08:03 122 刀24.40<br>28:15:41 28:16:05 24 刀3.85<br>Total amount: 刀28.25<br>aaa 01<br>02:00:01 04:23:59 4318 刀638.80<br>Total amount: 刀638.80</p>
 </blockquote>
-<p>思路：
-以后得先把样例分析好了，再去决定细节，每次发现细节逻辑不对然后还要重写真的烦死了又花时间。</p>
+<p>思路：<br>以后得先把样例分析好了，再去决定细节，每次发现细节逻辑不对然后还要重写真的烦死了又花时间。</p>
 <hr>
-<h2>1025 PAT Ranking (25)</h2>
-<p>Programming Ability Test (PAT) is organized by the College of Computer Science and Technology of Zhejiang University. Each test is supposed to run simultaneously in several places, and the ranklists will be merged immediately after the test. Now it is your job to write a program to correctly merge all the ranklists and generate the final rank.
-Input Specification:</p>
-<p>Each input file contains one test case. For each case, the first line contains a positive number N (≤100), the number of test locations. Then N ranklists follow, each starts with a line containing a positive integer K (≤300), the number of testees, and then K lines containing the registration number (a 13-digit number) and the total score of each testee. All the numbers in a line are separated by a space.
-Output Specification:</p>
-<p>For each test case, first print in one line the total number of testees. Then print the final ranklist in the following format:
-registration_number final_rank location_number local_rank
-The locations are numbered from 1 to N. The output must be sorted in nondecreasing order of the final ranks. The testees with the same score must have the same rank, and the output must be sorted in nondecreasing order of their registration numbers.</p>
+<h2 id="1025-PAT-Ranking-25"><a href="#1025-PAT-Ranking-25" class="headerlink" title="1025 PAT Ranking (25)"></a>1025 PAT Ranking (25)</h2><p>Programming Ability Test (PAT) is organized by the College of Computer Science and Technology of Zhejiang University. Each test is supposed to run simultaneously in several places, and the ranklists will be merged immediately after the test. Now it is your job to write a program to correctly merge all the ranklists and generate the final rank.<br>Input Specification:</p>
+<p>Each input file contains one test case. For each case, the first line contains a positive number N (≤100), the number of test locations. Then N ranklists follow, each starts with a line containing a positive integer K (≤300), the number of testees, and then K lines containing the registration number (a 13-digit number) and the total score of each testee. All the numbers in a line are separated by a space.<br>Output Specification:</p>
+<p>For each test case, first print in one line the total number of testees. Then print the final ranklist in the following format:<br>registration_number final_rank location_number local_rank<br>The locations are numbered from 1 to N. The output must be sorted in nondecreasing order of the final ranks. The testees with the same score must have the same rank, and the output must be sorted in nondecreasing order of their registration numbers.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>2
-5
-1234567890001 95
-1234567890005 100
-1234567890003 95
-1234567890002 77
-1234567890004 85
-4
-1234567890013 65
-1234567890011 25
-1234567890014 100
-1234567890012 85</p>
+<p>2<br>5<br>1234567890001 95<br>1234567890005 100<br>1234567890003 95<br>1234567890002 77<br>1234567890004 85<br>4<br>1234567890013 65<br>1234567890011 25<br>1234567890014 100<br>1234567890012 85</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
-<p>9
-1234567890005 1 1 1
-1234567890014 1 2 1
-1234567890001 3 1 2
-1234567890003 3 1 2
-1234567890004 5 1 4
-1234567890012 5 2 2
-1234567890002 7 1 5
-1234567890013 8 2 3
-1234567890011 9 2 4</p>
+<p>9<br>1234567890005 1 1 1<br>1234567890014 1 2 1<br>1234567890001 3 1 2<br>1234567890003 3 1 2<br>1234567890004 5 1 4<br>1234567890012 5 2 2<br>1234567890002 7 1 5<br>1234567890013 8 2 3<br>1234567890011 9 2 4</p>
 </blockquote>
 <pre><code>//1025 PAT Ranking
 #pragma warning(disable:4996)
@@ -635,85 +546,53 @@ The locations are numbered from 1 to N. The output must be sorted in nondecreasi
 #include&lt;algorithm&gt;
 using namespace std;
 struct student{
-	char number[14];
-	int score;
-	int location;
-	int finalrank;
-	int localrank;
+    char number[14];
+    int score;
+    int location;
+    int finalrank;
+    int localrank;
 };
 bool cmp(student a, student b){
-	if (a.score == b.score)return strcmp(a.number, b.number)&lt;0;
-	else return a.score &gt; b.score;
+    if (a.score == b.score)return strcmp(a.number, b.number)&lt;0;
+    else return a.score &gt; b.score;
 }
 int main(){
-	int N, K, index = 0;
-	student list[30000];
-	scanf(&quot;%d&quot;, &amp;N);
-	for (int i = 0; i &lt; N; i++){//each ranklist
-		scanf(&quot;%d&quot;, &amp;K);
-		for (int j = 0; j &lt; K; j++){//读入数据
-			scanf(&quot;%s %d&quot;, &amp;list[index + j].number, &amp;list[index + j].score);
-			list[index + j].location = i + 1;
-		}
-		sort(list+index, list+index + K, cmp);//不要写成list[index]了！
-		for (int j = 0; j &lt; K; j++){//内部排序
-			list[index + j].localrank = j + 1;
-			if (j != 0 &amp;&amp; list[index + j - 1].score == list[index + j].score)list[index + j].localrank = list[index + j - 1].localrank;
-		}
-		index += K;
-	}
-	sort(list,list+index, cmp);//总体排序
-	printf(&quot;%d\n&quot;, index);
-	for (int i = 0; i &lt; index; i++){
-		list[i].finalrank = i + 1;
-		if (i != 0 &amp;&amp; list[i - 1].score == list[i].score)list[i].finalrank = list[i - 1].finalrank;
-		printf(&quot;%s %d %d %d\n&quot;, list[i].number, list[i].finalrank, list[i].location, list[i].localrank);
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    int N, K, index = 0;
+    student list[30000];
+    scanf(&quot;%d&quot;, &amp;N);
+    for (int i = 0; i &lt; N; i++){//each ranklist
+        scanf(&quot;%d&quot;, &amp;K);
+        for (int j = 0; j &lt; K; j++){//读入数据
+            scanf(&quot;%s %d&quot;, &amp;list[index + j].number, &amp;list[index + j].score);
+            list[index + j].location = i + 1;
+        }
+        sort(list+index, list+index + K, cmp);//不要写成list[index]了！
+        for (int j = 0; j &lt; K; j++){//内部排序
+            list[index + j].localrank = j + 1;
+            if (j != 0 &amp;&amp; list[index + j - 1].score == list[index + j].score)list[index + j].localrank = list[index + j - 1].localrank;
+        }
+        index += K;
+    }
+    sort(list,list+index, cmp);//总体排序
+    printf(&quot;%d\n&quot;, index);
+    for (int i = 0; i &lt; index; i++){
+        list[i].finalrank = i + 1;
+        if (i != 0 &amp;&amp; list[i - 1].score == list[i].score)list[i].finalrank = list[i - 1].finalrank;
+        printf(&quot;%s %d %d %d\n&quot;, list[i].number, list[i].finalrank, list[i].location, list[i].localrank);
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>思路就是局部排序再总体排序，要注意sort(list[index]，，)的写法是错误的！！
-也可以用分数做下标，记录每个分数的人数算出排名。（速度快!</p>
+</code></pre><p>思路就是局部排序再总体排序，要注意sort(list[index]，，)的写法是错误的！！<br>也可以用分数做下标，记录每个分数的人数算出排名。（速度快!</p>
 <hr>
-<p>##1028 List Sorting (25)
-Excel can sort records according to any column. Now you are supposed to imitate this function.
-Input Specification:</p>
-<p>Each input file contains one test case. For each case, the first line contains two integers N (≤10
-​^5 ) and C, where N is the number of records and C is the column that you are supposed to sort the records with. Then N lines follow, each contains a record of a student. A student's record consists of his or her distinct ID (a 6-digit number), name (a string with no more than 8 characters without space), and grade (an integer between 0 and 100, inclusive).
-Output Specification:
-For each test case, output the sorting result in N lines. That is, if C = 1 then the records must be sorted in increasing order according to ID's; if C = 2 then the records must be sorted in non-decreasing order according to names; and if C = 3 then the records must be sorted in non-decreasing order according to grades. If there are several students who have the same name or grade, they must be sorted according to their ID's in increasing order.</p>
-<p>Sample Input 1:
-3 1
-000007 James 85
-000010 Amy 90
-000001 Zoe 60</p>
-<p>Sample Output 1:
-000001 Zoe 60
-000007 James 85
-000010 Amy 90</p>
-<p>Sample Input 2:
-4 2
-000007 James 85
-000010 Amy 90
-000001 Zoe 60
-000002 James 98</p>
-<p>Sample Output 2:
-000010 Amy 90
-000002 James 98
-000007 James 85
-000001 Zoe 60</p>
-<p>Sample Input 3:
-4 3
-000007 James 85
-000010 Amy 90
-000001 Zoe 60
-000002 James 90</p>
-<p>Sample Output 3:
-000001 Zoe 60
-000007 James 85
-000002 James 90
-000010 Amy 90</p>
+<h2 id="1028-List-Sorting-25"><a href="#1028-List-Sorting-25" class="headerlink" title="1028 List Sorting (25)"></a>1028 List Sorting (25)</h2><p>Excel can sort records according to any column. Now you are supposed to imitate this function.<br>Input Specification:</p>
+<p>Each input file contains one test case. For each case, the first line contains two integers N (≤10<br>​^5 ) and C, where N is the number of records and C is the column that you are supposed to sort the records with. Then N lines follow, each contains a record of a student. A student’s record consists of his or her distinct ID (a 6-digit number), name (a string with no more than 8 characters without space), and grade (an integer between 0 and 100, inclusive).<br>Output Specification:<br>For each test case, output the sorting result in N lines. That is, if C = 1 then the records must be sorted in increasing order according to ID’s; if C = 2 then the records must be sorted in non-decreasing order according to names; and if C = 3 then the records must be sorted in non-decreasing order according to grades. If there are several students who have the same name or grade, they must be sorted according to their ID’s in increasing order.</p>
+<p>Sample Input 1:<br>3 1<br>000007 James 85<br>000010 Amy 90<br>000001 Zoe 60</p>
+<p>Sample Output 1:<br>000001 Zoe 60<br>000007 James 85<br>000010 Amy 90</p>
+<p>Sample Input 2:<br>4 2<br>000007 James 85<br>000010 Amy 90<br>000001 Zoe 60<br>000002 James 98</p>
+<p>Sample Output 2:<br>000010 Amy 90<br>000002 James 98<br>000007 James 85<br>000001 Zoe 60</p>
+<p>Sample Input 3:<br>4 3<br>000007 James 85<br>000010 Amy 90<br>000001 Zoe 60<br>000002 James 90</p>
+<p>Sample Output 3:<br>000001 Zoe 60<br>000007 James 85<br>000002 James 90<br>000010 Amy 90</p>
 <pre><code>//28 List Sorting
 #pragma warning(disable:4996)
 #include&lt;cstdio&gt;
@@ -722,73 +601,39 @@ For each test case, output the sorting result in N lines. That is, if C = 1 then
 #include&lt;algorithm&gt;
 using namespace std;
 struct student{
-	char str[3][12];
+    char str[3][12];
 };
 int C=-1;//全局变量,千万不能在int main里重新定义了
 bool cmp(student a, student b){//这里字符串相等的时候用strcmp
-	if (strcmp(a.str[C-1],b.str[C-1])==0)return strcmp(a.str[0], b.str[0])&lt; 0;
-	else return strcmp(a.str[C-1], b.str[C-1]) &lt; 0;
+    if (strcmp(a.str[C-1],b.str[C-1])==0)return strcmp(a.str[0], b.str[0])&lt; 0;
+    else return strcmp(a.str[C-1], b.str[C-1]) &lt; 0;
 }
 int main(){
-	int N;
-	student list[100000];
-	scanf(&quot;%d %d&quot;, &amp;N, &amp;C);
-	for (int i = 0; i &lt; N; i++){
-		scanf(&quot;%s %s %s&quot;, &amp;list[i].str[0], &amp;list[i].str[1], &amp;list[i].str[2]);
-	}
-	sort(list, list + N, cmp);
-	for (int i = 0; i &lt; N;i++)
-		printf(&quot;%s %s %s\n&quot;, list[i].str[0], list[i].str[1], list[i].str[2]);
-	system(&quot;pause&quot;);
-	return 0;
+    int N;
+    student list[100000];
+    scanf(&quot;%d %d&quot;, &amp;N, &amp;C);
+    for (int i = 0; i &lt; N; i++){
+        scanf(&quot;%s %s %s&quot;, &amp;list[i].str[0], &amp;list[i].str[1], &amp;list[i].str[2]);
+    }
+    sort(list, list + N, cmp);
+    for (int i = 0; i &lt; N;i++)
+        printf(&quot;%s %s %s\n&quot;, list[i].str[0], list[i].str[1], list[i].str[2]);
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>思路就是通过全局变量就是把cmp函数整合。千万不能在局部再定义变量把全局变量覆盖了。</p>
+</code></pre><p>思路就是通过全局变量就是把cmp函数整合。千万不能在局部再定义变量把全局变量覆盖了。</p>
 <hr>
-<h2>1062 Talent and Virtue (25)</h2>
-<p>About 900 years ago, a Chinese philosopher Sima Guang wrote a history book in which he talked about people's talent and virtue. According to his theory, a man being outstanding in both talent and virtue must be a &quot;sage（圣人）&quot;; being less excellent but with one's virtue outweighs talent can be called a &quot;nobleman（君子）&quot;; being good in neither is a &quot;fool man（愚人）&quot;; yet a fool man is better than a &quot;small man（小人）&quot; who prefers talent than virtue.</p>
-<p>Now given the grades of talent and virtue of a group of people, you are supposed to rank them according to Sima Guang's theory.</p>
-<p>Input Specification:
-Each input file contains one test case. Each case first gives 3 positive integers in a line: N (≤10^5
-​​ ), the total number of people to be ranked; L (≥60), the lower bound of the qualified grades -- that is, only the ones whose grades of talent and virtue are both not below this line will be ranked; and H (&lt;100), the higher line of qualification -- that is, those with both grades not below this line are considered as the &quot;sages&quot;, and will be ranked in non-increasing order according to their total grades. Those with talent grades below H but virtue grades not are cosidered as the &quot;noblemen&quot;, and are also ranked in non-increasing order according to their total grades, but they are listed after the &quot;sages&quot;. Those with both grades below H, but with virtue not lower than talent are considered as the &quot;fool men&quot;. They are ranked in the same way but after the &quot;noblemen&quot;. The rest of people whose grades both pass the L line are ranked after the &quot;fool men&quot;.
-Then N lines follow, each gives the information of a person in the format:
-ID_Number Virtue_Grade Talent_Grade
-where ID_Number is an 8-digit number, and both grades are integers in [0, 100]. All the numbers are separated by a space.</p>
-<p>Output Specification:
-The first line of output must give M (≤N), the total number of people that are actually ranked. Then M lines follow, each gives the information of a person in the same format as the input, according to the ranking rules. If there is a tie of the total grade, they must be ranked with respect to their virtue grades in non-increasing order. If there is still a tie, then output in increasing order of their ID's.</p>
+<h2 id="1062-Talent-and-Virtue-25"><a href="#1062-Talent-and-Virtue-25" class="headerlink" title="1062 Talent and Virtue (25)"></a>1062 Talent and Virtue (25)</h2><p>About 900 years ago, a Chinese philosopher Sima Guang wrote a history book in which he talked about people’s talent and virtue. According to his theory, a man being outstanding in both talent and virtue must be a “sage（圣人）”; being less excellent but with one’s virtue outweighs talent can be called a “nobleman（君子）”; being good in neither is a “fool man（愚人）”; yet a fool man is better than a “small man（小人）” who prefers talent than virtue.</p>
+<p>Now given the grades of talent and virtue of a group of people, you are supposed to rank them according to Sima Guang’s theory.</p>
+<p>Input Specification:<br>Each input file contains one test case. Each case first gives 3 positive integers in a line: N (≤10^5<br>​​ ), the total number of people to be ranked; L (≥60), the lower bound of the qualified grades — that is, only the ones whose grades of talent and virtue are both not below this line will be ranked; and H (&lt;100), the higher line of qualification — that is, those with both grades not below this line are considered as the “sages”, and will be ranked in non-increasing order according to their total grades. Those with talent grades below H but virtue grades not are cosidered as the “noblemen”, and are also ranked in non-increasing order according to their total grades, but they are listed after the “sages”. Those with both grades below H, but with virtue not lower than talent are considered as the “fool men”. They are ranked in the same way but after the “noblemen”. The rest of people whose grades both pass the L line are ranked after the “fool men”.<br>Then N lines follow, each gives the information of a person in the format:<br>ID_Number Virtue_Grade Talent_Grade<br>where ID_Number is an 8-digit number, and both grades are integers in [0, 100]. All the numbers are separated by a space.</p>
+<p>Output Specification:<br>The first line of output must give M (≤N), the total number of people that are actually ranked. Then M lines follow, each gives the information of a person in the same format as the input, according to the ranking rules. If there is a tie of the total grade, they must be ranked with respect to their virtue grades in non-increasing order. If there is still a tie, then output in increasing order of their ID’s.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>14 60 80
-10000001 64 90
-10000002 90 60
-10000011 85 80
-10000003 85 80
-10000004 80 85
-10000005 82 77
-10000006 83 76
-10000007 90 78
-10000008 75 79
-10000009 59 90
-10000010 88 45
-10000012 80 100
-10000013 90 99
-10000014 66 60</p>
+<p>14 60 80<br>10000001 64 90<br>10000002 90 60<br>10000011 85 80<br>10000003 85 80<br>10000004 80 85<br>10000005 82 77<br>10000006 83 76<br>10000007 90 78<br>10000008 75 79<br>10000009 59 90<br>10000010 88 45<br>10000012 80 100<br>10000013 90 99<br>10000014 66 60</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
-<p>12
-10000013 90 99
-10000012 80 100
-10000003 85 80
-10000011 85 80
-10000004 80 85
-10000007 90 78
-10000006 83 76
-10000005 82 77
-10000002 90 60
-10000014 66 60
-10000008 75 79
-10000001 64 90</p>
+<p>12<br>10000013 90 99<br>10000012 80 100<br>10000003 85 80<br>10000011 85 80<br>10000004 80 85<br>10000007 90 78<br>10000006 83 76<br>10000005 82 77<br>10000002 90 60<br>10000014 66 60<br>10000008 75 79<br>10000001 64 90</p>
 </blockquote>
 <pre><code>//1062 Talent and Virtue
 #pragma warning(disable:4996)
@@ -799,75 +644,53 @@ The first line of output must give M (≤N), the total number of people that are
 #include&lt;iostream&gt;
 using namespace std;
 struct person{
-	int ID,virtue, talent, total, result;
+    int ID,virtue, talent, total, result;
 };
 bool cmp(person a, person b){
-	if (a.result != b.result)return a.result &lt; b.result;
-	else if(a.total!=b.total)return a.total&gt;b.total;
-	else if (a.virtue != b.virtue)return a.virtue&gt; b.virtue;
-	else return a.ID &lt; b.ID;
+    if (a.result != b.result)return a.result &lt; b.result;
+    else if(a.total!=b.total)return a.total&gt;b.total;
+    else if (a.virtue != b.virtue)return a.virtue&gt; b.virtue;
+    else return a.ID &lt; b.ID;
 }
 int main(){
-	int ID,N, L, H,virtue,talent,n=0;
-	scanf(&quot;%d %d %d&quot;, &amp;N, &amp;L,&amp;H);
-	person list[10000];
-	for (int i = 0; i &lt; N; i++){
-		scanf(&quot;%d %d %d&quot;, &amp;ID,&amp;virtue,&amp;talent);
-		if (virtue&lt;L || talent&lt;L)continue;
-		else if (virtue &gt;= H &amp;&amp;talent &gt;= H)list[n].result = 0;
-		else if (virtue &gt;= H)list[n].result = 1;
-		else if (virtue &lt;= H &amp;&amp;talent &lt;= H &amp;&amp; virtue &gt;= talent)list[n].result = 2;
-		else list[n].result =3;
-		list[n].ID = ID;
-		list[n].virtue = virtue;
-		list[n].talent = talent;
-		list[n].total = list[n].virtue + list[n].talent;
-		n++;
-	}
-	sort(list, list + n, cmp);
-	printf(&quot;%d\n&quot;, n);
-	for (int i = 0; i &lt; n; i++)
-		printf(&quot;%d %d %d\n&quot;,list[i].ID, list[i].virtue, list[i].talent);
-	system(&quot;pause&quot;);
-	return 0;
+    int ID,N, L, H,virtue,talent,n=0;
+    scanf(&quot;%d %d %d&quot;, &amp;N, &amp;L,&amp;H);
+    person list[10000];
+    for (int i = 0; i &lt; N; i++){
+        scanf(&quot;%d %d %d&quot;, &amp;ID,&amp;virtue,&amp;talent);
+        if (virtue&lt;L || talent&lt;L)continue;
+        else if (virtue &gt;= H &amp;&amp;talent &gt;= H)list[n].result = 0;
+        else if (virtue &gt;= H)list[n].result = 1;
+        else if (virtue &lt;= H &amp;&amp;talent &lt;= H &amp;&amp; virtue &gt;= talent)list[n].result = 2;
+        else list[n].result =3;
+        list[n].ID = ID;
+        list[n].virtue = virtue;
+        list[n].talent = talent;
+        list[n].total = list[n].virtue + list[n].talent;
+        n++;
+    }
+    sort(list, list + n, cmp);
+    printf(&quot;%d\n&quot;, n);
+    for (int i = 0; i &lt; n; i++)
+        printf(&quot;%d %d %d\n&quot;,list[i].ID, list[i].virtue, list[i].talent);
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>思路：其实分类信息都可以放结构体里面。</p>
+</code></pre><p>思路：其实分类信息都可以放结构体里面。</p>
 <hr>
-<p>##1083 List Grades(25)
-Given a list of N student records with name, ID and grade. You are supposed to sort the records with respect to the grade in non-increasing order, and output those student records of which the grades are in a given interval.
-Input Specification:
-Each input file contains one test case. Each case is given in the following format:
-N
-name[1] ID[1] grade[1]
-name[2] ID[2] grade[2]
-... ...
-name[N] ID[N] grade[N]
-grade1 grade2
-where name[i] and ID[i] are strings of no more than 10 characters with no space, grade[i] is an integer in [0, 100], grade1 and grade2 are the boundaries of the grade's interval. It is guaranteed that all the grades are distinct.</p>
-<p>Output Specification:
-For each test case you should output the student records of which the grades are in the given interval [grade1, grade2] and are in non-increasing order. Each student record occupies a line with the student's name and ID, separated by one space. If there is no student's grade in that interval, output NONE instead.</p>
+<h2 id="1083-List-Grades-25"><a href="#1083-List-Grades-25" class="headerlink" title="1083 List Grades(25)"></a>1083 List Grades(25)</h2><p>Given a list of N student records with name, ID and grade. You are supposed to sort the records with respect to the grade in non-increasing order, and output those student records of which the grades are in a given interval.<br>Input Specification:<br>Each input file contains one test case. Each case is given in the following format:<br>N<br>name[1] ID[1] grade[1]<br>name[2] ID[2] grade[2]<br>… …<br>name[N] ID[N] grade[N]<br>grade1 grade2<br>where name[i] and ID[i] are strings of no more than 10 characters with no space, grade[i] is an integer in [0, 100], grade1 and grade2 are the boundaries of the grade’s interval. It is guaranteed that all the grades are distinct.</p>
+<p>Output Specification:<br>For each test case you should output the student records of which the grades are in the given interval [grade1, grade2] and are in non-increasing order. Each student record occupies a line with the student’s name and ID, separated by one space. If there is no student’s grade in that interval, output NONE instead.</p>
 <p>Sample Input 1:</p>
 <blockquote>
-<p>4
-Tom CS000001 59
-Joe Math990112 89
-Mike CS991301 100
-Mary EE990830 95
-60 100</p>
+<p>4<br>Tom CS000001 59<br>Joe Math990112 89<br>Mike CS991301 100<br>Mary EE990830 95<br>60 100</p>
 </blockquote>
 <p>Sample Output 1:</p>
 <blockquote>
-<p>Mike CS991301
-Mary EE990830
-Joe Math990112</p>
+<p>Mike CS991301<br>Mary EE990830<br>Joe Math990112</p>
 </blockquote>
 <p>Sample Input 2:</p>
 <blockquote>
-<p>2
-Jean AA980920 60
-Ann CS01 80
-90 95</p>
+<p>2<br>Jean AA980920 60<br>Ann CS01 80<br>90 95</p>
 </blockquote>
 <p>Sample Output 2:</p>
 <blockquote>
@@ -881,52 +704,41 @@ Ann CS01 80
 #include&lt;algorithm&gt;
 using namespace std;
 struct student{
-	char name[12];
-	char ID[12];
-	int grade;
+    char name[12];
+    char ID[12];
+    int grade;
 };
 bool cmp(student a, student b){
-	return a.grade &gt; b.grade;
+    return a.grade &gt; b.grade;
 }
 int main(){
-	int N;
-	scanf(&quot;%d&quot;, &amp;N);
-	student stu[10000];
-	for (int i = 0; i &lt; N; i++)
-		scanf(&quot;%s %s %d&quot;, &amp;stu[i].name, &amp;stu[i].ID, &amp;stu[i].grade);
-	int min, max,length=0;
-	scanf(&quot;%d %d&quot;, &amp;min, &amp;max);
-	sort(stu, stu + N, cmp);
-	for(int i = 0; i &lt; N; i++){//确定区间
-		if (stu[i].grade &gt;= min &amp;&amp; stu[i].grade &lt;=max){
-			printf(&quot;%s %s\n&quot;, stu[j].name, stu[j].ID);
-			length++;
-		}
-		else if (stu[i].grade&lt;min)break;
-	}
-	if (length == 0)printf(&quot;NONE\n&quot;);
-	system(&quot;pause&quot;);
-	return 0;
+    int N;
+    scanf(&quot;%d&quot;, &amp;N);
+    student stu[10000];
+    for (int i = 0; i &lt; N; i++)
+        scanf(&quot;%s %s %d&quot;, &amp;stu[i].name, &amp;stu[i].ID, &amp;stu[i].grade);
+    int min, max,length=0;
+    scanf(&quot;%d %d&quot;, &amp;min, &amp;max);
+    sort(stu, stu + N, cmp);
+    for(int i = 0; i &lt; N; i++){//确定区间
+        if (stu[i].grade &gt;= min &amp;&amp; stu[i].grade &lt;=max){
+            printf(&quot;%s %s\n&quot;, stu[j].name, stu[j].ID);
+            length++;
+        }
+        else if (stu[i].grade&lt;min)break;
+    }
+    if (length == 0)printf(&quot;NONE\n&quot;);
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>思路是先排序再输出区间里的内容，因为成绩是互不相同的，所以也可以用成绩做下标，建一个数组，然后依次输出数组里有内容的单元。</p>
-<h2>#贪心</h2>
-<p>##知识要点</p>
-<hr>
-<p>##1037 Magic Coupon(25)
-The magic shop in Mars is offering some magic coupons. Each coupon has an integer N printed on it, meaning that when you use this coupon with a product, you may get N times the value of that product back! What is more, the shop also offers some bonus product for free. However, if you apply a coupon with a positive N to this bonus product, you will have to pay the shop N times the value of the bonus product... but hey, magically, they have some coupons with negative N's!
-For example, given a set of coupons { 1 2 4 −1 }, and a set of product values { 7 6 −2 −3 } (in Mars dollars  ) where a negative value corresponds to a bonus product. You can apply coupon 3 (with N being 4) to product 1 (with value M7) to get M28 back; coupon 2 to product 2 to get $$12 back; and coupon 4 to product 4 to get M3 back. On the other hand, if you apply coupon 3 to product 4, you will have to pay M12 to the shop.
-Each coupon and each product may be selected at most once. Your task is to get as much money back as possible.
-Input Specification:
-Each input file contains one test case. For each case, the first line contains the number of coupons Nc, followed by a line with Nc coupon integers. Then the next line contains the number of products Np , followed by a line with Npproduct values. Here 1≤Nc,Np ≤10^5 , and it is guaranteed that all the numbers will not exceed 2^30.</p>
-<p>Output Specification:
-For each test case, simply print in a line the maximum amount of money you can get back.</p>
+</code></pre><p>思路是先排序再输出区间里的内容，因为成绩是互不相同的，所以也可以用成绩做下标，建一个数组，然后依次输出数组里有内容的单元。</p>
+<h1 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h1><hr>
+<h2 id="知识要点-1"><a href="#知识要点-1" class="headerlink" title="知识要点"></a>知识要点</h2><hr>
+<h2 id="1037-Magic-Coupon-25"><a href="#1037-Magic-Coupon-25" class="headerlink" title="1037 Magic Coupon(25)"></a>1037 Magic Coupon(25)</h2><p>The magic shop in Mars is offering some magic coupons. Each coupon has an integer N printed on it, meaning that when you use this coupon with a product, you may get N times the value of that product back! What is more, the shop also offers some bonus product for free. However, if you apply a coupon with a positive N to this bonus product, you will have to pay the shop N times the value of the bonus product… but hey, magically, they have some coupons with negative N’s!<br>For example, given a set of coupons { 1 2 4 −1 }, and a set of product values { 7 6 −2 −3 } (in Mars dollars  ) where a negative value corresponds to a bonus product. You can apply coupon 3 (with N being 4) to product 1 (with value M7) to get M28 back; coupon 2 to product 2 to get $$12 back; and coupon 4 to product 4 to get M3 back. On the other hand, if you apply coupon 3 to product 4, you will have to pay M12 to the shop.<br>Each coupon and each product may be selected at most once. Your task is to get as much money back as possible.<br>Input Specification:<br>Each input file contains one test case. For each case, the first line contains the number of coupons Nc, followed by a line with Nc coupon integers. Then the next line contains the number of products Np , followed by a line with Npproduct values. Here 1≤Nc,Np ≤10^5 , and it is guaranteed that all the numbers will not exceed 2^30.</p>
+<p>Output Specification:<br>For each test case, simply print in a line the maximum amount of money you can get back.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>4
-1 2 4 -1
-4
-7 6 -2 -3</p>
+<p>4<br>1 2 4 -1<br>4<br>7 6 -2 -3</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
@@ -939,51 +751,44 @@ For each test case, simply print in a line the maximum amount of money you can g
 #include&lt;algorithm&gt;
 using namespace std;
 int main(){
-	int a, b,sum=0;
-	int A[100000], B[100000];
-	scanf(&quot;%d&quot;, &amp;a);
-	for (int i = 0; i &lt; a; i++)
-		scanf(&quot;%d&quot;, &amp;A[i]);
-	scanf(&quot;%d&quot;, &amp;b);
-	for (int i = 0; i &lt; b; i++)
-		scanf(&quot;%d&quot;, &amp;B[i]);
-	sort(A, A + a);
-	sort(B, B + b);
-	int alow = 0, blow = 0, ahigh = a - 1, bhigh = b - 1,m,n;
-	while (alow&lt;=ahigh&amp;&amp;blow&lt;=bhigh){//只考虑正正负负的情况
-		m = A[alow] * B[blow];
-		n = A[ahigh] * B[bhigh];
-		if (m &lt; 0 &amp;&amp; n &lt; 0)break;//全负退出，保证mn至少一个正的
-		if (m&gt;n){
-			sum += m;
-			alow++;
-			blow++;
-		}
-		else{
-			sum += n;
-			ahigh--;
-			bhigh--;
-		}
-	}
-	printf(&quot;%d&quot;, sum);
-	system(&quot;pause&quot;);
-	return 0;
+    int a, b,sum=0;
+    int A[100000], B[100000];
+    scanf(&quot;%d&quot;, &amp;a);
+    for (int i = 0; i &lt; a; i++)
+        scanf(&quot;%d&quot;, &amp;A[i]);
+    scanf(&quot;%d&quot;, &amp;b);
+    for (int i = 0; i &lt; b; i++)
+        scanf(&quot;%d&quot;, &amp;B[i]);
+    sort(A, A + a);
+    sort(B, B + b);
+    int alow = 0, blow = 0, ahigh = a - 1, bhigh = b - 1,m,n;
+    while (alow&lt;=ahigh&amp;&amp;blow&lt;=bhigh){//只考虑正正负负的情况
+        m = A[alow] * B[blow];
+        n = A[ahigh] * B[bhigh];
+        if (m &lt; 0 &amp;&amp; n &lt; 0)break;//全负退出，保证mn至少一个正的
+        if (m&gt;n){
+            sum += m;
+            alow++;
+            blow++;
+        }
+        else{
+            sum += n;
+            ahigh--;
+            bhigh--;
+        }
+    }
+    printf(&quot;%d&quot;, sum);
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>想复杂了，把顺序也考虑进去了，写完才发觉sum管个鬼的顺序，反正不考虑顺序的话可以两头各一个循环，循环到乘积&lt;0为止。</p>
+</code></pre><p>想复杂了，把顺序也考虑进去了，写完才发觉sum管个鬼的顺序，反正不考虑顺序的话可以两头各一个循环，循环到乘积&lt;0为止。</p>
 <hr>
-<p>##1070 Mooncake(25)
-Mooncake is a Chinese bakery product traditionally eaten during the Mid-Autumn Festival. Many types of fillings and crusts can be found in traditional mooncakes according to the region's culture. Now given the inventory amounts and the prices of all kinds of the mooncakes, together with the maximum total demand of the market, you are supposed to tell the maximum profit that can be made.
-Note: partial inventory storage can be taken. The sample shows the following situation: given three kinds of mooncakes with inventory amounts being 180, 150, and 100 thousand tons, and the prices being 7.5, 7.2, and 4.5 billion yuans. If the market demand can be at most 200 thousand tons, the best we can do is to sell 150 thousand tons of the second kind of mooncake, and 50 thousand tons of the third kind. Hence the total profit is 7.2 + 4.5/2 = 9.45 (billion yuans).
-Input Specification:</p>
+<h2 id="1070-Mooncake-25"><a href="#1070-Mooncake-25" class="headerlink" title="1070 Mooncake(25)"></a>1070 Mooncake(25)</h2><p>Mooncake is a Chinese bakery product traditionally eaten during the Mid-Autumn Festival. Many types of fillings and crusts can be found in traditional mooncakes according to the region’s culture. Now given the inventory amounts and the prices of all kinds of the mooncakes, together with the maximum total demand of the market, you are supposed to tell the maximum profit that can be made.<br>Note: partial inventory storage can be taken. The sample shows the following situation: given three kinds of mooncakes with inventory amounts being 180, 150, and 100 thousand tons, and the prices being 7.5, 7.2, and 4.5 billion yuans. If the market demand can be at most 200 thousand tons, the best we can do is to sell 150 thousand tons of the second kind of mooncake, and 50 thousand tons of the third kind. Hence the total profit is 7.2 + 4.5/2 = 9.45 (billion yuans).<br>Input Specification:</p>
 <p>Each input file contains one test case. For each case, the first line contains 2 positive integers N (≤1000), the number of different kinds of mooncakes, and D (≤500 thousand tons), the maximum total demand of the market. Then the second line gives the positive inventory amounts (in thousand tons), and the third line gives the positive prices (in billion yuans) of N kinds of mooncakes. All the numbers in a line are separated by a space.</p>
-<p>Output Specification:
-For each test case, print the maximum profit (in billion yuans) in one line, accurate up to 2 decimal places.</p>
+<p>Output Specification:<br>For each test case, print the maximum profit (in billion yuans) in one line, accurate up to 2 decimal places.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>3 200
-180 150 100
-7.5 7.2 4.5</p>
+<p>3 200<br>180 150 100<br>7.5 7.2 4.5</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
@@ -996,51 +801,43 @@ For each test case, print the maximum profit (in billion yuans) in one line, acc
 #pragma warning(disable:4996)
 using namespace std;
 struct mooncake{
-	double amount,price, perprice;
+    double amount,price, perprice;
 };
 bool cmp(mooncake a, mooncake b){ return a.perprice &gt; b.perprice; }
 int main(){
-	double maxpro=0;
-	int N, D,i=0;
-	scanf(&quot;%d %d&quot;, &amp;N, &amp;D);
-	mooncake list[1000];
-	for (int i = 0; i &lt; N; i++)
-		scanf(&quot;%lf&quot;, &amp;list[i].amount);
-	for (int i = 0; i &lt; N; i++){
-		scanf(&quot;%lf&quot;, &amp;list[i].price);
-		list[i].perprice = list[i].price / list[i].amount;
-	}
-	sort(list, list + N, cmp);
-	while (D&gt;0){
-		if (list[i].amount &lt;= D){
-			maxpro += list[i].price;
-			D -= list[i].amount;
-		}
-		else{
-			maxpro += D*list[i].perprice;
-			break;
-		}
-		i++;
-	}
-	printf(&quot;%.2lf&quot;, maxpro);
-	system(&quot;pause&quot;);
-	return 0;
+    double maxpro=0;
+    int N, D,i=0;
+    scanf(&quot;%d %d&quot;, &amp;N, &amp;D);
+    mooncake list[1000];
+    for (int i = 0; i &lt; N; i++)
+        scanf(&quot;%lf&quot;, &amp;list[i].amount);
+    for (int i = 0; i &lt; N; i++){
+        scanf(&quot;%lf&quot;, &amp;list[i].price);
+        list[i].perprice = list[i].price / list[i].amount;
+    }
+    sort(list, list + N, cmp);
+    while (D&gt;0){
+        if (list[i].amount &lt;= D){
+            maxpro += list[i].price;
+            D -= list[i].amount;
+        }
+        else{
+            maxpro += D*list[i].perprice;
+            break;
+        }
+        i++;
+    }
+    printf(&quot;%.2lf&quot;, maxpro);
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>最简单的贪心题，注意要用double不要float。</p>
+</code></pre><p>最简单的贪心题，注意要用double不要float。</p>
 <hr>
-<p>##1125 Chain the Ropes(25)
-Given some segments of rope, you are supposed to chain them into one rope. Each time you may only fold two segments into loops and chain them into one piece, as shown by the figure. The resulting chain will be treated as another segment of rope and can be folded again. After each chaining, the lengths of the original two segments will be halved.
-rope.jpg
-Your job is to make the longest possible rope out of N given segments.
-Input Specification:
-Each input file contains one test case. For each case, the first line gives a positive integer N (2≤N≤10^4). Then N positive integer lengths of the segments are given in the next line, separated by spaces. All the integers are no more than 10^4.</p>
-<p>Output Specification:
-For each case, print in a line the length of the longest possible rope that can be made by the given segments. The result must be rounded to the nearest integer that is no greater than the maximum length.</p>
+<h2 id="1125-Chain-the-Ropes-25"><a href="#1125-Chain-the-Ropes-25" class="headerlink" title="1125 Chain the Ropes(25)"></a>1125 Chain the Ropes(25)</h2><p>Given some segments of rope, you are supposed to chain them into one rope. Each time you may only fold two segments into loops and chain them into one piece, as shown by the figure. The resulting chain will be treated as another segment of rope and can be folded again. After each chaining, the lengths of the original two segments will be halved.<br>rope.jpg<br>Your job is to make the longest possible rope out of N given segments.<br>Input Specification:<br>Each input file contains one test case. For each case, the first line gives a positive integer N (2≤N≤10^4). Then N positive integer lengths of the segments are given in the next line, separated by spaces. All the integers are no more than 10^4.</p>
+<p>Output Specification:<br>For each case, print in a line the length of the longest possible rope that can be made by the given segments. The result must be rounded to the nearest integer that is no greater than the maximum length.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>8
-10 15 12 3 4 13 1 15</p>
+<p>8<br>10 15 12 3 4 13 1 15</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
@@ -1054,24 +851,23 @@ For each case, print in a line the length of the longest possible rope that can 
 #include&lt;algorithm&gt;
 using namespace std;
 int main(){
-	int N,result;
-	scanf(&quot;%d&quot;, &amp;N);
-	int ropes[10000];
-	for (int i = 0; i &lt; N; i++)
-		scanf(&quot;%d&quot;, &amp;ropes[i]);
-	sort(ropes, ropes + N);
-	double sum = ropes[0];
-	for (int i = 1; i &lt; N; i++){
-			sum += ropes[i];
-			sum = sum / 2.0;
-	}
-	result = floor(sum);
-	printf(&quot;%d&quot;, result);
-	system(&quot;pause&quot;);
-	return 0;
+    int N,result;
+    scanf(&quot;%d&quot;, &amp;N);
+    int ropes[10000];
+    for (int i = 0; i &lt; N; i++)
+        scanf(&quot;%d&quot;, &amp;ropes[i]);
+    sort(ropes, ropes + N);
+    double sum = ropes[0];
+    for (int i = 1; i &lt; N; i++){
+            sum += ropes[i];
+            sum = sum / 2.0;
+    }
+    result = floor(sum);
+    printf(&quot;%d&quot;, result);
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>题意为连接两根绳子后，绳长会缩短一半，问怎么连接绳子最长。</p>
+</code></pre><p>题意为连接两根绳子后，绳长会缩短一半，问怎么连接绳子最长。</p>
 
     </article>
     <!-- license  -->
@@ -1261,7 +1057,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">1016 Phone Bills (25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">1025 PAT Ranking (25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">1062 Talent and Virtue (25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">#贪心</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#排序"><span class="toc-number">1.</span> <span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识要点"><span class="toc-number">1.1.</span> <span class="toc-text">知识要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1012-The-Best-Rank-25"><span class="toc-number">1.2.</span> <span class="toc-text">1012 The Best Rank(25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1016-Phone-Bills-25"><span class="toc-number">1.3.</span> <span class="toc-text">1016 Phone Bills (25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1025-PAT-Ranking-25"><span class="toc-number">1.4.</span> <span class="toc-text">1025 PAT Ranking (25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1028-List-Sorting-25"><span class="toc-number">1.5.</span> <span class="toc-text">1028 List Sorting (25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1062-Talent-and-Virtue-25"><span class="toc-number">1.6.</span> <span class="toc-text">1062 Talent and Virtue (25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1083-List-Grades-25"><span class="toc-number">1.7.</span> <span class="toc-text">1083 List Grades(25)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#贪心"><span class="toc-number">2.</span> <span class="toc-text">贪心</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识要点-1"><span class="toc-number">2.1.</span> <span class="toc-text">知识要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1037-Magic-Coupon-25"><span class="toc-number">2.2.</span> <span class="toc-text">1037 Magic Coupon(25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1070-Mooncake-25"><span class="toc-number">2.3.</span> <span class="toc-text">1070 Mooncake(25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1125-Chain-the-Ropes-25"><span class="toc-number">2.4.</span> <span class="toc-text">1125 Chain the Ropes(25)</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1274,6 +1070,50 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1761,11 +1601,11 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
+    
         <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
     
         <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
-    
-        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
@@ -1781,21 +1621,21 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="图形学"><span class="iconfont-archer">&#xe606;</span>图形学</span>
     
-        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
-    
-        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
-    
         <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
     
-        <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
+        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
     
         <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
     
         <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
     
+        <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
+    
         <span class="sidebar-tag-name" data-tags="感悟"><span class="iconfont-archer">&#xe606;</span>感悟</span>
     
-        <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
+        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
+    
+        <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

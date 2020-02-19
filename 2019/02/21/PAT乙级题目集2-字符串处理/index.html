@@ -419,19 +419,12 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>参考《算法笔记》第二章，第三章以及第六章的string部分。
-字符串部分我是真的忘得厉害……
-[TOC]
-#字符串处理</p>
-<hr>
-<p>##知识要点</p>
-<h3>C语言风格的字符串 &lt; string.h &gt;</h3>
-<h4>初始化输入输出</h4>
-<p>初始化：</p>
-<pre><code>char a[4]={'a','b','c'};
+        <p>参考《算法笔记》第二章，第三章以及第六章的string部分。<br>字符串部分我是真的忘得厉害……<br>[TOC]</p>
+<h1 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h1><hr>
+<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><h3 id="C语言风格的字符串-lt-string-h-gt"><a href="#C语言风格的字符串-lt-string-h-gt" class="headerlink" title="C语言风格的字符串 &lt; string.h &gt;"></a>C语言风格的字符串 &lt; string.h &gt;</h3><h4 id="初始化输入输出"><a href="#初始化输入输出" class="headerlink" title="初始化输入输出"></a>初始化输入输出</h4><p>初始化：</p>
+<pre><code>char a[4]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;};
 char a[4]=&quot;abc&quot;;
-</code></pre>
-<p>输入输出：</p>
+</code></pre><p>输入输出：</p>
 <pre><code>scanf(&quot;%s&quot;,a);
 scanf(&quot;%4s&quot;,a);     //限制读取字符个数
 gets(a);    //避开
@@ -441,108 +434,57 @@ getchar(b);     //这种情况下如果要自己循环读字符串记得加上\0
 putchar(b);
 gets(a);     //读完记得用getchar()吸收句尾的换行符//PAT好像不能用gets?
 puts(a);     //自带换行符
-</code></pre>
-<p>####常规操作
-strlen(a);
+</code></pre><h4 id="常规操作"><a href="#常规操作" class="headerlink" title="常规操作"></a>常规操作</h4><pre><code>strlen(a);
 strcmp(a,b);    //a&lt;b 负数，a==b为0，a&gt;b 正数  !!!判断相等
 strcpy(a,b);    //b复制（赋值）给a
 strncpy(a,b,n);   //复制前n个字符，但是这玩意儿复制完不加结束标记，要自己加
 strcat(a,b);    //b接到a后面。
 sscanf(a,&quot;%d&quot;,&amp;d);   //读入字符串a中的整数d
 sprintf(a,&quot;%d&quot;,d);   //打印字符串a中的整数d
-strrev(a);      //reverse的c风格用法</p>
-<p><strong>其实对于很多数字类的题目用字符串+sscanf超级方便！</strong></p>
-<h3>C++风格的字符串 &lt; string &gt;</h3>
-<p>####初始化输入输出
-string a=&quot;abcd&quot;;
+strrev(a);      //reverse的c风格用法
+</code></pre><p><strong>其实对于很多数字类的题目用字符串+sscanf超级方便！</strong></p>
+<h3 id="C-风格的字符串-lt-string-gt"><a href="#C-风格的字符串-lt-string-gt" class="headerlink" title="C++风格的字符串 &lt; string &gt;"></a>C++风格的字符串 &lt; string &gt;</h3><h4 id="初始化输入输出-1"><a href="#初始化输入输出-1" class="headerlink" title="初始化输入输出"></a>初始化输入输出</h4><pre><code>string a=&quot;abcd&quot;;
 cin&gt;&gt;a;
 getline(cin,a);   //读入一行
 cout&lt;&lt;a;
-printf(&quot;%s&quot;,a.c_str());</p>
-<p><strong>不要在一个程序里同时使用cout和printf！</strong>
-####访问元素</p>
-<ol>
+printf(&quot;%s&quot;,a.c_str());
+</code></pre><p><strong>不要在一个程序里同时使用cout和printf！</strong></p>
+<h4 id="访问元素"><a href="#访问元素" class="headerlink" title="访问元素"></a>访问元素</h4><ol>
 <li>下标</li>
-<li>迭代器string::iterator it;
-####常规操作
-a+b;    //拼接两个字符串
-a==b; &lt;  &gt;   //比较字符串大小
-a.length();
-a.size();   //一个意思
-a.insert(pos,str);    //前插
-a.insert(it,it1,it2);   //[it1,it2)
-a.erase(it);
-a.erase(pos,len);
-a.erase(it1,it2);   //[it1,it2)
-a.clear();
-a.substr(pos,len);
-a.find(b);    //若b是a的子串，返回在a中第一次出现的位置。若非，则返回string::npos
-a.find(b,pos);    //从pos开始找b
-a.replace(pos,len,str);
-a.replace(it1,it2,str);
-a.c_str();    //转换成c风格的字符串，就可以使用sscanf了。
-sscanf
-reverse(a.begin(),a.end());     //include&lt;algorithm&gt;
-to_string(a);     //将数值转换为字符串
-stoi(int);      //字符串到数值
-sort(a);</li>
+<li>迭代器string::iterator it;<h4 id="常规操作-1"><a href="#常规操作-1" class="headerlink" title="常规操作"></a>常规操作</h4> a+b;    //拼接两个字符串<br> a==b; &lt;  &gt;   //比较字符串大小<br> a.length();<br> a.size();   //一个意思<br> a.insert(pos,str);    //前插<br> a.insert(it,it1,it2);   //[it1,it2)<br> a.erase(it);<br> a.erase(pos,len);<br> a.erase(it1,it2);   //[it1,it2)<br> a.clear();<br> a.substr(pos,len);<br> a.find(b);    //若b是a的子串，返回在a中第一次出现的位置。若非，则返回string::npos<br> a.find(b,pos);    //从pos开始找b<br> a.replace(pos,len,str);<br> a.replace(it1,it2,str);<br> a.c_str();    //转换成c风格的字符串，就可以使用sscanf了。<br> sscanf<br> reverse(a.begin(),a.end());     //include<algorithm><br> to_string(a);     //将数值转换为字符串<br> stoi(int);      //字符串到数值<br> sort(a);</algorithm></li>
 </ol>
-<p>###转化</p>
-<ul>
+<h3 id="转化"><a href="#转化" class="headerlink" title="转化"></a>转化</h3><ul>
 <li>C++风格字符串到C风格 a.c_str();</li>
 <li>C风格字符串转到C++ char s[19]; string str=s;</li>
 <li>整型转字符串sprintf会丢失位数（浮点的</li>
 <li>C++整型转字符串</li>
 </ul>
 <ol>
-<li>
-<p>sprintf,再string str=s;</p>
-</li>
-<li>
-<p>sstream</p>
-<p>#include&lt;sstream&gt;
-int n = 65535;
-stringstream ss;
+<li>sprintf,再string str=s;</li>
+<li><p>sstream</p>
+<h1 id="include"><a href="#include" class="headerlink" title="include"></a>include<sstream></sstream></h1><p> int n = 65535;</p>
+<pre><code>stringstream ss;
 string s;
 ss &lt;&lt; n;
-ss &gt;&gt; s;</p>
-</li>
+ss &gt;&gt; s;
+</code></pre></li>
 </ol>
 <ul>
-<li>
-<p>字符串转整型sscanf（string用c_str())</p>
+<li><p>字符串转整型sscanf（string用c_str())</p>
 </li>
-<li>
-<p><strong>用sscanf就可以直接对每个数位上的数进行操作诶</strong></p>
+<li><p><strong>用sscanf就可以直接对每个数位上的数进行操作诶</strong></p>
 </li>
-<li>
-<p>搞数位要么走字符串，要么用%10/10的
-###提心吊胆</p>
-</li>
-<li>
-<p>加\0了吗</p>
-</li>
-<li>
-<p>负号可以用erase处理，也可以输出负号后sum=-sum。</p>
-</li>
-<li>
-<p>while(scanf()!=EOF)</p>
-</li>
-<li>
-<p>while(cin&gt;&gt;Temp);</p>
-</li>
+<li>搞数位要么走字符串，要么用%10/10的<h3 id="提心吊胆"><a href="#提心吊胆" class="headerlink" title="提心吊胆"></a>提心吊胆</h3></li>
+<li>加\0了吗</li>
+<li>负号可以用erase处理，也可以输出负号后sum=-sum。</li>
+<li>while(scanf()!=EOF)</li>
+<li>while(cin&gt;&gt;Temp);</li>
 </ul>
 <hr>
-<p>##1002 写出这个数 （20 分）
-读入一个正整数 n，计算其各位数字之和，用汉语拼音写出和的每一位数字。
-输入格式：
-每个测试输入包含 1 个测试用例，即给出自然数 n 的值。这里保证 n 小于 10^100 。</p>
-<p>输出格式：
-在一行内输出 n 的各位数字之和的每一位，拼音数字间有 1 空格，但一行中最后一个拼音数字后没有空格。</p>
-<p>输入样例：
-1234567890987654321123456789</p>
-<p>输出样例：
-yi san wu</p>
+<h2 id="1002-写出这个数-（20-分）"><a href="#1002-写出这个数-（20-分）" class="headerlink" title="1002 写出这个数 （20 分）"></a>1002 写出这个数 （20 分）</h2><p>读入一个正整数 n，计算其各位数字之和，用汉语拼音写出和的每一位数字。<br>输入格式：<br>每个测试输入包含 1 个测试用例，即给出自然数 n 的值。这里保证 n 小于 10^100 。</p>
+<p>输出格式：<br>在一行内输出 n 的各位数字之和的每一位，拼音数字间有 1 空格，但一行中最后一个拼音数字后没有空格。</p>
+<p>输入样例：<br>1234567890987654321123456789</p>
+<p>输出样例：<br>yi san wu</p>
 <pre><code>#include&lt;cstdio&gt;
 #include&lt;cstdlib&gt;
 #include&lt;string&gt;
@@ -551,80 +493,67 @@ yi san wu</p>
 using namespace std;
 #pragma warning(disable:4996)
 int main(){
-	string num;
-	cin &gt;&gt; num;
-	int sum = 0,flag=0;
-	for (int i = 0; i &lt; num.length(); i++){
-		sum+=num[i]-'0';
-	}
-	num = to_string(sum);
-	for (int i = 0; i &lt; num.length(); i++){
-		if (i)printf(&quot; &quot;);
-		int key =num[i] - '0';
-		if (key == 0)printf(&quot;ling&quot;);
-		else if (key == 1)printf(&quot;yi&quot;);
-		else if (key == 2)printf(&quot;er&quot;);
-		else if (key == 3)printf(&quot;san&quot;);
-		else if (key == 4)printf(&quot;si&quot;);
-		else if (key == 5)printf(&quot;wu&quot;);
-		else if (key == 6)printf(&quot;liu&quot;);
-		else if (key == 7)printf(&quot;qi&quot;);
-		else if (key == 8)printf(&quot;ba&quot;);
-		else printf(&quot;jiu&quot;);
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    string num;
+    cin &gt;&gt; num;
+    int sum = 0,flag=0;
+    for (int i = 0; i &lt; num.length(); i++){
+        sum+=num[i]-&#39;0&#39;;
+    }
+    num = to_string(sum);
+    for (int i = 0; i &lt; num.length(); i++){
+        if (i)printf(&quot; &quot;);
+        int key =num[i] - &#39;0&#39;;
+        if (key == 0)printf(&quot;ling&quot;);
+        else if (key == 1)printf(&quot;yi&quot;);
+        else if (key == 2)printf(&quot;er&quot;);
+        else if (key == 3)printf(&quot;san&quot;);
+        else if (key == 4)printf(&quot;si&quot;);
+        else if (key == 5)printf(&quot;wu&quot;);
+        else if (key == 6)printf(&quot;liu&quot;);
+        else if (key == 7)printf(&quot;qi&quot;);
+        else if (key == 8)printf(&quot;ba&quot;);
+        else printf(&quot;jiu&quot;);
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>直接写string str[10]={&quot;&quot;,&quot;&quot;,&quot;&quot;……}会好一点。</p>
+</code></pre><p>直接写string str[10]={“”,””,””……}会好一点。</p>
 <hr>
-<p>##1006 换个格式输出整数 （15 分）
-让我们用字母 B 来表示“百”、字母 S 表示“十”，用 12...n 来表示不为零的个位数字 n（&lt;10），换个格式来输出任一个不超过 3 位的正整数。例如 234 应该被输出为 BBSSS1234，因为它有 2 个“百”、3 个“十”、以及个位的 4。</p>
-<p>输入格式：
-每个测试输入包含 1 个测试用例，给出正整数 n（&lt;1000）。</p>
-<p>输出格式：
-每个测试用例的输出占一行，用规定的格式输出 n。</p>
-<p>输入样例 1：
-234</p>
-<p>输出样例 1：
-BBSSS1234</p>
-<p>输入样例 2：
-23</p>
-<p>输出样例 2：
-SS123</p>
+<h2 id="1006-换个格式输出整数-（15-分）"><a href="#1006-换个格式输出整数-（15-分）" class="headerlink" title="1006 换个格式输出整数 （15 分）"></a>1006 换个格式输出整数 （15 分）</h2><p>让我们用字母 B 来表示“百”、字母 S 表示“十”，用 12…n 来表示不为零的个位数字 n（&lt;10），换个格式来输出任一个不超过 3 位的正整数。例如 234 应该被输出为 BBSSS1234，因为它有 2 个“百”、3 个“十”、以及个位的 4。</p>
+<p>输入格式：<br>每个测试输入包含 1 个测试用例，给出正整数 n（&lt;1000）。</p>
+<p>输出格式：<br>每个测试用例的输出占一行，用规定的格式输出 n。</p>
+<p>输入样例 1：<br>234</p>
+<p>输出样例 1：<br>BBSSS1234</p>
+<p>输入样例 2：<br>23</p>
+<p>输出样例 2：<br>SS123</p>
 <pre><code>#include&lt;cstdlib&gt;
 #include&lt;string&gt;
 #include&lt;iostream&gt;
 using namespace std;
 #pragma warning(disable:4996)
 void print(char ch, int t){
-	while (t--)
-	 cout&lt;&lt;ch;
+    while (t--)
+     cout&lt;&lt;ch;
 }
 int main(){
-	string num;
-	cin &gt;&gt; num;
-	for (int i = 0; i &lt; num.length(); i++){
-		int digit= num[i] - '0';
-		if (num.length() - i == 3)print('B', digit);
-		else if (num.length() - i == 2)print('S', digit);
-		else{
-			for (int i = 1; i &lt;= digit; i++){
-				cout&lt;&lt;i;
-			}
-		}
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    string num;
+    cin &gt;&gt; num;
+    for (int i = 0; i &lt; num.length(); i++){
+        int digit= num[i] - &#39;0&#39;;
+        if (num.length() - i == 3)print(&#39;B&#39;, digit);
+        else if (num.length() - i == 2)print(&#39;S&#39;, digit);
+        else{
+            for (int i = 1; i &lt;= digit; i++){
+                cout&lt;&lt;i;
+            }
+        }
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<hr>
-<p>##1009 说反话 （20 分）
-给定一句英语，要求你编写程序，将句中所有单词的顺序颠倒输出。
-输入格式：
-测试输入包含一个测试用例，在一行内给出总长度不超过 80 的字符串。字符串由若干单词和若干空格组成，其中单词是由英文字母（大小写有区分）组成的字符串，单词之间用 1 个空格分开，输入保证句子末尾没有多余的空格。</p>
-<p>输出格式：
-每个测试用例的输出占一行，输出倒序后的句子。</p>
+</code></pre><hr>
+<h2 id="1009-说反话-（20-分）"><a href="#1009-说反话-（20-分）" class="headerlink" title="1009 说反话 （20 分）"></a>1009 说反话 （20 分）</h2><p>给定一句英语，要求你编写程序，将句中所有单词的顺序颠倒输出。<br>输入格式：<br>测试输入包含一个测试用例，在一行内给出总长度不超过 80 的字符串。字符串由若干单词和若干空格组成，其中单词是由英文字母（大小写有区分）组成的字符串，单词之间用 1 个空格分开，输入保证句子末尾没有多余的空格。</p>
+<p>输出格式：<br>每个测试用例的输出占一行，输出倒序后的句子。</p>
 <p>输入样例：</p>
 <blockquote>
 <p>Hello World Here I Come</p>
@@ -641,33 +570,26 @@ int main(){
 using namespace std;
 #pragma warning(disable:4996)
 int main(){
-	vector&lt;string&gt;words;
-	string temp;
-	while (cin &gt;&gt; temp){
-		words.push_back(temp);
-	}
-	for (int i = words.size() - 1; i &gt;= 0; i--){
-		cout &lt;&lt; words[i];
-		if (i != 0)cout &lt;&lt; &quot; &quot;;
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    vector&lt;string&gt;words;
+    string temp;
+    while (cin &gt;&gt; temp){
+        words.push_back(temp);
+    }
+    for (int i = words.size() - 1; i &gt;= 0; i--){
+        cout &lt;&lt; words[i];
+        if (i != 0)cout &lt;&lt; &quot; &quot;;
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>用栈更简单，注意while(cin&gt;&gt;h)</p>
+</code></pre><p>用栈更简单，注意while(cin&gt;&gt;h)</p>
 <hr>
-<p>##1014 福尔摩斯的约会 （20 分）
-大侦探福尔摩斯接到一张奇怪的字条：我们约会吧！ 3485djDkxh4hhGE 2984akDfkkkkggEdsb s&amp;hgsfdk d&amp;Hyscvnm。大侦探很快就明白了，字条上奇怪的乱码实际上就是约会的时间星期四 14:04，因为前面两字符串中第 1 对相同的大写英文字母（大小写有区分）是第 4 个字母 D，代表星期四；第 2 对相同的字符是 E ，那是第 5 个英文字母，代表一天里的第 14 个钟头（于是一天的 0 点到 23 点由数字 0 到 9、以及大写字母 A 到 N 表示）；后面两字符串第 1 对相同的英文字母 s 出现在第 4 个位置（从 0 开始计数）上，代表第 4 分钟。现给定两对字符串，请帮助福尔摩斯解码得到约会的时间。</p>
-<p>输入格式：
-输入在 4 行中分别给出 4 个非空、不包含空格、且长度不超过 60 的字符串。</p>
-<p>输出格式：
-在一行中输出约会的时间，格式为 DAY HH:MM，其中 DAY 是某星期的 3 字符缩写，即 MON 表示星期一，TUE 表示星期二，WED 表示星期三，THU 表示星期四，FRI 表示星期五，SAT 表示星期六，SUN 表示星期日。题目输入保证每个测试存在唯一解。</p>
+<h2 id="1014-福尔摩斯的约会-（20-分）"><a href="#1014-福尔摩斯的约会-（20-分）" class="headerlink" title="1014 福尔摩斯的约会 （20 分）"></a>1014 福尔摩斯的约会 （20 分）</h2><p>大侦探福尔摩斯接到一张奇怪的字条：我们约会吧！ 3485djDkxh4hhGE 2984akDfkkkkggEdsb s&amp;hgsfdk d&amp;Hyscvnm。大侦探很快就明白了，字条上奇怪的乱码实际上就是约会的时间星期四 14:04，因为前面两字符串中第 1 对相同的大写英文字母（大小写有区分）是第 4 个字母 D，代表星期四；第 2 对相同的字符是 E ，那是第 5 个英文字母，代表一天里的第 14 个钟头（于是一天的 0 点到 23 点由数字 0 到 9、以及大写字母 A 到 N 表示）；后面两字符串第 1 对相同的英文字母 s 出现在第 4 个位置（从 0 开始计数）上，代表第 4 分钟。现给定两对字符串，请帮助福尔摩斯解码得到约会的时间。</p>
+<p>输入格式：<br>输入在 4 行中分别给出 4 个非空、不包含空格、且长度不超过 60 的字符串。</p>
+<p>输出格式：<br>在一行中输出约会的时间，格式为 DAY HH:MM，其中 DAY 是某星期的 3 字符缩写，即 MON 表示星期一，TUE 表示星期二，WED 表示星期三，THU 表示星期四，FRI 表示星期五，SAT 表示星期六，SUN 表示星期日。题目输入保证每个测试存在唯一解。</p>
 <p>输入样例：</p>
 <blockquote>
-<p>3485djDkxh4hhGE
-2984akDfkkkkggEdsb
-s&amp;hgsfdk
-d&amp;Hyscvnm</p>
+<p>3485djDkxh4hhGE<br>2984akDfkkkkggEdsb<br>s&amp;hgsfdk<br>d&amp;Hyscvnm</p>
 </blockquote>
 <p>输出样例：</p>
 <blockquote>
@@ -682,59 +604,52 @@ d&amp;Hyscvnm</p>
 #include&lt;iostream&gt;
 using namespace std;
 int main(){
-	char week[8][4] = { &quot;MON&quot;, &quot;TUE&quot;, &quot;WED&quot;, &quot;THU&quot;, &quot;FRI&quot;, &quot;SAT&quot;, &quot;SUN&quot; };//string不可以？
-	string hour = &quot;0123456789ABCDEFGHIJKLMN&quot;;
-	string str[4];
-	for (int i = 0; i &lt; 4; i++)
-		cin &gt;&gt; str[i];
-	int cap = 0, pos;
-	for (int i = 0; i &lt; str[0].length(); i++){
-		if ((str[0][i] &gt;= 'A'&amp;&amp;str[0][i] &lt;= 'N' || str[0][i] &gt;= '0'&amp;&amp;str[0][i] &lt;= '9') &amp;&amp; str[0][i] == str[1][i]){
-			if (str[0][i] &gt;= 'A'&amp;&amp;str[0][i] &lt;= 'G'&amp;&amp;!cap){
-				printf(&quot;%s &quot;, week[str[0][i] - 'A']);//第一个相同
-				cap++;
-			}
-			else if (cap == 1){
-				cap++;
-				int k = hour.find(str[0][i]);
-				if (k &lt; 10)printf(&quot;0&quot;);
-				printf(&quot;%d&quot;, k);
-			}
-			else
-				continue;
-		}
-	}
-	for (int i = 0; i &lt; str[2].length(); i++){
-		if ((str[2][i] &gt;= 'a'&amp;&amp;str[2][i] &lt;= 'z' || str[2][i] &gt;= 'A'&amp;&amp;str[2][i] &lt;= 'Z') &amp;&amp; str[2][i] == str[3][i]){
-			printf(&quot;:&quot;);
-			if (i &lt; 10)printf(&quot;0&quot;);
-			printf(&quot;%d&quot;, i);
-			break;
-		}
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    char week[8][4] = { &quot;MON&quot;, &quot;TUE&quot;, &quot;WED&quot;, &quot;THU&quot;, &quot;FRI&quot;, &quot;SAT&quot;, &quot;SUN&quot; };//string不可以？
+    string hour = &quot;0123456789ABCDEFGHIJKLMN&quot;;
+    string str[4];
+    for (int i = 0; i &lt; 4; i++)
+        cin &gt;&gt; str[i];
+    int cap = 0, pos;
+    for (int i = 0; i &lt; str[0].length(); i++){
+        if ((str[0][i] &gt;= &#39;A&#39;&amp;&amp;str[0][i] &lt;= &#39;N&#39; || str[0][i] &gt;= &#39;0&#39;&amp;&amp;str[0][i] &lt;= &#39;9&#39;) &amp;&amp; str[0][i] == str[1][i]){
+            if (str[0][i] &gt;= &#39;A&#39;&amp;&amp;str[0][i] &lt;= &#39;G&#39;&amp;&amp;!cap){
+                printf(&quot;%s &quot;, week[str[0][i] - &#39;A&#39;]);//第一个相同
+                cap++;
+            }
+            else if (cap == 1){
+                cap++;
+                int k = hour.find(str[0][i]);
+                if (k &lt; 10)printf(&quot;0&quot;);
+                printf(&quot;%d&quot;, k);
+            }
+            else
+                continue;
+        }
+    }
+    for (int i = 0; i &lt; str[2].length(); i++){
+        if ((str[2][i] &gt;= &#39;a&#39;&amp;&amp;str[2][i] &lt;= &#39;z&#39; || str[2][i] &gt;= &#39;A&#39;&amp;&amp;str[2][i] &lt;= &#39;Z&#39;) &amp;&amp; str[2][i] == str[3][i]){
+            printf(&quot;:&quot;);
+            if (i &lt; 10)printf(&quot;0&quot;);
+            printf(&quot;%d&quot;, i);
+            break;
+        }
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>思路：主要还是得理解题目意思，然后注意格式输出，不光mm要补0，hh也要补0。
-哪里有正常人这么谈恋爱的。
-1. 补0更正常的写法是printf(&quot;%02d&quot;,i);</p>
-<hr>
-<p>##1021 个位数统计 （15 分）
-给定一个 k 位整数 N=dk−1<em>10^k−1+…+d10</em>10^10++…+d0(0≤di ≤9, i=0,⋯,k−1, d​k−1&gt;0)，请编写程序统计每种不同的个位数字出现的次数。例如：给定 N=100311，则有 2 个 0，3 个 1，和 1 个 3。</p>
-<p>输入格式：
-每个输入包含 1 个测试用例，即一个不超过 1000 位的正整数 N。</p>
-<p>输出格式：
-对 N 中每一种不同的个位数字，以 D:M 的格式在一行中输出该位数字 D 及其在 N 中出现的次数 M。要求按 D 的升序输出。</p>
+</code></pre><p>  思路：主要还是得理解题目意思，然后注意格式输出，不光mm要补0，hh也要补0。<br>    哪里有正常人这么谈恋爱的。</p>
+<pre><code>1. 补0更正常的写法是printf(&quot;%02d&quot;,i);
+</code></pre><hr>
+<h2 id="1021-个位数统计-（15-分）"><a href="#1021-个位数统计-（15-分）" class="headerlink" title="1021 个位数统计 （15 分）"></a>1021 个位数统计 （15 分）</h2><p>给定一个 k 位整数 N=dk−1<em>10^k−1+…+d10</em>10^10++…+d0(0≤di ≤9, i=0,⋯,k−1, d​k−1&gt;0)，请编写程序统计每种不同的个位数字出现的次数。例如：给定 N=100311，则有 2 个 0，3 个 1，和 1 个 3。</p>
+<p>输入格式：<br>每个输入包含 1 个测试用例，即一个不超过 1000 位的正整数 N。</p>
+<p>输出格式：<br>对 N 中每一种不同的个位数字，以 D:M 的格式在一行中输出该位数字 D 及其在 N 中出现的次数 M。要求按 D 的升序输出。</p>
 <p>输入样例：</p>
 <blockquote>
 <p>100311</p>
 </blockquote>
 <p>输出样例：</p>
 <blockquote>
-<p>0:2
-1:3
-3:1</p>
+<p>0:2<br>1:3<br>3:1</p>
 </blockquote>
 <pre><code>#include&lt;cstdio&gt;
 #include&lt;cstdlib&gt;
@@ -743,47 +658,27 @@ int main(){
 using namespace std;
 #pragma warning(disable:4996)
 int main(){
-	string num;
-	cin &gt;&gt; num;
-	int a[10] = { 0 };
-	for (int i = 0; i &lt; num.length(); i++){
-		a[num[i] - '0']++;
-	}
-	for (int i = 0; i &lt; 10; i++){
-		if (a[i] == 0)continue;
-		printf(&quot;%d:%d\n&quot;, i, a[i]);
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    string num;
+    cin &gt;&gt; num;
+    int a[10] = { 0 };
+    for (int i = 0; i &lt; num.length(); i++){
+        a[num[i] - &#39;0&#39;]++;
+    }
+    for (int i = 0; i &lt; 10; i++){
+        if (a[i] == 0)continue;
+        printf(&quot;%d:%d\n&quot;, i, a[i]);
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<hr>
-<p>##1031 查验身份证 （15 分）
-一个合法的身份证号码由17位地区、日期编号和顺序编号加1位校验码组成。校验码的计算规则如下：
-首先对前17位数字加权求和，权重分配为：{7，9，10，5，8，4，2，1，6，3，7，9，10，5，8，4，2}；然后将计算的和对11取模得到值Z；最后按照以下关系对应Z值与校验码M的值：
-Z：0 1 2 3 4 5 6 7 8 9 10
-M：1 0 X 9 8 7 6 5 4 3 2
-现在给定一些身份证号码，请你验证校验码的有效性，并输出有问题的号码。</p>
-<p>输入格式：
-输入第一行给出正整数N（≤100）是输入的身份证号码的个数。随后N行，每行给出1个18位身份证号码。</p>
-<p>输出格式：
-按照输入的顺序每行输出1个有问题的身份证号码。这里并不检验前17位是否合理，只检查前17位是否全为数字且最后1位校验码计算准确。如果所有号码都正常，则输出All passed。</p>
-<p>输入样例1：
-4
-320124198808240056
-12010X198901011234
-110108196711301866
-37070419881216001X</p>
-<p>输出样例1：
-12010X198901011234
-110108196711301866
-37070419881216001X</p>
-<p>输入样例2：
-2
-320124198808240056
-110108196711301862</p>
-<p>输出样例2：
-All passed</p>
+</code></pre><hr>
+<h2 id="1031-查验身份证-（15-分）"><a href="#1031-查验身份证-（15-分）" class="headerlink" title="1031 查验身份证 （15 分）"></a>1031 查验身份证 （15 分）</h2><p>一个合法的身份证号码由17位地区、日期编号和顺序编号加1位校验码组成。校验码的计算规则如下：<br>首先对前17位数字加权求和，权重分配为：{7，9，10，5，8，4，2，1，6，3，7，9，10，5，8，4，2}；然后将计算的和对11取模得到值Z；最后按照以下关系对应Z值与校验码M的值：<br>Z：0 1 2 3 4 5 6 7 8 9 10<br>M：1 0 X 9 8 7 6 5 4 3 2<br>现在给定一些身份证号码，请你验证校验码的有效性，并输出有问题的号码。</p>
+<p>输入格式：<br>输入第一行给出正整数N（≤100）是输入的身份证号码的个数。随后N行，每行给出1个18位身份证号码。</p>
+<p>输出格式：<br>按照输入的顺序每行输出1个有问题的身份证号码。这里并不检验前17位是否合理，只检查前17位是否全为数字且最后1位校验码计算准确。如果所有号码都正常，则输出All passed。</p>
+<p>输入样例1：<br>4<br>320124198808240056<br>12010X198901011234<br>110108196711301866<br>37070419881216001X</p>
+<p>输出样例1：<br>12010X198901011234<br>110108196711301866<br>37070419881216001X</p>
+<p>输入样例2：<br>2<br>320124198808240056<br>110108196711301862</p>
+<p>输出样例2：<br>All passed</p>
 <pre><code>#include&lt;cstdio&gt;
 #include&lt;cstdlib&gt;
 #include&lt;string&gt;
@@ -792,46 +687,41 @@ All passed</p>
 using namespace std;
 #pragma warning(disable:4996)
 int main(){
-	int n,flag=1;
-	cin &gt;&gt; n;
-	int weight[17] = { 7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2 };
-	string id;
-	char value[12] = &quot;10X98765432&quot;;
-	for (int i = 0; i &lt; n; i++){
-		cin &gt;&gt; id;
-		int sum = 0;
-		for (int j = 0; j &lt; 18; j++){
-			if (j == 17){
-				int r = sum % 11;
-				if (id[j] == value[sum % 11])break;
-				else{
-					flag = 0;
-					cout &lt;&lt; id&lt;&lt;endl;
-					break;
-				}
-			}
-			if (id[j] &lt;= '9'&amp;&amp;id[j] &gt;= '0'){
-				sum += (id[j]-'0' )* weight[j];//要小心把字符串里的字符直接拿来当数字用
-			}
-			else{
-				flag = 0;
-				cout &lt;&lt; id&lt;&lt;endl;
-				break;
-			}
-		}
-	}
-	if (flag)printf(&quot;All passed&quot;);
-	system(&quot;pause&quot;);
-	return 0;
+    int n,flag=1;
+    cin &gt;&gt; n;
+    int weight[17] = { 7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2 };
+    string id;
+    char value[12] = &quot;10X98765432&quot;;
+    for (int i = 0; i &lt; n; i++){
+        cin &gt;&gt; id;
+        int sum = 0;
+        for (int j = 0; j &lt; 18; j++){
+            if (j == 17){
+                int r = sum % 11;
+                if (id[j] == value[sum % 11])break;
+                else{
+                    flag = 0;
+                    cout &lt;&lt; id&lt;&lt;endl;
+                    break;
+                }
+            }
+            if (id[j] &lt;= &#39;9&#39;&amp;&amp;id[j] &gt;= &#39;0&#39;){
+                sum += (id[j]-&#39;0&#39; )* weight[j];//要小心把字符串里的字符直接拿来当数字用
+            }
+            else{
+                flag = 0;
+                cout &lt;&lt; id&lt;&lt;endl;
+                break;
+            }
+        }
+    }
+    if (flag)printf(&quot;All passed&quot;);
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<hr>
-<p>##1048 数字加密 （20 分）
-本题要求实现一种数字加密方法。首先固定一个加密用正整数 A，对任一正整数 B，将其每 1 位数字与 A 的对应位置上的数字进行以下运算：对奇数位，对应位的数字相加后对 13 取余——这里用 J 代表 10、Q 代表 11、K 代表 12；对偶数位，用 B 的数字减去 A 的数字，若结果为负数，则再加 10。这里令个位为第 1 位。
-输入格式：
-输入在一行中依次给出 A 和 B，均为不超过 100 位的正整数，其间以空格分隔。</p>
-<p>输出格式：
-在一行中输出加密后的结果。</p>
+</code></pre><hr>
+<h2 id="1048-数字加密-（20-分）"><a href="#1048-数字加密-（20-分）" class="headerlink" title="1048 数字加密 （20 分）"></a>1048 数字加密 （20 分）</h2><p>本题要求实现一种数字加密方法。首先固定一个加密用正整数 A，对任一正整数 B，将其每 1 位数字与 A 的对应位置上的数字进行以下运算：对奇数位，对应位的数字相加后对 13 取余——这里用 J 代表 10、Q 代表 11、K 代表 12；对偶数位，用 B 的数字减去 A 的数字，若结果为负数，则再加 10。这里令个位为第 1 位。<br>输入格式：<br>输入在一行中依次给出 A 和 B，均为不超过 100 位的正整数，其间以空格分隔。</p>
+<p>输出格式：<br>在一行中输出加密后的结果。</p>
 <p>输入样例：</p>
 <blockquote>
 <p>1234567 368782971</p>
@@ -849,75 +739,63 @@ int main(){
 #include&lt;iostream&gt;
 using namespace std;
 int main(){
-	string a, b, c = &quot;&quot;,d=&quot;0&quot;;
-	string digit13 = &quot;0123456789JQK&quot;;
-	cin &gt;&gt; a &gt;&gt; b;
+    string a, b, c = &quot;&quot;,d=&quot;0&quot;;
+    string digit13 = &quot;0123456789JQK&quot;;
+    cin &gt;&gt; a &gt;&gt; b;
 
-	int i = 0;
-	while (a.length()&gt;= i+1 &amp;&amp; b.length()&gt;=i+1){
-		if ((i + 1) % 2){
-			int sum = a[a.length() - 1 - i] + b[b.length() - 1 - i] - '0' - '0';
-			c =digit13[sum%13]+c;
-		}
-		else{
-			int num = b[b.length() - 1 - i] - a[a.length() - 1 - i];
-			if (num &lt; 0)num += 10;
-			c = to_string(num) + c;
-		}
-		i++;
-	}
-	int k = i;
-	while (a.length() &gt;= 1+i){
-		if ((i + 1) % 2){
-			c = a[a.length() - 1 - i] + c;
-		}
-		else{
-			int num = '0'- a[a.length() - 1 - i];
-			if (num &lt; 0)num += 10;
-			c = to_string(num) + c;
-		}
-		i++;
-	}
-	if (b.length() - 1 - k &gt;= 0){
-		string temp = b.substr(0, b.length() - k);
-		c = temp + c;
-	}
-	cout &lt;&lt; c;
-	system(&quot;pause&quot;);
-	return 0;
+    int i = 0;
+    while (a.length()&gt;= i+1 &amp;&amp; b.length()&gt;=i+1){
+        if ((i + 1) % 2){
+            int sum = a[a.length() - 1 - i] + b[b.length() - 1 - i] - &#39;0&#39; - &#39;0&#39;;
+            c =digit13[sum%13]+c;
+        }
+        else{
+            int num = b[b.length() - 1 - i] - a[a.length() - 1 - i];
+            if (num &lt; 0)num += 10;
+            c = to_string(num) + c;
+        }
+        i++;
+    }
+    int k = i;
+    while (a.length() &gt;= 1+i){
+        if ((i + 1) % 2){
+            c = a[a.length() - 1 - i] + c;
+        }
+        else{
+            int num = &#39;0&#39;- a[a.length() - 1 - i];
+            if (num &lt; 0)num += 10;
+            c = to_string(num) + c;
+        }
+        i++;
+    }
+    if (b.length() - 1 - k &gt;= 0){
+        string temp = b.substr(0, b.length() - k);
+        c = temp + c;
+    }
+    cout &lt;&lt; c;
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>要注意a比b长和b比a长的情况，要在前面补0。</p>
+</code></pre><p>要注意a比b长和b比a长的情况，要在前面补0。</p>
 <hr>
-<p>##1054 求平均值 （20 分）
-本题的基本要求非常简单：给定 N 个实数，计算它们的平均值。但复杂的是有些输入数据可能是非法的。一个“合法”的输入是 [−1000,1000] 区间内的实数，并且最多精确到小数点后 2 位。当你计算平均值的时候，不能把那些非法的数据算在内。</p>
-<p>输入格式：
-输入第一行给出正整数 N（≤100）。随后一行给出 N 个实数，数字间以一个空格分隔。</p>
-<p>输出格式：
-对每个非法输入，在一行中输出 ERROR: X is not a legal number，其中 X 是输入。最后在一行中输出结果：The average of K numbers is Y，其中 K 是合法输入的个数，Y 是它们的平均值，精确到小数点后 2 位。如果平均值无法计算，则用 Undefined 替换 Y。如果 K 为 1，则输出 The average of 1 number is Y。</p>
+<h2 id="1054-求平均值-（20-分）"><a href="#1054-求平均值-（20-分）" class="headerlink" title="1054 求平均值 （20 分）"></a>1054 求平均值 （20 分）</h2><p>本题的基本要求非常简单：给定 N 个实数，计算它们的平均值。但复杂的是有些输入数据可能是非法的。一个“合法”的输入是 [−1000,1000] 区间内的实数，并且最多精确到小数点后 2 位。当你计算平均值的时候，不能把那些非法的数据算在内。</p>
+<p>输入格式：<br>输入第一行给出正整数 N（≤100）。随后一行给出 N 个实数，数字间以一个空格分隔。</p>
+<p>输出格式：<br>对每个非法输入，在一行中输出 ERROR: X is not a legal number，其中 X 是输入。最后在一行中输出结果：The average of K numbers is Y，其中 K 是合法输入的个数，Y 是它们的平均值，精确到小数点后 2 位。如果平均值无法计算，则用 Undefined 替换 Y。如果 K 为 1，则输出 The average of 1 number is Y。</p>
 <p>输入样例 1：</p>
 <blockquote>
-<p>7
-5 -3.2 aaa 9999 2.3.4 7.123 2.35</p>
+<p>7<br>5 -3.2 aaa 9999 2.3.4 7.123 2.35</p>
 </blockquote>
 <p>输出样例 1：</p>
 <blockquote>
-<p>ERROR: aaa is not a legal number
-ERROR: 9999 is not a legal number
-ERROR: 2.3.4 is not a legal number
-ERROR: 7.123 is not a legal number
-The average of 3 numbers is 1.38</p>
+<p>ERROR: aaa is not a legal number<br>ERROR: 9999 is not a legal number<br>ERROR: 2.3.4 is not a legal number<br>ERROR: 7.123 is not a legal number<br>The average of 3 numbers is 1.38</p>
 </blockquote>
 <p>输入样例 2：</p>
 <blockquote>
-<p>2
-aaa -9999</p>
+<p>2<br>aaa -9999</p>
 </blockquote>
 <p>输出样例 2：</p>
 <blockquote>
-<p>ERROR: aaa is not a legal number
-ERROR: -9999 is not a legal number
-The average of 0 numbers is Undefined</p>
+<p>ERROR: aaa is not a legal number<br>ERROR: -9999 is not a legal number<br>The average of 0 numbers is Undefined</p>
 </blockquote>
 <pre><code>#include&lt;stdio.h&gt;
 #include&lt;iostream&gt;
@@ -927,78 +805,60 @@ The average of 0 numbers is Undefined</p>
 #pragma warning(disable:4996)
 using namespace std;
 bool IsLegal(string s){
-	int count=0;//count of .
-	int pos; //pos of .
-	float num;
-	for (int i = 0; i &lt; s.length(); i++){
-		if (s[i] &gt;= '0' &amp;&amp; s[i]  &lt;= '9'){
-			if (count == 1 &amp;&amp; i - pos&gt;2)
-				 return false;
-		}
-		else if(s[i] == '.'&amp;&amp;i!= 0){
-			count++;
-			if (count == 1)pos = i;
-			if (count == 2)return false;
-		}
-		else if (s[i] == '-'&amp;&amp;i == 0);
-		else {
-			return false;		
-		}
-	}
-	sscanf( s.c_str(),&quot;%f&quot;, &amp;num);
-	if (fabs(num)&lt;=1000)
-		return true;
-	else return false;
+    int count=0;//count of .
+    int pos; //pos of .
+    float num;
+    for (int i = 0; i &lt; s.length(); i++){
+        if (s[i] &gt;= &#39;0&#39; &amp;&amp; s[i]  &lt;= &#39;9&#39;){
+            if (count == 1 &amp;&amp; i - pos&gt;2)
+                 return false;
+        }
+        else if(s[i] == &#39;.&#39;&amp;&amp;i!= 0){
+            count++;
+            if (count == 1)pos = i;
+            if (count == 2)return false;
+        }
+        else if (s[i] == &#39;-&#39;&amp;&amp;i == 0);
+        else {
+            return false;        
+        }
+    }
+    sscanf( s.c_str(),&quot;%f&quot;, &amp;num);
+    if (fabs(num)&lt;=1000)
+        return true;
+    else return false;
 }
 int main(){
-	int N,count=0;
-	float temp,sum=0;
-	scanf(&quot;%d&quot;, &amp;N);
-	string str;
-	for (int i = 0; i &lt; N; i++){
-		cin &gt;&gt; str;
-		if (IsLegal(str)){
-			sscanf(str.c_str(), &quot;%f&quot;, &amp;temp);
-			sum += temp;
-			count++;
-		}
-		else printf(&quot;ERROR: %s is not a legal number\n&quot;, str.c_str());
-	}
-	if (count == 0)printf(&quot;The average of 0 numbers is Undefined&quot;);
-	else if (count == 1)printf(&quot;The average of %d number is %.2f&quot;, count, sum / count);
-	else printf(&quot;The average of %d numbers is %.2f&quot;, count, sum / count);
-	system(&quot;pause&quot;);
-	return 0;
+    int N,count=0;
+    float temp,sum=0;
+    scanf(&quot;%d&quot;, &amp;N);
+    string str;
+    for (int i = 0; i &lt; N; i++){
+        cin &gt;&gt; str;
+        if (IsLegal(str)){
+            sscanf(str.c_str(), &quot;%f&quot;, &amp;temp);
+            sum += temp;
+            count++;
+        }
+        else printf(&quot;ERROR: %s is not a legal number\n&quot;, str.c_str());
+    }
+    if (count == 0)printf(&quot;The average of 0 numbers is Undefined&quot;);
+    else if (count == 1)printf(&quot;The average of %d number is %.2f&quot;, count, sum / count);
+    else printf(&quot;The average of %d numbers is %.2f&quot;, count, sum / count);
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<hr>
-<p>##1081 检查密码 （15 分）
-本题要求你帮助某网站的用户注册模块写一个密码合法性检查的小功能。该网站要求用户设置的密码必须由不少于6个字符组成，并且只能有英文字母、数字和小数点 .，还必须既有字母也有数字。</p>
-<p>输入格式：
-输入第一行给出一个正整数 N（≤ 100），随后 N 行，每行给出一个用户设置的密码，为不超过 80 个字符的非空字符串，以回车结束。</p>
-<p>输出格式：
-对每个用户的密码，在一行中输出系统反馈信息，分以下5种：
-如果密码合法，输出Your password is wan mei.；
-如果密码太短，不论合法与否，都输出Your password is tai duan le.；
-如果密码长度合法，但存在不合法字符，则输出Your password is tai luan le.；
-如果密码长度合法，但只有字母没有数字，则输出Your password needs shu zi.；
-如果密码长度合法，但只有数字没有字母，则输出Your password needs zi mu.。</p>
+</code></pre><hr>
+<h2 id="1081-检查密码-（15-分）"><a href="#1081-检查密码-（15-分）" class="headerlink" title="1081 检查密码 （15 分）"></a>1081 检查密码 （15 分）</h2><p>本题要求你帮助某网站的用户注册模块写一个密码合法性检查的小功能。该网站要求用户设置的密码必须由不少于6个字符组成，并且只能有英文字母、数字和小数点 .，还必须既有字母也有数字。</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（≤ 100），随后 N 行，每行给出一个用户设置的密码，为不超过 80 个字符的非空字符串，以回车结束。</p>
+<p>输出格式：<br>对每个用户的密码，在一行中输出系统反馈信息，分以下5种：<br>如果密码合法，输出Your password is wan mei.；<br>如果密码太短，不论合法与否，都输出Your password is tai duan le.；<br>如果密码长度合法，但存在不合法字符，则输出Your password is tai luan le.；<br>如果密码长度合法，但只有字母没有数字，则输出Your password needs shu zi.；<br>如果密码长度合法，但只有数字没有字母，则输出Your password needs zi mu.。</p>
 <p>输入样例：</p>
 <blockquote>
-<p>5
-123s
-zheshi.wodepw
-1234.5678
-WanMei23333
-pass*word.6</p>
+<p>5<br>123s<br>zheshi.wodepw<br>1234.5678<br>WanMei23333<br>pass*word.6</p>
 </blockquote>
 <p>输出样例：</p>
 <blockquote>
-<p>Your password is tai duan le.
-Your password needs shu zi.
-Your password needs zi mu.
-Your password is wan mei.
-Your password is tai luan le.</p>
+<p>Your password is tai duan le.<br>Your password needs shu zi.<br>Your password needs zi mu.<br>Your password is wan mei.<br>Your password is tai luan le.</p>
 </blockquote>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;cstdlib&gt;
@@ -1006,50 +866,44 @@ Your password is tai luan le.</p>
 using namespace std;
 #pragma warning(disable:4996)
 int main(){
-	int n;
-	string pw;
-	getline(cin,pw);
-	sscanf(pw.c_str(), &quot;%d&quot;, &amp;n);
-	for (int i = 0; i &lt; n; i++){
-		getline(cin,pw);//小心空格，空格也算字符，但是这里空格用cin的话就不会输入
-		if (pw.length() &lt; 6){
-			cout &lt;&lt; &quot;Your password is tai duan le.&quot; &lt;&lt; endl;
-			continue;
-		}
-		int ch = 0, num = 0, illegal = 0;
-		for (int j = 0; j &lt; pw.length(); j++){
-			if (pw[j] &gt;= '0'&amp;&amp;pw[j] &lt;= '9')num = 1;
-			else if (pw[j] == '.')continue;
-			else if ((pw[j] &gt;= 'a'&amp;&amp;pw[j] &lt;= 'z' )|| (pw[j] &gt;= 'A'&amp;&amp;pw[j] &lt;= 'Z'))ch = 1;
-			else{
-				illegal = 1;
-				break;
-			}
-		}
-		if (illegal){
-			cout &lt;&lt; &quot;Your password is tai luan le.&quot; &lt;&lt; endl;
-			continue;
-		}
-		if (num &amp;&amp; ch)cout &lt;&lt; &quot;Your password is wan mei.&quot; &lt;&lt; endl;
-		if (!num)cout &lt;&lt; &quot;Your password needs shu zi.&quot; &lt;&lt; endl;
-		if(!ch){//如果既没有字母也没数字怎么办,都输出？
-			cout &lt;&lt; &quot;Your password needs zi mu.&quot; &lt;&lt; endl;
-		}
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    int n;
+    string pw;
+    getline(cin,pw);
+    sscanf(pw.c_str(), &quot;%d&quot;, &amp;n);
+    for (int i = 0; i &lt; n; i++){
+        getline(cin,pw);//小心空格，空格也算字符，但是这里空格用cin的话就不会输入
+        if (pw.length() &lt; 6){
+            cout &lt;&lt; &quot;Your password is tai duan le.&quot; &lt;&lt; endl;
+            continue;
+        }
+        int ch = 0, num = 0, illegal = 0;
+        for (int j = 0; j &lt; pw.length(); j++){
+            if (pw[j] &gt;= &#39;0&#39;&amp;&amp;pw[j] &lt;= &#39;9&#39;)num = 1;
+            else if (pw[j] == &#39;.&#39;)continue;
+            else if ((pw[j] &gt;= &#39;a&#39;&amp;&amp;pw[j] &lt;= &#39;z&#39; )|| (pw[j] &gt;= &#39;A&#39;&amp;&amp;pw[j] &lt;= &#39;Z&#39;))ch = 1;
+            else{
+                illegal = 1;
+                break;
+            }
+        }
+        if (illegal){
+            cout &lt;&lt; &quot;Your password is tai luan le.&quot; &lt;&lt; endl;
+            continue;
+        }
+        if (num &amp;&amp; ch)cout &lt;&lt; &quot;Your password is wan mei.&quot; &lt;&lt; endl;
+        if (!num)cout &lt;&lt; &quot;Your password needs shu zi.&quot; &lt;&lt; endl;
+        if(!ch){//如果既没有字母也没数字怎么办,都输出？
+            cout &lt;&lt; &quot;Your password needs zi mu.&quot; &lt;&lt; endl;
+        }
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>要小心用户输入带空格的字符串，用cin的话会分开读。</p>
+</code></pre><p>要小心用户输入带空格的字符串，用cin的话会分开读。</p>
 <hr>
-<p>##1084 外观数列 （20 分）
-外观数列是指具有以下特点的整数序列：
-d, d1, d111, d113, d11231, d112213111, ...
-它从不等于 1 的数字 d 开始，序列的第 n+1 项是对第 n 项的描述。比如第 2 项表示第 1 项有 1 个 d，所以就是 d1；第 2 项是 1 个 d（对应 d1）和 1 个 1（对应 11），所以第 3 项就是 d111。又比如第 4 项是 d113，其描述就是 1 个 d，2 个 1，1 个 3，所以下一项就是 d11231。当然这个定义对 d = 1 也成立。本题要求你推算任意给定数字 d 的外观数列的第 N 项。</p>
-<p>输入格式：
-输入第一行给出 [0,9] 范围内的一个整数 d、以及一个正整数 N（≤ 40），用空格分隔。</p>
-<p>输出格式：
-在一行中给出数字 d 的外观数列的第 N 项。</p>
+<h2 id="1084-外观数列-（20-分）"><a href="#1084-外观数列-（20-分）" class="headerlink" title="1084 外观数列 （20 分）"></a>1084 外观数列 （20 分）</h2><p>外观数列是指具有以下特点的整数序列：<br>d, d1, d111, d113, d11231, d112213111, …<br>它从不等于 1 的数字 d 开始，序列的第 n+1 项是对第 n 项的描述。比如第 2 项表示第 1 项有 1 个 d，所以就是 d1；第 2 项是 1 个 d（对应 d1）和 1 个 1（对应 11），所以第 3 项就是 d111。又比如第 4 项是 d113，其描述就是 1 个 d，2 个 1，1 个 3，所以下一项就是 d11231。当然这个定义对 d = 1 也成立。本题要求你推算任意给定数字 d 的外观数列的第 N 项。</p>
+<p>输入格式：<br>输入第一行给出 [0,9] 范围内的一个整数 d、以及一个正整数 N（≤ 40），用空格分隔。</p>
+<p>输出格式：<br>在一行中给出数字 d 的外观数列的第 N 项。</p>
 <p>输入样例：</p>
 <blockquote>
 <p>1 8</p>
@@ -1068,33 +922,28 @@ using namespace std;
 #include&lt;map&gt;
 #include&lt;vector&gt;
 int main(){//第一题20min,第二题5min,第三题15mim
-	int n, num;
-	cin &gt;&gt; n&gt;&gt;num;
-	string a = to_string(n);
-	for (int i = 1; i &lt; num;i++){
-		string b;
-		for (int j = 0; j &lt; a.length(); j++){//重写一定比在原来的上面加加减减快
-			int pos = j;
-			while (a[j] == a[++pos]);
-			int length = pos - j ;
-			b += a[j] + to_string(length);
-			j = pos - 1;
-		}
-		a = b;
-		if(i==num-1)cout &lt;&lt; b &lt;&lt; endl;
-	}
-	if (num == 1)cout &lt;&lt; n &lt;&lt; endl;
-	system(&quot;pause&quot;);
-	return 0;
+    int n, num;
+    cin &gt;&gt; n&gt;&gt;num;
+    string a = to_string(n);
+    for (int i = 1; i &lt; num;i++){
+        string b;
+        for (int j = 0; j &lt; a.length(); j++){//重写一定比在原来的上面加加减减快
+            int pos = j;
+            while (a[j] == a[++pos]);
+            int length = pos - j ;
+            b += a[j] + to_string(length);
+            j = pos - 1;
+        }
+        a = b;
+        if(i==num-1)cout &lt;&lt; b &lt;&lt; endl;
+    }
+    if (num == 1)cout &lt;&lt; n &lt;&lt; endl;
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<h2>以后字符串要做什么erase又insert的优先考虑重写一遍字符串。</h2>
-<p>##1086 就不告诉你 （15 分）
-做作业的时候，邻座的小盆友问你：“五乘以七等于多少？”你应该不失礼貌地围笑着告诉他：“五十三。”本题就要求你，对任何一对给定的正整数，倒着输出它们的乘积。</p>
-<p>输入格式：
-输入在第一行给出两个不超过 1000 的正整数 A 和 B，其间以空格分隔。</p>
-<p>输出格式：
-在一行中倒着输出 A 和 B 的乘积。</p>
+</code></pre><h2 id="以后字符串要做什么erase又insert的优先考虑重写一遍字符串。"><a href="#以后字符串要做什么erase又insert的优先考虑重写一遍字符串。" class="headerlink" title="以后字符串要做什么erase又insert的优先考虑重写一遍字符串。"></a>以后字符串要做什么erase又insert的优先考虑重写一遍字符串。</h2><h2 id="1086-就不告诉你-（15-分）"><a href="#1086-就不告诉你-（15-分）" class="headerlink" title="1086 就不告诉你 （15 分）"></a>1086 就不告诉你 （15 分）</h2><p>做作业的时候，邻座的小盆友问你：“五乘以七等于多少？”你应该不失礼貌地围笑着告诉他：“五十三。”本题就要求你，对任何一对给定的正整数，倒着输出它们的乘积。</p>
+<p>输入格式：<br>输入在第一行给出两个不超过 1000 的正整数 A 和 B，其间以空格分隔。</p>
+<p>输出格式：<br>在一行中倒着输出 A 和 B 的乘积。</p>
 <p>输入样例：</p>
 <blockquote>
 <p>5 7</p>
@@ -1113,70 +962,37 @@ int main(){//第一题20min,第二题5min,第三题15mim
 using namespace std;
 #pragma warning(disable:4996)
 int main(){
-	int a, b, flag=1;
-	cin &gt;&gt; a &gt;&gt; b;
-	string c = to_string(a*b);
-	for (int i = c.length() - 1; i &gt;= 0; i--){
-		if (flag&amp;&amp;c[i] == '0')continue;
-		else {
-			cout &lt;&lt; c[i];
-			flag = 0;
-		}
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    int a, b, flag=1;
+    cin &gt;&gt; a &gt;&gt; b;
+    string c = to_string(a*b);
+    for (int i = c.length() - 1; i &gt;= 0; i--){
+        if (flag&amp;&amp;c[i] == &#39;0&#39;)continue;
+        else {
+            cout &lt;&lt; c[i];
+            flag = 0;
+        }
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<hr>
-<h2>#排序</h2>
-<p>##知识要点</p>
-<ul>
+</code></pre><hr>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><hr>
+<h2 id="知识要点-1"><a href="#知识要点-1" class="headerlink" title="知识要点"></a>知识要点</h2><ul>
 <li>可以直接sort,也可以用分数做下标，记录每个分数的人数算出排名。</li>
 <li>cmp函数字符串相等的时候，char数组的要用strcmp!!!要么就用string</li>
 <li>分类信息可以都放在结构体里。</li>
 </ul>
 <hr>
-<p>##1015 德才论 （25 分）
-宋代史学家司马光在《资治通鉴》中有一段著名的“德才论”：“是故才德全尽谓之圣人，才德兼亡谓之愚人，德胜才谓之君子，才胜德谓之小人。凡取人之术，苟不得圣人，君子而与之，与其得小人，不若得愚人。”
-现给出一批考生的德才分数，请根据司马光的理论给出录取排名。</p>
-<p>输入格式：
-输入第一行给出 3 个正整数，分别为：N（≤10^​5），即考生总数；L（≥60），为录取最低分数线，即德分和才分均不低于 L 的考生才有资格被考虑录取；H（&lt;100），为优先录取线——德分和才分均不低于此线的被定义为“才德全尽”，此类考生按德才总分从高到低排序；才分不到但德分到线的一类考生属于“德胜才”，也按总分排序，但排在第一类考生之后；德才分均低于 H，但是德分不低于才分的考生属于“才德兼亡”但尚有“德胜才”者，按总分排序，但排在第二类考生之后；其他达到最低线 L 的考生也按总分排序，但排在第三类考生之后。
-随后 N 行，每行给出一位考生的信息，包括：准考证号 德分 才分，其中准考证号为 8 位整数，德才分为区间 [0, 100] 内的整数。数字间以空格分隔。</p>
-<p>输出格式：
-输出第一行首先给出达到最低分数线的考生人数 M，随后 M 行，每行按照输入格式输出一位考生的信息，考生按输入中说明的规则从高到低排序。当某类考生中有多人总分相同时，按其德分降序排列；若德分也并列，则按准考证号的升序输出。</p>
+<h2 id="1015-德才论-（25-分）"><a href="#1015-德才论-（25-分）" class="headerlink" title="1015 德才论 （25 分）"></a>1015 德才论 （25 分）</h2><p>宋代史学家司马光在《资治通鉴》中有一段著名的“德才论”：“是故才德全尽谓之圣人，才德兼亡谓之愚人，德胜才谓之君子，才胜德谓之小人。凡取人之术，苟不得圣人，君子而与之，与其得小人，不若得愚人。”<br>现给出一批考生的德才分数，请根据司马光的理论给出录取排名。</p>
+<p>输入格式：<br>输入第一行给出 3 个正整数，分别为：N（≤10^​5），即考生总数；L（≥60），为录取最低分数线，即德分和才分均不低于 L 的考生才有资格被考虑录取；H（&lt;100），为优先录取线——德分和才分均不低于此线的被定义为“才德全尽”，此类考生按德才总分从高到低排序；才分不到但德分到线的一类考生属于“德胜才”，也按总分排序，但排在第一类考生之后；德才分均低于 H，但是德分不低于才分的考生属于“才德兼亡”但尚有“德胜才”者，按总分排序，但排在第二类考生之后；其他达到最低线 L 的考生也按总分排序，但排在第三类考生之后。<br>随后 N 行，每行给出一位考生的信息，包括：准考证号 德分 才分，其中准考证号为 8 位整数，德才分为区间 [0, 100] 内的整数。数字间以空格分隔。</p>
+<p>输出格式：<br>输出第一行首先给出达到最低分数线的考生人数 M，随后 M 行，每行按照输入格式输出一位考生的信息，考生按输入中说明的规则从高到低排序。当某类考生中有多人总分相同时，按其德分降序排列；若德分也并列，则按准考证号的升序输出。</p>
 <p>输入样例：</p>
 <blockquote>
-<p>14 60 80
-10000001 64 90
-10000002 90 60
-10000011 85 80
-10000003 85 80
-10000004 80 85
-10000005 82 77
-10000006 83 76
-10000007 90 78
-10000008 75 79
-10000009 59 90
-10000010 88 45
-10000012 80 100
-10000013 90 99
-10000014 66 60</p>
+<p>14 60 80<br>10000001 64 90<br>10000002 90 60<br>10000011 85 80<br>10000003 85 80<br>10000004 80 85<br>10000005 82 77<br>10000006 83 76<br>10000007 90 78<br>10000008 75 79<br>10000009 59 90<br>10000010 88 45<br>10000012 80 100<br>10000013 90 99<br>10000014 66 60</p>
 </blockquote>
 <p>输出样例：</p>
 <blockquote>
-<p>12
-10000013 90 99
-10000012 80 100
-10000003 85 80
-10000011 85 80
-10000004 80 85
-10000007 90 78
-10000006 83 76
-10000005 82 77
-10000002 90 60
-10000014 66 60
-10000008 75 79
-10000001 64 90</p>
+<p>12<br>10000013 90 99<br>10000012 80 100<br>10000003 85 80<br>10000011 85 80<br>10000004 80 85<br>10000007 90 78<br>10000006 83 76<br>10000005 82 77<br>10000002 90 60<br>10000014 66 60<br>10000008 75 79<br>10000001 64 90</p>
 </blockquote>
 <pre><code>#include&lt;cstdio&gt;
 #include&lt;cstdlib&gt;
@@ -1185,75 +1001,52 @@ int main(){
 using namespace std;
 #pragma warning(disable:4996)
 struct stu{
-	int id, dgrade, cgrade, tgrade, classno;
+    int id, dgrade, cgrade, tgrade, classno;
 };
 bool cmp(stu a, stu b){
-	if (a.classno != b.classno)return a.classno &lt; b.classno;
-	else if(a.tgrade!=b.tgrade)return a.tgrade&gt;b.tgrade;
-	else if(a.dgrade != b.dgrade)return a.dgrade&gt;b.dgrade;
-	else return a.id &lt; b.id;
+    if (a.classno != b.classno)return a.classno &lt; b.classno;
+    else if(a.tgrade!=b.tgrade)return a.tgrade&gt;b.tgrade;
+    else if(a.dgrade != b.dgrade)return a.dgrade&gt;b.dgrade;
+    else return a.id &lt; b.id;
 }
 int main(){
-	int N, L, H, id, dgrade, cgrade;
-	scanf(&quot;%d %d %d&quot;,&amp;N,&amp;L,&amp;H);
-	vector&lt;stu&gt;list;
-	stu temp;
-	for (int i = 0; i &lt; N; i++){
-		scanf(&quot;%d %d %d&quot;, &amp;id, &amp;dgrade, &amp;cgrade);
-		if (dgrade &lt; L||cgrade &lt; L)continue;
-		else{
-			temp.id = id;
-			temp.dgrade = dgrade;
-			temp.cgrade = cgrade;
-			temp.tgrade = dgrade + cgrade;
-		}
-		if (dgrade &gt;= H &amp;&amp; cgrade &gt;= H)temp.classno = 1;
-		else if (dgrade &gt;= H)temp.classno = 2;
-		else if (dgrade &gt;= cgrade)temp.classno = 3;
-		else temp.classno = 4;
-		list.push_back(temp);
-	}
-	sort(list.begin(), list.end(), cmp);
-	printf(&quot;%d\n&quot;, list.size());
-	for (int i = 0; i &lt; list.size(); i++){
-		printf(&quot;%d %d %d\n&quot;, list[i].id, list[i].dgrade, list[i].cgrade);
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    int N, L, H, id, dgrade, cgrade;
+    scanf(&quot;%d %d %d&quot;,&amp;N,&amp;L,&amp;H);
+    vector&lt;stu&gt;list;
+    stu temp;
+    for (int i = 0; i &lt; N; i++){
+        scanf(&quot;%d %d %d&quot;, &amp;id, &amp;dgrade, &amp;cgrade);
+        if (dgrade &lt; L||cgrade &lt; L)continue;
+        else{
+            temp.id = id;
+            temp.dgrade = dgrade;
+            temp.cgrade = cgrade;
+            temp.tgrade = dgrade + cgrade;
+        }
+        if (dgrade &gt;= H &amp;&amp; cgrade &gt;= H)temp.classno = 1;
+        else if (dgrade &gt;= H)temp.classno = 2;
+        else if (dgrade &gt;= cgrade)temp.classno = 3;
+        else temp.classno = 4;
+        list.push_back(temp);
+    }
+    sort(list.begin(), list.end(), cmp);
+    printf(&quot;%d\n&quot;, list.size());
+    for (int i = 0; i &lt; list.size(); i++){
+        printf(&quot;%d %d %d\n&quot;, list[i].id, list[i].dgrade, list[i].cgrade);
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<hr>
-<p>##1055 集体照 （25 分）
-拍集体照时队形很重要，这里对给定的 N 个人 K 排的队形设计排队规则如下：
-每排人数为 N/K（向下取整），多出来的人全部站在最后一排；
-后排所有人的个子都不比前排任何人矮；
-每排中最高者站中间（中间位置为 m/2+1，其中 m 为该排人数，除法向下取整）；
-每排其他人以中间人为轴，按身高非增序，先右后左交替入队站在中间人的两侧（例如5人身高为190、188、186、175、170，则队形为175、188、190、186、170。这里假设你面对拍照者，所以你的左边是中间人的右边）；
-若多人身高相同，则按名字的字典序升序排列。这里保证无重名。
-现给定一组拍照人，请编写程序输出他们的队形。
-输入格式：
-每个输入包含 1 个测试用例。每个测试用例第 1 行给出两个正整数 N（≤10^4，总人数）和 K（≤10，总排数）。随后 N 行，每行给出一个人的名字（不包含空格、长度不超过 8 个英文字母）和身高（[30, 300] 区间内的整数）。</p>
-<p>输出格式：
-输出拍照的队形。即K排人名，其间以空格分隔，行末不得有多余空格。注意：假设你面对拍照者，后排的人输出在上方，前排输出在下方。</p>
+</code></pre><hr>
+<h2 id="1055-集体照-（25-分）"><a href="#1055-集体照-（25-分）" class="headerlink" title="1055 集体照 （25 分）"></a>1055 集体照 （25 分）</h2><p>拍集体照时队形很重要，这里对给定的 N 个人 K 排的队形设计排队规则如下：<br>每排人数为 N/K（向下取整），多出来的人全部站在最后一排；<br>后排所有人的个子都不比前排任何人矮；<br>每排中最高者站中间（中间位置为 m/2+1，其中 m 为该排人数，除法向下取整）；<br>每排其他人以中间人为轴，按身高非增序，先右后左交替入队站在中间人的两侧（例如5人身高为190、188、186、175、170，则队形为175、188、190、186、170。这里假设你面对拍照者，所以你的左边是中间人的右边）；<br>若多人身高相同，则按名字的字典序升序排列。这里保证无重名。<br>现给定一组拍照人，请编写程序输出他们的队形。<br>输入格式：<br>每个输入包含 1 个测试用例。每个测试用例第 1 行给出两个正整数 N（≤10^4，总人数）和 K（≤10，总排数）。随后 N 行，每行给出一个人的名字（不包含空格、长度不超过 8 个英文字母）和身高（[30, 300] 区间内的整数）。</p>
+<p>输出格式：<br>输出拍照的队形。即K排人名，其间以空格分隔，行末不得有多余空格。注意：假设你面对拍照者，后排的人输出在上方，前排输出在下方。</p>
 <p>输入样例：</p>
 <blockquote>
-<p>10 3
-Tom 188
-Mike 170
-Eva 168
-Tim 160
-Joe 190
-Ann 168
-Bob 175
-Nick 186
-Amy 160
-John 159</p>
+<p>10 3<br>Tom 188<br>Mike 170<br>Eva 168<br>Tim 160<br>Joe 190<br>Ann 168<br>Bob 175<br>Nick 186<br>Amy 160<br>John 159</p>
 </blockquote>
 <p>输出样例：</p>
 <blockquote>
-<p>Bob Tom Joe Nick
-Ann Mike Eva
-Tim Amy John</p>
+<p>Bob Tom Joe Nick<br>Ann Mike Eva<br>Tim Amy John</p>
 </blockquote>
 <pre><code>#include&lt;cstdio&gt;
 #include&lt;string.h&gt;
@@ -1299,7 +1092,6 @@ int main(){
   return 0;
 }
 </code></pre>
-
     </article>
     <!-- license  -->
     
@@ -1488,7 +1280,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">C语言风格的字符串 &lt; string.h &gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">初始化输入输出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">C++风格的字符串 &lt; string &gt;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">以后字符串要做什么erase又insert的优先考虑重写一遍字符串。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">#排序</span></a>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#字符串处理"><span class="toc-number">1.</span> <span class="toc-text">字符串处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识要点"><span class="toc-number">1.1.</span> <span class="toc-text">知识要点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C语言风格的字符串-lt-string-h-gt"><span class="toc-number">1.1.1.</span> <span class="toc-text">C语言风格的字符串 &lt; string.h &gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化输入输出"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">初始化输入输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常规操作"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">常规操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-风格的字符串-lt-string-gt"><span class="toc-number">1.1.2.</span> <span class="toc-text">C++风格的字符串 &lt; string &gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化输入输出-1"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">初始化输入输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#访问元素"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">访问元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常规操作-1"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">常规操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#转化"><span class="toc-number">1.1.3.</span> <span class="toc-text">转化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#include"><span class="toc-number">2.</span> <span class="toc-text">include</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#提心吊胆"><span class="toc-number">2.0.1.</span> <span class="toc-text">提心吊胆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1002-写出这个数-（20-分）"><span class="toc-number">2.1.</span> <span class="toc-text">1002 写出这个数 （20 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1006-换个格式输出整数-（15-分）"><span class="toc-number">2.2.</span> <span class="toc-text">1006 换个格式输出整数 （15 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1009-说反话-（20-分）"><span class="toc-number">2.3.</span> <span class="toc-text">1009 说反话 （20 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1014-福尔摩斯的约会-（20-分）"><span class="toc-number">2.4.</span> <span class="toc-text">1014 福尔摩斯的约会 （20 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1021-个位数统计-（15-分）"><span class="toc-number">2.5.</span> <span class="toc-text">1021 个位数统计 （15 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1031-查验身份证-（15-分）"><span class="toc-number">2.6.</span> <span class="toc-text">1031 查验身份证 （15 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1048-数字加密-（20-分）"><span class="toc-number">2.7.</span> <span class="toc-text">1048 数字加密 （20 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1054-求平均值-（20-分）"><span class="toc-number">2.8.</span> <span class="toc-text">1054 求平均值 （20 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1081-检查密码-（15-分）"><span class="toc-number">2.9.</span> <span class="toc-text">1081 检查密码 （15 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1084-外观数列-（20-分）"><span class="toc-number">2.10.</span> <span class="toc-text">1084 外观数列 （20 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#以后字符串要做什么erase又insert的优先考虑重写一遍字符串。"><span class="toc-number">2.11.</span> <span class="toc-text">以后字符串要做什么erase又insert的优先考虑重写一遍字符串。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1086-就不告诉你-（15-分）"><span class="toc-number">2.12.</span> <span class="toc-text">1086 就不告诉你 （15 分）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#排序"><span class="toc-number">3.</span> <span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识要点-1"><span class="toc-number">3.1.</span> <span class="toc-text">知识要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1015-德才论-（25-分）"><span class="toc-number">3.2.</span> <span class="toc-text">1015 德才论 （25 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1055-集体照-（25-分）"><span class="toc-number">3.3.</span> <span class="toc-text">1055 集体照 （25 分）</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1501,6 +1293,50 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1988,11 +1824,11 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
+    
         <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
     
         <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
-    
-        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
@@ -2008,21 +1844,21 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="图形学"><span class="iconfont-archer">&#xe606;</span>图形学</span>
     
-        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
-    
-        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
-    
         <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
     
-        <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
+        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
     
         <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
     
         <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
     
+        <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
+    
         <span class="sidebar-tag-name" data-tags="感悟"><span class="iconfont-archer">&#xe606;</span>感悟</span>
     
-        <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
+        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
+    
+        <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

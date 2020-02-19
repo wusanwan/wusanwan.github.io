@@ -289,7 +289,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.9k</span>阅读时长: <span class="post-count reading-time">11 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.9k</span>阅读时长: <span class="post-count reading-time">10 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -419,47 +419,28 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>&lt;div align='center'&gt;
-&lt;img height=&quot;290px&quot; src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/spongebob.gif&quot;&gt;&lt;br&gt;
-&lt;audio id=&quot;audio&quot; controls=&quot;&quot; preload=&quot;none&quot;&gt;
-&lt;source id=&quot;mp3&quot; src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/BGM0.mp3&quot;&gt;
-&lt;/audio&gt;
-&lt;/div&gt;
-其实是图形学大作业，场景是另外一个同学写的，就只放了必要的部分。
-我觉得我有点神经病，明明网上那么多obj模型非要自己用openGL画一个土味海绵宝宝……
-##背景🎃
-派大星把门锁死以后，海绵宝宝开始疯狂……
-##功能说明📃
-###键盘💬</p>
-<blockquote>
+        <p><div align="center">
+  <img height="290px" src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/spongebob.gif"><br>
+  <audio id="audio" controls preload="none">
+  <source id="mp3" src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/BGM0.mp3">
+</audio>
+</div><br>其实是图形学大作业，场景是另外一个同学写的，就只放了必要的部分。<br>我觉得我有点神经病，明明网上那么多obj模型非要自己用openGL画一个土味海绵宝宝……</p>
+<h2 id="背景🎃"><a href="#背景🎃" class="headerlink" title="背景🎃"></a>背景🎃</h2><p>派大星把门锁死以后，海绵宝宝开始疯狂……</p>
+<h2 id="功能说明📃"><a href="#功能说明📃" class="headerlink" title="功能说明📃"></a>功能说明📃</h2><h3 id="键盘💬"><a href="#键盘💬" class="headerlink" title="键盘💬"></a>键盘💬</h3><blockquote>
 <p>不区分大小写</p>
-</blockquote>
 <ul>
-<li>
-<p>WASD 到处暴走！</p>
-</li>
-<li>
-<p>J 跳跃</p>
-</li>
-<li>
-<p>长按 P 蓄力 + J 跳跃 = 愤怒地一跃</p>
-</li>
-<li>
-<p>F 切换表情</p>
-</li>
-<li>
-<p>ESC 退出
-###其他💥</p>
-</li>
-<li>
-<p>在灯下愤怒一跃撞击灯即可实现开关灯
-&lt;div align=&quot;center&quot;&gt;
-&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/SpongeBob.png&quot;&gt;&lt;br&gt;
+<li>WASD 到处暴走！</li>
+<li>J 跳跃</li>
+<li>长按 P 蓄力 + J 跳跃 = 愤怒地一跃</li>
+<li>F 切换表情</li>
+<li>ESC 退出<h3 id="其他💥"><a href="#其他💥" class="headerlink" title="其他💥"></a>其他💥</h3></li>
+<li>在灯下愤怒一跃撞击灯即可实现开关灯<br><div align="center">
+<img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/SpongeBob.png"><br>
 沙雕海绵宝宝
-&lt;/div&gt;
-##代码📄
-github地址：</p>
-<p>#define _USE_MATH_DEFINES
+</div><h2 id="代码📄"><a href="#代码📄" class="headerlink" title="代码📄"></a>代码📄</h2>github地址：</li>
+</ul>
+</blockquote>
+<pre><code>#define _USE_MATH_DEFINES
 #include &lt;windows.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;stdio.h&gt;
@@ -470,414 +451,422 @@ github地址：</p>
 #include&lt;gl/GL.h&gt;
 #include&lt;vector&gt;
 #include&lt;iostream&gt;
-#include&quot;SOIL.h&quot;</p>
-<p>using namespace std;
+#include&quot;SOIL.h&quot;
+
+using namespace std;
 const GLdouble FRUSTDIM = 100.0f;
 GLfloat door = 0.0;
 GLfloat sticker = 45.0;
 GLfloat screen = 0.0;
-GLfloat arm = 10.0;</p>
-<p>//spongebob location
+GLfloat arm = 10.0;
+
+//spongebob location
 GLfloat x0 = -60.0;
 GLfloat y00 = -30.0;
-GLfloat z0 = -30.0;</p>
-<p>//walk status
+GLfloat z0 = -30.0;
+
+//walk status
 GLint orient = 0; //0是面朝屏幕，顺时针0-3
-GLfloat angle[4] = { 0, 90, 180, 270 };</p>
-<p>//face
-GLint face_type = 0;</p>
-<p>int option = 0;
+GLfloat angle[4] = { 0, 90, 180, 270 };
+
+//face
+GLint face_type = 0;
+
+int option = 0;
 int power = 20;
 bool light = true;
 float l1 = 0.25;
-float ll = 1.0;</p>
-<p>void init(void)
+float ll = 1.0;
+
+void init(void)
 {
-	glEnable(GL_NORMALIZE);
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
-	glEnable(GL_LIGHT1);
-	glFrontFace(GL_CCW);
-	glEnable(GL_COLOR_MATERIAL);
-}</p>
-<p>void music()
+    glEnable(GL_NORMALIZE);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    glEnable(GL_LIGHT1);
+    glFrontFace(GL_CCW);
+    glEnable(GL_COLOR_MATERIAL);
+}
+
+void music()
 {
-	MCI_OPEN_PARMS op; //播放背景音乐
-	op.dwCallback = NULL;
-	op.lpstrAlias = NULL;
-	op.lpstrDeviceType = &quot;MPEGAudio&quot;;
-	op.lpstrElementName = &quot;BGM0.mp3&quot;;
-	op.wDeviceID = NULL;
-	UINT rs;
-	rs = mciSendCommand(NULL, MCI_OPEN, MCI_OPEN_ELEMENT, (DWORD)&amp;op);
-	if (rs == 0)
-	{
-		MCI_PLAY_PARMS pp;
-		pp.dwCallback = NULL;
-		pp.dwFrom = 0;
-		mciSendCommand(op.wDeviceID, MCI_PLAY, MCI_NOTIFY, (DWORD)&amp;pp);
-	}
-}</p>
-<p>int n = 80;     //这里的n表示用多边形绘制圆的精度，可以考虑增大精度
+    MCI_OPEN_PARMS op; //播放背景音乐
+    op.dwCallback = NULL;
+    op.lpstrAlias = NULL;
+    op.lpstrDeviceType = &quot;MPEGAudio&quot;;
+    op.lpstrElementName = &quot;BGM0.mp3&quot;;
+    op.wDeviceID = NULL;
+    UINT rs;
+    rs = mciSendCommand(NULL, MCI_OPEN, MCI_OPEN_ELEMENT, (DWORD)&amp;op);
+    if (rs == 0)
+    {
+        MCI_PLAY_PARMS pp;
+        pp.dwCallback = NULL;
+        pp.dwFrom = 0;
+        mciSendCommand(op.wDeviceID, MCI_PLAY, MCI_NOTIFY, (DWORD)&amp;pp);
+    }
+}
+
+int n = 80;     //这里的n表示用多边形绘制圆的精度，可以考虑增大精度
 void draw_circle(float R){
-	glBegin(GL_POLYGON);
-	for (int i = 0; i &lt; n; i++)     //通过数学计算来画多边形的点
-	{
-		glVertex2f(R<em>cos(2 * M_PI * i / n), R</em>sin(2 * M_PI*i / n));
-	}
-	glEnd();
-	glFlush();
+    glBegin(GL_POLYGON);
+    for (int i = 0; i &lt; n; i++)     //通过数学计算来画多边形的点
+    {
+        glVertex2f(R*cos(2 * M_PI * i / n), R*sin(2 * M_PI*i / n));
+    }
+    glEnd();
+    glFlush();
 }
 void draw_eye(){
-	glPushMatrix();
-	//眼睫毛
-	glTranslated(0.0, 3.0, 0.0);
-	glColor3f(0.0, 0.0, 0.0);
-	glLineWidth(1);
-	glBegin(GL_LINES);
-	glVertex2f(-0.5f, 0.0f);
-	glVertex2f(-2.3f, 1.8f);
-	glVertex2f(0.0f, 0.0f);
-	glVertex2f(0.2f, 2.2f);
-	glVertex2f(0.5f, 0.0f);
-	glVertex2f(1.8f, 1.9f);
-	glEnd();
-	glPopMatrix();
-	if (face_type == 0){//正常眼
-		//眼白
-		glColor3f(1.0, 1.0, 1.0);
-		draw_circle(3.8);
-		//虹膜
-		glColor3f(float(104 / 256.0), float(179 / 256.0), float(210 / 256.0));
-		glTranslatef(0.0, 0.3, 0.1);
-		draw_circle(2.0);
-		//眼珠
-		glColor3f(0.0, 0.0, 0.0);
-		glTranslatef(0.0, 0.3, 0.1);
-		draw_circle(1.0);
-	}
-	else if (face_type == 1){//星星眼
-		//眼白
-		glColor3f(1.0, 1.0, 1.0);
-		draw_circle(3.8);
-		//虹膜
-		glColor3f(float(104 / 256.0), float(179 / 256.0), float(210 / 256.0));
-		glTranslatef(0.0, 0.3, 0.1);
-		draw_circle(3.5);
-		//眼珠
-		glColor3f(0.0, 0.0, 0.0);
-		glTranslatef(0.0, 0.5, 0.1);
-		draw_circle(2.5);
-		//里面的光点
-		glColor3f(1.0, 1.0, 1.0);
-		glTranslatef(0.0, 0.5, 0.1);
-		draw_circle(1.0);
-		glTranslatef(-0.3, -2.0, 0.0);
-		draw_circle(0.6);
-		glTranslatef(1.5, -0.2, 0.0);
-		draw_circle(0.6);
-		glTranslatef(-1.2, 1.7, -0.1);//回到原状态
-	}</p>
-<p>}
+    glPushMatrix();
+    //眼睫毛
+    glTranslated(0.0, 3.0, 0.0);
+    glColor3f(0.0, 0.0, 0.0);
+    glLineWidth(1);
+    glBegin(GL_LINES);
+    glVertex2f(-0.5f, 0.0f);
+    glVertex2f(-2.3f, 1.8f);
+    glVertex2f(0.0f, 0.0f);
+    glVertex2f(0.2f, 2.2f);
+    glVertex2f(0.5f, 0.0f);
+    glVertex2f(1.8f, 1.9f);
+    glEnd();
+    glPopMatrix();
+    if (face_type == 0){//正常眼
+        //眼白
+        glColor3f(1.0, 1.0, 1.0);
+        draw_circle(3.8);
+        //虹膜
+        glColor3f(float(104 / 256.0), float(179 / 256.0), float(210 / 256.0));
+        glTranslatef(0.0, 0.3, 0.1);
+        draw_circle(2.0);
+        //眼珠
+        glColor3f(0.0, 0.0, 0.0);
+        glTranslatef(0.0, 0.3, 0.1);
+        draw_circle(1.0);
+    }
+    else if (face_type == 1){//星星眼
+        //眼白
+        glColor3f(1.0, 1.0, 1.0);
+        draw_circle(3.8);
+        //虹膜
+        glColor3f(float(104 / 256.0), float(179 / 256.0), float(210 / 256.0));
+        glTranslatef(0.0, 0.3, 0.1);
+        draw_circle(3.5);
+        //眼珠
+        glColor3f(0.0, 0.0, 0.0);
+        glTranslatef(0.0, 0.5, 0.1);
+        draw_circle(2.5);
+        //里面的光点
+        glColor3f(1.0, 1.0, 1.0);
+        glTranslatef(0.0, 0.5, 0.1);
+        draw_circle(1.0);
+        glTranslatef(-0.3, -2.0, 0.0);
+        draw_circle(0.6);
+        glTranslatef(1.5, -0.2, 0.0);
+        draw_circle(0.6);
+        glTranslatef(-1.2, 1.7, -0.1);//回到原状态
+    }
+
+}
 void display()
 {
-	music();
-	glPushMatrix();
-	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);</p>
-<pre><code>GLfloat lightpos[] = { 0.f, 100.f, -450.f, ll };
-GLfloat light0_mat1[] = { 0.2, 0.2, 0.2, 0.3f };
-GLfloat light0_diff[] = { 1.0, 1.0, 1.0, 0.3 };
-GLfloat lightpos2[] = { 0.0, 0.0, 0.0, ll };
-GLfloat light1_mat1[] = { 0.1, 0.1, 0.1, 0.3 };
-GLfloat light1_diff[] = { 0.1, 0.1, 0.1, 0.3 };
-glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
-glLightfv(GL_LIGHT0, GL_AMBIENT, light0_mat1);
-glLightfv(GL_LIGHT0, GL_DIFFUSE, light0_diff);
-glLightfv(GL_LIGHT1, GL_POSITION, lightpos2);
-glLightfv(GL_LIGHT1, GL_AMBIENT, light1_mat1);
-glLightfv(GL_LIGHT1, GL_DIFFUSE, light1_diff);
+    music();
+    glPushMatrix();
+    glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
-GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
-GLfloat mat_ambient[] = { 0.2, 0.2, 0.2, 1.0 };
-GLfloat mat_diffuse[] = { 0.9, 0.9, 0.9, 1.0 };
-GLfloat mat_specular[] = { 0.3, 0.3, 0.3, 1.0 };
-GLfloat high_shininess[] = { 20.0 };
-GLfloat high_mat[] = { l1, l1, l1, 1.0 };
+    GLfloat lightpos[] = { 0.f, 100.f, -450.f, ll };
+    GLfloat light0_mat1[] = { 0.2, 0.2, 0.2, 0.3f };
+    GLfloat light0_diff[] = { 1.0, 1.0, 1.0, 0.3 };
+    GLfloat lightpos2[] = { 0.0, 0.0, 0.0, ll };
+    GLfloat light1_mat1[] = { 0.1, 0.1, 0.1, 0.3 };
+    GLfloat light1_diff[] = { 0.1, 0.1, 0.1, 0.3 };
+    glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
+    glLightfv(GL_LIGHT0, GL_AMBIENT, light0_mat1);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, light0_diff);
+    glLightfv(GL_LIGHT1, GL_POSITION, lightpos2);
+    glLightfv(GL_LIGHT1, GL_AMBIENT, light1_mat1);
+    glLightfv(GL_LIGHT1, GL_DIFFUSE, light1_diff);
 
-glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
-glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
-glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
-glMaterialfv(GL_FRONT, GL_EMISSION, high_mat);
+    GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
+    GLfloat mat_ambient[] = { 0.2, 0.2, 0.2, 1.0 };
+    GLfloat mat_diffuse[] = { 0.9, 0.9, 0.9, 1.0 };
+    GLfloat mat_specular[] = { 0.3, 0.3, 0.3, 1.0 };
+    GLfloat high_shininess[] = { 20.0 };
+    GLfloat high_mat[] = { l1, l1, l1, 1.0 };
 
-glTranslatef(0.0, 0.0, -300.0);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
+    glMaterialfv(GL_FRONT, GL_EMISSION, high_mat);
 
-// SpongeBob
-glPushMatrix();
-glTranslatef(x0, y00, z0);
-glRotatef(angle[orient], 0.0, 1.0, 0.0);
-// arms
-glColor3f(float(249 / 256.0), float(236 / 256.0), float(59 / 256.0));
-glPushMatrix();
-glTranslatef(-11, -32.0, 0.0);
-glRotatef(arm, 0.0, 0.0, -1.0);
-glTranslatef(0.0, -15.0, 0.0);
-glScalef(2.0, 18.0, 2.0);
-glutSolidCube(1.0);
-glPopMatrix();
-glPushMatrix();
-glTranslatef(11, -32.0, 0.0);
-glRotatef(arm, 0.0, 0.0, 1.0);
-glTranslatef(0.0, -15.0, 0.0);
-glScalef(2.0, 18.0, 2.0);
-glutSolidCube(1.0);
-glPopMatrix();
-// body
-glColor3f(float(249 / 256.0), float(236 / 256.0), float(59 / 256.0));
-glTranslatef(0.0, -30.0, 0.0);
-glScalef(25.0, 25.0, 15.0);
-glutSolidCube(1.0);
-//face
-glPushMatrix();
-//eye
-glScalef(1.0 / 25.0, 1.0 / 25.0, 1.0 / 15.0);
-glTranslatef(-4.0, 0.3, 8.0);
-glPushMatrix();
-draw_eye();
-glPopMatrix();
-glTranslatef(7.0, 0.0, 0.0);
-draw_eye();
-//nose
-glTranslatef(-3.5, -3.0, 0.5);
-glColor3f(float(209 / 256.0), float(186 / 256.0), float(49 / 256.0));
-draw_circle(1.5);
-//mouse
-glColor3f(float(209 / 256.0), float(186 / 256.0), float(49 / 256.0));
-glTranslatef(0.0, 2.0, -0.5);
-glBegin(GL_LINE_STRIP);
-float mouseR = 6;
-for (int i = 0; i &lt; n; i++)
-{
-	if (sin(2 * M_PI*i / n)&lt;-0.5)glVertex2f(mouseR*cos(2 * M_PI * i / n), mouseR*sin(2 * M_PI*i / n));
+    glTranslatef(0.0, 0.0, -300.0);
+
+    // SpongeBob
+    glPushMatrix();
+    glTranslatef(x0, y00, z0);
+    glRotatef(angle[orient], 0.0, 1.0, 0.0);
+    // arms
+    glColor3f(float(249 / 256.0), float(236 / 256.0), float(59 / 256.0));
+    glPushMatrix();
+    glTranslatef(-11, -32.0, 0.0);
+    glRotatef(arm, 0.0, 0.0, -1.0);
+    glTranslatef(0.0, -15.0, 0.0);
+    glScalef(2.0, 18.0, 2.0);
+    glutSolidCube(1.0);
+    glPopMatrix();
+    glPushMatrix();
+    glTranslatef(11, -32.0, 0.0);
+    glRotatef(arm, 0.0, 0.0, 1.0);
+    glTranslatef(0.0, -15.0, 0.0);
+    glScalef(2.0, 18.0, 2.0);
+    glutSolidCube(1.0);
+    glPopMatrix();
+    // body
+    glColor3f(float(249 / 256.0), float(236 / 256.0), float(59 / 256.0));
+    glTranslatef(0.0, -30.0, 0.0);
+    glScalef(25.0, 25.0, 15.0);
+    glutSolidCube(1.0);
+    //face
+    glPushMatrix();
+    //eye
+    glScalef(1.0 / 25.0, 1.0 / 25.0, 1.0 / 15.0);
+    glTranslatef(-4.0, 0.3, 8.0);
+    glPushMatrix();
+    draw_eye();
+    glPopMatrix();
+    glTranslatef(7.0, 0.0, 0.0);
+    draw_eye();
+    //nose
+    glTranslatef(-3.5, -3.0, 0.5);
+    glColor3f(float(209 / 256.0), float(186 / 256.0), float(49 / 256.0));
+    draw_circle(1.5);
+    //mouse
+    glColor3f(float(209 / 256.0), float(186 / 256.0), float(49 / 256.0));
+    glTranslatef(0.0, 2.0, -0.5);
+    glBegin(GL_LINE_STRIP);
+    float mouseR = 6;
+    for (int i = 0; i &lt; n; i++)
+    {
+        if (sin(2 * M_PI*i / n)&lt;-0.5)glVertex2f(mouseR*cos(2 * M_PI * i / n), mouseR*sin(2 * M_PI*i / n));
+    }
+    glEnd();
+    glFlush();
+    //tooth
+    if (face_type == 0){
+        glTranslatef(-1.5, -6.0, 0.0);
+        glColor3f(1, 1, 1);
+        glBegin(GL_POLYGON);
+        glVertex2f(-1.0f, 0.0f);
+        glVertex2f(1.0f, 0.0f);
+        glVertex2f(1.0f, -3.0f);
+        glVertex2f(-1.0f, -3.0f);
+        glEnd();
+        glTranslatef(2.4, 0.0, 0.0);
+        glBegin(GL_POLYGON);
+        glVertex2f(-1.0f, 0.0f);
+        glVertex2f(1.0f, 0.0f);
+        glVertex2f(1.0f, -2.5f);
+        glVertex2f(-1.0f, -2.5f);
+        glEnd();
+    }
+    // pants
+    glPopMatrix();
+    glColor3f(1.0, 1.0, 1.0);
+    glScalef(1.0 / 25.0, 1.0 / 25.0, 1.0 / 15.0);
+    glTranslatef(0.0, -15.0, 0.0);
+    glScalef(25.0, 10.0, 15.0);
+    glutSolidCube(1.0);
+    // legs and shoes
+    glColor3f(float(249 / 256.0), float(236 / 256.0), float(59 / 256.0));
+    glScalef(1.0 / 30.0, 1.0 / 35.0, 1.0 / 15.0);
+    glTranslatef(-8.0, -35.0, 0.0);
+    glScalef(2.0, 35.0, 2.0);
+    glutSolidCube(1.0);//left leg
+    glPushMatrix();
+    glScalef(1.0 / 2.0, 1.0 / 35.0, 1.0 / 15.0);
+    glTranslatef(-0.5, -20.0, 0.0);
+    glColor3f(0.0, 0.0, 0.0);
+    glScalef(4.5, 10.0, 22.0);
+    glutSolidCube(1.0);//left shoe
+    glPopMatrix();
+    glColor3f(1.0, 1.0, 0.0);
+    glScalef(1.0 / 7.0, 1.0 / 35.0, 1.0 / 15.0);
+    glTranslatef(48.0, 0.0, 0.0);
+    glScalef(7.0, 35.0, 15.0);
+    glutSolidCube(1.0);//right leg
+    glScalef(1.0 / 2.0, 1.0 / 35.0, 1.0 / 15.0);
+    glTranslatef(-0.5, -20.0, 0.0);
+    glColor3f(0.0, 0.0, 0.0);
+    glScalef(4.5, 10.0, 22.0);
+    glutSolidCube(1.0);//right shoe
+    glPopMatrix();
+
+
+
+    // top light
+    glPushMatrix();
+    glColor3f(1.0, 1.0, 0.5);
+    glTranslatef(0.0, 94.0, -150.0);
+    glScalef(80.0, 4.0, 80.0);
+    glutSolidCube(1.0);
+    glPopMatrix();
+    glPushMatrix();
+    glColor3f(0.6, 0.5, 0.5);
+    glTranslatef(0.0, 99.0, -150.0);
+    glScalef(100.0, 2.0, 100.0);
+    glutSolidCube(1.0);
+    glPopMatrix();
+    glPopMatrix();
+    glFlush();
+    glutSwapBuffers();
 }
-glEnd();
-glFlush();
-//tooth
-if (face_type == 0){
-	glTranslatef(-1.5, -6.0, 0.0);
-	glColor3f(1, 1, 1);
-	glBegin(GL_POLYGON);
-	glVertex2f(-1.0f, 0.0f);
-	glVertex2f(1.0f, 0.0f);
-	glVertex2f(1.0f, -3.0f);
-	glVertex2f(-1.0f, -3.0f);
-	glEnd();
-	glTranslatef(2.4, 0.0, 0.0);
-	glBegin(GL_POLYGON);
-	glVertex2f(-1.0f, 0.0f);
-	glVertex2f(1.0f, 0.0f);
-	glVertex2f(1.0f, -2.5f);
-	glVertex2f(-1.0f, -2.5f);
-	glEnd();
-}
-// pants
-glPopMatrix();
-glColor3f(1.0, 1.0, 1.0);
-glScalef(1.0 / 25.0, 1.0 / 25.0, 1.0 / 15.0);
-glTranslatef(0.0, -15.0, 0.0);
-glScalef(25.0, 10.0, 15.0);
-glutSolidCube(1.0);
-// legs and shoes
-glColor3f(float(249 / 256.0), float(236 / 256.0), float(59 / 256.0));
-glScalef(1.0 / 30.0, 1.0 / 35.0, 1.0 / 15.0);
-glTranslatef(-8.0, -35.0, 0.0);
-glScalef(2.0, 35.0, 2.0);
-glutSolidCube(1.0);//left leg
-glPushMatrix();
-glScalef(1.0 / 2.0, 1.0 / 35.0, 1.0 / 15.0);
-glTranslatef(-0.5, -20.0, 0.0);
-glColor3f(0.0, 0.0, 0.0);
-glScalef(4.5, 10.0, 22.0);
-glutSolidCube(1.0);//left shoe
-glPopMatrix();
-glColor3f(1.0, 1.0, 0.0);
-glScalef(1.0 / 7.0, 1.0 / 35.0, 1.0 / 15.0);
-glTranslatef(48.0, 0.0, 0.0);
-glScalef(7.0, 35.0, 15.0);
-glutSolidCube(1.0);//right leg
-glScalef(1.0 / 2.0, 1.0 / 35.0, 1.0 / 15.0);
-glTranslatef(-0.5, -20.0, 0.0);
-glColor3f(0.0, 0.0, 0.0);
-glScalef(4.5, 10.0, 22.0);
-glutSolidCube(1.0);//right shoe
-glPopMatrix();
 
 
-
-// top light
-glPushMatrix();
-glColor3f(1.0, 1.0, 0.5);
-glTranslatef(0.0, 94.0, -150.0);
-glScalef(80.0, 4.0, 80.0);
-glutSolidCube(1.0);
-glPopMatrix();
-glPushMatrix();
-glColor3f(0.6, 0.5, 0.5);
-glTranslatef(0.0, 99.0, -150.0);
-glScalef(100.0, 2.0, 100.0);
-glutSolidCube(1.0);
-glPopMatrix();
-glPopMatrix();
-glFlush();
-glutSwapBuffers();
-</code></pre>
-<p>}</p>
-</li>
-</ul>
-<pre><code>void reshape(int w, int h) // Resize the GL Window. w=width, h=height
+void reshape(int w, int h) // Resize the GL Window. w=width, h=height
 {
-	glViewport(0, 0, (GLsizei)w, (GLsizei)h);
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	glFrustum(-FRUSTDIM, FRUSTDIM, -FRUSTDIM, FRUSTDIM, 300., 800.);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
+    glViewport(0, 0, (GLsizei)w, (GLsizei)h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glFrustum(-FRUSTDIM, FRUSTDIM, -FRUSTDIM, FRUSTDIM, 300., 800.);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 }
 
 void keyboard(unsigned char key, int x, int y) // Handle the keyboard events here
 {
-	switch (key)
-	{
-	case'\033':
-		exit(0);
-		break;
-	case'W':
-	case'w':
-		orient = 2;
-		Sleep(5);
-		display();
-		if (z0 &gt;= -235){
-			Sleep(5);
-			z0 -= 3;
-			display();
-		}
-		else cout &lt;&lt; &quot;要撞墙了，不能再走啦&quot; &lt;&lt; endl;
-		break;
-	case'S':
-	case's':
-		orient = 0;
-		Sleep(5);
-		display();
-		if (z0 &lt;= -11){
-			Sleep(5);
-			z0 += 3;
-			display();
-		}
-		else cout &lt;&lt; &quot;要撞墙了，不能再走啦&quot; &lt;&lt; endl;
-		break;
-	case'A':
-	case'a':
-		orient = 3;
-		Sleep(5);
-		display();
-		if (x0 &gt;= -78){
-			Sleep(5);
-			x0 -= 3;
-			display();
-		}
-		else cout &lt;&lt; &quot;要撞墙了，不能再走啦&quot; &lt;&lt; endl;
-		break;
-	case'D':
-	case'd':
-		orient = 1;
-		Sleep(5);
-		display();
-		if (x0 &lt;= 78){
-			Sleep(5);
-			x0 += 3;
-			display();
-		}
-		else cout &lt;&lt; &quot;要撞墙了，不能再走啦&quot; &lt;&lt; endl;
-		break;
-	case'P':
-	case'p':
-		if (power &lt;= 160){
-			power += 4;
-			cout &lt;&lt; &quot;蓄力中当前力量为&quot; &lt;&lt; power &lt;&lt; endl;
-		}
-		else{
-			cout &lt;&lt; &quot;蓄力完毕&quot; &lt;&lt; endl;
-		}
-		break;
-	case'J':
-	case'j':
+    switch (key)
+    {
+    case&#39;\033&#39;:
+        exit(0);
+        break;
+    case&#39;W&#39;:
+    case&#39;w&#39;:
+        orient = 2;
+        Sleep(5);
+        display();
+        if (z0 &gt;= -235){
+            Sleep(5);
+            z0 -= 3;
+            display();
+        }
+        else cout &lt;&lt; &quot;要撞墙了，不能再走啦&quot; &lt;&lt; endl;
+        break;
+    case&#39;S&#39;:
+    case&#39;s&#39;:
+        orient = 0;
+        Sleep(5);
+        display();
+        if (z0 &lt;= -11){
+            Sleep(5);
+            z0 += 3;
+            display();
+        }
+        else cout &lt;&lt; &quot;要撞墙了，不能再走啦&quot; &lt;&lt; endl;
+        break;
+    case&#39;A&#39;:
+    case&#39;a&#39;:
+        orient = 3;
+        Sleep(5);
+        display();
+        if (x0 &gt;= -78){
+            Sleep(5);
+            x0 -= 3;
+            display();
+        }
+        else cout &lt;&lt; &quot;要撞墙了，不能再走啦&quot; &lt;&lt; endl;
+        break;
+    case&#39;D&#39;:
+    case&#39;d&#39;:
+        orient = 1;
+        Sleep(5);
+        display();
+        if (x0 &lt;= 78){
+            Sleep(5);
+            x0 += 3;
+            display();
+        }
+        else cout &lt;&lt; &quot;要撞墙了，不能再走啦&quot; &lt;&lt; endl;
+        break;
+    case&#39;P&#39;:
+    case&#39;p&#39;:
+        if (power &lt;= 160){
+            power += 4;
+            cout &lt;&lt; &quot;蓄力中当前力量为&quot; &lt;&lt; power &lt;&lt; endl;
+        }
+        else{
+            cout &lt;&lt; &quot;蓄力完毕&quot; &lt;&lt; endl;
+        }
+        break;
+    case&#39;J&#39;:
+    case&#39;j&#39;:
 
-		Sleep(30);
-		y00 += (power / 14 * 9);
-		display();
-		Sleep(30);
-		y00 += (power / 14 * 4);
-		display();
-		Sleep(30);
-		y00 += (power / 14 * 1);
-		display();
-		Sleep(30);
-		//跳跃判定
-		if (power &gt;= 140 &amp;&amp; z0 &gt;= -120 &amp;&amp; z0 &lt;= -90 &amp;&amp; x0 &lt;= 12 &amp;&amp; x0 &gt;= -18){
-			if (light){
-				l1 = 0.0;
-				ll = 0.0;
-				light = false;
-				display();
-			}
-			else{
-				l1 = 0.25;
-				ll = 1.0;
-				light = true;
-				display();
-			}
-		}
-		y00 -= (power / 14 * 1);
-		display();
-		Sleep(30);
-		y00 -= (power / 14 * 4);
-		display();
-		Sleep(30);
-		y00 -= (power / 14 * 9);
-		display();
-		Sleep(30);
-		power = 20;
-		break;
-	case'F':
-	case'f':
-		face_type++;
-		face_type = face_type % 2;
-		display();
-		break;
-	default:
-		printf(&quot;error\n&quot;);
-	}
+        Sleep(30);
+        y00 += (power / 14 * 9);
+        display();
+        Sleep(30);
+        y00 += (power / 14 * 4);
+        display();
+        Sleep(30);
+        y00 += (power / 14 * 1);
+        display();
+        Sleep(30);
+        //跳跃判定
+        if (power &gt;= 140 &amp;&amp; z0 &gt;= -120 &amp;&amp; z0 &lt;= -90 &amp;&amp; x0 &lt;= 12 &amp;&amp; x0 &gt;= -18){
+            if (light){
+                l1 = 0.0;
+                ll = 0.0;
+                light = false;
+                display();
+            }
+            else{
+                l1 = 0.25;
+                ll = 1.0;
+                light = true;
+                display();
+            }
+        }
+        y00 -= (power / 14 * 1);
+        display();
+        Sleep(30);
+        y00 -= (power / 14 * 4);
+        display();
+        Sleep(30);
+        y00 -= (power / 14 * 9);
+        display();
+        Sleep(30);
+        power = 20;
+        break;
+    case&#39;F&#39;:
+    case&#39;f&#39;:
+        face_type++;
+        face_type = face_type % 2;
+        display();
+        break;
+    default:
+        printf(&quot;error\n&quot;);
+    }
 }
 
 int main(int argc, char** argv)
 {
 
-	glutInit(&amp;argc, argv);
-	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
-	glutInitWindowSize(600, 600);
-	glutInitWindowPosition(100, 100);
-	glutCreateWindow(&quot;太平洋比基尼海滩比奇堡镇贝壳街124号的波萝屋&quot;);
+    glutInit(&amp;argc, argv);
+    glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
+    glutInitWindowSize(600, 600);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow(&quot;太平洋比基尼海滩比奇堡镇贝壳街124号的波萝屋&quot;);
 
-	init();
-	glutReshapeFunc(reshape);
-	glutDisplayFunc(display);
-	glutKeyboardFunc(keyboard);
+    init();
+    glutReshapeFunc(reshape);
+    glutDisplayFunc(display);
+    glutKeyboardFunc(keyboard);
 
-	glutMainLoop();
+    glutMainLoop();
 }
 </code></pre>
-
     </article>
     <!-- license  -->
     
@@ -1066,7 +1055,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景🎃"><span class="toc-number">1.</span> <span class="toc-text">背景🎃</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#功能说明📃"><span class="toc-number">2.</span> <span class="toc-text">功能说明📃</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#键盘💬"><span class="toc-number">2.1.</span> <span class="toc-text">键盘💬</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他💥"><span class="toc-number">2.2.</span> <span class="toc-text">其他💥</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码📄"><span class="toc-number">3.</span> <span class="toc-text">代码📄</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1079,6 +1068,50 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1566,11 +1599,11 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
+    
         <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
     
         <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
-    
-        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
@@ -1586,21 +1619,21 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="图形学"><span class="iconfont-archer">&#xe606;</span>图形学</span>
     
-        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
-    
-        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
-    
         <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
     
-        <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
+        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
     
         <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
     
         <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
     
+        <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
+    
         <span class="sidebar-tag-name" data-tags="感悟"><span class="iconfont-archer">&#xe606;</span>感悟</span>
     
-        <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
+        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
+    
+        <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

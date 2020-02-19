@@ -289,7 +289,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">5.8k</span>阅读时长: <span class="post-count reading-time">32 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">5.7k</span>阅读时长: <span class="post-count reading-time">32 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -419,49 +419,25 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>参考《算法笔记》第六章。
-[TOC]
-#vector</p>
-<hr>
-<p>##知识要点</p>
-<ul>
-<li>
-<p>变长数组。
-###定义</p>
-</li>
-<li>
-<p>vector &lt; int &gt; a;</p>
-</li>
-<li>
-<p>vector &lt; int &gt; a(n);      //长度为n</p>
-</li>
-<li>
-<p>vector &lt; int &gt; a(n,2);    //长度为n且全初始化为2。</p>
-</li>
-<li>
-<p>vector &lt; int &gt; a[10];     //仅一维可变长的二维向量数组。</p>
-</li>
-<li>
-<p>vector &lt; vector &lt; int &gt; &gt;a;     //&gt;&gt;之间要加空格,二维可变长的二维向量数组。
-###访问方法</p>
-</li>
-<li>
-<p>通过下标访问 vi[9];   //只有string和vector可以用下标.</p>
-</li>
-<li>
-<p>通过迭代器*it访问。</p>
+        <p>参考《算法笔记》第六章。<br>[TOC]</p>
+<h1 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h1><hr>
+<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><ul>
+<li>变长数组。<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3></li>
+<li>vector &lt; int &gt; a;</li>
+<li>vector &lt; int &gt; a(n);      //长度为n</li>
+<li>vector &lt; int &gt; a(n,2);    //长度为n且全初始化为2。</li>
+<li>vector &lt; int &gt; a[10];     //仅一维可变长的二维向量数组。</li>
+<li>vector &lt; vector &lt; int &gt; &gt;a;     //&gt;&gt;之间要加空格,二维可变长的二维向量数组。<h3 id="访问方法"><a href="#访问方法" class="headerlink" title="访问方法"></a>访问方法</h3></li>
+<li>通过下标访问 vi[9];   //只有string和vector可以用下标.</li>
+<li><p>通过迭代器*it访问。</p>
 <pre><code>vector &lt; int &gt; iterator::it;
 it=vi.begin();
 for(vector&lt; int &gt; ::iterator it=vi.begin();it!=vi.end();it++)  //不支持it&lt;vi.end()的写法
 v[i]等价于*(vi.begin()+i)    //只有vector和string才能用这种vi.begin()+i的操作
-</code></pre>
-</li>
-<li>
-<p>it&lt;vi.end()不支持这种写法(和意思无关),vi.end()指向vi的存储末尾元素的后一位。</p>
-</li>
+</code></pre></li>
+<li>it&lt;vi.end()不支持这种写法(和意思无关),vi.end()指向vi的存储末尾元素的后一位。</li>
 </ul>
-<p>###常用操作
-- vi.push_back(a);
+<h3 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h3><pre><code>- vi.push_back(a);
 - vi.pop_back();
 - vi.size();
 - vi.clear();
@@ -469,62 +445,17 @@ v[i]等价于*(vi.begin()+i)    //只有vector和string才能用这种vi.begin()
 - vi.erase(it);
 - vi.erase(first,last);   //[first，last)
 - find(it1,it2,3);     //algorithm里的，如不存在返回end()
-- find(vi.begin(),v1.end(),3);</p>
-<p>##1047 Student List for Course (25)</p>
-<p>Zhejiang University has 40,000 students and provides 2,500 courses. Now given the registered course list of each student, you are supposed to output the student name lists of all the courses.</p>
-<p>Input Specification:
-Each input file contains one test case. For each case, the first line contains 2 numbers: N (≤40,000), the total number of students, and K (≤2,500), the total number of courses. Then N lines follow, each contains a student's name (3 capital English letters plus a one-digit number), a positive number C (≤20) which is the number of courses that this student has registered, and then followed by C course numbers. For the sake of simplicity, the courses are numbered from 1 to K.</p>
-<p>Output Specification:
-For each test case, print the student name lists of all the courses in increasing order of the course numbers. For each course, first print in one line the course number and the number of registered students, separated by a space. Then output the students' names in alphabetical order. Each name occupies a line.</p>
+- find(vi.begin(),v1.end(),3);    
+</code></pre><h2 id="1047-Student-List-for-Course-25"><a href="#1047-Student-List-for-Course-25" class="headerlink" title="1047 Student List for Course (25)"></a>1047 Student List for Course (25)</h2><p>Zhejiang University has 40,000 students and provides 2,500 courses. Now given the registered course list of each student, you are supposed to output the student name lists of all the courses.</p>
+<p>Input Specification:<br>Each input file contains one test case. For each case, the first line contains 2 numbers: N (≤40,000), the total number of students, and K (≤2,500), the total number of courses. Then N lines follow, each contains a student’s name (3 capital English letters plus a one-digit number), a positive number C (≤20) which is the number of courses that this student has registered, and then followed by C course numbers. For the sake of simplicity, the courses are numbered from 1 to K.</p>
+<p>Output Specification:<br>For each test case, print the student name lists of all the courses in increasing order of the course numbers. For each course, first print in one line the course number and the number of registered students, separated by a space. Then output the students’ names in alphabetical order. Each name occupies a line.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>10 5
-ZOE1 2 4 5
-ANN0 3 5 2 1
-BOB5 5 3 4 2 1 5
-JOE4 1 2
-JAY9 4 1 2 5 4
-FRA8 3 4 2 5
-DON2 2 4 5
-AMY7 1 5
-KAT3 3 5 4 2
-LOR6 4 2 4 1 5</p>
+<p>10 5<br>ZOE1 2 4 5<br>ANN0 3 5 2 1<br>BOB5 5 3 4 2 1 5<br>JOE4 1 2<br>JAY9 4 1 2 5 4<br>FRA8 3 4 2 5<br>DON2 2 4 5<br>AMY7 1 5<br>KAT3 3 5 4 2<br>LOR6 4 2 4 1 5</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
-<p>1 4
-ANN0
-BOB5
-JAY9
-LOR6
-2 7
-ANN0
-BOB5
-FRA8
-JAY9
-JOE4
-KAT3
-LOR6
-3 1
-BOB5
-4 7
-BOB5
-DON2
-FRA8
-JAY9
-KAT3
-LOR6
-ZOE1
-5 9
-AMY7
-ANN0
-BOB5
-DON2
-FRA8
-JAY9
-KAT3
-LOR6
-ZOE1</p>
+<p>1 4<br>ANN0<br>BOB5<br>JAY9<br>LOR6<br>2 7<br>ANN0<br>BOB5<br>FRA8<br>JAY9<br>JOE4<br>KAT3<br>LOR6<br>3 1<br>BOB5<br>4 7<br>BOB5<br>DON2<br>FRA8<br>JAY9<br>KAT3<br>LOR6<br>ZOE1<br>5 9<br>AMY7<br>ANN0<br>BOB5<br>DON2<br>FRA8<br>JAY9<br>KAT3<br>LOR6<br>ZOE1</p>
 </blockquote>
 <pre><code>//1047 Student List for Course
 #pragma warning(disable:4996)
@@ -536,50 +467,38 @@ ZOE1</p>
 #include&lt;algorithm&gt;
 using namespace std;
 int main(){
-	int N, K,num,index;
-	string name;
-	scanf(&quot;%d %d&quot;, &amp;N, &amp;K);
-	vector&lt;string&gt;course[2501];
-	for (int i = 0; i &lt; N; i++){
-		cin &gt;&gt; name &gt;&gt; num;
-		for (int j = 0; j &lt; num; j++){
-			scanf(&quot;%d&quot;, &amp;index);
-			course[index].push_back(name);
-		}
-	}
-	for (int i = 1; i &lt;= K; i++){
-		sort(course[i].begin(), course[i].end());
-		printf(&quot;%d %d\n&quot;, i, course[i].size());
-		for (int j = 0; j &lt; course[i].size(); j++)
-			printf(&quot;%s\n&quot;, course[i][j].c_str());
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    int N, K,num,index;
+    string name;
+    scanf(&quot;%d %d&quot;, &amp;N, &amp;K);
+    vector&lt;string&gt;course[2501];
+    for (int i = 0; i &lt; N; i++){
+        cin &gt;&gt; name &gt;&gt; num;
+        for (int j = 0; j &lt; num; j++){
+            scanf(&quot;%d&quot;, &amp;index);
+            course[index].push_back(name);
+        }
+    }
+    for (int i = 1; i &lt;= K; i++){
+        sort(course[i].begin(), course[i].end());
+        printf(&quot;%d %d\n&quot;, i, course[i].size());
+        for (int j = 0; j &lt; course[i].size(); j++)
+            printf(&quot;%s\n&quot;, course[i][j].c_str());
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>就是对课程开vector,选课的人的名字会被push进去。</p>
+</code></pre><p>就是对课程开vector,选课的人的名字会被push进去。</p>
 <hr>
-<p>##1101 Quick Sort (25)
-There is a classical process named partition in the famous quick sort algorithm. In this process we typically choose one element as the pivot. Then the elements less than the pivot are moved to its left and those larger than the pivot to its right. Given N distinct positive integers after a run of partition, could you tell how many elements could be the selected pivot for this partition?
-For example, given N=5 and the numbers 1, 3, 2, 4, and 5. We have:
-1 could be the pivot since there is no element to its left and all the elements to its right are larger than it;
-3 must not be the pivot since although all the elements to its left are smaller, the number 2 to its right is less than it as well;
-2 must not be the pivot since although all the elements to its right are larger, the number 3 to its left is larger than it as well;
-and for the similar reason, 4 and 5 could also be the pivot.
-Hence in total there are 3 pivot candidates.</p>
-<p>Input Specification:
-Each input file contains one test case. For each case, the first line gives a positive integer N (≤10^5). Then the next line contains N distinct positive integers no larger than 10^9. The numbers in a line are separated by spaces.</p>
-<p>Output Specification:
-For each test case, output in the first line the number of pivot candidates. Then in the next line print these candidates in increasing order. There must be exactly 1 space between two adjacent numbers, and no extra space at the end of each line.</p>
+<h2 id="1101-Quick-Sort-25"><a href="#1101-Quick-Sort-25" class="headerlink" title="1101 Quick Sort (25)"></a>1101 Quick Sort (25)</h2><p>There is a classical process named partition in the famous quick sort algorithm. In this process we typically choose one element as the pivot. Then the elements less than the pivot are moved to its left and those larger than the pivot to its right. Given N distinct positive integers after a run of partition, could you tell how many elements could be the selected pivot for this partition?<br>For example, given N=5 and the numbers 1, 3, 2, 4, and 5. We have:<br>1 could be the pivot since there is no element to its left and all the elements to its right are larger than it;<br>3 must not be the pivot since although all the elements to its left are smaller, the number 2 to its right is less than it as well;<br>2 must not be the pivot since although all the elements to its right are larger, the number 3 to its left is larger than it as well;<br>and for the similar reason, 4 and 5 could also be the pivot.<br>Hence in total there are 3 pivot candidates.</p>
+<p>Input Specification:<br>Each input file contains one test case. For each case, the first line gives a positive integer N (≤10^5). Then the next line contains N distinct positive integers no larger than 10^9. The numbers in a line are separated by spaces.</p>
+<p>Output Specification:<br>For each test case, output in the first line the number of pivot candidates. Then in the next line print these candidates in increasing order. There must be exactly 1 space between two adjacent numbers, and no extra space at the end of each line.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>5
-1 3 2 4 5</p>
+<p>5<br>1 3 2 4 5</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
-<p>3
-1 4 5</p>
+<p>3<br>1 4 5</p>
 </blockquote>
 <pre><code>//1101 Quick Sort
 #pragma warning(disable:4996)
@@ -589,74 +508,56 @@ For each test case, output in the first line the number of pivot candidates. The
 #include&lt;algorithm&gt;
 using namespace std;
 int main(){
-	int N,high=0;
-	scanf(&quot;%d&quot;, &amp;N);
-	vector&lt;int&gt;a(N),lowest(N),result;
-	for (int i = 0; i &lt; N; i++)//input
-		scanf(&quot;%d&quot;, &amp;a[i]);
-	for (int i = N-1; i&gt;=0; i--){
-		if (i == N - 1||a[i] &lt; a[lowest[i + 1]])lowest[i] = i;
-		else lowest[i] = lowest[i + 1];
-	}
-	for (int i = 0; i &lt; N; i++){
-		if (a[high] &lt;= a[i] &amp;&amp; a[i] &lt;= a[lowest[i]])result.push_back(a[i]);
-		if (a[high] &lt;= a[i])high = i;
-	}
-	printf(&quot;%d\n&quot;, result.size());//output
-	for (int i = 0; i &lt; result.size(); i++){
-		printf(&quot;%d&quot;, result[i]);
-		if (i != result.size() - 1)printf(&quot; &quot;);
-	}
-	printf(&quot;\n&quot;);
-	system(&quot;pause&quot;);
-	return 0;
+    int N,high=0;
+    scanf(&quot;%d&quot;, &amp;N);
+    vector&lt;int&gt;a(N),lowest(N),result;
+    for (int i = 0; i &lt; N; i++)//input
+        scanf(&quot;%d&quot;, &amp;a[i]);
+    for (int i = N-1; i&gt;=0; i--){
+        if (i == N - 1||a[i] &lt; a[lowest[i + 1]])lowest[i] = i;
+        else lowest[i] = lowest[i + 1];
+    }
+    for (int i = 0; i &lt; N; i++){
+        if (a[high] &lt;= a[i] &amp;&amp; a[i] &lt;= a[lowest[i]])result.push_back(a[i]);
+        if (a[high] &lt;= a[i])high = i;
+    }
+    printf(&quot;%d\n&quot;, result.size());//output
+    for (int i = 0; i &lt; result.size(); i++){
+        printf(&quot;%d&quot;, result[i]);
+        if (i != result.size() - 1)printf(&quot; &quot;);
+    }
+    printf(&quot;\n&quot;);
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>因为是要求当前元素大于左边的最大值，小于右边的最小值，所以先遍历一遍，把每个位置上右边的最小值所在位置先求出来放入数组，再从左边开始遍历，同时比较最大值和最小值，得到所需结果。这里也可以把求右边最小值的过程省略，通过sort排序求得所在增序位置，若该位置与现位置相同，且左边的最大值小于该值，即为所需结果。
-【格式错误】这里要注意，根据题意，就算第一行为0，第二行也得输出空行，否则会有一个点报错。</p>
+</code></pre><p>因为是要求当前元素大于左边的最大值，小于右边的最小值，所以先遍历一遍，把每个位置上右边的最小值所在位置先求出来放入数组，再从左边开始遍历，同时比较最大值和最小值，得到所需结果。这里也可以把求右边最小值的过程省略，通过sort排序求得所在增序位置，若该位置与现位置相同，且左边的最大值小于该值，即为所需结果。<br>【格式错误】这里要注意，根据题意，就算第一行为0，第二行也得输出空行，否则会有一个点报错。</p>
 <hr>
-<h2>#set</h2>
-<p>##知识要点
-自动内部有序，且不含重复元素的容器。
-如果元素不唯一，可以用multiset。
-###定义
-set&lt;int&gt;a;
+<h1 id="set"><a href="#set" class="headerlink" title="set"></a>set</h1><hr>
+<h2 id="知识要点-1"><a href="#知识要点-1" class="headerlink" title="知识要点"></a>知识要点</h2><p>自动内部有序，且不含重复元素的容器。<br>如果元素不唯一，可以用multiset。</p>
+<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><pre><code>set&lt;int&gt;a;
 set&lt; &lt;vector&gt; &gt;a;     //中间要加空格
-set&lt;int&gt;a[10];</p>
-<p>###元素访问
-只支持迭代器,用*it访问元素。只有string和vector可以用下标。
+set&lt;int&gt;a[10];
+</code></pre><h3 id="元素访问"><a href="#元素访问" class="headerlink" title="元素访问"></a>元素访问</h3><pre><code>只支持迭代器,用*it访问元素。只有string和vector可以用下标。
 set&lt;int&gt;::iterator it;
 for(it=a.begin();it!=a.end;it++)      //注意不支持it&lt;st.end()这种写法。
-printf(&quot;%d&quot;,*it);</p>
-<p>###常用操作
-a.insert(x);        //不是push back!!!
+  printf(&quot;%d&quot;,*it);
+</code></pre><h3 id="常用操作-1"><a href="#常用操作-1" class="headerlink" title="常用操作"></a>常用操作</h3><pre><code>a.insert(x);        //不是push back!!!
 set&lt;int&gt;::iterator it=a.find(value);      //返回所在位置迭代器,如果没找到则返回end()
 a.erase(it);
 a.erase(value);     //可以直接删除值
 a.erase(first,last);    //[first,last)
 a.size();         //获得个数
-a.clear();</p>
-<hr>
-<p>##1063 Set Similarity (25)
-Given two sets of integers, the similarity of the sets is defined to be Nc/Nt×100%, where Nc is the number of distinct common numbers shared by the two sets, and Nt is the total number of distinct numbers in the two sets. Your job is to calculate the similarity of any given pair of sets.
-Input Specification:
-Each input file contains one test case. Each case first gives a positive integer N (≤50) which is the total number of sets. Then N lines follow, each gives a set with a positive M (≤10^4) and followed by M integers in the range [0,10^9​​ ]. After the input of sets, a positive integer K (≤2000) is given, followed by K lines of queries. Each query gives a pair of set numbers (the sets are numbered from 1 to N). All the numbers in a line are separated by a space.</p>
-<p>Output Specification:
-For each query, print in one line the similarity of the sets, in the percentage form accurate up to 1 decimal place.</p>
+a.clear();
+</code></pre><hr>
+<h2 id="1063-Set-Similarity-25"><a href="#1063-Set-Similarity-25" class="headerlink" title="1063 Set Similarity (25)"></a>1063 Set Similarity (25)</h2><p>Given two sets of integers, the similarity of the sets is defined to be Nc/Nt×100%, where Nc is the number of distinct common numbers shared by the two sets, and Nt is the total number of distinct numbers in the two sets. Your job is to calculate the similarity of any given pair of sets.<br>Input Specification:<br>Each input file contains one test case. Each case first gives a positive integer N (≤50) which is the total number of sets. Then N lines follow, each gives a set with a positive M (≤10^4) and followed by M integers in the range [0,10^9​​ ]. After the input of sets, a positive integer K (≤2000) is given, followed by K lines of queries. Each query gives a pair of set numbers (the sets are numbered from 1 to N). All the numbers in a line are separated by a space.</p>
+<p>Output Specification:<br>For each query, print in one line the similarity of the sets, in the percentage form accurate up to 1 decimal place.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>3
-3 99 87 101
-4 87 101 5 87
-7 99 101 18 5 135 18 99
-2
-1 2
-1 3</p>
+<p>3<br>3 99 87 101<br>4 87 101 5 87<br>7 99 101 18 5 135 18 99<br>2<br>1 2<br>1 3</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
-<p>50.0%
-33.3%</p>
+<p>50.0%<br>33.3%</p>
 </blockquote>
 <pre><code>//1063 Set Similarity
 #include&lt;cstdio&gt;
@@ -665,33 +566,32 @@ For each query, print in one line the similarity of the sets, in the percentage 
 #pragma warning(disable:4996)
 using namespace std;
 int main(){
-	int N,num,temp,K,a,b;
-	float rate,total;
-	scanf(&quot;%d&quot;, &amp;N);
-	set&lt;int&gt;sets[50];
-	for (int i = 0; i &lt; N; i++){
-		scanf(&quot;%d&quot;, &amp;num);
-		for (int j = 0; j &lt; num; j++){
-			scanf(&quot;%d&quot;, &amp;temp);
-			sets[i].insert(temp);
-		}
-	}
-	set&lt;int&gt;::iterator it;
-	scanf(&quot;%d&quot;, &amp;K);
-	for (int i = 0; i &lt; K; i++){
-		scanf(&quot;%d %d&quot;, &amp;a, &amp;b);
-		int result = 0;
-		for (it = sets[a - 1].begin(); it != sets[a - 1].end(); it++)
-			if (sets[b - 1].find(*it) != sets[b - 1].end())result++;
-		total = sets[a - 1].size() + sets[b - 1].size();
-		rate = result/(total-result);
-		printf(&quot;%.1f%%\n&quot;, rate * 100);
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    int N,num,temp,K,a,b;
+    float rate,total;
+    scanf(&quot;%d&quot;, &amp;N);
+    set&lt;int&gt;sets[50];
+    for (int i = 0; i &lt; N; i++){
+        scanf(&quot;%d&quot;, &amp;num);
+        for (int j = 0; j &lt; num; j++){
+            scanf(&quot;%d&quot;, &amp;temp);
+            sets[i].insert(temp);
+        }
+    }
+    set&lt;int&gt;::iterator it;
+    scanf(&quot;%d&quot;, &amp;K);
+    for (int i = 0; i &lt; K; i++){
+        scanf(&quot;%d %d&quot;, &amp;a, &amp;b);
+        int result = 0;
+        for (it = sets[a - 1].begin(); it != sets[a - 1].end(); it++)
+            if (sets[b - 1].find(*it) != sets[b - 1].end())result++;
+        total = sets[a - 1].size() + sets[b - 1].size();
+        rate = result/(total-result);
+        printf(&quot;%.1f%%\n&quot;, rate * 100);
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>对于询问，在一个set里find另一个set里的每个元素。</p>
+</code></pre><p>对于询问，在一个set里find另一个set里的每个元素。</p>
 <ol>
 <li>set的find失败返回的是该set.end()</li>
 <li>懒得打迭代器一长串可以直接auto了。</li>
@@ -699,21 +599,16 @@ int main(){
 <li>注意格式转换，可以在前面直接加（double).</li>
 </ol>
 <hr>
-<p>##1120 Friend Numbers (20)
-Two integers are called &quot;friend numbers&quot; if they share the same sum of their digits, and the sum is their &quot;friend ID&quot;. For example, 123 and 51 are friend numbers since 1+2+3 = 5+1 = 6, and 6 is their friend ID. Given some numbers, you are supposed to count the number of different frind ID's among them.</p>
-<p>Input Specification:
-Each input file contains one test case. For each case, the first line gives a positive integer N. Then N positive integers are given in the next line, separated by spaces. All the numbers are less than 10^​4.</p>
-<p>Output Specification:
-For each case, print in the first line the number of different frind ID's among the given integers. Then in the second line, output the friend ID's in increasing order. The numbers must be separated by exactly one space and there must be no extra space at the end of the line.</p>
+<h2 id="1120-Friend-Numbers-20"><a href="#1120-Friend-Numbers-20" class="headerlink" title="1120 Friend Numbers (20)"></a>1120 Friend Numbers (20)</h2><p>Two integers are called “friend numbers” if they share the same sum of their digits, and the sum is their “friend ID”. For example, 123 and 51 are friend numbers since 1+2+3 = 5+1 = 6, and 6 is their friend ID. Given some numbers, you are supposed to count the number of different frind ID’s among them.</p>
+<p>Input Specification:<br>Each input file contains one test case. For each case, the first line gives a positive integer N. Then N positive integers are given in the next line, separated by spaces. All the numbers are less than 10^​4.</p>
+<p>Output Specification:<br>For each case, print in the first line the number of different frind ID’s among the given integers. Then in the second line, output the friend ID’s in increasing order. The numbers must be separated by exactly one space and there must be no extra space at the end of the line.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>8
-123 899 51 998 27 33 36 12</p>
+<p>8<br>123 899 51 998 27 33 36 12</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
-<p>4
-3 6 9 26</p>
+<p>4<br>3 6 9 26</p>
 </blockquote>
 <pre><code>//1120 Friend Numbers
 #include&lt;cstdio&gt;
@@ -724,46 +619,36 @@ For each case, print in the first line the number of different frind ID's among 
 #pragma warning(disable:4996)
 using namespace std;
 int main(){
-	int N,digit;
-	scanf(&quot;%d&quot;, &amp;N);
-	set&lt;int&gt;sum;
-	string temp;
-	for (int i = 0; i &lt; N; i++){
-		int s = 0;
-		cin&gt;&gt;temp;
-		for (int j = 0; j &lt; temp.length(); j++)
-			s += temp[j] - '0';
-		sum.insert(s);
-	}
-	printf(&quot;%d\n&quot;, sum.size());
-	for (set&lt;int&gt;::iterator it=sum.begin(); it!=sum.end(); it++){
-		if (it == sum.begin())printf(&quot;%d&quot;, *it);
-		else printf(&quot; %d&quot;, *it);
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    int N,digit;
+    scanf(&quot;%d&quot;, &amp;N);
+    set&lt;int&gt;sum;
+    string temp;
+    for (int i = 0; i &lt; N; i++){
+        int s = 0;
+        cin&gt;&gt;temp;
+        for (int j = 0; j &lt; temp.length(); j++)
+            s += temp[j] - &#39;0&#39;;
+        sum.insert(s);
+    }
+    printf(&quot;%d\n&quot;, sum.size());
+    for (set&lt;int&gt;::iterator it=sum.begin(); it!=sum.end(); it++){
+        if (it == sum.begin())printf(&quot;%d&quot;, *it);
+        else printf(&quot; %d&quot;, *it);
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>也可以用散列做。</p>
-<p>##1121 Damn Single (25 分)
-&quot;Damn Single (单身狗)&quot; is the Chinese nickname for someone who is being single. You are supposed to find those who are alone in a big party, so they can be taken care of.</p>
-<p>Input Specification:
-Each input file contains one test case. For each case, the first line gives a positive integer N (≤ 50,000), the total number of couples. Then N lines of the couples follow, each gives a couple of ID's which are 5-digit numbers (i.e. from 00000 to 99999). After the list of couples, there is a positive integer M (≤ 10,000) followed by M ID's of the party guests. The numbers are separated by spaces. It is guaranteed that nobody is having bigamous marriage (重婚) or dangling with more than one companion.</p>
-<p>Output Specification:
-First print in a line the total number of lonely guests. Then in the next line, print their ID's in increasing order. The numbers must be separated by exactly 1 space, and there must be no extra space at the end of the line.</p>
+</code></pre><p>也可以用散列做。</p>
+<h2 id="1121-Damn-Single-25-分"><a href="#1121-Damn-Single-25-分" class="headerlink" title="1121 Damn Single (25 分)"></a>1121 Damn Single (25 分)</h2><p>“Damn Single (单身狗)” is the Chinese nickname for someone who is being single. You are supposed to find those who are alone in a big party, so they can be taken care of.</p>
+<p>Input Specification:<br>Each input file contains one test case. For each case, the first line gives a positive integer N (≤ 50,000), the total number of couples. Then N lines of the couples follow, each gives a couple of ID’s which are 5-digit numbers (i.e. from 00000 to 99999). After the list of couples, there is a positive integer M (≤ 10,000) followed by M ID’s of the party guests. The numbers are separated by spaces. It is guaranteed that nobody is having bigamous marriage (重婚) or dangling with more than one companion.</p>
+<p>Output Specification:<br>First print in a line the total number of lonely guests. Then in the next line, print their ID’s in increasing order. The numbers must be separated by exactly 1 space, and there must be no extra space at the end of the line.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>3
-11111 22222
-33333 44444
-55555 66666
-7
-55555 44444 10000 88888 22222 11111 23333</p>
+<p>3<br>11111 22222<br>33333 44444<br>55555 66666<br>7<br>55555 44444 10000 88888 22222 11111 23333</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
-<p>5
-10000 23333 44444 55555 88888</p>
+<p>5<br>10000 23333 44444 55555 88888</p>
 </blockquote>
 <pre><code>//1121 Damn Single
 #include&lt;cstdio&gt;
@@ -777,106 +662,80 @@ First print in a line the total number of lonely guests. Then in the next line, 
 #pragma warning(disable:4996)
 using namespace std;
 int main(){
-	map&lt;string, string&gt;mp;
-	int couples, guest;
-	string x, y;
-	cin&gt;&gt;couples;
-	for (int i = 0; i &lt; couples; i++){//存储情侣
-		cin &gt;&gt; x &gt;&gt; y;
-		mp[x] = y;
-		mp[y] = x;
-	}
-	cin&gt;&gt;guest;
-	vector&lt;string&gt;judge;
-	int arrive[100000] = { 0 };
-	set&lt;string&gt;dog;
-	string temp;
-	int tempint;
-	for (int i = 0; i &lt; guest; i++){//读入客人
-		cin &gt;&gt; temp;
-		judge.push_back(temp);//加入客人清单
-		tempint=stoi(temp);
-		arrive[tempint] = 1;//加入签到表
-	}
-	for (auto it = judge.begin(); it != judge.end(); it++){//判断客人有无伴侣
-		if (mp[*it] == &quot;&quot;)dog.insert(*it);//单身
-		else{//有伴侣但没来
-			int spouse = stoi(mp[*it]);
-			if (!arrive[spouse])//有伴侣但是伴侣没来或无伴侣
-				dog.insert(*it);
-		}
-	}
-	cout&lt;&lt;dog.size()&lt;&lt;endl;
-	for (auto it = dog.begin(); it != dog.end(); it++){
-		if (it != dog.begin())cout&lt;&lt;&quot; &quot;;
-		cout&lt;&lt;*it;
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    map&lt;string, string&gt;mp;
+    int couples, guest;
+    string x, y;
+    cin&gt;&gt;couples;
+    for (int i = 0; i &lt; couples; i++){//存储情侣
+        cin &gt;&gt; x &gt;&gt; y;
+        mp[x] = y;
+        mp[y] = x;
+    }
+    cin&gt;&gt;guest;
+    vector&lt;string&gt;judge;
+    int arrive[100000] = { 0 };
+    set&lt;string&gt;dog;
+    string temp;
+    int tempint;
+    for (int i = 0; i &lt; guest; i++){//读入客人
+        cin &gt;&gt; temp;
+        judge.push_back(temp);//加入客人清单
+        tempint=stoi(temp);
+        arrive[tempint] = 1;//加入签到表
+    }
+    for (auto it = judge.begin(); it != judge.end(); it++){//判断客人有无伴侣
+        if (mp[*it] == &quot;&quot;)dog.insert(*it);//单身
+        else{//有伴侣但没来
+            int spouse = stoi(mp[*it]);
+            if (!arrive[spouse])//有伴侣但是伴侣没来或无伴侣
+                dog.insert(*it);
+        }
+    }
+    cout&lt;&lt;dog.size()&lt;&lt;endl;
+    for (auto it = dog.begin(); it != dog.end(); it++){
+        if (it != dog.begin())cout&lt;&lt;&quot; &quot;;
+        cout&lt;&lt;*it;
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<ol>
+</code></pre><ol>
 <li>注意用int的话map出来无伴侣的人都是0，如果0也是旅客的话……</li>
-<li>用两个数据结构，签到表（散列），和登记名单（vector)来加快程序速度。
-如何优化时间：主要思路就是用空间换时间。
-还没遇到过空间不够的情况，基本都是超时哈哈。
-把这边的map用数组直接散列会更加简洁些（用int了）</li>
+<li>用两个数据结构，签到表（散列），和登记名单（vector)来加快程序速度。<br>如何优化时间：主要思路就是用空间换时间。<br>还没遇到过空间不够的情况，基本都是超时哈哈。<br>把这边的map用数组直接散列会更加简洁些（用int了）</li>
 </ol>
 <hr>
-<h2>#map</h2>
-<p>##知识要点
-字典，可以将任何基本类型（包括STL容器）映射到任何基本类型（包括STL容器）。
-map会以键从小到大的顺序自动排序。
-键和值都是唯一的，如果一个键要多个值，就只能用multimap。
-不需要排序的map是unordered_map，速度比map快得多。
-对于不存在的键key mp[key]==0;(值如果为int的话)</p>
-<p>###定义
-map&lt;string,int&gt;mp;      //int到int就是数组。
+<h1 id="map"><a href="#map" class="headerlink" title="map"></a>map</h1><hr>
+<h2 id="知识要点-2"><a href="#知识要点-2" class="headerlink" title="知识要点"></a>知识要点</h2><p>字典，可以将任何基本类型（包括STL容器）映射到任何基本类型（包括STL容器）。<br>map会以键从小到大的顺序自动排序。<br>键和值都是唯一的，如果一个键要多个值，就只能用multimap。<br>不需要排序的map是unordered_map，速度比map快得多。<br>对于不存在的键key mp[key]==0;(值如果为int的话)</p>
+<h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><pre><code>map&lt;string,int&gt;mp;      //int到int就是数组。
 map&lt;int,string&gt;mp;      //想用字符串做映射就是string
 map&lt;set&lt;int&gt;,string&gt;mp;
-###元素访问</p>
-<ul>
-<li>
-<p>下标
-如有map&lt;char,int&gt;mp可以用mp['c']的方式直接访问整数。
-键是唯一的。</p>
+</code></pre><h3 id="元素访问-1"><a href="#元素访问-1" class="headerlink" title="元素访问"></a>元素访问</h3><ul>
+<li><p>下标<br>如有map<char,int>mp可以用mp[‘c’]的方式直接访问整数。<br>键是唯一的。</char,int></p>
 </li>
-<li>
-<p>迭代器
-map&lt;int,string&gt;::iterator it;
-用it-&gt;first访问键，it-&gt;secod访问值。</p>
+<li><p>迭代器<br>map<int,string>::iterator it;<br>用it-&gt;first访问键，it-&gt;secod访问值。</int,string></p>
 </li>
 </ul>
-<p>###常用操作
-mp.find(key);     //返回键为key的迭代器，找不到就是end
+<h3 id="常用操作-2"><a href="#常用操作-2" class="headerlink" title="常用操作"></a>常用操作</h3><pre><code>mp.find(key);     //返回键为key的迭代器，找不到就是end
 mp.erase(it);
 mp.erase(key);    //删除某个键的映射
 mp.erase(first,last);   // [first,last)
 mp.size();
-mp.clear();</p>
-<p>###常见用途</p>
-<ul>
+mp.clear();
+</code></pre><h3 id="常见用途"><a href="#常见用途" class="headerlink" title="常见用途"></a>常见用途</h3><ul>
 <li>字符或字符串与整数之间映射的题目。</li>
 <li>判断整数或者其它类型数据是否存在的题目。</li>
 <li>字符串和字符串的映射。</li>
 </ul>
-<h3>排序</h3>
-<ul>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><ul>
 <li>对值进行排序，可以利用pair如1137,也可将键存入值中，遍历mp将值加进vector单独排序。</li>
 </ul>
 <hr>
-<p>##1054 The Dominant Color(20)
-Behind the scenes in the computer's memory, color is always talked about as a series of 24 bits of information for each pixel. In an image, the color with the largest proportional area is called the dominant color. A strictly dominant color takes more than half of the total area. Now given an image of resolution M by N (for example, 800×600), you are supposed to point out the strictly dominant color.</p>
-<p>Input Specification:
-Each input file contains one test case. For each case, the first line contains 2 positive numbers: M (≤800) and N (≤600) which are the resolutions of the image. Then N lines follow, each contains M digital colors in the range [0,2^24). It is guaranteed that the strictly dominant color exists for each input image. All the numbers in a line are separated by a space.</p>
-<p>Output Specification:
-For each test case, simply print the dominant color in a line.</p>
+<h2 id="1054-The-Dominant-Color-20"><a href="#1054-The-Dominant-Color-20" class="headerlink" title="1054 The Dominant Color(20)"></a>1054 The Dominant Color(20)</h2><p>Behind the scenes in the computer’s memory, color is always talked about as a series of 24 bits of information for each pixel. In an image, the color with the largest proportional area is called the dominant color. A strictly dominant color takes more than half of the total area. Now given an image of resolution M by N (for example, 800×600), you are supposed to point out the strictly dominant color.</p>
+<p>Input Specification:<br>Each input file contains one test case. For each case, the first line contains 2 positive numbers: M (≤800) and N (≤600) which are the resolutions of the image. Then N lines follow, each contains M digital colors in the range [0,2^24). It is guaranteed that the strictly dominant color exists for each input image. All the numbers in a line are separated by a space.</p>
+<p>Output Specification:<br>For each test case, simply print the dominant color in a line.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>5 3
-0 0 255 16777215 24
-24 24 0 0 24
-24 0 24 24 24</p>
+<p>5 3<br>0 0 255 16777215 24<br>24 24 0 0 24<br>24 0 24 24 24</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
@@ -889,36 +748,28 @@ For each test case, simply print the dominant color in a line.</p>
 #pragma warning(disable:4996)
 using namespace std;
 int main(){
-	int M, N,now;
-	scanf(&quot;%d %d&quot;, &amp;M, &amp;N);
-	map&lt;int, int&gt;color;
-	int half = N*M / 2;
-	for (int i = 0; i &lt; M; i++){
-		for (int j = 0; j &lt; N; j++){
-			scanf(&quot;%d&quot;, &amp;now);
-			color[now]++;
-			if (color[now]&gt;half)printf(&quot;%d&quot;,now);
-		}
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    int M, N,now;
+    scanf(&quot;%d %d&quot;, &amp;M, &amp;N);
+    map&lt;int, int&gt;color;
+    int half = N*M / 2;
+    for (int i = 0; i &lt; M; i++){
+        for (int j = 0; j &lt; N; j++){
+            scanf(&quot;%d&quot;, &amp;now);
+            color[now]++;
+            if (color[now]&gt;half)printf(&quot;%d&quot;,now);
+        }
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>int到int的简单映射。</p>
+</code></pre><p>int到int的简单映射。</p>
 <hr>
-<p>##1092 To Buy or Not to Buy(20)
-Eva would like to make a string of beads with her favorite colors so she went to a small shop to buy some beads. There were many colorful strings of beads. However the owner of the shop would only sell the strings in whole pieces. Hence Eva must check whether a string in the shop contains all the beads she needs. She now comes to you for help: if the answer is Yes, please tell her the number of extra beads she has to buy; or if the answer is No, please tell her the number of beads missing from the string.
-For the sake of simplicity, let's use the characters in the ranges [0-9], [a-z], and [A-Z] to represent the colors. For example, the 3rd string in Figure 1 is the one that Eva would like to make. Then the 1st string is okay since it contains all the necessary beads with 8 extra ones; yet the 2nd one is not since there is no black bead and one less red bead.
-figbuy.jpg
-Figure 1</p>
-<p>Input Specification:
-Each input file contains one test case. Each case gives in two lines the strings of no more than 1000 beads which belong to the shop owner and Eva, respectively.</p>
-<p>Output Specification:
-For each test case, print your answer in one line. If the answer is Yes, then also output the number of extra beads Eva has to buy; or if the answer is No, then also output the number of beads missing from the string. There must be exactly 1 space between the answer and the number.</p>
+<h2 id="1092-To-Buy-or-Not-to-Buy-20"><a href="#1092-To-Buy-or-Not-to-Buy-20" class="headerlink" title="1092 To Buy or Not to Buy(20)"></a>1092 To Buy or Not to Buy(20)</h2><p>Eva would like to make a string of beads with her favorite colors so she went to a small shop to buy some beads. There were many colorful strings of beads. However the owner of the shop would only sell the strings in whole pieces. Hence Eva must check whether a string in the shop contains all the beads she needs. She now comes to you for help: if the answer is Yes, please tell her the number of extra beads she has to buy; or if the answer is No, please tell her the number of beads missing from the string.<br>For the sake of simplicity, let’s use the characters in the ranges [0-9], [a-z], and [A-Z] to represent the colors. For example, the 3rd string in Figure 1 is the one that Eva would like to make. Then the 1st string is okay since it contains all the necessary beads with 8 extra ones; yet the 2nd one is not since there is no black bead and one less red bead.<br>figbuy.jpg<br>Figure 1</p>
+<p>Input Specification:<br>Each input file contains one test case. Each case gives in two lines the strings of no more than 1000 beads which belong to the shop owner and Eva, respectively.</p>
+<p>Output Specification:<br>For each test case, print your answer in one line. If the answer is Yes, then also output the number of extra beads Eva has to buy; or if the answer is No, then also output the number of beads missing from the string. There must be exactly 1 space between the answer and the number.</p>
 <p>Sample Input 1:</p>
 <blockquote>
-<p>ppRYYGrrYBR2258
-YrR8RrY</p>
+<p>ppRYYGrrYBR2258<br>YrR8RrY</p>
 </blockquote>
 <p>Sample Output 1:</p>
 <blockquote>
@@ -926,8 +777,7 @@ YrR8RrY</p>
 </blockquote>
 <p>Sample Input 2:</p>
 <blockquote>
-<p>ppRYYGrrYB225
-YrR8RrY</p>
+<p>ppRYYGrrYB225<br>YrR8RrY</p>
 </blockquote>
 <p>Sample Output 2:</p>
 <blockquote>
@@ -942,58 +792,40 @@ YrR8RrY</p>
 #include&lt;iostream&gt;
 using namespace std;
 int main(){
-	string a, b;
-	cin &gt;&gt; a&gt;&gt;b;
-	map&lt;char, int&gt;mp;
-	for (int i = 0; i &lt; a.length(); i++)mp[a[i]]++;
-	int count = 0;
-	for (int i = 0; i &lt; b.length(); i++){
-		if (mp[b[i]] &gt;= 1)mp[b[i]]--;
-		else count++;
-	}
-	if (count)printf(&quot;No %d&quot;, count);
-	else printf(&quot;Yes %d&quot;, a.length() - b.length());
-	system(&quot;pause&quot;);
-	return 0;
+    string a, b;
+    cin &gt;&gt; a&gt;&gt;b;
+    map&lt;char, int&gt;mp;
+    for (int i = 0; i &lt; a.length(); i++)mp[a[i]]++;
+    int count = 0;
+    for (int i = 0; i &lt; b.length(); i++){
+        if (mp[b[i]] &gt;= 1)mp[b[i]]--;
+        else count++;
+    }
+    if (count)printf(&quot;No %d&quot;, count);
+    else printf(&quot;Yes %d&quot;, a.length() - b.length());
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>也可以用数组直接count[char]，这里char是ascii码。连map都不用。</p>
+</code></pre><p>也可以用数组直接count[char]，这里char是ascii码。连map都不用。</p>
 <hr>
-<p>##1124 Raffle for Weibo Followers(20)
-John got a full mark on PAT. He was so happy that he decided to hold a raffle（抽奖） for his followers on Weibo -- that is, he would select winners from every N followers who forwarded his post, and give away gifts. Now you are supposed to help him generate the list of winners.
-Input Specification:</p>
-<p>Each input file contains one test case. For each case, the first line gives three positive integers M (≤ 1000), N and S, being the total number of forwards, the skip number of winners, and the index of the first winner (the indices start from 1). Then M lines follow, each gives the nickname (a nonempty string of no more than 20 characters, with no white space or return) of a follower who has forwarded John's post.
-Note: it is possible that someone would forward more than once, but no one can win more than once. Hence if the current candidate of a winner has won before, we must skip him/her and consider the next one.</p>
-<p>Output Specification:
-For each case, print the list of winners in the same order as in the input, each nickname occupies a line. If there is no winner yet, print Keep going... instead.</p>
+<h2 id="1124-Raffle-for-Weibo-Followers-20"><a href="#1124-Raffle-for-Weibo-Followers-20" class="headerlink" title="1124 Raffle for Weibo Followers(20)"></a>1124 Raffle for Weibo Followers(20)</h2><p>John got a full mark on PAT. He was so happy that he decided to hold a raffle（抽奖） for his followers on Weibo — that is, he would select winners from every N followers who forwarded his post, and give away gifts. Now you are supposed to help him generate the list of winners.<br>Input Specification:</p>
+<p>Each input file contains one test case. For each case, the first line gives three positive integers M (≤ 1000), N and S, being the total number of forwards, the skip number of winners, and the index of the first winner (the indices start from 1). Then M lines follow, each gives the nickname (a nonempty string of no more than 20 characters, with no white space or return) of a follower who has forwarded John’s post.<br>Note: it is possible that someone would forward more than once, but no one can win more than once. Hence if the current candidate of a winner has won before, we must skip him/her and consider the next one.</p>
+<p>Output Specification:<br>For each case, print the list of winners in the same order as in the input, each nickname occupies a line. If there is no winner yet, print Keep going… instead.</p>
 <p>Sample Input 1:</p>
 <blockquote>
-<p>9 3 2
-Imgonnawin!
-PickMe
-PickMeMeMeee
-LookHere
-Imgonnawin!
-TryAgainAgain
-TryAgainAgain
-Imgonnawin!
-TryAgainAgain</p>
+<p>9 3 2<br>Imgonnawin!<br>PickMe<br>PickMeMeMeee<br>LookHere<br>Imgonnawin!<br>TryAgainAgain<br>TryAgainAgain<br>Imgonnawin!<br>TryAgainAgain</p>
 </blockquote>
 <p>Sample Output 1:</p>
 <blockquote>
-<p>PickMe
-Imgonnawin!
-TryAgainAgain</p>
+<p>PickMe<br>Imgonnawin!<br>TryAgainAgain</p>
 </blockquote>
 <p>Sample Input 2:</p>
 <blockquote>
-<p>2 3 5
-Imgonnawin!
-PickMe</p>
+<p>2 3 5<br>Imgonnawin!<br>PickMe</p>
 </blockquote>
 <p>Sample Output 2:</p>
 <blockquote>
-<p>Keep going...</p>
+<p>Keep going…</p>
 </blockquote>
 <pre><code>//1124 Raffle for Weibo Followers
 #pragma warning(disable:4996)
@@ -1004,73 +836,41 @@ PickMe</p>
 #include&lt;iostream&gt;
 using namespace std;
 int main(){
-	int M, N, K, flag=0,count=0;
-	string temp;
-	scanf(&quot;%d %d %d&quot;, &amp;M, &amp;N, &amp;K);
-	map&lt;string,int&gt;mp;
-	for (int i = 0; i &lt; M; i++){
-		cin &gt;&gt; temp;
-		if (K - 1 == i){//first time
-			cout &lt;&lt; temp &lt;&lt; endl;
-			flag = 1;
-			mp[temp] = -1;
-		}
-		else if (flag &amp;&amp;mp[temp]!=-1){
-			count++;
-			if (count == N){
-				cout &lt;&lt; temp &lt;&lt; endl;
-				count = 0;
-				mp[temp] = -1;
-			}
-		}
-	}
-	if (!flag)printf(&quot;Keep going...&quot;);
-	system(&quot;pause&quot;);
-	return 0;
+    int M, N, K, flag=0,count=0;
+    string temp;
+    scanf(&quot;%d %d %d&quot;, &amp;M, &amp;N, &amp;K);
+    map&lt;string,int&gt;mp;
+    for (int i = 0; i &lt; M; i++){
+        cin &gt;&gt; temp;
+        if (K - 1 == i){//first time
+            cout &lt;&lt; temp &lt;&lt; endl;
+            flag = 1;
+            mp[temp] = -1;
+        }
+        else if (flag &amp;&amp;mp[temp]!=-1){
+            count++;
+            if (count == N){
+                cout &lt;&lt; temp &lt;&lt; endl;
+                count = 0;
+                mp[temp] = -1;
+            }
+        }
+    }
+    if (!flag)printf(&quot;Keep going...&quot;);
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<hr>
-<p>##1137 Final Grading (25)
-For a student taking the online course &quot;Data Structures&quot; on China University MOOC (http://www.icourse163.org/), to be qualified for a certificate, he/she must first obtain no less than 200 points from the online programming assignments, and then receive a final grade no less than 60 out of 100. The final grade is calculated by G=(G
-​mid−term×40%+Gfinal×60%) if Gmid−term&gt;Gfinal, or Gfinal will be taken as the final grade G. Here Gmid−term
-​​ and G final are the student's scores of the mid-term and the final exams, respectively.
-The problem is that different exams have different grading sheets. Your job is to write a program to merge all the grading sheets into one.</p>
-<p>Input Specification:
-Each input file contains one test case. For each case, the first line gives three positive integers: P , the number of students having done the online programming assignments; M, the number of students on the mid-term list; and N, the number of students on the final exam list. All the numbers are no more than 10,000.
-Then three blocks follow. The first block contains P online programming scores Gp's; the second one contains M mid-term scores Gmid−term's; and the last one contains N final exam scores Gfinal's. Each score occupies a line with the format: StudentID Score, where StudentID is a string of no more than 20 English letters and digits, and Score is a nonnegative integer (the maximum score of the online programming is 900, and that of the mid-term and final exams is 100).</p>
-<p>Output Specification:
-For each case, print the list of students who are qualified for certificates. Each student occupies a line with the format:
-StudentID G​pGmid−term Gfinal G
-If some score does not exist, output &quot;−1&quot; instead. The output must be sorted in descending order of their final grades (G must be rounded up to an integer). If there is a tie, output in ascending order of their StudentID's. It is guaranteed that the StudentID's are all distinct, and there is at least one qullified student.</p>
+</code></pre><hr>
+<h2 id="1137-Final-Grading-25"><a href="#1137-Final-Grading-25" class="headerlink" title="1137 Final Grading (25)"></a>1137 Final Grading (25)</h2><p>For a student taking the online course “Data Structures” on China University MOOC (<a href="http://www.icourse163.org/" target="_blank" rel="noopener">http://www.icourse163.org/</a>), to be qualified for a certificate, he/she must first obtain no less than 200 points from the online programming assignments, and then receive a final grade no less than 60 out of 100. The final grade is calculated by G=(G<br>​mid−term×40%+Gfinal×60%) if Gmid−term&gt;Gfinal, or Gfinal will be taken as the final grade G. Here Gmid−term<br>​​ and G final are the student’s scores of the mid-term and the final exams, respectively.<br>The problem is that different exams have different grading sheets. Your job is to write a program to merge all the grading sheets into one.</p>
+<p>Input Specification:<br>Each input file contains one test case. For each case, the first line gives three positive integers: P , the number of students having done the online programming assignments; M, the number of students on the mid-term list; and N, the number of students on the final exam list. All the numbers are no more than 10,000.<br>Then three blocks follow. The first block contains P online programming scores Gp’s; the second one contains M mid-term scores Gmid−term’s; and the last one contains N final exam scores Gfinal’s. Each score occupies a line with the format: StudentID Score, where StudentID is a string of no more than 20 English letters and digits, and Score is a nonnegative integer (the maximum score of the online programming is 900, and that of the mid-term and final exams is 100).</p>
+<p>Output Specification:<br>For each case, print the list of students who are qualified for certificates. Each student occupies a line with the format:<br>StudentID G​pGmid−term Gfinal G<br>If some score does not exist, output “−1” instead. The output must be sorted in descending order of their final grades (G must be rounded up to an integer). If there is a tie, output in ascending order of their StudentID’s. It is guaranteed that the StudentID’s are all distinct, and there is at least one qullified student.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>6 6 7
-01234 880
-a1903 199
-ydjh2 200
-wehu8 300
-dx86w 220
-missing 400
-ydhfu77 99
-wehu8 55
-ydjh2 98
-dx86w 88
-a1903 86
-01234 39
-ydhfu77 88
-a1903 66
-01234 58
-wehu8 84
-ydjh2 82
-missing 99
-dx86w 81</p>
+<p>6 6 7<br>01234 880<br>a1903 199<br>ydjh2 200<br>wehu8 300<br>dx86w 220<br>missing 400<br>ydhfu77 99<br>wehu8 55<br>ydjh2 98<br>dx86w 88<br>a1903 86<br>01234 39<br>ydhfu77 88<br>a1903 66<br>01234 58<br>wehu8 84<br>ydjh2 82<br>missing 99<br>dx86w 81</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
-<p>missing 400 -1 99 99
-ydjh2 200 98 82 88
-dx86w 220 88 81 84
-wehu8 300 55 84 84</p>
+<p>missing 400 -1 99 99<br>ydjh2 200 98 82 88<br>dx86w 220 88 81 84<br>wehu8 300 55 84 84</p>
 </blockquote>
 <pre><code>//1137 Final Grading （25 分）
 #include&lt;string&gt;
@@ -1079,61 +879,56 @@ wehu8 300 55 84 84</p>
 #include&lt;iostream&gt;
 #include&lt;map&gt;
 #include&lt;cmath&gt;
-#include&lt;utility&gt;					//注意
+#include&lt;utility&gt;                    //注意
 #include&lt;vector&gt;
 #include&lt;algorithm&gt;
 using namespace std;
 #pragma warning(disable:4996)
 struct stu{
-	int gp = -1, gmid = -1, gfinal = -1, gtotal = -1;
+    int gp = -1, gmid = -1, gfinal = -1, gtotal = -1;
 };
 bool cmp(pair&lt; string,stu&gt; a ,pair&lt; string,stu&gt; b){ //注意
-	if (a.second.gtotal == b.second.gtotal)return a.first &lt; b.first;
-	else return a.second.gtotal &gt; b.second.gtotal;
+    if (a.second.gtotal == b.second.gtotal)return a.first &lt; b.first;
+    else return a.second.gtotal &gt; b.second.gtotal;
 }
 int main(){
-	int P,M,N,score;
-	cin &gt;&gt; P &gt;&gt; M &gt;&gt; N;
-	string id;
-	map&lt;string, stu&gt;mp;
-	for (int i = 0; i &lt; P; i++){// online programming assignments
-		cin &gt;&gt; id &gt;&gt;score;
-		if (score &gt;= 200)mp[id].gp = score;
-	}
-	for (int i = 0; i &lt; M; i++){// mid-test
-		cin &gt;&gt; id &gt;&gt; score;
-		if (mp[id].gp!=-1)mp[id].gmid = score;
-	}
-	for (int i = 0; i &lt; N; i++){// final-test and calculate the total grade
-		cin &gt;&gt; id &gt;&gt; score;
-		if (mp[id].gp != -1){
-			mp[id].gfinal = score;
-			if (mp[id].gmid&gt;mp[id].gfinal)mp[id].gtotal = round(0.4*mp[id].gmid + 0.6*mp[id].gfinal);
-			else mp[id].gtotal = mp[id].gfinal;
-		}
-	}
-	vector&lt;pair&lt;string,stu&gt; &gt;rank(mp.begin(), mp.end());//将值转存入pair用vector进行排序，注意！
-	sort(rank.begin(), rank.end(), cmp);
-	for (int i = 0; i &lt; rank.size();i++){//这里就不要用迭代器写了
-		if (rank[i].second.gtotal&lt;60)break;
-		cout &lt;&lt;rank[i].first &lt;&lt; &quot; &quot; &lt;&lt; rank[i].second.gp &lt;&lt; &quot; &quot; &lt;&lt; rank[i].second.gmid &lt;&lt; &quot; &quot; &lt;&lt; rank[i].second.gfinal &lt;&lt; &quot; &quot; &lt;&lt; rank[i].second.gtotal &lt;&lt; endl;
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    int P,M,N,score;
+    cin &gt;&gt; P &gt;&gt; M &gt;&gt; N;
+    string id;
+    map&lt;string, stu&gt;mp;
+    for (int i = 0; i &lt; P; i++){// online programming assignments
+        cin &gt;&gt; id &gt;&gt;score;
+        if (score &gt;= 200)mp[id].gp = score;
+    }
+    for (int i = 0; i &lt; M; i++){// mid-test
+        cin &gt;&gt; id &gt;&gt; score;
+        if (mp[id].gp!=-1)mp[id].gmid = score;
+    }
+    for (int i = 0; i &lt; N; i++){// final-test and calculate the total grade
+        cin &gt;&gt; id &gt;&gt; score;
+        if (mp[id].gp != -1){
+            mp[id].gfinal = score;
+            if (mp[id].gmid&gt;mp[id].gfinal)mp[id].gtotal = round(0.4*mp[id].gmid + 0.6*mp[id].gfinal);
+            else mp[id].gtotal = mp[id].gfinal;
+        }
+    }
+    vector&lt;pair&lt;string,stu&gt; &gt;rank(mp.begin(), mp.end());//将值转存入pair用vector进行排序，注意！
+    sort(rank.begin(), rank.end(), cmp);
+    for (int i = 0; i &lt; rank.size();i++){//这里就不要用迭代器写了
+        if (rank[i].second.gtotal&lt;60)break;
+        cout &lt;&lt;rank[i].first &lt;&lt; &quot; &quot; &lt;&lt; rank[i].second.gp &lt;&lt; &quot; &quot; &lt;&lt; rank[i].second.gmid &lt;&lt; &quot; &quot; &lt;&lt; rank[i].second.gfinal &lt;&lt; &quot; &quot; &lt;&lt; rank[i].second.gtotal &lt;&lt; endl;
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>利用pair对map中的值进行排序。也可将键存入值中，遍历mp将值加进vector单独排序。</p>
+</code></pre><p>利用pair对map中的值进行排序。也可将键存入值中，遍历mp将值加进vector单独排序。</p>
 <hr>
-<p>##1144 The Missing Number (20)
-Given N integers, you are supposed to find the smallest positive integer that is NOT in the given list.
-Input Specification:</p>
+<h2 id="1144-The-Missing-Number-20"><a href="#1144-The-Missing-Number-20" class="headerlink" title="1144 The Missing Number (20)"></a>1144 The Missing Number (20)</h2><p>Given N integers, you are supposed to find the smallest positive integer that is NOT in the given list.<br>Input Specification:</p>
 <p>Each input file contains one test case. For each case, the first line gives a positive integer N (≤10^5). Then N integers are given in the next line, separated by spaces. All the numbers are in the range of int.</p>
-<p>Output Specification:
-Print in a line the smallest positive integer that is missing from the input list.</p>
+<p>Output Specification:<br>Print in a line the smallest positive integer that is missing from the input list.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>10
-5 -25 9 6 1 3 4 2 5 17</p>
+<p>10<br>5 -25 9 6 1 3 4 2 5 17</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
@@ -1146,48 +941,34 @@ Print in a line the smallest positive integer that is missing from the input lis
 #pragma warning(disable:4996)
 using namespace std;
 int main(){
-	int N,temp;
-	scanf(&quot;%d&quot;, &amp;N);
-	map&lt;int, int&gt;mp;
-	for (int i = 0; i &lt; N; i++){
-		scanf(&quot;%d&quot;, &amp;temp);
-		mp[temp]++;
-	}
-	int i = 0;
-	while (1){
-		if (mp[++i] == 0){
-			printf(&quot;%d&quot;, i);
-			break;
-		}
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    int N,temp;
+    scanf(&quot;%d&quot;, &amp;N);
+    map&lt;int, int&gt;mp;
+    for (int i = 0; i &lt; N; i++){
+        scanf(&quot;%d&quot;, &amp;temp);
+        mp[temp]++;
+    }
+    int i = 0;
+    while (1){
+        if (mp[++i] == 0){
+            printf(&quot;%d&quot;, i);
+            break;
+        }
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>散列，用数组也可以的。</p>
-<p>#stack
-##1051 Pop Sequence (25)
-Given a stack which can keep M numbers at most. Push N numbers in the order of 1, 2, 3, ..., N and pop randomly. You are supposed to tell if a given sequence of numbers is a possible pop sequence of the stack. For example, if M is 5 and N is 7, we can obtain 1, 2, 3, 4, 5, 6, 7 from the stack, but not 3, 2, 1, 7, 5, 6, 4.</p>
-<p>Input Specification:
-Each input file contains one test case. For each case, the first line contains 3 numbers (all no more than 1000): M (the maximum capacity of the stack), N (the length of push sequence), and K (the number of pop sequences to be checked). Then K lines follow, each contains a pop sequence of N numbers. All the numbers in a line are separated by a space.</p>
-<p>Output Specification:
-For each pop sequence, print in one line &quot;YES&quot; if it is indeed a possible pop sequence of the stack, or &quot;NO&quot; if not.</p>
+</code></pre><p>散列，用数组也可以的。</p>
+<h1 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h1><h2 id="1051-Pop-Sequence-25"><a href="#1051-Pop-Sequence-25" class="headerlink" title="1051 Pop Sequence (25)"></a>1051 Pop Sequence (25)</h2><p>Given a stack which can keep M numbers at most. Push N numbers in the order of 1, 2, 3, …, N and pop randomly. You are supposed to tell if a given sequence of numbers is a possible pop sequence of the stack. For example, if M is 5 and N is 7, we can obtain 1, 2, 3, 4, 5, 6, 7 from the stack, but not 3, 2, 1, 7, 5, 6, 4.</p>
+<p>Input Specification:<br>Each input file contains one test case. For each case, the first line contains 3 numbers (all no more than 1000): M (the maximum capacity of the stack), N (the length of push sequence), and K (the number of pop sequences to be checked). Then K lines follow, each contains a pop sequence of N numbers. All the numbers in a line are separated by a space.</p>
+<p>Output Specification:<br>For each pop sequence, print in one line “YES” if it is indeed a possible pop sequence of the stack, or “NO” if not.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>5 7 5
-1 2 3 4 5 6 7
-3 2 1 7 5 6 4
-7 6 5 4 3 2 1
-5 6 4 3 7 2 1
-1 7 6 5 4 3 2</p>
+<p>5 7 5<br>1 2 3 4 5 6 7<br>3 2 1 7 5 6 4<br>7 6 5 4 3 2 1<br>5 6 4 3 7 2 1<br>1 7 6 5 4 3 2</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
-<p>YES
-NO
-NO
-YES
-NO</p>
+<p>YES<br>NO<br>NO<br>YES<br>NO</p>
 </blockquote>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;stdio.h&gt;
@@ -1196,44 +977,43 @@ NO</p>
 using namespace std;
 
 bool IsPopSequence(vector&lt;int&gt;temp,int M,int N){
-	int in = 1;//进到几号了（进是有序的，出是无序的）
-	int out = 0;//出了几个了
-	int count = 0;//操作次数
-	stack&lt;int&gt;sim;
-	sim.push(1);
-	while (count&lt;2 * N - 1){//判定序列首位是否可出栈
-		while (sim.size()&gt; 0 &amp;&amp;temp[out]==sim.top()){//栈不空,且一样时出
-			sim.pop();
-			out++;
-			count++;
-		}
-		if (count != 2 * N - 1){
-			in++;
-			sim.push(in);
-			if (sim.size() &gt; M || in &gt; N )return false;
-			count++;
-		}
-	}
-	if(count == 2 * N - 1 &amp;&amp; in==out &amp;&amp;in==N)return true;
+    int in = 1;//进到几号了（进是有序的，出是无序的）
+    int out = 0;//出了几个了
+    int count = 0;//操作次数
+    stack&lt;int&gt;sim;
+    sim.push(1);
+    while (count&lt;2 * N - 1){//判定序列首位是否可出栈
+        while (sim.size()&gt; 0 &amp;&amp;temp[out]==sim.top()){//栈不空,且一样时出
+            sim.pop();
+            out++;
+            count++;
+        }
+        if (count != 2 * N - 1){
+            in++;
+            sim.push(in);
+            if (sim.size() &gt; M || in &gt; N )return false;
+            count++;
+        }
+    }
+    if(count == 2 * N - 1 &amp;&amp; in==out &amp;&amp;in==N)return true;
 }
 int main(){
-	int M, N, K;
-	cin &gt;&gt; M &gt;&gt; N &gt;&gt; K;		//原始数列是到N为止
-	for (int i = 0; i &lt; K; i++){
-		vector&lt;int&gt;test;
-		int t;
-		for (int i = 0; i &lt; N; i++){
-			cin &gt;&gt; t;
-			test.push_back(t);
-		}		
-		if (IsPopSequence(test,M,N))cout &lt;&lt; &quot;YES&quot; &lt;&lt; endl;
-		else cout &lt;&lt; &quot;NO&quot; &lt;&lt; endl;
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    int M, N, K;
+    cin &gt;&gt; M &gt;&gt; N &gt;&gt; K;        //原始数列是到N为止
+    for (int i = 0; i &lt; K; i++){
+        vector&lt;int&gt;test;
+        int t;
+        for (int i = 0; i &lt; N; i++){
+            cin &gt;&gt; t;
+            test.push_back(t);
+        }        
+        if (IsPopSequence(test,M,N))cout &lt;&lt; &quot;YES&quot; &lt;&lt; endl;
+        else cout &lt;&lt; &quot;NO&quot; &lt;&lt; endl;
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>分析问题首先要抓住事物的本质。这是一个栈我们就使用stack,此外它每次操作是非出即进的，就是说只需判断栈的顶部是不是该出栈的，不是出栈的就进栈，超过了该进栈的个数就说明不是，这里可以加一个判断是否需出栈元素小于入栈元素来优化算法速度。</p>
+</code></pre><p>  分析问题首先要抓住事物的本质。这是一个栈我们就使用stack,此外它每次操作是非出即进的，就是说只需判断栈的顶部是不是该出栈的，不是出栈的就进栈，超过了该进栈的个数就说明不是，这里可以加一个判断是否需出栈元素小于入栈元素来优化算法速度。</p>
 
     </article>
     <!-- license  -->
@@ -1423,7 +1203,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">#set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">#map</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">排序</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vector"><span class="toc-number">1.</span> <span class="toc-text">vector</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识要点"><span class="toc-number">1.1.</span> <span class="toc-text">知识要点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义"><span class="toc-number">1.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问方法"><span class="toc-number">1.1.2.</span> <span class="toc-text">访问方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用操作"><span class="toc-number">1.1.3.</span> <span class="toc-text">常用操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1047-Student-List-for-Course-25"><span class="toc-number">1.2.</span> <span class="toc-text">1047 Student List for Course (25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1101-Quick-Sort-25"><span class="toc-number">1.3.</span> <span class="toc-text">1101 Quick Sort (25)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#set"><span class="toc-number">2.</span> <span class="toc-text">set</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识要点-1"><span class="toc-number">2.1.</span> <span class="toc-text">知识要点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#元素访问"><span class="toc-number">2.1.2.</span> <span class="toc-text">元素访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用操作-1"><span class="toc-number">2.1.3.</span> <span class="toc-text">常用操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1063-Set-Similarity-25"><span class="toc-number">2.2.</span> <span class="toc-text">1063 Set Similarity (25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1120-Friend-Numbers-20"><span class="toc-number">2.3.</span> <span class="toc-text">1120 Friend Numbers (20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1121-Damn-Single-25-分"><span class="toc-number">2.4.</span> <span class="toc-text">1121 Damn Single (25 分)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#map"><span class="toc-number">3.</span> <span class="toc-text">map</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识要点-2"><span class="toc-number">3.1.</span> <span class="toc-text">知识要点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#元素访问-1"><span class="toc-number">3.1.2.</span> <span class="toc-text">元素访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用操作-2"><span class="toc-number">3.1.3.</span> <span class="toc-text">常用操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见用途"><span class="toc-number">3.1.4.</span> <span class="toc-text">常见用途</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#排序"><span class="toc-number">3.1.5.</span> <span class="toc-text">排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1054-The-Dominant-Color-20"><span class="toc-number">3.2.</span> <span class="toc-text">1054 The Dominant Color(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1092-To-Buy-or-Not-to-Buy-20"><span class="toc-number">3.3.</span> <span class="toc-text">1092 To Buy or Not to Buy(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1124-Raffle-for-Weibo-Followers-20"><span class="toc-number">3.4.</span> <span class="toc-text">1124 Raffle for Weibo Followers(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1137-Final-Grading-25"><span class="toc-number">3.5.</span> <span class="toc-text">1137 Final Grading (25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1144-The-Missing-Number-20"><span class="toc-number">3.6.</span> <span class="toc-text">1144 The Missing Number (20)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#stack"><span class="toc-number">4.</span> <span class="toc-text">stack</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1051-Pop-Sequence-25"><span class="toc-number">4.1.</span> <span class="toc-text">1051 Pop Sequence (25)</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1436,6 +1216,50 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1923,11 +1747,11 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
+    
         <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
     
         <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
-    
-        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
@@ -1943,21 +1767,21 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="图形学"><span class="iconfont-archer">&#xe606;</span>图形学</span>
     
-        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
-    
-        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
-    
         <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
     
-        <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
+        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
     
         <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
     
         <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
     
+        <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
+    
         <span class="sidebar-tag-name" data-tags="感悟"><span class="iconfont-archer">&#xe606;</span>感悟</span>
     
-        <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
+        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
+    
+        <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
