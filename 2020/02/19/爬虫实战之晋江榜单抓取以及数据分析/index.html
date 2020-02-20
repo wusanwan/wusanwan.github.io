@@ -287,7 +287,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">944</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">936</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -417,13 +417,9 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>最近看了&lt;a href=&quot;https://book.douban.com/subject/30175598/&quot;&gt;《Python 3网络爬虫开发实战》&lt;/a&gt;，手痒就随便鼓捣了一个晋江榜单的爬虫，主要还是练练手，之后还会写其他网站的爬虫。
-如果想找现成的爬虫使用可以看看这个👉&lt;a href=&quot;https://github.com/facert/awesome-spider&quot;&gt;awesome spider&lt;/a&gt;或者直接github上搜。</p>
-<h1>🕷爬虫</h1>
-<p>爬晋江6个频道的按收藏排序的前5页内容，一共6×5×100=3000篇小说的相关信息。
-&lt;a href=&quot;https://github.com/wusanwan/daily_practices/blob/master/python/jjwxc_spider.py&quot;&gt;github链接&lt;/a&gt;</p>
-<h2>代码</h2>
-<pre><code>&quot;&quot;&quot;
+        <p>最近看了<a href="https://book.douban.com/subject/30175598/" target="_blank" rel="noopener">《Python 3网络爬虫开发实战》</a>，手痒就随便鼓捣了一个晋江榜单的爬虫，主要还是练练手，之后还会写其他网站的爬虫。<br>如果想找现成的爬虫使用可以看看这个👉<a href="https://github.com/facert/awesome-spider" target="_blank" rel="noopener">awesome spider</a>或者直接github上搜。</p>
+<h1 id="🕷爬虫"><a href="#🕷爬虫" class="headerlink" title="🕷爬虫"></a>🕷爬虫</h1><p>爬晋江6个频道的按收藏排序的前5页内容，一共6×5×100=3000篇小说的相关信息。<br><a href="https://github.com/wusanwan/daily_practices/blob/master/python/jjwxc_spider.py" target="_blank" rel="noopener">github链接</a></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code>&quot;&quot;&quot;
 jjwxc_spider.py
 
 1. 爬取榜单
@@ -441,11 +437,11 @@ from pyquery import PyQuery as pq
 
 def GetPage(url):  # 请求网页
     headers = {
-        'User-Agent': 'Mozilla/5.0(Macintosh;Intel Mac OS X 10_13_3)AppleWebKit/537.36(KHTML,like Gecko)Chrome/65.0.3325.162 Safari/537.36'
+        &#39;User-Agent&#39;: &#39;Mozilla/5.0(Macintosh;Intel Mac OS X 10_13_3)AppleWebKit/537.36(KHTML,like Gecko)Chrome/65.0.3325.162 Safari/537.36&#39;
     }
     response = requests.get(url, headers=headers)
     if response.status_code == requests.codes.ok:
-        response.encoding = 'gbk'
+        response.encoding = &#39;gbk&#39;
         return response.text
     else:
         print(&quot;错误原因&quot; + str(response.status_code))
@@ -454,40 +450,40 @@ def GetPage(url):  # 请求网页
 
 def ParsePage(html):  # 解析页面
     doc = pq(html)
-    tr = doc('.cytable tr')
+    tr = doc(&#39;.cytable tr&#39;)
     count = 0
     booklist = []
     # 列表页提取作者名，书名，类型，风格，字数，是否完结，发表年份，简介，标签，文章链接
     for item in tr.items():
         if count != 0:
-            author = item('td:nth-child(1) a').text()
-            book = item('td:nth-child(2) a').text()
-            booktype = item('td:nth-child(3)').text()
-            style = item('td:nth-child(4)').text()
-            length = item('td:nth-child(6)').text()
-            isfinish = item('td:nth-child(5)').text()
-            year = item('td:nth-child(8)').text()
+            author = item(&#39;td:nth-child(1) a&#39;).text()
+            book = item(&#39;td:nth-child(2) a&#39;).text()
+            booktype = item(&#39;td:nth-child(3)&#39;).text()
+            style = item(&#39;td:nth-child(4)&#39;).text()
+            length = item(&#39;td:nth-child(6)&#39;).text()
+            isfinish = item(&#39;td:nth-child(5)&#39;).text()
+            year = item(&#39;td:nth-child(8)&#39;).text()
             year = year[0:4]
 
-            title = item('td:nth-child(2) a').attr('title')
+            title = item(&#39;td:nth-child(2) a&#39;).attr(&#39;title&#39;)
             index = title.find(&quot;标签：&quot;)
             brief = title[3: index - 1]
             tags = title[index+3:]
-            link = item('td:nth-child(2) a').attr('href')
+            link = item(&#39;td:nth-child(2) a&#39;).attr(&#39;href&#39;)
 
             # 打开提取内容页信息 主角 收藏数 文案 视角
             content = GetPage(&quot;http://www.jjwxc.net/&quot; + link)
             # 内容页有可能被锁了
             if content is not None:
                 own = pq(content)
-                temp = own('head meta[name=&quot;Keywords&quot;]').attr('content')
+                temp = own(&#39;head meta[name=&quot;Keywords&quot;]&#39;).attr(&#39;content&#39;)
                 index = temp.find(&quot;主角：&quot;)
                 index1 = temp.find(&quot;┃&quot;)
                 roles = temp[index + 3:index1]
-                view = own('.rightul li:nth-child(2)').text()
+                view = own(&#39;.rightul li:nth-child(2)&#39;).text()
                 view = view[6:8]
-                intro = own('.smallreadbody #novelintro').text()
-                collected = own('.sptd span[itemprop=&quot;collectedCount&quot;]').text()
+                intro = own(&#39;.smallreadbody #novelintro&#39;).text()
+                collected = own(&#39;.sptd span[itemprop=&quot;collectedCount&quot;]&#39;).text()
                 # time.sleep(1) 其实不设也没关系
                 print(str(count), author, book, booktype, style, length, isfinish, year, roles, sep=&quot;  &quot;)
                 dict = {&quot;author&quot;: author, &quot;book&quot;: book, &quot;booktype&quot;: booktype, &quot;style&quot;: style, &quot;length&quot;: length, &quot;isfinish&quot;: isfinish, &quot;year&quot;: year, &quot;brief&quot;: brief, &quot;tags&quot;: tags, &quot;roles&quot;: roles, &quot;collected&quot;: collected, &quot;view&quot;: view, &quot;intro&quot;: intro}
@@ -505,41 +501,29 @@ def WriteCSV(booklist, index):   # 将数据写入csv
 
 
 def main(po, co):   # PageOffset,ChannelOffset
-    url = 'http://www.jjwxc.net/bookbase.php?fw0=0&amp;fbsj=0&amp;ycx0=0&amp;xx'+str(co)+'='+str(co)+'&amp;mainview0=0&amp;sd0=0&amp;lx0=0&amp;fg0=0&amp;sortType=0&amp;isfinish=0&amp;collectiontypes=ors&amp;searchkeywords=&amp;page='+str(po)
+    url = &#39;http://www.jjwxc.net/bookbase.php?fw0=0&amp;fbsj=0&amp;ycx0=0&amp;xx&#39;+str(co)+&#39;=&#39;+str(co)+&#39;&amp;mainview0=0&amp;sd0=0&amp;lx0=0&amp;fg0=0&amp;sortType=0&amp;isfinish=0&amp;collectiontypes=ors&amp;searchkeywords=&amp;page=&#39;+str(po)
     html = GetPage(url)
     return ParsePage(html)
 
 
-if __name__ == '__main__':
+if __name__ == &#39;__main__&#39;:
     for i in range(6):  # 频道偏移量
         total = []
         for j in range(5):  # 页数偏移量
             print(&quot;开始第%d个频道的第%d页……&quot; % (i, j+1))
             total.extend(main(j+1, i))
         WriteCSV(total, i)
-</code></pre>
-<h2>bug</h2>
-<ol>
-<li>
-<p><strong>编码、乱码问题。pyquery用抓取的html初始化后print(doc)内容不全。</strong>
-发现是编码问题，因为基本上都截断在主角名字上，所以为什么非要用生僻字给角色取名🤦‍。
-response.encoding='网页编码'，再用doc=pq(response.text)。</p>
+</code></pre><h2 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h2><ol>
+<li><p><strong>编码、乱码问题。pyquery用抓取的html初始化后print(doc)内容不全。</strong><br>发现是编码问题，因为基本上都截断在主角名字上，所以为什么非要用生僻字给角色取名🤦‍。<br>response.encoding=’网页编码’，再用doc=pq(response.text)。</p>
 </li>
-<li>
-<p><strong>vscode输出乱码。</strong>
-设置-&gt;在settings.json中加入这句话：&quot;code-runner.runInTerminal&quot;: true</p>
+<li><p><strong>vscode输出乱码。</strong><br>设置-&gt;在settings.json中加入这句话：”code-runner.runInTerminal”: true</p>
 </li>
-<li>
-<p><strong>with open(&quot;地址&quot;&quot;&quot;)这句没报错但是没有生成相应文件。</strong>
-改成绝对路径以后好了……？</p>
+<li><p><strong>with open(“地址”””)这句没报错但是没有生成相应文件。</strong><br>改成绝对路径以后好了……？</p>
 </li>
 </ol>
-<h1>⌨数据分析</h1>
-<p>第一次用jupyter notebook诶！</p>
-<h2>代码</h2>
-<p>待更新</p>
-<h2>bug</h2>
-<p>待更新</p>
+<h1 id="⌨数据分析"><a href="#⌨数据分析" class="headerlink" title="⌨数据分析"></a>⌨数据分析</h1><p>第一次用jupyter notebook诶！</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><p>待更新</p>
+<h2 id="bug-1"><a href="#bug-1" class="headerlink" title="bug"></a>bug</h2><p>待更新</p>
 
     </article>
     <!-- license  -->
@@ -557,8 +541,8 @@ response.encoding='网页编码'，再用doc=pq(response.text)。</p>
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/02/20/基于pyecharts的专注时间日历图/" title= "基于pyecharts的专注时间日历图">
-                    <div class="nextTitle">基于pyecharts的专注时间日历图</div>
+                <a href= "/2020/02/20/基于pyecharts的专注时间日历图生成脚本/" title= "基于pyecharts的专注时间日历图生成脚本">
+                    <div class="nextTitle">基于pyecharts的专注时间日历图生成脚本</div>
                 </a>
             
         </li>
@@ -729,7 +713,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">🕷爬虫</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">bug</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">⌨数据分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.2.</span> <span class="toc-text">bug</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#🕷爬虫"><span class="toc-number">1.</span> <span class="toc-text">🕷爬虫</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">1.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bug"><span class="toc-number">1.2.</span> <span class="toc-text">bug</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#⌨数据分析"><span class="toc-number">2.</span> <span class="toc-text">⌨数据分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-1"><span class="toc-number">2.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bug-1"><span class="toc-number">2.2.</span> <span class="toc-text">bug</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -742,6 +726,12 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1088,7 +1078,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/基于pyecharts的专注时间日历图/" >基于pyecharts的专注时间日历图</a>
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/基于pyecharts的专注时间日历图生成脚本/" >基于pyecharts的专注时间日历图生成脚本</a>
         </li>
     
     
@@ -1263,6 +1253,8 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
     
+        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
+    
         <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
     
         <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
@@ -1270,8 +1262,6 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
     
         <span class="sidebar-tag-name" data-tags="感悟"><span class="iconfont-archer">&#xe606;</span>感悟</span>
-    
-        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
     
         <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
     

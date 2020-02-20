@@ -289,7 +289,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">4.6k</span>阅读时长: <span class="post-count reading-time">25 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">4.6k</span>阅读时长: <span class="post-count reading-time">26 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -419,19 +419,12 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>参考《算法笔记》第二章，第三章以及第六章的string部分。
-字符串部分我是真的忘得厉害……
-[TOC]
-#字符串处理</p>
-<hr>
-<p>##知识要点</p>
-<h3>C语言风格的字符串 &lt; string.h &gt;</h3>
-<h4>初始化输入输出</h4>
-<p>初始化：</p>
-<pre><code>char a[4]={'a','b','c'};
+        <p>参考《算法笔记》第二章，第三章以及第六章的string部分。<br>字符串部分我是真的忘得厉害……<br>[TOC]</p>
+<h1 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h1><hr>
+<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><h3 id="C语言风格的字符串-lt-string-h-gt"><a href="#C语言风格的字符串-lt-string-h-gt" class="headerlink" title="C语言风格的字符串 &lt; string.h &gt;"></a>C语言风格的字符串 &lt; string.h &gt;</h3><h4 id="初始化输入输出"><a href="#初始化输入输出" class="headerlink" title="初始化输入输出"></a>初始化输入输出</h4><p>初始化：</p>
+<pre><code>char a[4]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;};
 char a[4]=&quot;abc&quot;;
-</code></pre>
-<p>输入输出：</p>
+</code></pre><p>输入输出：</p>
 <pre><code>scanf(&quot;%s&quot;,a);
 gets(a);    //避开
 scanf(&quot;%[^/n]&quot;,a);   //以换行符为结束的字符串
@@ -440,98 +433,54 @@ getchar(b);     //这种情况下如果要自己循环读字符串记得加上\0
 putchar(b);
 gets(a);     //读完记得用getchar()吸收句尾的换行符//PAT好像不能用gets?
 puts(a);     //自带换行符
-</code></pre>
-<p>####常规操作
-strlen(a);
+</code></pre><h4 id="常规操作"><a href="#常规操作" class="headerlink" title="常规操作"></a>常规操作</h4><pre><code>strlen(a);
 strcmp(a,b);    //a&lt;b 负数，a==b为0，a&gt;b 正数  !!!判断相等
 strcpy(a,b);    //b复制（赋值）给a
 strncpy(a,b,n);   //复制前n个字符，但是这玩意儿复制完不加结束标记，要自己加
 strcat(a,b);    //b接到a后面。
 sscanf(a,&quot;%d&quot;,&amp;d);   //读入字符串a中的整数d
 sprintf(a,&quot;%d&quot;,d);   //打印字符串a中的整数d
-strrev(a);      //reverse的c风格用法</p>
-<p><strong>其实对于很多数字类的题目用字符串+sscanf超级方便！</strong></p>
-<h3>C++风格的字符串 &lt; string &gt;</h3>
-<p>####初始化输入输出
-string a=&quot;abcd&quot;;
+strrev(a);      //reverse的c风格用法
+</code></pre><p><strong>其实对于很多数字类的题目用字符串+sscanf超级方便！</strong></p>
+<h3 id="C-风格的字符串-lt-string-gt"><a href="#C-风格的字符串-lt-string-gt" class="headerlink" title="C++风格的字符串 &lt; string &gt;"></a>C++风格的字符串 &lt; string &gt;</h3><h4 id="初始化输入输出-1"><a href="#初始化输入输出-1" class="headerlink" title="初始化输入输出"></a>初始化输入输出</h4><pre><code>string a=&quot;abcd&quot;;
 cin&gt;&gt;a;
 getline(cin,a);   //读入一行
 cout&lt;&lt;a;
-printf(&quot;%s&quot;,a.c_str());</p>
-<p><strong>不要在一个程序里同时使用cout和printf！</strong>
-####访问元素</p>
-<ol>
+printf(&quot;%s&quot;,a.c_str());
+</code></pre><p><strong>不要在一个程序里同时使用cout和printf！</strong></p>
+<h4 id="访问元素"><a href="#访问元素" class="headerlink" title="访问元素"></a>访问元素</h4><ol>
 <li>下标</li>
-<li>迭代器string::iterator it;
-####常规操作
-a+b;    //拼接两个字符串
-a==b; &lt;  &gt;   //比较字符串大小
-a.length();
-a.size();   //一个意思
-a.insert(pos,str);    //前插
-a.insert(it,it1,it2);   //[it1,it2)
-a.erase(it);
-a.erase(pos,len);
-a.erase(it1,it2);   //[it1,it2)
-a.clear();
-a.substr(pos,len);
-a.find(b);    //若b是a的子串，返回在a中第一次出现的位置。若非，则返回string::npos
-a.find(b,pos);    //从pos开始找b
-a.replace(pos,len,str);
-a.replace(it1,it2,str);
-a.c_str();    //转换成c风格的字符串，就可以使用sscanf了。
-sscanf
-reverse(a.begin(),a.end());     //include&lt;algorithm&gt;
-to_string(a);     //将数值转换为字符串
-stoi(int);      //字符串到数值
-sort(a);</li>
+<li>迭代器string::iterator it;<h4 id="常规操作-1"><a href="#常规操作-1" class="headerlink" title="常规操作"></a>常规操作</h4> a+b;    //拼接两个字符串<br> a==b; &lt;  &gt;   //比较字符串大小<br> a.length();<br> a.size();   //一个意思<br> a.insert(pos,str);    //前插<br> a.insert(it,it1,it2);   //[it1,it2)<br> a.erase(it);<br> a.erase(pos,len);<br> a.erase(it1,it2);   //[it1,it2)<br> a.clear();<br> a.substr(pos,len);<br> a.find(b);    //若b是a的子串，返回在a中第一次出现的位置。若非，则返回string::npos<br> a.find(b,pos);    //从pos开始找b<br> a.replace(pos,len,str);<br> a.replace(it1,it2,str);<br> a.c_str();    //转换成c风格的字符串，就可以使用sscanf了。<br> sscanf<br> reverse(a.begin(),a.end());     //include<algorithm><br> to_string(a);     //将数值转换为字符串<br> stoi(int);      //字符串到数值<br> sort(a);</algorithm></li>
 </ol>
-<p>###转化</p>
-<ul>
+<h3 id="转化"><a href="#转化" class="headerlink" title="转化"></a>转化</h3><ul>
 <li>C++风格字符串到C风格 a.c_str();</li>
 <li>C风格字符串转到C++ char s[19]; string str=s;</li>
 <li>整型转字符串sprintf会丢失位数（浮点的</li>
 <li>C++整型转字符串</li>
 </ul>
 <ol>
-<li>
-<p>sprintf,再string str=s;</p>
-</li>
-<li>
-<p>sstream</p>
-<p>#include&lt;sstream&gt;
-int n = 65535;
-stringstream ss;
+<li>sprintf,再string str=s;</li>
+<li><p>sstream</p>
+<h1 id="include"><a href="#include" class="headerlink" title="include"></a>include<sstream></sstream></h1><p> int n = 65535;</p>
+<pre><code>stringstream ss;
 string s;
 ss &lt;&lt; n;
-ss &gt;&gt; s;</p>
-</li>
+ss &gt;&gt; s;
+</code></pre></li>
 </ol>
 <ul>
-<li>
-<p>字符串转整型sscanf（string用c_str())</p>
+<li><p>字符串转整型sscanf（string用c_str())</p>
 </li>
-<li>
-<p><strong>用sscanf就可以直接对每个数位上的数进行操作诶</strong></p>
+<li><p><strong>用sscanf就可以直接对每个数位上的数进行操作诶</strong></p>
 </li>
-<li>
-<p>搞数位要么走字符串，要么用%10/10的
-###提心吊胆</p>
-</li>
-<li>
-<p>加\0了吗</p>
-</li>
-<li>
-<p>负号可以用erase处理，也可以输出负号后sum=-sum。</p>
-</li>
+<li>搞数位要么走字符串，要么用%10/10的<h3 id="提心吊胆"><a href="#提心吊胆" class="headerlink" title="提心吊胆"></a>提心吊胆</h3></li>
+<li>加\0了吗</li>
+<li>负号可以用erase处理，也可以输出负号后sum=-sum。</li>
 </ul>
 <hr>
-<p>##1001 A+B Format(20)
-Calculate a+b and output the sum in standard format -- that is, the digits must be separated into groups of three by commas (unless there are less than four digits).
-Input Specification:</p>
+<h2 id="1001-A-B-Format-20"><a href="#1001-A-B-Format-20" class="headerlink" title="1001 A+B Format(20)"></a>1001 A+B Format(20)</h2><p>Calculate a+b and output the sum in standard format — that is, the digits must be separated into groups of three by commas (unless there are less than four digits).<br>Input Specification:</p>
 <p>Each input file contains one test case. Each case contains a pair of integers a and b where −10^6 ≤a,b≤10^6 . The numbers are separated by a space.</p>
-<p>Output Specification:
-For each test case, you should output the sum of a and b in one line. The sum must be written in the standard format.</p>
+<p>Output Specification:<br>For each test case, you should output the sum of a and b in one line. The sum must be written in the standard format.</p>
 <p>Sample Input:</p>
 <blockquote>
 <p>-1000000 9</p>
@@ -548,33 +497,29 @@ For each test case, you should output the sum of a and b in one line. The sum mu
 #include&lt;cstdlib&gt;
 using namespace std;
 int main(){
-	int a, b, sum;
-	char s[10];
-	scanf(&quot;%d %d&quot;, &amp;a, &amp;b);
-	sum = a + b;
-	sprintf(s, &quot;%d&quot;, sum);
-	string str=s;
-	if (sum &lt; 0){//处理符号
-		printf(&quot;-&quot;);
-		str.erase(0,1);
-	}
-	int u = str.length() % 3;
-	for (int i = 0; i &lt; str.length(); i++){//第i个数字
-		putchar(str[i]);
-		if (i != str.length() - 1 &amp;&amp;(i-u+1)%3==0)printf(&quot;,&quot;);
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    int a, b, sum;
+    char s[10];
+    scanf(&quot;%d %d&quot;, &amp;a, &amp;b);
+    sum = a + b;
+    sprintf(s, &quot;%d&quot;, sum);
+    string str=s;
+    if (sum &lt; 0){//处理符号
+        printf(&quot;-&quot;);
+        str.erase(0,1);
+    }
+    int u = str.length() % 3;
+    for (int i = 0; i &lt; str.length(); i++){//第i个数字
+        putchar(str[i]);
+        if (i != str.length() - 1 &amp;&amp;(i-u+1)%3==0)printf(&quot;,&quot;);
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>思路：因为是块的，所以想到用字符串，可以用erase来处理负号,也可以printf 以后sum=-sum。看了别人的答案后发现这道题用%1000，/1000写也很简单。</p>
+</code></pre><p>思路：因为是块的，所以想到用字符串，可以用erase来处理负号,也可以printf 以后sum=-sum。看了别人的答案后发现这道题用%1000，/1000写也很简单。</p>
 <hr>
-<p>##1005 Spell It Right(20)
-Given a non-negative integer N, your task is to compute the sum of all the digits of N, and output every digit of the sum in English.</p>
-<p>Input Specification:
-Each input file contains one test case. Each case occupies one line which contains an N (≤10^100).</p>
-<p>Output Specification:
-For each test case, output in one line the digits of the sum in English words. There must be one space between two consecutive words, but no extra space at the end of a line.</p>
+<h2 id="1005-Spell-It-Right-20"><a href="#1005-Spell-It-Right-20" class="headerlink" title="1005 Spell It Right(20)"></a>1005 Spell It Right(20)</h2><p>Given a non-negative integer N, your task is to compute the sum of all the digits of N, and output every digit of the sum in English.</p>
+<p>Input Specification:<br>Each input file contains one test case. Each case occupies one line which contains an N (≤10^100).</p>
+<p>Output Specification:<br>For each test case, output in one line the digits of the sum in English words. There must be one space between two consecutive words, but no extra space at the end of a line.</p>
 <p>Sample Input:</p>
 <blockquote>
 <p>12345</p>
@@ -589,50 +534,36 @@ For each test case, output in one line the digits of the sum in English words. T
 #include&lt;string.h&gt;
 #include&lt;cstdlib&gt;
 int main(){
-	char N[101],S[102];
-	int sum = 0;
-	scanf(&quot;%s&quot;, &amp;N);
-	for (int i = 0; i &lt; strlen(N); i++)
-		sum += N[i] - '0';
-	sprintf(S, &quot;%d&quot;, sum);//sum的字符串形式如15
-	char english[10][10] = { &quot;zero&quot;, &quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;,
-		&quot;five&quot;, &quot;six&quot;, &quot;seven&quot;, &quot;eight&quot;, &quot;nine&quot; };
-	for (int i = 0; i &lt; strlen(S); i++){
-		printf(&quot;%s&quot;, english[S[i] - '0']);
-		if (i != strlen(S) - 1)printf(&quot; &quot;);
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    char N[101],S[102];
+    int sum = 0;
+    scanf(&quot;%s&quot;, &amp;N);
+    for (int i = 0; i &lt; strlen(N); i++)
+        sum += N[i] - &#39;0&#39;;
+    sprintf(S, &quot;%d&quot;, sum);//sum的字符串形式如15
+    char english[10][10] = { &quot;zero&quot;, &quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;,
+        &quot;five&quot;, &quot;six&quot;, &quot;seven&quot;, &quot;eight&quot;, &quot;nine&quot; };
+    for (int i = 0; i &lt; strlen(S); i++){
+        printf(&quot;%s&quot;, english[S[i] - &#39;0&#39;]);
+        if (i != strlen(S) - 1)printf(&quot; &quot;);
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>思路：用字符串读N每个数位上的数字，求总和sum,再用字符串读sum每个数位上的数字，用字符串组来做对应关系。</p>
-<ol>
-<li>和数位有关的题都可以考虑下字符串。</li>
-</ol>
-<hr>
-<p>##1035 Password(20)
-To prepare for PAT, the judge sometimes has to generate random passwords for the users. The problem is that there are always some confusing passwords since it is hard to distinguish 1 (one) from l (L in lowercase), or 0 (zero) from O (o in uppercase). One solution is to replace 1 (one) by @, 0 (zero) by %, l by L, and O by o. Now it is your job to write a program to check the accounts generated by the judge, and to help the juge modify the confusing passwords.</p>
-<p>Input Specification:
-Each input file contains one test case. Each case contains a positive integer N (≤1000), followed by N lines of accounts. Each account consists of a user name and a password, both are strings of no more than 10 characters with no space.</p>
-<p>Output Specification:
-For each test case, first print the number M of accounts that have been modified, then print in the following M lines the modified accounts info, that is, the user names and the corresponding modified passwords. The accounts must be printed in the same order as they are read in. If no account is modified, print in one line There are N accounts and no account is modified where N is the total number of accounts. However, if N is one, you must print There is 1 account and no account is modified instead.</p>
+</code></pre><p>思路：用字符串读N每个数位上的数字，求总和sum,再用字符串读sum每个数位上的数字，用字符串组来做对应关系。</p>
+<h2 id="1-和数位有关的题都可以考虑下字符串。"><a href="#1-和数位有关的题都可以考虑下字符串。" class="headerlink" title="1. 和数位有关的题都可以考虑下字符串。"></a>1. 和数位有关的题都可以考虑下字符串。</h2><h2 id="1035-Password-20"><a href="#1035-Password-20" class="headerlink" title="1035 Password(20)"></a>1035 Password(20)</h2><p>To prepare for PAT, the judge sometimes has to generate random passwords for the users. The problem is that there are always some confusing passwords since it is hard to distinguish 1 (one) from l (L in lowercase), or 0 (zero) from O (o in uppercase). One solution is to replace 1 (one) by @, 0 (zero) by %, l by L, and O by o. Now it is your job to write a program to check the accounts generated by the judge, and to help the juge modify the confusing passwords.</p>
+<p>Input Specification:<br>Each input file contains one test case. Each case contains a positive integer N (≤1000), followed by N lines of accounts. Each account consists of a user name and a password, both are strings of no more than 10 characters with no space.</p>
+<p>Output Specification:<br>For each test case, first print the number M of accounts that have been modified, then print in the following M lines the modified accounts info, that is, the user names and the corresponding modified passwords. The accounts must be printed in the same order as they are read in. If no account is modified, print in one line There are N accounts and no account is modified where N is the total number of accounts. However, if N is one, you must print There is 1 account and no account is modified instead.</p>
 <p>Sample Input 1:</p>
 <blockquote>
-<p>3
-Team000002 Rlsp0dfa
-Team000003 perfectpwd
-Team000001 R1spOdfa</p>
+<p>3<br>Team000002 Rlsp0dfa<br>Team000003 perfectpwd<br>Team000001 R1spOdfa</p>
 </blockquote>
 <p>Sample Output 1:</p>
 <blockquote>
-<p>2
-Team000002 RLsp%dfa
-Team000001 R@spodfa</p>
+<p>2<br>Team000002 RLsp%dfa<br>Team000001 R@spodfa</p>
 </blockquote>
 <p>Sample Input 2:</p>
 <blockquote>
-<p>1
-team110 abcdefg332</p>
+<p>1<br>team110 abcdefg332</p>
 </blockquote>
 <p>Sample Output 2:</p>
 <blockquote>
@@ -640,9 +571,7 @@ team110 abcdefg332</p>
 </blockquote>
 <p>Sample Input 3:</p>
 <blockquote>
-<p>2
-team110 abcdefg222
-team220 abcdefg333</p>
+<p>2<br>team110 abcdefg222<br>team220 abcdefg333</p>
 </blockquote>
 <p>Sample Output 3:</p>
 <blockquote>
@@ -654,67 +583,60 @@ team220 abcdefg333</p>
 #include&lt;string.h&gt;
 #include&lt;cstdlib&gt;
 struct Team{
-	char name[12];
-	char password[12];
-	bool flag = false;
+    char name[12];
+    char password[12];
+    bool flag = false;
 };
 int main(){
-	int N,count=0;
-	Team list[1000];
-	scanf(&quot;%d&quot;, &amp;N);
-	for (int i = 0; i &lt; N; i++){
-		scanf(&quot;%s %s&quot;, &amp;list[i].name, &amp;list[i].password);
-		for (int j = 0; j &lt; strlen(list[i].password); j++){
-			switch (list[i].password[j]){
-			case'1':
-				list[i].password[j] = '@';
-				list[i].flag = true;
-				break;
-			case'0':
-				list[i].password[j] = '%';
-				list[i].flag = true;
-				break;
-			case'l':
-				list[i].password[j] = 'L';
-				list[i].flag = true;
-				break;
-			case'O':
-				list[i].password[j] = 'o';
-				list[i].flag = true;
-				break;
-			default:
-				break;
-			}
-		}
-		if (list[i].flag)count++;
-	}
-	if (count == 0 &amp;&amp; N ==1)
-		printf(&quot;There is %d account and no account is modified&quot;, N);
-	else if(count==0)
-		printf(&quot;There are %d accounts and no account is modified&quot;, N);
-	else{
-		printf(&quot;%d\n&quot;, count);
-		for (int i = 0; i &lt; N; i++){
-			if (list[i].flag)printf(&quot;%s %s\n&quot;, list[i].name, list[i].password);
-		}
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    int N,count=0;
+    Team list[1000];
+    scanf(&quot;%d&quot;, &amp;N);
+    for (int i = 0; i &lt; N; i++){
+        scanf(&quot;%s %s&quot;, &amp;list[i].name, &amp;list[i].password);
+        for (int j = 0; j &lt; strlen(list[i].password); j++){
+            switch (list[i].password[j]){
+            case&#39;1&#39;:
+                list[i].password[j] = &#39;@&#39;;
+                list[i].flag = true;
+                break;
+            case&#39;0&#39;:
+                list[i].password[j] = &#39;%&#39;;
+                list[i].flag = true;
+                break;
+            case&#39;l&#39;:
+                list[i].password[j] = &#39;L&#39;;
+                list[i].flag = true;
+                break;
+            case&#39;O&#39;:
+                list[i].password[j] = &#39;o&#39;;
+                list[i].flag = true;
+                break;
+            default:
+                break;
+            }
+        }
+        if (list[i].flag)count++;
+    }
+    if (count == 0 &amp;&amp; N ==1)
+        printf(&quot;There is %d account and no account is modified&quot;, N);
+    else if(count==0)
+        printf(&quot;There are %d accounts and no account is modified&quot;, N);
+    else{
+        printf(&quot;%d\n&quot;, count);
+        for (int i = 0; i &lt; N; i++){
+            if (list[i].flag)printf(&quot;%s %s\n&quot;, list[i].name, list[i].password);
+        }
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>太水了无话可说。</p>
+</code></pre><p>太水了无话可说。</p>
 <hr>
-<p>##1061 Dating(20)
-Sherlock Holmes received a note with some strange strings: Let's date! 3485djDkxh4hhGE 2984akDfkkkkggEdsb s&amp;hgsfdk d&amp;Hyscvnm. It took him only a minute to figure out that those strange strings are actually referring to the coded time Thursday 14:04 -- since the first common capital English letter (case sensitive) shared by the first two strings is the 4th capital letter D, representing the 4th day in a week; the second common character is the 5th capital letter E, representing the 14th hour (hence the hours from 0 to 23 in a day are represented by the numbers from 0 to 9 and the capital letters from A to N, respectively); and the English letter shared by the last two strings is s at the 4th position, representing the 4th minute. Now given two pairs of strings, you are supposed to help Sherlock decode the dating time.</p>
-<p>Each input file contains one test case. Each case gives 4 non-empty strings of no more than 60 characters without white space in 4 lines.
-Output Specification:
-For each test case, print the decoded time in one line, in the format DAY HH:MM, where DAY is a 3-character abbreviation for the days in a week -- that is, MON for Monday, TUE for Tuesday, WED for Wednesday, THU for Thursday, FRI for Friday, SAT for Saturday, and SUN for Sunday. It is guaranteed that the result is unique for each case.</p>
+<h2 id="1061-Dating-20"><a href="#1061-Dating-20" class="headerlink" title="1061 Dating(20)"></a>1061 Dating(20)</h2><p>Sherlock Holmes received a note with some strange strings: Let’s date! 3485djDkxh4hhGE 2984akDfkkkkggEdsb s&amp;hgsfdk d&amp;Hyscvnm. It took him only a minute to figure out that those strange strings are actually referring to the coded time Thursday 14:04 — since the first common capital English letter (case sensitive) shared by the first two strings is the 4th capital letter D, representing the 4th day in a week; the second common character is the 5th capital letter E, representing the 14th hour (hence the hours from 0 to 23 in a day are represented by the numbers from 0 to 9 and the capital letters from A to N, respectively); and the English letter shared by the last two strings is s at the 4th position, representing the 4th minute. Now given two pairs of strings, you are supposed to help Sherlock decode the dating time.</p>
+<p>Each input file contains one test case. Each case gives 4 non-empty strings of no more than 60 characters without white space in 4 lines.<br>Output Specification:<br>For each test case, print the decoded time in one line, in the format DAY HH:MM, where DAY is a 3-character abbreviation for the days in a week — that is, MON for Monday, TUE for Tuesday, WED for Wednesday, THU for Thursday, FRI for Friday, SAT for Saturday, and SUN for Sunday. It is guaranteed that the result is unique for each case.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>3485djDkxh4hhGE
-2984akDfkkkkggEdsb
-s&amp;hgsfdk
-d&amp;Hyscvnm</p>
+<p>3485djDkxh4hhGE<br>2984akDfkkkkggEdsb<br>s&amp;hgsfdk<br>d&amp;Hyscvnm</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
@@ -730,61 +652,50 @@ d&amp;Hyscvnm</p>
 #include&lt;iostream&gt;
 using namespace std;
 int main(){
-	char week[8][4] = { &quot;MON&quot;, &quot;TUE&quot;, &quot;WED&quot;, &quot;THU&quot;, &quot;FRI&quot;, &quot;SAT&quot;, &quot;SUN&quot; };//string不可以？
-	string hour = &quot;0123456789ABCDEFGHIJKLMN&quot;;
-	string str[4];
-	for (int i = 0; i &lt; 4; i++)
-		cin &gt;&gt; str[i];
-	int cap = 0,pos;
-	for (int i = 0; i &lt; str[0].length(); i++){
-		if ((str[0][i] &gt;= 'A'&amp;&amp;str[0][i] &lt;= 'N' || str[0][i] &gt;= '0'&amp;&amp;str[0][i] &lt;= '9') &amp;&amp; str[0][i] == str[1][i]){
-			if (str[0][i] &gt;= 'A'&amp;&amp;str[0][i] &lt;= 'G'&amp;&amp;!cap){
-				printf(&quot;%s &quot;, week[str[0][i] - 'A']);//第一个相同
-				cap++;
-			}
-			else if (cap == 1){
-				cap++;
-				int k = hour.find(str[0][i]);
-				if (k &lt; 10)printf(&quot;0&quot;);
-				printf(&quot;%d&quot;, k);
-			}
-			else
-				continue;
-		}
-	}
-	for (int i = 0; i &lt; str[2].length(); i++){
-		if ((str[2][i] &gt;= 'a'&amp;&amp;str[2][i] &lt;= 'z'||str[2][i] &gt;= 'A'&amp;&amp;str[2][i] &lt;= 'Z')&amp;&amp; str[2][i] == str[3][i]){
+    char week[8][4] = { &quot;MON&quot;, &quot;TUE&quot;, &quot;WED&quot;, &quot;THU&quot;, &quot;FRI&quot;, &quot;SAT&quot;, &quot;SUN&quot; };//string不可以？
+    string hour = &quot;0123456789ABCDEFGHIJKLMN&quot;;
+    string str[4];
+    for (int i = 0; i &lt; 4; i++)
+        cin &gt;&gt; str[i];
+    int cap = 0,pos;
+    for (int i = 0; i &lt; str[0].length(); i++){
+        if ((str[0][i] &gt;= &#39;A&#39;&amp;&amp;str[0][i] &lt;= &#39;N&#39; || str[0][i] &gt;= &#39;0&#39;&amp;&amp;str[0][i] &lt;= &#39;9&#39;) &amp;&amp; str[0][i] == str[1][i]){
+            if (str[0][i] &gt;= &#39;A&#39;&amp;&amp;str[0][i] &lt;= &#39;G&#39;&amp;&amp;!cap){
+                printf(&quot;%s &quot;, week[str[0][i] - &#39;A&#39;]);//第一个相同
+                cap++;
+            }
+            else if (cap == 1){
+                cap++;
+                int k = hour.find(str[0][i]);
+                if (k &lt; 10)printf(&quot;0&quot;);
+                printf(&quot;%d&quot;, k);
+            }
+            else
+                continue;
+        }
+    }
+    for (int i = 0; i &lt; str[2].length(); i++){
+        if ((str[2][i] &gt;= &#39;a&#39;&amp;&amp;str[2][i] &lt;= &#39;z&#39;||str[2][i] &gt;= &#39;A&#39;&amp;&amp;str[2][i] &lt;= &#39;Z&#39;)&amp;&amp; str[2][i] == str[3][i]){
       printf(&quot;:&quot;);
       if (i &lt; 10)printf(&quot;0&quot;);
-			printf(&quot;%d&quot;, i);
-			break;
-		}
-	}
-	system(&quot;pause&quot;);
-	return 0;
+            printf(&quot;%d&quot;, i);
+            break;
+        }
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>思路：主要还是得理解题目意思，然后注意格式输出，不光mm要补0，hh也要补0。
-哪里有正常人这么谈恋爱的。</p>
+</code></pre><p>思路：主要还是得理解题目意思，然后注意格式输出，不光mm要补0，hh也要补0。<br>哪里有正常人这么谈恋爱的。</p>
 <ol>
-<li>补0更正常的写法是printf(&quot;%02d&quot;,i);</li>
+<li>补0更正常的写法是printf(“%02d”,i);</li>
 </ol>
 <hr>
-<p>##1077 Kuchiguse(20)
-The Japanese language is notorious for its sentence ending particles. Personal preference of such particles can be considered as a reflection of the speaker's personality. Such a preference is called &quot;Kuchiguse&quot; and is often exaggerated artistically in Anime and Manga. For example, the artificial sentence ending particle &quot;nyan~&quot; is often used as a stereotype for characters with a cat-like personality:
-Itai nyan~ (It hurts, nyan~)
-Ninjin wa iyada nyan~ (I hate carrots, nyan~)
-Now given a few lines spoken by the same character, can you find her Kuchiguse?</p>
-<p>Input Specification:
-Each input file contains one test case. For each case, the first line is an integer N (2≤N≤100). Following are N file lines of 0~256 (inclusive) characters in length, each representing a character's spoken line. The spoken lines are case sensitive.</p>
-<p>Output Specification:
-For each test case, print in one line the kuchiguse of the character, i.e., the longest common suffix of all N lines. If there is no such suffix, write nai.</p>
+<h2 id="1077-Kuchiguse-20"><a href="#1077-Kuchiguse-20" class="headerlink" title="1077 Kuchiguse(20)"></a>1077 Kuchiguse(20)</h2><p>The Japanese language is notorious for its sentence ending particles. Personal preference of such particles can be considered as a reflection of the speaker’s personality. Such a preference is called “Kuchiguse” and is often exaggerated artistically in Anime and Manga. For example, the artificial sentence ending particle “nyan~” is often used as a stereotype for characters with a cat-like personality:<br>Itai nyan~ (It hurts, nyan~)<br>Ninjin wa iyada nyan~ (I hate carrots, nyan~)<br>Now given a few lines spoken by the same character, can you find her Kuchiguse?</p>
+<p>Input Specification:<br>Each input file contains one test case. For each case, the first line is an integer N (2≤N≤100). Following are N file lines of 0~256 (inclusive) characters in length, each representing a character’s spoken line. The spoken lines are case sensitive.</p>
+<p>Output Specification:<br>For each test case, print in one line the kuchiguse of the character, i.e., the longest common suffix of all N lines. If there is no such suffix, write nai.</p>
 <p>Sample Input 1:</p>
 <blockquote>
-<p>3
-Itai nyan~
-Ninjin wa iyadanyan~
-uhhh nyan~</p>
+<p>3<br>Itai nyan~<br>Ninjin wa iyadanyan~<br>uhhh nyan~</p>
 </blockquote>
 <p>Sample Output 1:</p>
 <blockquote>
@@ -792,9 +703,7 @@ uhhh nyan~</p>
 </blockquote>
 <p>Sample Input 2:</p>
 <blockquote>
-<p>3
-Itai!Ninjinnwaiyada T_T
-T_T</p>
+<p>3<br>Itai!Ninjinnwaiyada T_T<br>T_T</p>
 </blockquote>
 <p>Sample Output 2:</p>
 <blockquote>
@@ -810,39 +719,35 @@ T_T</p>
 #include&lt;iostream&gt;
 using namespace std;
 int main(){
-	int N;
-	scanf(&quot;%d&quot;, &amp;N);
-	getchar();//扔掉换行符
-	string list[100];
-	string kuchiguse;
-	for (int i = 0; i &lt; N; i++){
-		getline(cin, list[i]);
-	}
-	int i,flag=0;
-	for (i = list[0].length(); i&gt;=1&amp;&amp;!flag; i--){//kuchiguse
-		kuchiguse = list[0].substr(list[0].length()-i,i);
-		for (int j = 1; j &lt; N; j++){//compare
-			if (list[j].find(kuchiguse) != list[j].length() - i)
-				break;
-			if (j == N - 1){
-				flag = 1;
-				cout &lt;&lt; kuchiguse;
-			}
-		}
-	}
-	if (!flag)cout &lt;&lt; &quot;nai&quot;;
-	system(&quot;pause&quot;);
-	return 0;
+    int N;
+    scanf(&quot;%d&quot;, &amp;N);
+    getchar();//扔掉换行符
+    string list[100];
+    string kuchiguse;
+    for (int i = 0; i &lt; N; i++){
+        getline(cin, list[i]);
+    }
+    int i,flag=0;
+    for (i = list[0].length(); i&gt;=1&amp;&amp;!flag; i--){//kuchiguse
+        kuchiguse = list[0].substr(list[0].length()-i,i);
+        for (int j = 1; j &lt; N; j++){//compare
+            if (list[j].find(kuchiguse) != list[j].length() - i)
+                break;
+            if (j == N - 1){
+                flag = 1;
+                cout &lt;&lt; kuchiguse;
+            }
+        }
+    }
+    if (!flag)cout &lt;&lt; &quot;nai&quot;;
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>思路：大循环生成后缀，小循环逐一比较。注意读入带空格字符串的写法。（为了避开gets用了getline</p>
+</code></pre><p>思路：大循环生成后缀，小循环逐一比较。注意读入带空格字符串的写法。（为了避开gets用了getline</p>
 <hr>
-<p>##1082 Read Number in Chinese(25)
-Given an integer with no more than 9 digits, you are supposed to read it in the traditional Chinese way. Output Fu first if it is negative. For example, -123456789 is read as Fu yi Yi er Qian san Bai si Shi wu Wan liu Qian qi Bai ba Shi jiu. Note: zero (ling) must be handled correctly according to the Chinese tradition. For example, 100800 is yi Shi Wan ling ba Bai.</p>
-<p>Input Specification:
-Each input file contains one test case, which gives an integer with no more than 9 digits.</p>
-<p>Output Specification:
-For each test case, print in a line the Chinese way of reading the number. The characters are separated by a space and there must be no extra space at the end of the line.</p>
+<h2 id="1082-Read-Number-in-Chinese-25"><a href="#1082-Read-Number-in-Chinese-25" class="headerlink" title="1082 Read Number in Chinese(25)"></a>1082 Read Number in Chinese(25)</h2><p>Given an integer with no more than 9 digits, you are supposed to read it in the traditional Chinese way. Output Fu first if it is negative. For example, -123456789 is read as Fu yi Yi er Qian san Bai si Shi wu Wan liu Qian qi Bai ba Shi jiu. Note: zero (ling) must be handled correctly according to the Chinese tradition. For example, 100800 is yi Shi Wan ling ba Bai.</p>
+<p>Input Specification:<br>Each input file contains one test case, which gives an integer with no more than 9 digits.</p>
+<p>Output Specification:<br>For each test case, print in a line the Chinese way of reading the number. The characters are separated by a space and there must be no extra space at the end of the line.</p>
 <p>Sample Input 1:</p>
 <blockquote>
 <p>-123456789</p>
@@ -868,88 +773,70 @@ For each test case, print in a line the Chinese way of reading the number. The c
 #include&lt;algorithm&gt;
 using namespace std;
 int main(){
-	long long n;
-	char str[10];//
-	char name[5][5] = { &quot;Wan&quot;, &quot;Shi&quot;, &quot;Bai&quot;, &quot;Qian&quot;, &quot;Yi&quot; };
-	char number[10][5] = { &quot;ling&quot;, &quot;yi&quot;, &quot;er&quot;, &quot;san&quot;, &quot;si&quot;, &quot;wu&quot;, &quot;liu&quot;, &quot;qi&quot;, &quot;ba&quot;, &quot;jiu&quot; };
-	string digit;
-	scanf(&quot;%lld&quot;, &amp;n);
-	if (n&lt; 0){//处理负号
-		printf(&quot;Fu &quot;);
-		n = -n;
-	}
-	sprintf(str, &quot;%lld&quot;, n);
-	digit = str;
-	reverse(digit.begin(),digit.end());//注意reverse的用法
-	int pos;//找到最后一位的位置,不输出空格。
-	for (pos = 0; pos &lt;= digit.length() - 1; pos++){
-		if (digit[pos] != '0')break;
-	}
-	for (int i = digit.length() - 1; i &gt;= 0;i--){
-		if (i== 8){//亿位
-			printf(&quot;%s %s&quot;, number[digit[i] - '0'], name[4]);
-		}
-		else if (i == 4){//万位
-			if (digit[i] == '0')printf(&quot;%s&quot;, name[0]);
-			else printf(&quot;%s %s&quot;, number[digit[i] - '0'], name[0]);
-		}
-		else if (i == 0){//个位
-			if (digit[i] != '0')printf(&quot;%s&quot;, number[digit[i] - '0']);
-			if (digit[i] == '0' &amp;&amp; digit.length() == 1)printf(&quot;ling&quot;);//对单个0情况的补充
-		}
-		else{//其他位
-			if (digit[i] == '0'){//有零
-				if (digit[i - 1] == '0')//1.多个零只打印一个零 2.个位，万位的零不打印
-					continue;
-				else printf(&quot;%s&quot;, number[0]);
-			}
-			else{//1,shi2,bai,3,qian,4wan,5,shi 6,
-				printf(&quot;%s %s&quot;, number[digit[i] - '0'], name[i % 4]);
-			}
-		}
-		if (i &gt; pos)printf(&quot; &quot;);
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    long long n;
+    char str[10];//
+    char name[5][5] = { &quot;Wan&quot;, &quot;Shi&quot;, &quot;Bai&quot;, &quot;Qian&quot;, &quot;Yi&quot; };
+    char number[10][5] = { &quot;ling&quot;, &quot;yi&quot;, &quot;er&quot;, &quot;san&quot;, &quot;si&quot;, &quot;wu&quot;, &quot;liu&quot;, &quot;qi&quot;, &quot;ba&quot;, &quot;jiu&quot; };
+    string digit;
+    scanf(&quot;%lld&quot;, &amp;n);
+    if (n&lt; 0){//处理负号
+        printf(&quot;Fu &quot;);
+        n = -n;
+    }
+    sprintf(str, &quot;%lld&quot;, n);
+    digit = str;
+    reverse(digit.begin(),digit.end());//注意reverse的用法
+    int pos;//找到最后一位的位置,不输出空格。
+    for (pos = 0; pos &lt;= digit.length() - 1; pos++){
+        if (digit[pos] != &#39;0&#39;)break;
+    }
+    for (int i = digit.length() - 1; i &gt;= 0;i--){
+        if (i== 8){//亿位
+            printf(&quot;%s %s&quot;, number[digit[i] - &#39;0&#39;], name[4]);
+        }
+        else if (i == 4){//万位
+            if (digit[i] == &#39;0&#39;)printf(&quot;%s&quot;, name[0]);
+            else printf(&quot;%s %s&quot;, number[digit[i] - &#39;0&#39;], name[0]);
+        }
+        else if (i == 0){//个位
+            if (digit[i] != &#39;0&#39;)printf(&quot;%s&quot;, number[digit[i] - &#39;0&#39;]);
+            if (digit[i] == &#39;0&#39; &amp;&amp; digit.length() == 1)printf(&quot;ling&quot;);//对单个0情况的补充
+        }
+        else{//其他位
+            if (digit[i] == &#39;0&#39;){//有零
+                if (digit[i - 1] == &#39;0&#39;)//1.多个零只打印一个零 2.个位，万位的零不打印
+                    continue;
+                else printf(&quot;%s&quot;, number[0]);
+            }
+            else{//1,shi2,bai,3,qian,4wan,5,shi 6,
+                printf(&quot;%s %s&quot;, number[digit[i] - &#39;0&#39;], name[i % 4]);
+            }
+        }
+        if (i &gt; pos)printf(&quot; &quot;);
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>思路：
-1.处理符号
-2.reverse
-3.处理亿位和万位，个位，后两个上的零不打印
-4.多个零只打印一个零
-5.单个0的情况补充
-6.对最后一个输出不加空格</p>
+</code></pre><p>思路：<br>1.处理符号<br>2.reverse<br>3.处理亿位和万位，个位，后两个上的零不打印<br>4.多个零只打印一个零<br>5.单个0的情况补充<br>6.对最后一个输出不加空格</p>
 <hr>
-<p>##1108 Finding Average(20)
-The basic task is simple: given N real numbers, you are supposed to calculate their average. But what makes it complicated is that some of the input numbers might not be legal. A legal input is a real number in [−1000,1000] and is accurate up to no more than 2 decimal places. When you calculate the average, those illegal numbers must not be counted in.
-Input Specification:</p>
-<p>Each input file contains one test case. For each case, the first line gives a positive integer N (≤100). Then N numbers are given in the next line, separated by one space.
-Output Specification:</p>
+<h2 id="1108-Finding-Average-20"><a href="#1108-Finding-Average-20" class="headerlink" title="1108 Finding Average(20)"></a>1108 Finding Average(20)</h2><p>The basic task is simple: given N real numbers, you are supposed to calculate their average. But what makes it complicated is that some of the input numbers might not be legal. A legal input is a real number in [−1000,1000] and is accurate up to no more than 2 decimal places. When you calculate the average, those illegal numbers must not be counted in.<br>Input Specification:</p>
+<p>Each input file contains one test case. For each case, the first line gives a positive integer N (≤100). Then N numbers are given in the next line, separated by one space.<br>Output Specification:</p>
 <p>For each illegal input number, print in a line ERROR: X is not a legal number where X is the input. Then finally print in a line the result: The average of K numbers is Y where K is the number of legal inputs and Y is their average, accurate to 2 decimal places. In case the average cannot be calculated, output Undefined instead of Y. In case K is only 1, output The average of 1 number is Y instead.</p>
 <p>Sample Input 1:</p>
 <blockquote>
-<p>7
-5 -3.2 aaa 9999 2.3.4 7.123 2.35</p>
+<p>7<br>5 -3.2 aaa 9999 2.3.4 7.123 2.35</p>
 </blockquote>
 <p>Sample Output 1:</p>
 <blockquote>
-<p>ERROR: aaa is not a legal number
-ERROR: 9999 is not a legal number
-ERROR: 2.3.4 is not a legal number
-ERROR: 7.123 is not a legal number
-The average of 3 numbers is 1.38</p>
+<p>ERROR: aaa is not a legal number<br>ERROR: 9999 is not a legal number<br>ERROR: 2.3.4 is not a legal number<br>ERROR: 7.123 is not a legal number<br>The average of 3 numbers is 1.38</p>
 </blockquote>
 <p>Sample Input 2:</p>
 <blockquote>
-<p>2
-aaa -9999</p>
+<p>2<br>aaa -9999</p>
 </blockquote>
 <p>Sample Output 2:</p>
 <blockquote>
-<p>ERROR: aaa is not a legal number
-ERROR: -9999 is not a legal number
-The average of 0 numbers is Undefined</p>
+<p>ERROR: aaa is not a legal number<br>ERROR: -9999 is not a legal number<br>The average of 0 numbers is Undefined</p>
 </blockquote>
 <pre><code>//1108 Finding Average （20 分）
 #include&lt;stdio.h&gt;
@@ -960,81 +847,69 @@ The average of 0 numbers is Undefined</p>
 #pragma warning(disable:4996)
 using namespace std;
 bool IsLegal(string s){
-	int count=0;//count of .
-	int pos; //pos of .
-	float num;
-	for (int i = 0; i &lt; s.length(); i++){
-		if (s[i] &gt;= '0' &amp;&amp; s[i]  &lt;= '9'){
-			if (count == 1 &amp;&amp; i - pos&gt;2)
-				 return false;
-		}
-		else if(s[i] == '.'&amp;&amp;i!= 0){
-			count++;
-			if (count == 1)pos = i;
-			if (count == 2)return false;
-		}
-		else if (s[i] == '-'&amp;&amp;i == 0);
-		else {
-			return false;		
-		}
-	}
-	sscanf( s.c_str(),&quot;%f&quot;, &amp;num);
-	if (fabs(num)&lt;=1000)
-		return true;
-	else return false;
+    int count=0;//count of .
+    int pos; //pos of .
+    float num;
+    for (int i = 0; i &lt; s.length(); i++){
+        if (s[i] &gt;= &#39;0&#39; &amp;&amp; s[i]  &lt;= &#39;9&#39;){
+            if (count == 1 &amp;&amp; i - pos&gt;2)
+                 return false;
+        }
+        else if(s[i] == &#39;.&#39;&amp;&amp;i!= 0){
+            count++;
+            if (count == 1)pos = i;
+            if (count == 2)return false;
+        }
+        else if (s[i] == &#39;-&#39;&amp;&amp;i == 0);
+        else {
+            return false;        
+        }
+    }
+    sscanf( s.c_str(),&quot;%f&quot;, &amp;num);
+    if (fabs(num)&lt;=1000)
+        return true;
+    else return false;
 }
 int main(){
-	int N,count=0;
-	float temp,sum=0;
-	scanf(&quot;%d&quot;, &amp;N);
-	string str;
-	for (int i = 0; i &lt; N; i++){
-		cin &gt;&gt; str;
-		if (IsLegal(str)){
-			sscanf(str.c_str(), &quot;%f&quot;, &amp;temp);
-			sum += temp;
-			count++;
-		}
-		else printf(&quot;ERROR: %s is not a legal number\n&quot;, str.c_str());
-	}
-	if (count == 0)printf(&quot;The average of 0 numbers is Undefined&quot;);
-	else if (count == 1)printf(&quot;The average of %d number is %.2f&quot;, count, sum / count);
-	else printf(&quot;The average of %d numbers is %.2f&quot;, count, sum / count);
-	system(&quot;pause&quot;);
-	return 0;
+    int N,count=0;
+    float temp,sum=0;
+    scanf(&quot;%d&quot;, &amp;N);
+    string str;
+    for (int i = 0; i &lt; N; i++){
+        cin &gt;&gt; str;
+        if (IsLegal(str)){
+            sscanf(str.c_str(), &quot;%f&quot;, &amp;temp);
+            sum += temp;
+            count++;
+        }
+        else printf(&quot;ERROR: %s is not a legal number\n&quot;, str.c_str());
+    }
+    if (count == 0)printf(&quot;The average of 0 numbers is Undefined&quot;);
+    else if (count == 1)printf(&quot;The average of %d number is %.2f&quot;, count, sum / count);
+    else printf(&quot;The average of %d numbers is %.2f&quot;, count, sum / count);
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<ol>
-<li>
-<p>判断是否为数字，ch&gt;='0' &amp;&amp; ch &lt;='9'</p>
-</li>
-<li>
-<p>if都加上括号，不然这种情况下就完了</p>
+</code></pre><ol>
+<li>判断是否为数字，ch&gt;=’0’ &amp;&amp; ch &lt;=’9’</li>
+<li><p>if都加上括号，不然这种情况下就完了</p>
 <pre><code> if()
    if()
  else if()
  else
-</code></pre>
-</li>
+</code></pre></li>
 </ol>
 <hr>
-<p>##1132 Cut Integer (20)
-Cutting an integer means to cut a K digits lone integer Z into two integers of (K/2) digits long integers A and B. For example, after cutting Z = 167334, we have A = 167 and B = 334. It is interesting to see that Z can be devided by the product of A and B, as 167334 / (167 × 334) = 3. Given an integer Z, you are supposed to test if it is such an integer.</p>
-<p>Input Specification:
-Each input file contains one test case. For each case, the first line gives a positive integer N (≤ 20). Then N lines follow, each gives an integer Z (10 ≤ Z &lt;2^31). It is guaranteed that the number of digits of Z is an even number.</p>
-<p>Output Specification:
-For each case, print a single line Yes if it is such a number, or No if not.</p>
+<h2 id="1132-Cut-Integer-20"><a href="#1132-Cut-Integer-20" class="headerlink" title="1132 Cut Integer (20)"></a>1132 Cut Integer (20)</h2><p>Cutting an integer means to cut a K digits lone integer Z into two integers of (K/2) digits long integers A and B. For example, after cutting Z = 167334, we have A = 167 and B = 334. It is interesting to see that Z can be devided by the product of A and B, as 167334 / (167 × 334) = 3. Given an integer Z, you are supposed to test if it is such an integer.</p>
+<p>Input Specification:<br>Each input file contains one test case. For each case, the first line gives a positive integer N (≤ 20). Then N lines follow, each gives an integer Z (10 ≤ Z &lt;2^31). It is guaranteed that the number of digits of Z is an even number.</p>
+<p>Output Specification:<br>For each case, print a single line Yes if it is such a number, or No if not.</p>
 <p>Sample Input:</p>
 <blockquote>
-<p>3
-167334
-2333
-12345678</p>
+<p>3<br>167334<br>2333<br>12345678</p>
 </blockquote>
 <p>Sample Output:</p>
 <blockquote>
-<p>Yes
-No</p>
+<p>Yes<br>No</p>
 </blockquote>
 <pre><code>//1132 Cut Integer  string 版
 #pragma warning(disable:4996)
@@ -1045,40 +920,33 @@ No</p>
 #include&lt;iostream&gt;
 using namespace std;
 int main(){
-	string s,sleft,sright;
-	int N;
-	cin &gt;&gt; N;
-	for (int i = 0; i &lt; N; i++){
-		cin &gt;&gt; s;
-		int half = s.length() / 2;
-		int left, right,ss;
-		sleft = s.substr(0,half);
-		sright = s.substr(half, half);//位置长度
-		sscanf(sleft.c_str(), &quot;%d&quot;, &amp;left);
-		sscanf(sright.c_str(), &quot;%d&quot;, &amp;right);
-		sscanf(s.c_str(), &quot;%d&quot;, &amp;ss);
-		if (left*right&amp;&amp; ss% (left*right)==0)printf(&quot;Yes\n&quot;);
-		else printf(&quot;No\n&quot;);
-	}
-	system(&quot;pause&quot;);
-	return 0;
+    string s,sleft,sright;
+    int N;
+    cin &gt;&gt; N;
+    for (int i = 0; i &lt; N; i++){
+        cin &gt;&gt; s;
+        int half = s.length() / 2;
+        int left, right,ss;
+        sleft = s.substr(0,half);
+        sright = s.substr(half, half);//位置长度
+        sscanf(sleft.c_str(), &quot;%d&quot;, &amp;left);
+        sscanf(sright.c_str(), &quot;%d&quot;, &amp;right);
+        sscanf(s.c_str(), &quot;%d&quot;, &amp;ss);
+        if (left*right&amp;&amp; ss% (left*right)==0)printf(&quot;Yes\n&quot;);
+        else printf(&quot;No\n&quot;);
+    }
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>思路：之前写过一个用循环的，但最简单的思路还是用字符串。</p>
+</code></pre><p>思路：之前写过一个用循环的，但最简单的思路还是用字符串。</p>
 <ol>
 <li>这种数字型的，只要是一块一块弄的也都是字符串处理。</li>
 <li>注意substr的用法是（pos,len）。</li>
-<li>如果用c风格的，要注意赋完值以后要加上'\0'结束符号，不然会有很多乱七八糟的东西。</li>
+<li>如果用c风格的，要注意赋完值以后要加上’\0’结束符号，不然会有很多乱七八糟的东西。</li>
 </ol>
 <hr>
-<p>##1140 Look-and-say Sequence(20)
-Look-and-say sequence is a sequence of integers as the following:
-D, D1, D111, D113, D11231, D112213111, ...
-where D is in [0, 9] except 1. The (n+1)st number is a kind of description of the nth number. For example, the 2nd number means that there is one D in the 1st number, and hence it is D1; the 2nd number consists of one D (corresponding to D1) and one 1 (corresponding to 11), therefore the 3rd number is D111; or since the 4th number is D113, it consists of one D, two 1's, and one 3, so the next number must be D11231. This definition works for D = 1 as well. Now you are supposed to calculate the Nth number in a look-and-say sequence of a given digit D.
-Input Specification:
-Each input file contains one test case, which gives D (in [0, 9]) and a positive integer N (≤ 40), separated by a space.</p>
-<p>Output Specification:
-Print in a line the Nth number in a look-and-say sequence of D.</p>
+<h2 id="1140-Look-and-say-Sequence-20"><a href="#1140-Look-and-say-Sequence-20" class="headerlink" title="1140 Look-and-say Sequence(20)"></a>1140 Look-and-say Sequence(20)</h2><p>Look-and-say sequence is a sequence of integers as the following:<br>D, D1, D111, D113, D11231, D112213111, …<br>where D is in [0, 9] except 1. The (n+1)st number is a kind of description of the nth number. For example, the 2nd number means that there is one D in the 1st number, and hence it is D1; the 2nd number consists of one D (corresponding to D1) and one 1 (corresponding to 11), therefore the 3rd number is D111; or since the 4th number is D113, it consists of one D, two 1’s, and one 3, so the next number must be D11231. This definition works for D = 1 as well. Now you are supposed to calculate the Nth number in a look-and-say sequence of a given digit D.<br>Input Specification:<br>Each input file contains one test case, which gives D (in [0, 9]) and a positive integer N (≤ 40), separated by a space.</p>
+<p>Output Specification:<br>Print in a line the Nth number in a look-and-say sequence of D.</p>
 <p>Sample Input:</p>
 <blockquote>
 <p>1 8</p>
@@ -1096,31 +964,30 @@ Print in a line the Nth number in a look-and-say sequence of D.</p>
 #include&lt;iostream&gt;
 using namespace std;
 int main(){
-	string str,temp;
-	int N;
-	cin &gt;&gt; str &gt;&gt; N;
-	for (int i = 1; i &lt; N; i++){//n th
-		int count=0,pos;
-		for (int j = 0; j &lt; str.length(); j++){
-			if (j == str.length() - 1 || str[j] != str[j + 1])str.insert(++j, &quot;1&quot;);//和后一个不同
-			else{//和后一个相同
-				pos = j;
-				while (str[j] == str[j + 1]){
-					j++;
-				}
-				temp=to_string(j-pos+1);
-				str.erase(pos + 1, j - pos);
-				str.insert(pos + 1, temp);
-				j = pos + 1;
-			}
-		}
-	}
-	cout &lt;&lt; str &lt;&lt; endl;
-	system(&quot;pause&quot;);
-	return 0;
+    string str,temp;
+    int N;
+    cin &gt;&gt; str &gt;&gt; N;
+    for (int i = 1; i &lt; N; i++){//n th
+        int count=0,pos;
+        for (int j = 0; j &lt; str.length(); j++){
+            if (j == str.length() - 1 || str[j] != str[j + 1])str.insert(++j, &quot;1&quot;);//和后一个不同
+            else{//和后一个相同
+                pos = j;
+                while (str[j] == str[j + 1]){
+                    j++;
+                }
+                temp=to_string(j-pos+1);
+                str.erase(pos + 1, j - pos);
+                str.insert(pos + 1, temp);
+                j = pos + 1;
+            }
+        }
+    }
+    cout &lt;&lt; str &lt;&lt; endl;
+    system(&quot;pause&quot;);
+    return 0;
 }
-</code></pre>
-<p>主要思路是基于string的insert和erase，注意N=1的边界，更简单的操作是另开一个string记录，利用string的+=,见大神的代码 https://github.com/liuchuo/PAT/blob/master/AdvancedLevel_C%2B%2B/1140.%20Look-and-say%20Sequence%20(20)%20.cpp.</p>
+</code></pre><p>主要思路是基于string的insert和erase，注意N=1的边界，更简单的操作是另开一个string记录，利用string的+=,见大神的代码 <a href="https://github.com/liuchuo/PAT/blob/master/AdvancedLevel_C%2B%2B/1140.%20Look-and-say%20Sequence%20(20)%20.cpp" target="_blank" rel="noopener">https://github.com/liuchuo/PAT/blob/master/AdvancedLevel_C%2B%2B/1140.%20Look-and-say%20Sequence%20(20)%20.cpp</a>.</p>
 <hr>
 
     </article>
@@ -1311,7 +1178,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">C语言风格的字符串 &lt; string.h &gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">初始化输入输出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">C++风格的字符串 &lt; string &gt;</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#字符串处理"><span class="toc-number">1.</span> <span class="toc-text">字符串处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识要点"><span class="toc-number">1.1.</span> <span class="toc-text">知识要点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C语言风格的字符串-lt-string-h-gt"><span class="toc-number">1.1.1.</span> <span class="toc-text">C语言风格的字符串 &lt; string.h &gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化输入输出"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">初始化输入输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常规操作"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">常规操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-风格的字符串-lt-string-gt"><span class="toc-number">1.1.2.</span> <span class="toc-text">C++风格的字符串 &lt; string &gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化输入输出-1"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">初始化输入输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#访问元素"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">访问元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常规操作-1"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">常规操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#转化"><span class="toc-number">1.1.3.</span> <span class="toc-text">转化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#include"><span class="toc-number">2.</span> <span class="toc-text">include</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#提心吊胆"><span class="toc-number">2.0.1.</span> <span class="toc-text">提心吊胆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1001-A-B-Format-20"><span class="toc-number">2.1.</span> <span class="toc-text">1001 A+B Format(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1005-Spell-It-Right-20"><span class="toc-number">2.2.</span> <span class="toc-text">1005 Spell It Right(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-和数位有关的题都可以考虑下字符串。"><span class="toc-number">2.3.</span> <span class="toc-text">1. 和数位有关的题都可以考虑下字符串。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1035-Password-20"><span class="toc-number">2.4.</span> <span class="toc-text">1035 Password(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1061-Dating-20"><span class="toc-number">2.5.</span> <span class="toc-text">1061 Dating(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1077-Kuchiguse-20"><span class="toc-number">2.6.</span> <span class="toc-text">1077 Kuchiguse(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1082-Read-Number-in-Chinese-25"><span class="toc-number">2.7.</span> <span class="toc-text">1082 Read Number in Chinese(25)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1108-Finding-Average-20"><span class="toc-number">2.8.</span> <span class="toc-text">1108 Finding Average(20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1132-Cut-Integer-20"><span class="toc-number">2.9.</span> <span class="toc-text">1132 Cut Integer (20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1140-Look-and-say-Sequence-20"><span class="toc-number">2.10.</span> <span class="toc-text">1140 Look-and-say Sequence(20)</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1324,6 +1191,12 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1670,7 +1543,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/基于pyecharts的专注时间日历图/" >基于pyecharts的专注时间日历图</a>
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/基于pyecharts的专注时间日历图生成脚本/" >基于pyecharts的专注时间日历图生成脚本</a>
         </li>
     
     
@@ -1845,6 +1718,8 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
     
+        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
+    
         <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
     
         <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
@@ -1852,8 +1727,6 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
     
         <span class="sidebar-tag-name" data-tags="感悟"><span class="iconfont-archer">&#xe606;</span>感悟</span>
-    
-        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
     
         <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
     
