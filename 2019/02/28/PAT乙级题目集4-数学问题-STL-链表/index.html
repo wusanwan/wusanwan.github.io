@@ -289,7 +289,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">6.3k</span>阅读时长: <span class="post-count reading-time">29 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">6.4k</span>阅读时长: <span class="post-count reading-time">29 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -419,31 +419,46 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>[toc]</p>
-<h1 id="数学问题"><a href="#数学问题" class="headerlink" title="数学问题"></a>数学问题</h1><hr>
-<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><h3 id="最大公约数"><a href="#最大公约数" class="headerlink" title="最大公约数"></a>最大公约数</h3><pre><code>  int gcd(int a,int b){
-      if(b==0)return a;
-      else return gcd(b,b%a);
-  }
-</code></pre><h3 id="最小公倍数"><a href="#最小公倍数" class="headerlink" title="最小公倍数"></a>最小公倍数</h3><pre><code>a*b/gcd(a,b)
-</code></pre><h3 id="分数相关"><a href="#分数相关" class="headerlink" title="分数相关"></a>分数相关</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>定义以下三条，化简也是如此定义。</p>
+        <p>[toc]
+#数学问题</p>
+<hr>
+<p>##知识要点
+###最大公约数
+int gcd(int a,int b){
+if(b==0)return a;
+else return gcd(b,b%a);
+}
+###最小公倍数
+a*b/gcd(a,b)
+###分数相关
+####定义
+定义以下三条，化简也是如此定义。</p>
 <ul>
 <li>定义为结构体，up为负，down为正。</li>
 <li>若为0，则up=0,down=1。</li>
 <li>除去最大公约数化简。（没有除了1以外的最大公约数）</li>
 </ul>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
+<p>####注意事项</p>
+<ul>
 <li>输出前需化简，如果分母为1一般输出分子即可。</li>
 <li>除数不能为0。</li>
 <li>如果分子绝对值大于分母，则其是一个假分数，要用带分数的形式输出。</li>
 </ul>
-<h3 id="素数"><a href="#素数" class="headerlink" title="素数"></a>素数</h3><ul>
+<p>###素数</p>
+<ul>
 <li>通过循环。</li>
 <li>素数表，对于10^5次方内可以2层循环，外可以用埃式筛法，把倍数用hashtable给false了，轮到如果还是true那就是素数（因为没有约数）</li>
-<li>1不是素数！！！<h3 id="大整数"><a href="#大整数" class="headerlink" title="大整数"></a>大整数</h3>记得去0。</li>
+<li>1不是素数！！！
+###大整数
+记得去0。</li>
 </ul>
 <hr>
-<h2 id="1007-素数对猜想-（20-分）"><a href="#1007-素数对猜想-（20-分）" class="headerlink" title="1007 素数对猜想 （20 分）"></a>1007 素数对猜想 （20 分）</h2><p>让我们定义d​n为：dn=pn+1−pn，其中pi是第i个素数。显然有d1=1，且对于n&gt;1有dn是偶数。“素数对猜想”认为“存在无穷多对相邻且差为2的素数”。现给定任意正整数N(&lt;10^5)，请计算不超过N的满足猜想的素数对的个数。<br>输入格式:<br>输入在一行给出正整数N。<br>输出格式:<br>在一行中输出不超过N的满足猜想的素数对的个数。</p>
+<p>##1007 素数对猜想 （20 分）
+让我们定义d​n为：dn=pn+1−pn，其中pi是第i个素数。显然有d1=1，且对于n&gt;1有dn是偶数。“素数对猜想”认为“存在无穷多对相邻且差为2的素数”。现给定任意正整数N(&lt;10^5)，请计算不超过N的满足猜想的素数对的个数。
+输入格式:
+输入在一行给出正整数N。
+输出格式:
+在一行中输出不超过N的满足猜想的素数对的个数。</p>
 <p>输入样例:</p>
 <blockquote>
 <p>20</p>
@@ -462,35 +477,41 @@ height:50vh;
   #include&lt;map&gt;
   #include&lt;vector&gt;
   bool IsPrime(int a){
-      for (int i = 2; i &lt;= sqrt(a); i++){
-          if (a % i == 0)return false;
-      }
-      return true;
+  	for (int i = 2; i &lt;= sqrt(a); i++){
+  		if (a % i == 0)return false;
+  	}
+  	return true;
   }
   int main(){
-      int n, count = 0,last=2;//相邻指前一个
-      cin &gt;&gt; n;
-      for (int i = 3; i &lt;= n; i++){
-          if (IsPrime(i)){
-              if (i - last == 2)count++;
-              last = i;
-          }
-      }
-      cout &lt;&lt; count;
-          system(&quot;pause&quot;);
-      return 0;
+  	int n, count = 0,last=2;//相邻指前一个
+  	cin &gt;&gt; n;
+  	for (int i = 3; i &lt;= n; i++){
+  		if (IsPrime(i)){
+  			if (i - last == 2)count++;
+  			last = i;
+  		}
+  	}
+  	cout &lt;&lt; count;
+  		system(&quot;pause&quot;);
+  	return 0;
   }
-</code></pre><hr>
-<h2 id="1013-数素数-（20-分）"><a href="#1013-数素数-（20-分）" class="headerlink" title="1013 数素数 （20 分）"></a>1013 数素数 （20 分）</h2><p>令 Pi表示第 i 个素数。现任给两个正整数 M≤N≤10^4，请输出 PM 到 PN 的所有素数。</p>
-<p>输入格式：<br>输入在一行中给出 M 和 N，其间以空格分隔。</p>
-<p>输出格式：<br>输出从 PM 到 PN 的所有素数，每 10 个数字占 1 行，其间以空格分隔，但行末不得有多余空格。</p>
+</code></pre>
+<hr>
+<p>##1013 数素数 （20 分）
+令 Pi表示第 i 个素数。现任给两个正整数 M≤N≤10^4，请输出 PM 到 PN 的所有素数。</p>
+<p>输入格式：
+输入在一行中给出 M 和 N，其间以空格分隔。</p>
+<p>输出格式：
+输出从 PM 到 PN 的所有素数，每 10 个数字占 1 行，其间以空格分隔，但行末不得有多余空格。</p>
 <p>输入样例：</p>
 <blockquote>
 <p>5 27</p>
 </blockquote>
 <p>输出样例：</p>
 <blockquote>
-<p>11 13 17 19 23 29 31 37 41 43<br>47 53 59 61 67 71 73 79 83 89<br>97 101 103</p>
+<p>11 13 17 19 23 29 31 37 41 43
+47 53 59 61 67 71 73 79 83 89
+97 101 103</p>
 </blockquote>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;cstdlib&gt;
@@ -502,33 +523,37 @@ using namespace std;
 #include&lt;map&gt;
 #include&lt;vector&gt;
 bool IsPrime(int a){
-    for (int i = 2; i &lt;= sqrt(a); i++){
-        if (a % i == 0)return false;
-    }
-    return true;
+	for (int i = 2; i &lt;= sqrt(a); i++){
+		if (a % i == 0)return false;
+	}
+	return true;
 }
 int main(){
-    int n, k, count = 0, index = 2;
-    cin &gt;&gt; n&gt;&gt;k;
-    while (count != k){
-        if (IsPrime(index)){
-            count++;
-            if (count &gt;= n){
-                cout &lt;&lt; index;
-                if (count == k)continue;
-                else if ((count - n + 1) % 10 == 0)cout &lt;&lt; endl;
-                else cout &lt;&lt; &quot; &quot;;
-            }
-        }
-        index++;
-    }
-    system(&quot;pause&quot;);
-    return 0;
+	int n, k, count = 0, index = 2;
+	cin &gt;&gt; n&gt;&gt;k;
+	while (count != k){
+		if (IsPrime(index)){
+			count++;
+			if (count &gt;= n){
+				cout &lt;&lt; index;
+				if (count == k)continue;
+				else if ((count - n + 1) % 10 == 0)cout &lt;&lt; endl;
+				else cout &lt;&lt; &quot; &quot;;
+			}
+		}
+		index++;
+	}
+	system(&quot;pause&quot;);
+	return 0;
 }
-</code></pre><hr>
-<h2 id="1017-A除以B-（20-分）"><a href="#1017-A除以B-（20-分）" class="headerlink" title="1017 A除以B （20 分）"></a>1017 A除以B （20 分）</h2><p>本题要求计算 A/B，其中 A 是不超过 1000 位的正整数，B 是 1 位正整数。你需要输出商数 Q 和余数 R，使得 A=B×Q+R 成立。</p>
-<p>输入格式：<br>输入在一行中依次给出 A 和 B，中间以 1 空格分隔。</p>
-<p>输出格式：<br>在一行中依次输出 Q 和 R，中间以 1 空格分隔。</p>
+</code></pre>
+<hr>
+<p>##1017 A除以B （20 分）
+本题要求计算 A/B，其中 A 是不超过 1000 位的正整数，B 是 1 位正整数。你需要输出商数 Q 和余数 R，使得 A=B×Q+R 成立。</p>
+<p>输入格式：
+输入在一行中依次给出 A 和 B，中间以 1 空格分隔。</p>
+<p>输出格式：
+在一行中依次输出 Q 和 R，中间以 1 空格分隔。</p>
 <p>输入样例：</p>
 <blockquote>
 <p>123456789050987654321 7</p>
@@ -547,56 +572,79 @@ int main(){
 #pragma warning(disable:4996)
 using namespace std;
 struct big{
-    int num[1000];
-    int length;
+	int num[1000];
+	int length;
 };
 int main(){
-    int n;
-    string a;
-    cin &gt;&gt; a &gt;&gt;n;
-    big b;
-    b.length = a.length();
-    for (int i=0; i&lt;a.length(); i++){
-        b.num[i] = a[i] - &#39;0&#39;;
-    }
-    int i = 0, rest = 0, flag = 1;
-    while (i &lt; b.length){
-        rest = rest * 10 + b.num[i];
-        if (rest &lt; n){
-            if (b.length == 1)cout &lt;&lt; &quot;0&quot;;     //2 4这种情况下输出0
-            if (!flag)cout &lt;&lt; &quot;0&quot;;     //防止开头的0
-        }
-        else{
-            int k = rest / n;
-            rest = rest %  n;
-            cout &lt;&lt; k;
-            flag = 0;
-        }
-        i++;
-    }
-    cout &lt;&lt; &quot; &quot; &lt;&lt; rest;
-    system(&quot;pause&quot;);
-    return 0;
+	int n;
+	string a;
+	cin &gt;&gt; a &gt;&gt;n;
+	big b;
+	b.length = a.length();
+	for (int i=0; i&lt;a.length(); i++){
+		b.num[i] = a[i] - '0';
+	}
+	int i = 0, rest = 0, flag = 1;
+	while (i &lt; b.length){
+		rest = rest * 10 + b.num[i];
+		if (rest &lt; n){
+			if (b.length == 1)cout &lt;&lt; &quot;0&quot;;     //2 4这种情况下输出0
+			if (!flag)cout &lt;&lt; &quot;0&quot;;     //防止开头的0
+		}
+		else{
+			int k = rest / n;
+			rest = rest %  n;
+			cout &lt;&lt; k;
+			flag = 0;
+		}
+		i++;
+	}
+	cout &lt;&lt; &quot; &quot; &lt;&lt; rest;
+	system(&quot;pause&quot;);
+	return 0;
 }
-</code></pre><hr>
-<h1 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h1><hr>
-<h2 id="知识要点-1"><a href="#知识要点-1" class="headerlink" title="知识要点"></a>知识要点</h2><ul>
-<li>变长数组。<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3></li>
-<li>vector &lt; int &gt; a;</li>
-<li>vector &lt; int &gt; a(n);      //长度为n</li>
-<li>vector &lt; int &gt; a(n,2);    //长度为n且全初始化为2。</li>
-<li>vector &lt; int &gt; a[10];     //仅一维可变长的二维向量数组。</li>
-<li>vector &lt; vector &lt; int &gt; &gt;a;     //&gt;&gt;之间要加空格,二维可变长的二维向量数组。<h3 id="访问方法"><a href="#访问方法" class="headerlink" title="访问方法"></a>访问方法</h3></li>
-<li>通过下标访问 vi[9];   //只有string和vector可以用下标.</li>
-<li><p>通过迭代器*it访问。</p>
+</code></pre>
+<hr>
+<h2>#vector</h2>
+<p>##知识要点</p>
+<ul>
+<li>
+<p>变长数组。
+###定义</p>
+</li>
+<li>
+<p>vector &lt; int &gt; a;</p>
+</li>
+<li>
+<p>vector &lt; int &gt; a(n);      //长度为n</p>
+</li>
+<li>
+<p>vector &lt; int &gt; a(n,2);    //长度为n且全初始化为2。</p>
+</li>
+<li>
+<p>vector &lt; int &gt; a[10];     //仅一维可变长的二维向量数组。</p>
+</li>
+<li>
+<p>vector &lt; vector &lt; int &gt; &gt;a;     //&gt;&gt;之间要加空格,二维可变长的二维向量数组。
+###访问方法</p>
+</li>
+<li>
+<p>通过下标访问 vi[9];   //只有string和vector可以用下标.</p>
+</li>
+<li>
+<p>通过迭代器*it访问。</p>
 <pre><code>vector &lt; int &gt; iterator::it;
 it=vi.begin();
 for(vector&lt; int &gt; ::iterator it=vi.begin();it!=vi.end();it++)  //不支持it&lt;vi.end()的写法
 v[i]等价于*(vi.begin()+i)    //只有vector和string才能用这种vi.begin()+i的操作
-</code></pre></li>
-<li>it&lt;vi.end()不支持这种写法(和意思无关),vi.end()指向vi的存储末尾元素的后一位。</li>
+</code></pre>
+</li>
+<li>
+<p>it&lt;vi.end()不支持这种写法(和意思无关),vi.end()指向vi的存储末尾元素的后一位。</p>
+</li>
 </ul>
-<h3 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h3><pre><code>- vi.push_back(a);
+<p>###常用操作
+- vi.push_back(a);
 - vi.pop_back();
 - vi.size();
 - vi.clear();
@@ -604,37 +652,47 @@ v[i]等价于*(vi.begin()+i)    //只有vector和string才能用这种vi.begin()
 - vi.erase(it);
 - vi.erase(first,last);   //[first，last)
 - find(it1,it2,3);     //algorithm里的，如不存在返回end()
-- find(vi.begin(),v1.end(),3);    
-- sort(a.begin(),a.end(),cmp);
-</code></pre><hr>
+- find(vi.begin(),v1.end(),3);<br>
+- sort(a.begin(),a.end(),cmp);</p>
 <hr>
-<h1 id="set"><a href="#set" class="headerlink" title="set"></a>set</h1><hr>
-<h2 id="知识要点-2"><a href="#知识要点-2" class="headerlink" title="知识要点"></a>知识要点</h2><p>自动内部有序，且不含重复元素的容器。<br>如果元素不唯一，可以用multiset。</p>
-<h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><pre><code>set&lt;int&gt;a;
+<hr>
+<h2>#set</h2>
+<p>##知识要点
+自动内部有序，且不含重复元素的容器。
+如果元素不唯一，可以用multiset。
+###定义
+set&lt;int&gt;a;
 set&lt; &lt;vector&gt; &gt;a;     //中间要加空格
-set&lt;int&gt;a[10];
-</code></pre><h3 id="元素访问"><a href="#元素访问" class="headerlink" title="元素访问"></a>元素访问</h3><pre><code>只支持迭代器,用*it访问元素。只有string和vector可以用下标。
+set&lt;int&gt;a[10];</p>
+<p>###元素访问
+只支持迭代器,用*it访问元素。只有string和vector可以用下标。
 set&lt;int&gt;::iterator it;
 for(it=a.begin();it!=a.end;it++)      //注意不支持it&lt;st.end()这种写法。
-  printf(&quot;%d&quot;,*it);
-</code></pre><h3 id="常用操作-1"><a href="#常用操作-1" class="headerlink" title="常用操作"></a>常用操作</h3><pre><code>a.insert(x);        //不是push back!!!
+printf(&quot;%d&quot;,*it);</p>
+<p>###常用操作
+a.insert(x);        //不是push back!!!
 set&lt;int&gt;::iterator it=a.find(value);      //返回所在位置迭代器,如果没找到则返回end()
 a.erase(it);
 a.erase(value);     //可以直接删除值
 a.erase(first,last);    //[first,last)
 a.size();         //获得个数
-a.clear();
-</code></pre><hr>
-<h2 id="1064-朋友数-（20-分）"><a href="#1064-朋友数-（20-分）" class="headerlink" title="1064 朋友数 （20 分）"></a>1064 朋友数 （20 分）</h2><p>如果两个整数各位数字的和是一样的，则被称为是“朋友数”，而那个公共的和就是它们的“朋友证号”。例如 123 和 51 就是朋友数，因为 1+2+3 = 5+1 = 6，而 6 就是它们的朋友证号。给定一些整数，要求你统计一下它们中有多少个不同的朋友证号。</p>
-<p>输入格式：<br>输入第一行给出正整数 N。随后一行给出 N 个正整数，数字间以空格分隔。题目保证所有数字小于 10^4​​ 。</p>
-<p>输出格式：<br>首先第一行输出给定数字中不同的朋友证号的个数；随后一行按递增顺序输出这些朋友证号，数字间隔一个空格，且行末不得有多余空格。</p>
+a.clear();</p>
+<hr>
+<p>##1064 朋友数 （20 分）
+如果两个整数各位数字的和是一样的，则被称为是“朋友数”，而那个公共的和就是它们的“朋友证号”。例如 123 和 51 就是朋友数，因为 1+2+3 = 5+1 = 6，而 6 就是它们的朋友证号。给定一些整数，要求你统计一下它们中有多少个不同的朋友证号。</p>
+<p>输入格式：
+输入第一行给出正整数 N。随后一行给出 N 个正整数，数字间以空格分隔。题目保证所有数字小于 10^4​​ 。</p>
+<p>输出格式：
+首先第一行输出给定数字中不同的朋友证号的个数；随后一行按递增顺序输出这些朋友证号，数字间隔一个空格，且行末不得有多余空格。</p>
 <p>输入样例：</p>
 <blockquote>
-<p>8<br>123 899 51 998 27 33 36 12</p>
+<p>8
+123 899 51 998 27 33 36 12</p>
 </blockquote>
 <p>输出样例：</p>
 <blockquote>
-<p>4<br>3 6 9 26</p>
+<p>4
+3 6 9 26</p>
 </blockquote>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;set&gt;
@@ -643,29 +701,34 @@ a.clear();
 using namespace std;
 #pragma warning(disable:4996)
 int main(){
-    int n;
-    cin &gt;&gt; n;
-    string s;
-    set&lt;int&gt;friendnumber;
-    for (int i = 0; i &lt; n; i++){
-        cin &gt;&gt; s;
-        int sum = 0;
-        for (int j = 0; j &lt; s.length(); j++){
-            sum += s[j] - &#39;0&#39;;
-        }
-        friendnumber.insert(sum);
-    }
-    cout &lt;&lt; friendnumber.size() &lt;&lt; endl;
-    for (auto it = friendnumber.begin(); it != friendnumber.end(); it++){
-        if (it != friendnumber.begin())cout &lt;&lt; &quot; &quot;;
-        cout &lt;&lt; *it;
-    }
-    system(&quot;pause&quot;);
-    return 0;
+	int n;
+	cin &gt;&gt; n;
+	string s;
+	set&lt;int&gt;friendnumber;
+	for (int i = 0; i &lt; n; i++){
+		cin &gt;&gt; s;
+		int sum = 0;
+		for (int j = 0; j &lt; s.length(); j++){
+			sum += s[j] - '0';
+		}
+		friendnumber.insert(sum);
+	}
+	cout &lt;&lt; friendnumber.size() &lt;&lt; endl;
+	for (auto it = friendnumber.begin(); it != friendnumber.end(); it++){
+		if (it != friendnumber.begin())cout &lt;&lt; &quot; &quot;;
+		cout &lt;&lt; *it;
+	}
+	system(&quot;pause&quot;);
+	return 0;
 }
-</code></pre><hr>
-<h2 id="1087-有多少不同的值-（20-分）"><a href="#1087-有多少不同的值-（20-分）" class="headerlink" title="1087 有多少不同的值 （20 分）"></a>1087 有多少不同的值 （20 分）</h2><p>当自然数 n 依次取 1、2、3、……、N 时，算式 ⌊n/2⌋+⌊n/3⌋+⌊n/5⌋ 有多少个不同的值？（注：⌊x⌋ 为取整函数，表示不超过 x 的最大自然数，即 x 的整数部分。）<br>输入格式：<br>输入给出一个正整数 N（2≤N≤10^​4）。</p>
-<p>输出格式：<br>在一行中输出题面中算式取到的不同值的个数。</p>
+</code></pre>
+<hr>
+<p>##1087 有多少不同的值 （20 分）
+当自然数 n 依次取 1、2、3、……、N 时，算式 ⌊n/2⌋+⌊n/3⌋+⌊n/5⌋ 有多少个不同的值？（注：⌊x⌋ 为取整函数，表示不超过 x 的最大自然数，即 x 的整数部分。）
+输入格式：
+输入给出一个正整数 N（2≤N≤10^​4）。</p>
+<p>输出格式：
+在一行中输出题面中算式取到的不同值的个数。</p>
 <p>输入样例：</p>
 <blockquote>
 <p>2017</p>
@@ -685,54 +748,96 @@ int main(){
 using namespace std;
 #pragma warning(disable:4996)
 int main(){
-    int n;
-    cin &gt;&gt; n;
-    set&lt;int&gt;value;
-    for (int i = 1; i &lt;= n; i++){
-        int k = i / 2 + i / 3+ i / 5;
-        value.insert(k);
-    }
-    cout &lt;&lt; value.size();
-    system(&quot;pause&quot;);
-    return 0;
+	int n;
+	cin &gt;&gt; n;
+	set&lt;int&gt;value;
+	for (int i = 1; i &lt;= n; i++){
+		int k = i / 2 + i / 3+ i / 5;
+		value.insert(k);
+	}
+	cout &lt;&lt; value.size();
+	system(&quot;pause&quot;);
+	return 0;
 }
-</code></pre><hr>
-<h1 id="map"><a href="#map" class="headerlink" title="map"></a>map</h1><hr>
-<h2 id="知识要点-3"><a href="#知识要点-3" class="headerlink" title="知识要点"></a>知识要点</h2><p>字典，可以将任何基本类型（包括STL容器）映射到任何基本类型（包括STL容器）。<br>map会以键从小到大的顺序自动排序。<br>键和值都是唯一的，如果一个键要多个值，就只能用multimap。<br>不需要排序的map是unordered_map，速度比map快得多。<br>对于不存在的键key mp[key]==0;(值如果为int的话)</p>
-<h3 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h3><pre><code>map&lt;string,int&gt;mp;      //int到int就是数组。
+</code></pre>
+<hr>
+<h2>#map</h2>
+<p>##知识要点
+字典，可以将任何基本类型（包括STL容器）映射到任何基本类型（包括STL容器）。
+map会以键从小到大的顺序自动排序。
+键和值都是唯一的，如果一个键要多个值，就只能用multimap。
+不需要排序的map是unordered_map，速度比map快得多。
+对于不存在的键key mp[key]==0;(值如果为int的话)</p>
+<p>###定义
+map&lt;string,int&gt;mp;      //int到int就是数组。
 map&lt;int,string&gt;mp;      //想用字符串做映射就是string
 map&lt;set&lt;int&gt;,string&gt;mp;
-</code></pre><h3 id="元素访问-1"><a href="#元素访问-1" class="headerlink" title="元素访问"></a>元素访问</h3><ul>
-<li><p>下标<br>如有map<char,int>mp可以用mp[‘c’]的方式直接访问整数。<br>键是唯一的。</char,int></p>
+###元素访问</p>
+<ul>
+<li>
+<p>下标
+如有map&lt;char,int&gt;mp可以用mp['c']的方式直接访问整数。
+键是唯一的。</p>
 </li>
-<li><p>迭代器<br>map<int,string>::iterator it;<br>用it-&gt;first访问键，it-&gt;secod访问值。</int,string></p>
+<li>
+<p>迭代器
+map&lt;int,string&gt;::iterator it;
+用it-&gt;first访问键，it-&gt;secod访问值。</p>
 </li>
 </ul>
-<h3 id="常用操作-2"><a href="#常用操作-2" class="headerlink" title="常用操作"></a>常用操作</h3><pre><code>mp.find(key);     //返回键为key的迭代器，找不到就是end
+<p>###常用操作
+mp.find(key);     //返回键为key的迭代器，找不到就是end
 mp.erase(it);
 mp.erase(key);    //删除某个键的映射
 mp.erase(first,last);   // [first,last)
 mp.size();
-mp.clear();
-</code></pre><h3 id="常见用途"><a href="#常见用途" class="headerlink" title="常见用途"></a>常见用途</h3><ul>
+mp.clear();</p>
+<p>###常见用途</p>
+<ul>
 <li>字符或字符串与整数之间映射的题目。</li>
 <li>判断整数或者其它类型数据是否存在的题目。</li>
 <li>字符串和字符串的映射。</li>
 </ul>
-<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><ul>
+<h3>排序</h3>
+<ul>
 <li>对值进行排序，可以利用pair如1137,也可将键存入值中，遍历mp将值加进vector单独排序。</li>
 </ul>
 <hr>
-<h2 id="1059-C语言竞赛-（20-分）"><a href="#1059-C语言竞赛-（20-分）" class="headerlink" title="1059 C语言竞赛 （20 分）"></a>1059 C语言竞赛 （20 分）</h2><p>C 语言竞赛是浙江大学计算机学院主持的一个欢乐的竞赛。既然竞赛主旨是为了好玩，颁奖规则也就制定得很滑稽：<br>0、冠军将赢得一份“神秘大奖”（比如很巨大的一本学生研究论文集……）。<br>1、排名为素数的学生将赢得最好的奖品 —— 小黄人玩偶！<br>2、其他人将得到巧克力。<br>给定比赛的最终排名以及一系列参赛者的 ID，你要给出这些参赛者应该获得的奖品。</p>
-<p>输入格式：<br>输入第一行给出一个正整数 N（≤10^​4），是参赛者人数。随后 N 行给出最终排名，每行按排名顺序给出一位参赛者的 ID（4 位数字组成）。接下来给出一个正整数 K 以及 K 个需要查询的 ID。</p>
-<p>输出格式：<br>对每个要查询的 ID，在一行中输出 ID: 奖品，其中奖品或者是 Mystery Award（神秘大奖）、或者是 Minion（小黄人）、或者是 Chocolate（巧克力）。如果所查 ID 根本不在排名里，打印 Are you kidding?（耍我呢？）。如果该 ID 已经查过了（即奖品已经领过了），打印 ID: Checked（不能多吃多占）。</p>
+<p>##1059 C语言竞赛 （20 分）
+C 语言竞赛是浙江大学计算机学院主持的一个欢乐的竞赛。既然竞赛主旨是为了好玩，颁奖规则也就制定得很滑稽：
+0、冠军将赢得一份“神秘大奖”（比如很巨大的一本学生研究论文集……）。
+1、排名为素数的学生将赢得最好的奖品 —— 小黄人玩偶！
+2、其他人将得到巧克力。
+给定比赛的最终排名以及一系列参赛者的 ID，你要给出这些参赛者应该获得的奖品。</p>
+<p>输入格式：
+输入第一行给出一个正整数 N（≤10^​4），是参赛者人数。随后 N 行给出最终排名，每行按排名顺序给出一位参赛者的 ID（4 位数字组成）。接下来给出一个正整数 K 以及 K 个需要查询的 ID。</p>
+<p>输出格式：
+对每个要查询的 ID，在一行中输出 ID: 奖品，其中奖品或者是 Mystery Award（神秘大奖）、或者是 Minion（小黄人）、或者是 Chocolate（巧克力）。如果所查 ID 根本不在排名里，打印 Are you kidding?（耍我呢？）。如果该 ID 已经查过了（即奖品已经领过了），打印 ID: Checked（不能多吃多占）。</p>
 <p>输入样例：</p>
 <blockquote>
-<p>6<br>1111<br>6666<br>8888<br>1234<br>5555<br>0001<br>6<br>8888<br>0001<br>1111<br>2222<br>8888<br>2222</p>
+<p>6
+1111
+6666
+8888
+1234
+5555
+0001
+6
+8888
+0001
+1111
+2222
+8888
+2222</p>
 </blockquote>
 <p>输出样例：</p>
 <blockquote>
-<p>8888: Minion<br>0001: Chocolate<br>1111: Mystery Award<br>2222: Are you kidding?<br>8888: Checked<br>2222: Are you kidding?</p>
+<p>8888: Minion
+0001: Chocolate
+1111: Mystery Award
+2222: Are you kidding?
+8888: Checked
+2222: Are you kidding?</p>
 </blockquote>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;cstdlib&gt;
@@ -744,51 +849,63 @@ using namespace std;
 #include&lt;map&gt;
 #include&lt;vector&gt;
 bool IsPrime(int a){
-    for (int i = 2; i &lt;= sqrt(a); i++){
-        if (a % i == 0)return false;
-    }
-    return true;
+	for (int i = 2; i &lt;= sqrt(a); i++){
+		if (a % i == 0)return false;
+	}
+	return true;
 }
 int main(){
-    int n,k;
-    cin &gt;&gt; n;
-    string temp;
-    map&lt;string, int&gt;mp;
-    for (int i = 0; i &lt; n; i++){
-        cin &gt;&gt; temp;
-        if (i == 0)mp[temp] = 1;
-        else if (IsPrime(i + 1))mp[temp] = 2;
-        else mp[temp] = 3;
-    }
-    cin &gt;&gt; k;
-    for (int i = 0; i &lt; k; i++){
-        cin &gt;&gt; temp;
-        if (mp[temp] == 1){
-            cout &lt;&lt; temp &lt;&lt; &quot;: &quot; &lt;&lt; &quot;Mystery Award&quot; &lt;&lt; endl;
-            mp[temp] = -1;
-        }
-        else if (mp[temp] == 2){
-            cout &lt;&lt; temp &lt;&lt; &quot;: &quot; &lt;&lt; &quot;Minion&quot; &lt;&lt; endl;
-            mp[temp] = -1;
-        }
-        else if (mp[temp] == 3){
-            cout &lt;&lt; temp &lt;&lt; &quot;: &quot; &lt;&lt; &quot;Chocolate&quot; &lt;&lt; endl;
-            mp[temp] = -1;
-        }
-        else if (mp[temp] == -1){
-            cout &lt;&lt; temp &lt;&lt; &quot;: &quot; &lt;&lt; &quot;Checked&quot; &lt;&lt; endl;
-        }
-        else     cout &lt;&lt; temp &lt;&lt; &quot;: &quot; &lt;&lt; &quot;Are you kidding?&quot; &lt;&lt; endl;
-    }
-    system(&quot;pause&quot;);
-    return 0;
+	int n,k;
+	cin &gt;&gt; n;
+	string temp;
+	map&lt;string, int&gt;mp;
+	for (int i = 0; i &lt; n; i++){
+		cin &gt;&gt; temp;
+		if (i == 0)mp[temp] = 1;
+		else if (IsPrime(i + 1))mp[temp] = 2;
+		else mp[temp] = 3;
+	}
+	cin &gt;&gt; k;
+	for (int i = 0; i &lt; k; i++){
+		cin &gt;&gt; temp;
+		if (mp[temp] == 1){
+			cout &lt;&lt; temp &lt;&lt; &quot;: &quot; &lt;&lt; &quot;Mystery Award&quot; &lt;&lt; endl;
+			mp[temp] = -1;
+		}
+		else if (mp[temp] == 2){
+			cout &lt;&lt; temp &lt;&lt; &quot;: &quot; &lt;&lt; &quot;Minion&quot; &lt;&lt; endl;
+			mp[temp] = -1;
+		}
+		else if (mp[temp] == 3){
+			cout &lt;&lt; temp &lt;&lt; &quot;: &quot; &lt;&lt; &quot;Chocolate&quot; &lt;&lt; endl;
+			mp[temp] = -1;
+		}
+		else if (mp[temp] == -1){
+			cout &lt;&lt; temp &lt;&lt; &quot;: &quot; &lt;&lt; &quot;Checked&quot; &lt;&lt; endl;
+		}
+		else 	cout &lt;&lt; temp &lt;&lt; &quot;: &quot; &lt;&lt; &quot;Are you kidding?&quot; &lt;&lt; endl;
+	}
+	system(&quot;pause&quot;);
+	return 0;
 }
-</code></pre><hr>
-<h2 id="1068-万绿丛中一点红-（20-分）"><a href="#1068-万绿丛中一点红-（20-分）" class="headerlink" title="1068 万绿丛中一点红 （20 分）"></a>1068 万绿丛中一点红 （20 分）</h2><p>对于计算机而言，颜色不过是像素点对应的一个 24 位的数值。现给定一幅分辨率为 M×N 的画，要求你找出万绿丛中的一点红，即有独一无二颜色的那个像素点，并且该点的颜色与其周围 8 个相邻像素的颜色差充分大。</p>
-<p>输入格式：<br>输入第一行给出三个正整数，分别是 M 和 N（≤ 1000），即图像的分辨率；以及 TOL，是所求像素点与相邻点的颜色差阈值，色差超过<br>TOL 的点才被考虑。随后 N 行，每行给出 M 个像素的颜色值，范围在 [0,2^​24) 内。所有同行数字间用空格或 TAB 分开。<br>输出格式：<br>在一行中按照 (x, y): color 的格式输出所求像素点的位置以及颜色值，其中位置 x 和 y 分别是该像素在图像矩阵中的列、行编号（从 1 开始编号）。如果这样的点不唯一，则输出 Not Unique；如果这样的点不存在，则输出 Not Exist。</p>
+</code></pre>
+<hr>
+<p>##1068 万绿丛中一点红 （20 分）
+对于计算机而言，颜色不过是像素点对应的一个 24 位的数值。现给定一幅分辨率为 M×N 的画，要求你找出万绿丛中的一点红，即有独一无二颜色的那个像素点，并且该点的颜色与其周围 8 个相邻像素的颜色差充分大。</p>
+<p>输入格式：
+输入第一行给出三个正整数，分别是 M 和 N（≤ 1000），即图像的分辨率；以及 TOL，是所求像素点与相邻点的颜色差阈值，色差超过
+TOL 的点才被考虑。随后 N 行，每行给出 M 个像素的颜色值，范围在 [0,2^​24) 内。所有同行数字间用空格或 TAB 分开。
+输出格式：
+在一行中按照 (x, y): color 的格式输出所求像素点的位置以及颜色值，其中位置 x 和 y 分别是该像素在图像矩阵中的列、行编号（从 1 开始编号）。如果这样的点不唯一，则输出 Not Unique；如果这样的点不存在，则输出 Not Exist。</p>
 <p>输入样例 1：</p>
 <blockquote>
-<p>8 6 200<br>0      0       0        0        0          0           0        0<br>65280      65280    65280    16711479 65280    65280    65280    65280<br>16711479 65280    65280    65280    16711680 65280    65280    65280<br>65280      65280    65280    65280    65280    65280    165280   165280<br>65280      65280       16777015 65280    65280    165280   65480    165280<br>16777215 16777215 16777215 16777215 16777215 16777215 16777215 16777215</p>
+<p>8 6 200
+0 	 0 	  0 	   0	    0 	     0 	      0        0
+65280 	 65280    65280    16711479 65280    65280    65280    65280
+16711479 65280    65280    65280    16711680 65280    65280    65280
+65280 	 65280    65280    65280    65280    65280    165280   165280
+65280 	 65280 	  16777015 65280    65280    165280   65480    165280
+16777215 16777215 16777215 16777215 16777215 16777215 16777215 16777215</p>
 </blockquote>
 <p>输出样例 1：</p>
 <blockquote>
@@ -796,7 +913,12 @@ int main(){
 </blockquote>
 <p>输入样例 2：</p>
 <blockquote>
-<p>4 5 2<br>0 0 0 0<br>0 0 3 0<br>0 0 0 0<br>0 5 0 0<br>0 0 0 0</p>
+<p>4 5 2
+0 0 0 0
+0 0 3 0
+0 0 0 0
+0 5 0 0
+0 0 0 0</p>
 </blockquote>
 <p>输出样例 2：</p>
 <blockquote>
@@ -804,7 +926,10 @@ int main(){
 </blockquote>
 <p>输入样例 3：</p>
 <blockquote>
-<p>3 3 5<br>1 2 3<br>3 4 5<br>5 6 7</p>
+<p>3 3 5
+1 2 3
+3 4 5
+5 6 7</p>
 </blockquote>
 <p>输出样例 3：</p>
 <blockquote>
@@ -817,63 +942,81 @@ int main(){
 using namespace std;
 #pragma warning(disable:4996)
 int main(){
-    int M, N, TOL, temp, x, y, num = 0;
-    cin &gt;&gt; M &gt;&gt; N &gt;&gt; TOL;
-    vector&lt;int&gt;pixel[1000];
-    map&lt;int,int&gt; exist;
-    for (int i = 0; i &lt; N; i++){
-        for (int j = 0; j &lt; M; j++){
-            cin &gt;&gt; temp;
-            pixel[i].push_back(temp);
-            exist[temp]++;
-        }
-    }
-    for (int i = 0; i &lt; N  &amp;&amp;num&lt;2; i++){//宁可8条if也不要分开循环
-        for (int j = 0; j &lt; M&amp;&amp;num&lt;2; j++){
-            if (exist[pixel[i][j]]&gt;1)continue;
-            if (i != 0 &amp;&amp; j != 0 &amp;&amp; abs (pixel[i - 1][j - 1] - pixel[i][j]) &lt;= TOL)continue;
-            if (i != 0 &amp;&amp; abs(pixel[i - 1][j] - pixel[i][j]) &lt;= TOL)continue;
-            if (i!=0 &amp;&amp;j!=M-1&amp;&amp;abs(pixel[i - 1][j + 1] - pixel[i][j]) &lt;= TOL)continue;
-            if (j != 0 &amp;&amp; abs(pixel[i][j - 1] - pixel[i][j]) &lt;= TOL)continue;
-            if (j!= M - 1 &amp;&amp; abs(pixel[i][j + 1] - pixel[i][j]) &lt;= TOL)continue;
-            if (i != N - 1 &amp;&amp; j != 0 &amp;&amp; abs(pixel[i + 1][j - 1] - pixel[i][j]) &lt;= TOL)continue;
-            if (i != N - 1 &amp;&amp; abs(pixel[i + 1][j] - pixel[i][j]) &lt;= TOL)continue;
-            if (i !=N-1 &amp;&amp; j!=M-1 &amp;&amp;abs(pixel[i + 1][j + 1] - pixel[i][j]) &lt;= TOL)continue;
-            if (num == 0){
-                num++;
-                x = i + 1;
-                y = j + 1;
-            }
-            else{
-                num++;
-            }
-        }
-    }
-    if (num == 1)cout&lt;&lt;&quot;(&quot; &lt;&lt; y &lt;&lt; &quot;, &quot; &lt;&lt; x &lt;&lt; &quot;) :&quot; &lt;&lt; pixel[x - 1][y - 1];
-    else if (num == 0)cout &lt;&lt; &quot;Not Exist&quot;;
-    else cout &lt;&lt; &quot;Not Unique&quot;;
-    system(&quot;pause&quot;);
-    return 0;
+	int M, N, TOL, temp, x, y, num = 0;
+	cin &gt;&gt; M &gt;&gt; N &gt;&gt; TOL;
+	vector&lt;int&gt;pixel[1000];
+	map&lt;int,int&gt; exist;
+	for (int i = 0; i &lt; N; i++){
+		for (int j = 0; j &lt; M; j++){
+			cin &gt;&gt; temp;
+			pixel[i].push_back(temp);
+			exist[temp]++;
+		}
+	}
+	for (int i = 0; i &lt; N  &amp;&amp;num&lt;2; i++){//宁可8条if也不要分开循环
+		for (int j = 0; j &lt; M&amp;&amp;num&lt;2; j++){
+			if (exist[pixel[i][j]]&gt;1)continue;
+			if (i != 0 &amp;&amp; j != 0 &amp;&amp; abs (pixel[i - 1][j - 1] - pixel[i][j]) &lt;= TOL)continue;
+			if (i != 0 &amp;&amp; abs(pixel[i - 1][j] - pixel[i][j]) &lt;= TOL)continue;
+			if (i!=0 &amp;&amp;j!=M-1&amp;&amp;abs(pixel[i - 1][j + 1] - pixel[i][j]) &lt;= TOL)continue;
+			if (j != 0 &amp;&amp; abs(pixel[i][j - 1] - pixel[i][j]) &lt;= TOL)continue;
+			if (j!= M - 1 &amp;&amp; abs(pixel[i][j + 1] - pixel[i][j]) &lt;= TOL)continue;
+			if (i != N - 1 &amp;&amp; j != 0 &amp;&amp; abs(pixel[i + 1][j - 1] - pixel[i][j]) &lt;= TOL)continue;
+			if (i != N - 1 &amp;&amp; abs(pixel[i + 1][j] - pixel[i][j]) &lt;= TOL)continue;
+			if (i !=N-1 &amp;&amp; j!=M-1 &amp;&amp;abs(pixel[i + 1][j + 1] - pixel[i][j]) &lt;= TOL)continue;
+			if (num == 0){
+				num++;
+				x = i + 1;
+				y = j + 1;
+			}
+			else{
+				num++;
+			}
+		}
+	}
+	if (num == 1)cout&lt;&lt;&quot;(&quot; &lt;&lt; y &lt;&lt; &quot;, &quot; &lt;&lt; x &lt;&lt; &quot;) :&quot; &lt;&lt; pixel[x - 1][y - 1];
+	else if (num == 0)cout &lt;&lt; &quot;Not Exist&quot;;
+	else cout &lt;&lt; &quot;Not Unique&quot;;
+	system(&quot;pause&quot;);
+	return 0;
 }
-</code></pre><hr>
-<h2 id="1069-微博转发抽奖-（20-分）"><a href="#1069-微博转发抽奖-（20-分）" class="headerlink" title="1069 微博转发抽奖 （20 分）"></a>1069 微博转发抽奖 （20 分）</h2><p>小明 PAT 考了满分，高兴之余决定发起微博转发抽奖活动，从转发的网友中按顺序每隔 N 个人就发出一个红包。请你编写程序帮助他确定中奖名单。</p>
-<p>输入格式：<br>输入第一行给出三个正整数 M（≤ 1000）、N 和 S，分别是转发的总量、小明决定的中奖间隔、以及第一位中奖者的序号（编号从 1 开始）。随后 M 行，顺序给出转发微博的网友的昵称（不超过 20 个字符、不包含空格回车的非空字符串）。<br>注意：可能有人转发多次，但不能中奖多次。所以如果处于当前中奖位置的网友已经中过奖，则跳过他顺次取下一位。</p>
-<p>输出格式：<br>按照输入的顺序输出中奖名单，每个昵称占一行。如果没有人中奖，则输出 Keep going…。</p>
+</code></pre>
+<hr>
+<p>##1069 微博转发抽奖 （20 分）
+小明 PAT 考了满分，高兴之余决定发起微博转发抽奖活动，从转发的网友中按顺序每隔 N 个人就发出一个红包。请你编写程序帮助他确定中奖名单。</p>
+<p>输入格式：
+输入第一行给出三个正整数 M（≤ 1000）、N 和 S，分别是转发的总量、小明决定的中奖间隔、以及第一位中奖者的序号（编号从 1 开始）。随后 M 行，顺序给出转发微博的网友的昵称（不超过 20 个字符、不包含空格回车的非空字符串）。
+注意：可能有人转发多次，但不能中奖多次。所以如果处于当前中奖位置的网友已经中过奖，则跳过他顺次取下一位。</p>
+<p>输出格式：
+按照输入的顺序输出中奖名单，每个昵称占一行。如果没有人中奖，则输出 Keep going...。</p>
 <p>输入样例 1：</p>
 <blockquote>
-<p>9 3 2<br>Imgonnawin!<br>PickMe<br>PickMeMeMeee<br>LookHere<br>Imgonnawin!<br>TryAgainAgain<br>TryAgainAgain<br>Imgonnawin!<br>TryAgainAgain</p>
+<p>9 3 2
+Imgonnawin!
+PickMe
+PickMeMeMeee
+LookHere
+Imgonnawin!
+TryAgainAgain
+TryAgainAgain
+Imgonnawin!
+TryAgainAgain</p>
 </blockquote>
 <p>输出样例 1：</p>
 <blockquote>
-<p>PickMe<br>Imgonnawin!<br>TryAgainAgain</p>
+<p>PickMe
+Imgonnawin!
+TryAgainAgain</p>
 </blockquote>
 <p>输入样例 2：</p>
 <blockquote>
-<p>2 3 5<br>Imgonnawin!<br>PickMe</p>
+<p>2 3 5
+Imgonnawin!
+PickMe</p>
 </blockquote>
 <p>输出样例 2：</p>
 <blockquote>
-<p>Keep going…</p>
+<p>Keep going...</p>
 </blockquote>
 <pre><code>#include&lt;string&gt;
 #include&lt;iostream&gt;
@@ -882,40 +1025,71 @@ int main(){
 #include&lt;map&gt;
 using namespace std;
 int main(){
-    int M, N, S;
-    cin &gt;&gt; M &gt;&gt; N &gt;&gt; S;
-    string str;
-    vector&lt;string&gt;list;
-    map&lt;string, int&gt;mp;
-    for (int i = 0; i &lt; M; i++){
-        cin &gt;&gt; str;
-        list.push_back(str);
-    }
-    int distance = N-1;
-    for (int i = S-1; i &lt; list.size(); i++){
-        if (mp[list[i]] == 1)continue;
-        else distance++;
-        if (distance == N){
-            cout &lt;&lt; list[i]&lt;&lt;endl;
-            mp[list[i]] = 1;
-            distance = 0;
-        }
-    }
-    if (S&gt;M)cout &lt;&lt; &quot;Keep going...&quot;;
-    system(&quot;pause&quot;);
-    return 0;
+	int M, N, S;
+	cin &gt;&gt; M &gt;&gt; N &gt;&gt; S;
+	string str;
+	vector&lt;string&gt;list;
+	map&lt;string, int&gt;mp;
+	for (int i = 0; i &lt; M; i++){
+		cin &gt;&gt; str;
+		list.push_back(str);
+	}
+	int distance = N-1;
+	for (int i = S-1; i &lt; list.size(); i++){
+		if (mp[list[i]] == 1)continue;
+		else distance++;
+		if (distance == N){
+			cout &lt;&lt; list[i]&lt;&lt;endl;
+			mp[list[i]] = 1;
+			distance = 0;
+		}
+	}
+	if (S&gt;M)cout &lt;&lt; &quot;Keep going...&quot;;
+	system(&quot;pause&quot;);
+	return 0;
 }
-</code></pre><hr>
-<h2 id="1080-MOOC期终成绩-（25-分）"><a href="#1080-MOOC期终成绩-（25-分）" class="headerlink" title="1080 MOOC期终成绩 （25 分）"></a>1080 MOOC期终成绩 （25 分）</h2><p>对于在中国大学MOOC（<a href="http://www.icourse163.org/" target="_blank" rel="noopener">http://www.icourse163.org/</a> ）学习“数据结构”课程的学生，想要获得一张合格证书，必须首先获得不少于200分的在线编程作业分，然后总评获得不少于60分（满分100）。总评成绩的计算公式为 G=(Gmid−term ×40%+Gfinal×60%)，如果 Gmid−term&gt;Gfinal；否则总评 G 就是 Gfinal。这里 Gmid−term和 Gfinal分别为学生的期中和期末成绩。<br>现在的问题是，每次考试都产生一张独立的成绩单。本题就请你编写程序，把不同的成绩单合为一张。</p>
-<p>输入格式：<br>输入在第一行给出3个整数，分别是 P（做了在线编程作业的学生数）、M（参加了期中考试的学生数）、N（参加了期末考试的学生数）。每个数都不超过10000。<br>接下来有三块输入。第一块包含 P 个在线编程成绩 G​p；第二块包含 M 个期中考试成绩 Gmid−term；第三块包含 N 个期末考试成绩 Gfinal<br>​​ 。每个成绩占一行，格式为：学生学号 分数。其中学生学号为不超过20个字符的英文字母和数字；分数是非负整数（编程总分最高为900分，期中和期末的最高分为100分）。</p>
-<p>输出格式：<br>打印出获得合格证书的学生名单。每个学生占一行，格式为：<br>学生学号 G​p Gmid−term Gfinal G<br>如果有的成绩不存在（例如某人没参加期中考试），则在相应的位置输出“−1”。输出顺序为按照总评分数（四舍五入精确到整数）递减。若有并列，则按学号递增。题目保证学号没有重复，且至少存在1个合格的学生。</p>
+</code></pre>
+<hr>
+<p>##1080 MOOC期终成绩 （25 分）
+对于在中国大学MOOC（http://www.icourse163.org/ ）学习“数据结构”课程的学生，想要获得一张合格证书，必须首先获得不少于200分的在线编程作业分，然后总评获得不少于60分（满分100）。总评成绩的计算公式为 G=(Gmid−term ×40%+Gfinal×60%)，如果 Gmid−term&gt;Gfinal；否则总评 G 就是 Gfinal。这里 Gmid−term和 Gfinal分别为学生的期中和期末成绩。
+现在的问题是，每次考试都产生一张独立的成绩单。本题就请你编写程序，把不同的成绩单合为一张。</p>
+<p>输入格式：
+输入在第一行给出3个整数，分别是 P（做了在线编程作业的学生数）、M（参加了期中考试的学生数）、N（参加了期末考试的学生数）。每个数都不超过10000。
+接下来有三块输入。第一块包含 P 个在线编程成绩 G​p；第二块包含 M 个期中考试成绩 Gmid−term；第三块包含 N 个期末考试成绩 Gfinal
+​​ 。每个成绩占一行，格式为：学生学号 分数。其中学生学号为不超过20个字符的英文字母和数字；分数是非负整数（编程总分最高为900分，期中和期末的最高分为100分）。</p>
+<p>输出格式：
+打印出获得合格证书的学生名单。每个学生占一行，格式为：
+学生学号 G​p Gmid−term Gfinal G
+如果有的成绩不存在（例如某人没参加期中考试），则在相应的位置输出“−1”。输出顺序为按照总评分数（四舍五入精确到整数）递减。若有并列，则按学号递增。题目保证学号没有重复，且至少存在1个合格的学生。</p>
 <p>输入样例：</p>
 <blockquote>
-<p>6 6 7<br>01234 880<br>a1903 199<br>ydjh2 200<br>wehu8 300<br>dx86w 220<br>missing 400<br>ydhfu77 99<br>wehu8 55<br>ydjh2 98<br>dx86w 88<br>a1903 86<br>01234 39<br>ydhfu77 88<br>a1903 66<br>01234 58<br>wehu8 84<br>ydjh2 82<br>missing 99<br>dx86w 81</p>
+<p>6 6 7
+01234 880
+a1903 199
+ydjh2 200
+wehu8 300
+dx86w 220
+missing 400
+ydhfu77 99
+wehu8 55
+ydjh2 98
+dx86w 88
+a1903 86
+01234 39
+ydhfu77 88
+a1903 66
+01234 58
+wehu8 84
+ydjh2 82
+missing 99
+dx86w 81</p>
 </blockquote>
 <p>输出样例：</p>
 <blockquote>
-<p>missing 400 -1 99 99<br>ydjh2 200 98 82 88<br>dx86w 220 88 81 84<br>wehu8 300 55 84 84</p>
+<p>missing 400 -1 99 99
+ydjh2 200 98 82 88
+dx86w 220 88 81 84
+wehu8 300 55 84 84</p>
 </blockquote>
 <pre><code>#include&lt;string&gt;
   #include&lt;stdio.h&gt;
@@ -923,7 +1097,7 @@ int main(){
   #include&lt;iostream&gt;
   #include&lt;map&gt;
   #include&lt;cmath&gt;
-  #include&lt;utility&gt;                    //注意
+  #include&lt;utility&gt;					//注意
   #include&lt;vector&gt;
   #include&lt;algorithm&gt;
   using namespace std;
@@ -965,20 +1139,45 @@ int main(){
     system(&quot;pause&quot;);
     return 0;
   }
-</code></pre><p>用pair对其进行排序。</p>
+</code></pre>
+<p>用pair对其进行排序。</p>
 <pre><code>#include&lt;utility&gt;
 vector&lt;pair&lt;int ,int &gt;&gt;rank(mp.begin(),mp.end())
-</code></pre><hr>
-<h2 id="1085-PAT单位排行-（25-分）"><a href="#1085-PAT单位排行-（25-分）" class="headerlink" title="1085 PAT单位排行 （25 分）"></a>1085 PAT单位排行 （25 分）</h2><p>每次 PAT 考试结束后，考试中心都会发布一个考生单位排行榜。本题就请你实现这个功能。</p>
-<p>输入格式：<br>输入第一行给出一个正整数 N（≤10^​5），即考生人数。随后 N 行，每行按下列格式给出一个考生的信息：<br>准考证号 得分 学校<br>其中准考证号是由 6 个字符组成的字符串，其首字母表示考试的级别：B代表乙级，A代表甲级，T代表顶级；得分是 [0, 100] 区间内的整数；学校是由不超过 6 个英文字母组成的单位码（大小写无关）。注意：题目保证每个考生的准考证号是不同的。</p>
-<p>输出格式：<br>首先在一行中输出单位个数。随后按以下格式非降序输出单位的排行榜：<br>排名 学校 加权总分 考生人数<br>其中排名是该单位的排名（从 1 开始）；学校是全部按小写字母输出的单位码；加权总分定义为乙级总分/1.5 + 甲级总分 + 顶级总分*1.5的整数部分；考生人数是该属于单位的考生的总人数。<br>学校首先按加权总分排行。如有并列，则应对应相同的排名，并按考生人数升序输出。如果仍然并列，则按单位码的字典序输出。</p>
+</code></pre>
+<hr>
+<p>##1085 PAT单位排行 （25 分）
+每次 PAT 考试结束后，考试中心都会发布一个考生单位排行榜。本题就请你实现这个功能。</p>
+<p>输入格式：
+输入第一行给出一个正整数 N（≤10^​5），即考生人数。随后 N 行，每行按下列格式给出一个考生的信息：
+准考证号 得分 学校
+其中准考证号是由 6 个字符组成的字符串，其首字母表示考试的级别：B代表乙级，A代表甲级，T代表顶级；得分是 [0, 100] 区间内的整数；学校是由不超过 6 个英文字母组成的单位码（大小写无关）。注意：题目保证每个考生的准考证号是不同的。</p>
+<p>输出格式：
+首先在一行中输出单位个数。随后按以下格式非降序输出单位的排行榜：
+排名 学校 加权总分 考生人数
+其中排名是该单位的排名（从 1 开始）；学校是全部按小写字母输出的单位码；加权总分定义为乙级总分/1.5 + 甲级总分 + 顶级总分*1.5的整数部分；考生人数是该属于单位的考生的总人数。
+学校首先按加权总分排行。如有并列，则应对应相同的排名，并按考生人数升序输出。如果仍然并列，则按单位码的字典序输出。</p>
 <p>输入样例：</p>
 <blockquote>
-<p>10<br>A57908 85 Au<br>B57908 54 LanX<br>A37487 60 au<br>T28374 67 CMU<br>T32486 24 hypu<br>A66734 92 cmu<br>B76378 71 AU<br>A47780 45 lanx<br>A72809 100 pku<br>A03274 45 hypu</p>
+<p>10
+A57908 85 Au
+B57908 54 LanX
+A37487 60 au
+T28374 67 CMU
+T32486 24 hypu
+A66734 92 cmu
+B76378 71 AU
+A47780 45 lanx
+A72809 100 pku
+A03274 45 hypu</p>
 </blockquote>
 <p>输出样例：</p>
 <blockquote>
-<p>5<br>1 cmu 192 2<br>1 au 192 3<br>3 pku 100 1<br>4 hypu 81 2<br>4 lanx 81 2</p>
+<p>5
+1 cmu 192 2
+1 au 192 3
+3 pku 100 1
+4 hypu 81 2
+4 lanx 81 2</p>
 </blockquote>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;cstdlib&gt;
@@ -990,59 +1189,81 @@ using namespace std;
 #include&lt;map&gt;
 #include&lt;vector&gt;
 struct school{
-    string name;
-    int sum = 0, num = 0, rank;
-    double ssum = 0;
+	string name;
+	int sum = 0, num = 0, rank;
+	double ssum = 0;
 };
 bool cmp(school a, school b){
-    if(a.sum!=b.sum)return a.sum &gt; b.sum;
-    else if (a.num != b.num)return a.num &lt; b.num;
-    else return a.name &lt; b.name;
+	if(a.sum!=b.sum)return a.sum &gt; b.sum;
+	else if (a.num != b.num)return a.num &lt; b.num;
+	else return a.name &lt; b.name;
 }
 int main(){//第一题20min,第二题5min,第三题15mim,第四题11min,第五题25min
-    int n;
-    cin &gt;&gt; n;
-    vector&lt;school&gt;list;
-    map&lt;string, school&gt;mp;
-    for (int i = 0; i &lt; n; i++){
-        string id,school;
-        int grade;
-        cin &gt;&gt; id &gt;&gt; grade &gt;&gt; school;
-        char classno = id[0];
-        for (int j = 0; j &lt; school.length(); j++){
-            if (school[j] &lt;= &#39;Z&#39;&amp;&amp;school[j] &gt;= &#39;A&#39;)school[j] = school[j] - &#39;A&#39; + &#39;a&#39;;
-        }
-        mp[school].num++;
-        mp[school].name = school;//把键写进值
-        if (classno == &#39;B&#39;)mp[school].ssum += grade / 1.5;  //可能是要到最后(排序前）再四舍五入!!!
-        else if (classno == &#39;A&#39;)mp[school].ssum += grade;
-        else mp[school].ssum +=grade * 1.5;
-    }
-    for (auto it = mp.begin(); it != mp.end(); it++){//把值提出来去排序
-        it-&gt;second.sum = floor(it-&gt;second.ssum);
-        list.push_back(it-&gt;second);
-    }
-    sort(list.begin(), list.end(),cmp);
-    cout &lt;&lt; list.size() &lt;&lt; endl;
-    for (int i = 0; i &lt; list.size(); i++){
-        if (i&amp;&amp;list[i].sum == list[i - 1].sum)list[i].rank = list[i - 1].rank;//把排名也加进去，
-        else list[i].rank = i + 1;
-        cout &lt;&lt; list[i].rank &lt;&lt; &quot; &quot; &lt;&lt; list[i].name &lt;&lt; &quot; &quot; &lt;&lt; list[i].sum &lt;&lt; &quot; &quot; &lt;&lt; list[i].num &lt;&lt; endl;
-    }
-    system(&quot;pause&quot;);
-    return 0;
+	int n;
+	cin &gt;&gt; n;
+	vector&lt;school&gt;list;
+	map&lt;string, school&gt;mp;
+	for (int i = 0; i &lt; n; i++){
+		string id,school;
+		int grade;
+		cin &gt;&gt; id &gt;&gt; grade &gt;&gt; school;
+		char classno = id[0];
+		for (int j = 0; j &lt; school.length(); j++){
+			if (school[j] &lt;= 'Z'&amp;&amp;school[j] &gt;= 'A')school[j] = school[j] - 'A' + 'a';
+		}
+		mp[school].num++;
+		mp[school].name = school;//把键写进值
+		if (classno == 'B')mp[school].ssum += grade / 1.5;  //可能是要到最后(排序前）再四舍五入!!!
+		else if (classno == 'A')mp[school].ssum += grade;
+		else mp[school].ssum +=grade * 1.5;
+	}
+	for (auto it = mp.begin(); it != mp.end(); it++){//把值提出来去排序
+		it-&gt;second.sum = floor(it-&gt;second.ssum);
+		list.push_back(it-&gt;second);
+	}
+	sort(list.begin(), list.end(),cmp);
+	cout &lt;&lt; list.size() &lt;&lt; endl;
+	for (int i = 0; i &lt; list.size(); i++){
+		if (i&amp;&amp;list[i].sum == list[i - 1].sum)list[i].rank = list[i - 1].rank;//把排名也加进去，
+		else list[i].rank = i + 1;
+		cout &lt;&lt; list[i].rank &lt;&lt; &quot; &quot; &lt;&lt; list[i].name &lt;&lt; &quot; &quot; &lt;&lt; list[i].sum &lt;&lt; &quot; &quot; &lt;&lt; list[i].num &lt;&lt; endl;
+	}
+	system(&quot;pause&quot;);
+	return 0;
 }
-</code></pre><p>要到最后(排序前）再四舍五入!!!<br>把键写进值。</p>
-<h2 id="把值提出到vector去排序。"><a href="#把值提出到vector去排序。" class="headerlink" title="把值提出到vector去排序。"></a>把值提出到vector去排序。</h2><h2 id="1090-危险品装箱-（25-分）"><a href="#1090-危险品装箱-（25-分）" class="headerlink" title="1090 危险品装箱 （25 分）"></a>1090 危险品装箱 （25 分）</h2><p>集装箱运输货物时，我们必须特别小心，不能把不相容的货物装在一只箱子里。比如氧化剂绝对不能跟易燃液体同箱，否则很容易造成爆炸。<br>本题给定一张不相容物品的清单，需要你检查每一张集装箱货品清单，判断它们是否能装在同一只箱子里。</p>
-<p>输入格式：<br>输入第一行给出两个正整数：N (≤10^​4) 是成对的不相容物品的对数；M (≤100) 是集装箱货品清单的单数。<br>随后数据分两大块给出。第一块有 N 行，每行给出一对不相容的物品。第二块有 M 行，每行给出一箱货物的清单，格式如下：<br>K G[1] G[2] … G[K]<br>其中 K (≤1000) 是物品件数，G[i] 是物品的编号。简单起见，每件物品用一个 5 位数的编号代表。两个数字之间用空格分隔。</p>
-<p>输出格式：<br>对每箱货物清单，判断是否可以安全运输。如果没有不相容物品，则在一行中输出 Yes，否则输出 No。</p>
+</code></pre>
+<p>要到最后(排序前）再四舍五入!!!
+把键写进值。
+把值提出到vector去排序。</p>
+<hr>
+<p>##1090 危险品装箱 （25 分）
+集装箱运输货物时，我们必须特别小心，不能把不相容的货物装在一只箱子里。比如氧化剂绝对不能跟易燃液体同箱，否则很容易造成爆炸。
+本题给定一张不相容物品的清单，需要你检查每一张集装箱货品清单，判断它们是否能装在同一只箱子里。</p>
+<p>输入格式：
+输入第一行给出两个正整数：N (≤10^​4) 是成对的不相容物品的对数；M (≤100) 是集装箱货品清单的单数。
+随后数据分两大块给出。第一块有 N 行，每行给出一对不相容的物品。第二块有 M 行，每行给出一箱货物的清单，格式如下：
+K G[1] G[2] ... G[K]
+其中 K (≤1000) 是物品件数，G[i] 是物品的编号。简单起见，每件物品用一个 5 位数的编号代表。两个数字之间用空格分隔。</p>
+<p>输出格式：
+对每箱货物清单，判断是否可以安全运输。如果没有不相容物品，则在一行中输出 Yes，否则输出 No。</p>
 <p>输入样例：</p>
 <blockquote>
-<p>6 3<br>20001 20002<br>20003 20004<br>20005 20006<br>20003 20001<br>20005 20004<br>20004 20006<br>4 00001 20004 00002 20003<br>5 98823 20002 20003 20006 10010<br>3 12345 67890 23333</p>
+<p>6 3
+20001 20002
+20003 20004
+20005 20006
+20003 20001
+20005 20004
+20004 20006
+4 00001 20004 00002 20003
+5 98823 20002 20003 20006 10010
+3 12345 67890 23333</p>
 </blockquote>
 <p>输出样例：</p>
 <blockquote>
-<p>No<br>Yes<br>Yes</p>
+<p>No
+Yes
+Yes</p>
 </blockquote>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;vector&gt;
@@ -1054,41 +1275,42 @@ int main(){//第一题20min,第二题5min,第三题15mim,第四题11min,第五�
 #pragma warning(disable:4996)
 using namespace std;
 int main(){
-    vector&lt;string&gt;list[20002];
-    int N, M;
-    cin &gt;&gt; N &gt;&gt; M;
-    string a, b;
-    map&lt;string, int&gt;mp;
-    for (int i = 0; i &lt; N; i++){
-        cin &gt;&gt; a &gt;&gt; b;
-        if(mp[a]==0)mp[a] = 2 * i+ 1;
-        if(mp[b]==0)mp[b] = 2 * i + 2;
-        list[mp[a]].push_back(b);
-        list[mp[b]].push_back(a);
-    }
-    for (int i = 0; i &lt; M; i++){
-        int num, flag = 1;
-        string a;
-        cin &gt;&gt; num;
-        vector&lt;string&gt;ship;
-        for (int j = 0; j &lt; num; j++){
-            cin &gt;&gt; a;
-            for(int k = 0; k &lt; list[mp[a]].size()&amp;&amp;flag; k++){
-                for (int m = 0; m &lt; ship.size()&amp;&amp;flag; m++){
-                    if (list[mp[a]][k] == ship[m]){
-                        cout &lt;&lt; &quot;No&quot; &lt;&lt; endl;
-                        flag = 0;
-                    }
-                }
-            }
-            ship.push_back(a);
-        }
-        if (flag)cout &lt;&lt; &quot;Yes&quot; &lt;&lt; endl;
-    }
-    system(&quot;pause&quot;);
-    return 0;
+	vector&lt;string&gt;list[20002];
+	int N, M;
+	cin &gt;&gt; N &gt;&gt; M;
+	string a, b;
+	map&lt;string, int&gt;mp;
+	for (int i = 0; i &lt; N; i++){
+		cin &gt;&gt; a &gt;&gt; b;
+		if(mp[a]==0)mp[a] = 2 * i+ 1;
+		if(mp[b]==0)mp[b] = 2 * i + 2;
+		list[mp[a]].push_back(b);
+		list[mp[b]].push_back(a);
+	}
+	for (int i = 0; i &lt; M; i++){
+		int num, flag = 1;
+		string a;
+		cin &gt;&gt; num;
+		vector&lt;string&gt;ship;
+		for (int j = 0; j &lt; num; j++){
+			cin &gt;&gt; a;
+			for(int k = 0; k &lt; list[mp[a]].size()&amp;&amp;flag; k++){
+				for (int m = 0; m &lt; ship.size()&amp;&amp;flag; m++){
+					if (list[mp[a]][k] == ship[m]){
+						cout &lt;&lt; &quot;No&quot; &lt;&lt; endl;
+						flag = 0;
+					}
+				}
+			}
+			ship.push_back(a);
+		}
+		if (flag)cout &lt;&lt; &quot;Yes&quot; &lt;&lt; endl;
+	}
+	system(&quot;pause&quot;);
+	return 0;
 }
-</code></pre><p>写个2维变长vector会比较好点，这里就直接用map对应一维变长的vector了</p>
+</code></pre>
+<p>写个2维变长vector会比较好点，这里就直接用map对应一维变长的vector了</p>
 
     </article>
     <!-- license  -->
@@ -1278,7 +1500,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数学问题"><span class="toc-number">1.</span> <span class="toc-text">数学问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识要点"><span class="toc-number">1.1.</span> <span class="toc-text">知识要点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#最大公约数"><span class="toc-number">1.1.1.</span> <span class="toc-text">最大公约数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最小公倍数"><span class="toc-number">1.1.2.</span> <span class="toc-text">最小公倍数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分数相关"><span class="toc-number">1.1.3.</span> <span class="toc-text">分数相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#定义"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意事项"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#素数"><span class="toc-number">1.1.4.</span> <span class="toc-text">素数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大整数"><span class="toc-number">1.1.5.</span> <span class="toc-text">大整数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1007-素数对猜想-（20-分）"><span class="toc-number">1.2.</span> <span class="toc-text">1007 素数对猜想 （20 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1013-数素数-（20-分）"><span class="toc-number">1.3.</span> <span class="toc-text">1013 数素数 （20 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1017-A除以B-（20-分）"><span class="toc-number">1.4.</span> <span class="toc-text">1017 A除以B （20 分）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vector"><span class="toc-number">2.</span> <span class="toc-text">vector</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识要点-1"><span class="toc-number">2.1.</span> <span class="toc-text">知识要点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问方法"><span class="toc-number">2.1.2.</span> <span class="toc-text">访问方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用操作"><span class="toc-number">2.1.3.</span> <span class="toc-text">常用操作</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#set"><span class="toc-number">3.</span> <span class="toc-text">set</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识要点-2"><span class="toc-number">3.1.</span> <span class="toc-text">知识要点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#元素访问"><span class="toc-number">3.1.2.</span> <span class="toc-text">元素访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用操作-1"><span class="toc-number">3.1.3.</span> <span class="toc-text">常用操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1064-朋友数-（20-分）"><span class="toc-number">3.2.</span> <span class="toc-text">1064 朋友数 （20 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1087-有多少不同的值-（20-分）"><span class="toc-number">3.3.</span> <span class="toc-text">1087 有多少不同的值 （20 分）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#map"><span class="toc-number">4.</span> <span class="toc-text">map</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识要点-3"><span class="toc-number">4.1.</span> <span class="toc-text">知识要点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义-3"><span class="toc-number">4.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#元素访问-1"><span class="toc-number">4.1.2.</span> <span class="toc-text">元素访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用操作-2"><span class="toc-number">4.1.3.</span> <span class="toc-text">常用操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见用途"><span class="toc-number">4.1.4.</span> <span class="toc-text">常见用途</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#排序"><span class="toc-number">4.1.5.</span> <span class="toc-text">排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1059-C语言竞赛-（20-分）"><span class="toc-number">4.2.</span> <span class="toc-text">1059 C语言竞赛 （20 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1068-万绿丛中一点红-（20-分）"><span class="toc-number">4.3.</span> <span class="toc-text">1068 万绿丛中一点红 （20 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1069-微博转发抽奖-（20-分）"><span class="toc-number">4.4.</span> <span class="toc-text">1069 微博转发抽奖 （20 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1080-MOOC期终成绩-（25-分）"><span class="toc-number">4.5.</span> <span class="toc-text">1080 MOOC期终成绩 （25 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1085-PAT单位排行-（25-分）"><span class="toc-number">4.6.</span> <span class="toc-text">1085 PAT单位排行 （25 分）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#把值提出到vector去排序。"><span class="toc-number">4.7.</span> <span class="toc-text">把值提出到vector去排序。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1090-危险品装箱-（25-分）"><span class="toc-number">4.8.</span> <span class="toc-text">1090 危险品装箱 （25 分）</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">#vector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">#set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">#map</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.</span> <span class="toc-text">排序</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1605,58 +1827,9 @@ top:50vh;
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 25
+        Total : 26
         </div>
         <!-- search  -->
         
@@ -1673,6 +1846,11 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/基于pyecharts的专注时间日历图/" >基于pyecharts的专注时间日历图</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1705,12 +1883,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href= "/2019/07/17/PAT甲级题目集5-STL/" >PAT甲级题目集5-STL</a>
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href= "/2019/07/17/PAT甲级题目集4-散列，二分法，two-pointers/" >PAT甲级题目集4-散列，二分法，two-pointers</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href= "/2019/07/17/PAT甲级题目集4-散列，二分法，two-pointers/" >PAT甲级题目集4-散列，二分法，two-pointers</a>
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href= "/2019/07/17/PAT甲级题目集5-STL/" >PAT甲级题目集5-STL</a>
         </li>
     
     
@@ -1822,9 +2000,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
-    
         <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+    
+        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
     
         <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
     
@@ -1836,15 +2014,19 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
-        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
-    
         <span class="sidebar-tag-name" data-tags="openGL"><span class="iconfont-archer">&#xe606;</span>openGL</span>
     
         <span class="sidebar-tag-name" data-tags="图形学"><span class="iconfont-archer">&#xe606;</span>图形学</span>
     
-        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
     
         <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
+    
+        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
+    
+        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+    
+        <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
     
         <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
     
@@ -1853,10 +2035,6 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
     
         <span class="sidebar-tag-name" data-tags="感悟"><span class="iconfont-archer">&#xe606;</span>感悟</span>
-    
-        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
-    
-        <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
