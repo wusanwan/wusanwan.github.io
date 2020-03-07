@@ -11,7 +11,7 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
     <meta name="author" content="吴三万">
     <meta name="renderer" content="webkit">
@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>菜鸡小万。</title>
+    <title>算法题:贪心 · 菜鸡小万。</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -213,17 +213,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
     <!-- 百度统计  -->
     
-    <!-- 谷歌统计  -->
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 </head>
 
     
+        <body class="post-body">
     
-<header class="header">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >菜鸡小万。</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">算法题:贪心</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>菜鸡小万。</a>
 </header>
@@ -235,24 +246,76 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
     
+    
+    <!-- 404页  -->
+    
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            算法题:贪心
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "算法">算法</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "PAT">PAT</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.3k</span>阅读时长: <span class="post-count reading-time">5 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/02/25</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -354,221 +417,141 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/23/git学习实验报告/" >
-            
-                <span>git入门</span>
-        </a>
-        <div class="abstract-content">
-            git入门。
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/23</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "git">git</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>因为PAT甲/乙 LeetCode的题分开来太乱了，所以在这边重构了一下。<br>大坑🕳,不知道什么时候能更完。<br>LeetCode的题在GitHub有详细笔记，PAT挑着说了一下。<br>善用搜索。</p>
+<h1 id="知识要点-注意点"><a href="#知识要点-注意点" class="headerlink" title="知识要点/注意点"></a>知识要点/注意点</h1><p>参考<a href="https://book.douban.com/subject/26827295/" target="_blank" rel="noopener">《算法笔记》</a>第四章</p>
+<p><strong>通式</strong><br>目的都是求最x,解决方法通常是将（经过处理的）已知量排个序按顺序进行处理。<br>每步都做到局部最优，达到最后的整体最优。<br>（仅限于做设计好的算法题，平时还是得证明看下能不能整体最优。）</p>
+<p><strong>报错点</strong><br>用double不要用float.</p>
+<h1 id="PAT"><a href="#PAT" class="headerlink" title="PAT"></a>PAT</h1><h2 id="甲级"><a href="#甲级" class="headerlink" title="甲级"></a>甲级</h2><p><strong>1070 Mooncake(25) <a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805399578853376" target="_blank" rel="noopener"> 原题 </a>  <a href="https://github.com/wusanwan/algorithm/blob/master/Advanced%20Level/1070.cpp" target="_blank" rel="noopener">  GitHub  </a></strong><br>最简单的贪心题，当忘了概念的时候就点开来看看吧😀。</p>
+<p><strong>1125 Chain the Ropes(25)   <a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805350316752896" target="_blank" rel="noopener"> 原题 </a>  <a href="https://github.com/wusanwan/algorithm/blob/master/Advanced%20Level/1125.cpp" target="_blank" rel="noopener">  GitHub  </a></strong><br>简单题，两段绳子每次相加要砍掉一半，那么加过n次后该段绳子等于原来的$\frac{1}{2^n}$，故想要最大长度，应该从短的开始接，长的留在后面可以少腰斩几次。</p>
+<p><strong>1037 Magic Coupon(25) <a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805451374313472" target="_blank" rel="noopener">原题</a> <a href="https://github.com/wusanwan/algorithm/blob/master/Advanced%20Level/1037.cpp" target="_blank" rel="noopener">  GitHub  </a></strong><br>简单题，就分正正负负两种，排序后头尾各一个循环就行。</p>
+<h1 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h1><h2 id="easy"><a href="#easy" class="headerlink" title="easy"></a>easy</h2><p><strong>122. Best Time to Buy and Sell Stock II   <a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener"> 原题 </a><a href="https://github.com/wusanwan/algorithm/blob/master/LeetCode/122.md" target="_blank" rel="noopener"> GitHub</a></strong></p>
+<p><strong>法一</strong><br>思路很简单，[第一天，第二天]如果是涨的就第一天买第二天卖，如果是亏的就不操作。<br>(一点都不像股票😑)<strong>贪心：每一个波段都要吃到。</strong></p>
+<pre><code>//法一 思路简单 速度较慢
+//执行用时 :12 ms, 在所有 C++ 提交中击败了26.05%的用户
+class Solution {
+public:
+    int maxProfit(vector&lt;int&gt;&amp; prices) {
+        int profit=0;
+        if(prices.empty())return profit;
+        for(int i=0;i&lt;prices.size()-1;i++){//遍历每个[第一天，第二天]
+            if(prices[i+1]&gt;prices[i])//只要是升的就吃一段   
+                profit+=prices[i+1]-prices[i];
+        }
+        return profit;
+    }
+};
+</code></pre><p><strong>报错</strong><br>此时，如果没有if(prices.empty())return profit;就会报数组越界的错误。</p>
+<blockquote>
+<p>因为 prices.size() 得到是一个无符号整型数 ，所以做 i &lt; 0 -1 比较运算时，右侧 0-1得到的是一个无符号数，所以不会跳出for循环，而是进行极大次数的循环，当prices数组为空时，造成访问越界 因为c语言传参就是int 型，所以没有无符号和带符号数计算带来的错误。<em>——leetcode用户：模电小天才</em></p>
+</blockquote>
+<p>为什么是极大次数的循环：👉<a href="https://www.zhihu.com/question/322379893/answer/668427247" target="_blank" rel="noopener">详细解释</a><br>其实就是因为是无符号整型数，所以-1就变最大了。</p>
+<p><strong>改进</strong><br>1.如果不想要这个判断empty的语句，可以改成int(prices.size())-1,或改成i+1&lt;prices.size(),或改成i从1开始和前一天进行比较，变成i&lt;prices.size()就没有问题了。</p>
+<p>2.代码简洁上的考虑</p>
+<pre><code>if(prices[i+1]&gt;prices[i])
+profit+=prices[i+1]-prices[i];
+//更简洁的写法是 profit+=max(0,prices[i+1]-prices[i])
+</code></pre><p>3.执行速度上的考虑<br><strong>法二</strong><br>[第一天，第二天]的思考方法简单易懂，虽然已经是O(n)，但天数一多还是速度慢，于是可以加两句代码处理连涨的情况，将一天一卖变成几天一卖，减少+=运算的次数。于是就从[第一天，第二天]的模型变成了变成了while找谷值，while找峰值，做差求利润的模型。</p>
+<pre><code>//法二 实现稍复杂 速度快
+// 执行用时 :4 ms, 在所有 C++ 提交中击败了97.46%的用户
+// 内存消耗 :15.2MB,在所有 C++ 提交中击败了5.07%的用户
+class Solution {
+public:
+    int maxProfit(vector&lt;int&gt;&amp; prices) {
+        int profit=0,buy=0;
+        if(prices.empty())return profit;
+        while(buy&lt;prices.size()-1){//一次操作
+            while(buy&lt;prices.size()-1&amp;&amp;prices[buy+1]&lt;=prices[buy])buy++;//找到谷值
+            int sell=buy+1;
+            while(sell&lt;prices.size()-1&amp;&amp;prices[sell+1]&gt;=prices[sell])sell++;//找到峰值
+            if(sell&gt;prices.size()-1)break;
+            profit+=prices[sell]-prices[buy];
+            buy=sell+1;
+        }
+        return profit;
+    }
+};
+</code></pre><p>4.其他解法待补充💨</p>
+<p><strong>392. Is Subsequence <a href="https://leetcode-cn.com/problems/is-subsequence/" target="_blank" rel="noopener">原题</a><a href="https://github.com/wusanwan/algorithm/blob/master/LeetCode/392.md" target="_blank" rel="noopener"> GitHub</a></strong><br>最简单的思路应该是用有点像归并操作的双指针来做。</p>
+<h2 id="medium"><a href="#medium" class="headerlink" title="medium"></a>medium</h2><p><strong>55. Jump Game <a href="https://leetcode-cn.com/problems/jump-game/" target="_blank" rel="noopener">原题</a><a href="https://github.com/wusanwan/algorithm/blob/master/LeetCode/55.md" target="_blank" rel="noopener"> GitHub</a></strong><br>遍历数组更新最远能到距离right。</p>
+<p><strong>134. Gas Station <a href="https://leetcode-cn.com/problems/gas-station/" target="_blank" rel="noopener">原题</a><a href="https://github.com/wusanwan/algorithm/blob/master/LeetCode/55.md" target="_blank" rel="noopener"> GitHub</a></strong><br>这题我是先从整体考虑，sum(gas)如果小于sum(cost),肯定是到不了的。<br>再考虑局部sum+diff[i] (目前的汽油量)如果小于零的话就让i+1做新的起点，有点像<a href="https://leetcode-cn.com/problems/majority-element/" target="_blank" rel="noopener">169. Majority Element</a>，遍历一遍i就可以知道起点在哪。<br>实际意义上类似于<a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener">122.炒股 </a>，如果是亏的就换下一个点开始。<br>基本靠直觉做出来的，建议复习的时候再品一品。</p>
+<pre><code>//4ms,97.56%
+class Solution {
+public:
+    int canCompleteCircuit(vector&lt;int&gt;&amp; gas, vector&lt;int&gt;&amp; cost) {
+        int sum_gas=0,sum_cost=0,sum=0,index=0;
+        for(int i=0;i&lt;gas.size();i++){
+            sum_gas+=gas[i];
+            sum_cost+=cost[i];
+            if(sum+gas[i]-cost[i]&lt;0){//如果走不了
+                sum=0;
+                index=i+1;
+            }
+            else sum+=gas[i]-cost[i];
+        }
+        if(sum_cost&gt;sum_gas)return -1;
+        else return index;
+    }
+};
+</code></pre><p><strong>优化</strong><br>1.记得看看能不能把for合并下。</p>
+<h2 id="hard"><a href="#hard" class="headerlink" title="hard"></a>hard</h2><p><strong>45. Jump Game II <a href="https://leetcode-cn.com/problems/jump-game-ii/" target="_blank" rel="noopener">原题</a><a href="https://github.com/wusanwan/algorithm/blob/master/LeetCode/45.md" target="_blank" rel="noopener"> GitHub</a></strong><br>I的时候想复杂了，那段代码也可以用在II这里，每次都跳得最远。</p>
+
     </article>
+    <!-- license  -->
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/01/通过两地经纬度计算距离/" >
-            
-                <span>通过经纬度计算两地距离</span>
-        </a>
-        <div class="abstract-content">
-            这几天搞美赛C题,需要通过经纬度计算两地距离，看了看网上的算法基本上都是通过近似地球为正球体来计算的，误差较大，而且操作麻烦，这里分享一种简单易行的方法。
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://www.wusanwan.xyz">吴三万</a>
+            <p>原文链接：<a href="http://www.wusanwan.xyz/2020/02/25/算法题：贪心/">http://www.wusanwan.xyz/2020/02/25/算法题：贪心/</a>
+            <p>发表日期：<a href="http://www.wusanwan.xyz/2020/02/25/算法题：贪心/">二月 25日 2020, 5:40:48 下午</a>
+            <p>更新日期：<a href="http://www.wusanwan.xyz/2020/02/25/算法题：贪心/">March 7th 2020, 11:48:55 pm</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/01</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Matlab">Matlab</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/11/11/LaTeX一些要注意的地方/" >
-            
-                <span>LaTeX错误合集❗</span>
-        </a>
-        <div class="abstract-content">
-            排版女工常备。
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "LaTeX">LaTeX</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/11/11/文献管理与信息分析课程笔记/" >
-            
-                <span>《文献管理与信息分析》课程笔记</span>
-        </a>
-        <div class="abstract-content">
-            最近开始做科创项目了…
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "MOOC">MOOC</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "工具">工具</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/11/09/科研工具一网打尽/" >
-            
-                <span>科研工具一网打尽😎</span>
-        </a>
-        <div class="abstract-content">
-            科研工具合集。
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/09</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "工具">工具</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/10/22/论文笔记 GSR-TNNM/" >
-            
-                <span>论文笔记：Truncated Nuclear Norm Minimization Based Group Sparsity Representation For Image Restoration</span>
-        </a>
-        <div class="abstract-content">
-            关于《Truncated Nuclear Norm Minimization Based Group Sparsity Representation For Image Restoration》这一论文的背景知识整理。
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/10/22</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "图像处理">图像处理</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "论文">论文</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/21/BLOG搭建/" >
-            
-                <span>BLOG搭建</span>
-        </a>
-        <div class="abstract-content">
-            搭建该博客的点点滴滴。
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/21</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "blog">blog</a>
-    
-</div>
-            
-        </div>
-    </article>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/02/23/越王勾践分析/" title= "越王勾践分析">
+                    <div class="prevTitle">越王勾践分析</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/">&#60; PREV</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
     
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "LBBQupBMJM5xUoIbNjmi43JO-gzGzoHsz",
+        appKey: "zs5uR8OAi9BWaa9pQGtewrFj",
+        placeholder: "来侃大山",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -681,6 +664,24 @@
 
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#知识要点-注意点"><span class="toc-number">1.</span> <span class="toc-text">知识要点/注意点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PAT"><span class="toc-number">2.</span> <span class="toc-text">PAT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#甲级"><span class="toc-number">2.1.</span> <span class="toc-text">甲级</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LeetCode"><span class="toc-number">3.</span> <span class="toc-text">LeetCode</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#easy"><span class="toc-number">3.1.</span> <span class="toc-text">easy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#medium"><span class="toc-number">3.2.</span> <span class="toc-text">medium</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hard"><span class="toc-number">3.3.</span> <span class="toc-text">hard</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1149,6 +1150,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -1165,7 +1168,7 @@ jsonContent:
     });
 </script>
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
 
 
