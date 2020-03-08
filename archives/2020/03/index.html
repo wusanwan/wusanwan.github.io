@@ -11,7 +11,7 @@
 
 
 <head>
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
     <meta name="author" content="吴三万">
     <meta name="renderer" content="webkit">
@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>基于pyecharts的专注时间日历图生成脚本 · 菜鸡小万。</title>
+    <title>菜鸡小万。</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -213,28 +213,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
     <!-- 百度统计  -->
     
-    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- 谷歌统计  -->
     
 </head>
 
     
-        <body class="post-body">
     
-    
-<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >菜鸡小万。</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">基于pyecharts的专注时间日历图生成脚本</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>菜鸡小万。</a>
 </header>
@@ -246,74 +235,24 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
     
-    
-    <!-- 404页  -->
-    
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-            
-            基于pyecharts的专注时间日历图生成脚本
-            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-            <!-- 404 -->
-            
         </p>
         <!-- 文章页meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
-                
-                    <div class= post-intro-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "python">python</a>
-    
-</div>
-                
-                
-                    <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">407</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
-                    </div>
-                
-                <div class="post-intro-meta">
-                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/02/20</span>
-                    
-                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                        <span class="iconfont-archer">&#xe602;</span>
-                        <span id="busuanzi_value_page_pv"></span>
-                    </span>
-                    
-                    <span class="shareWrapper">
-                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                        <span class="shareText">Share</span>
-                        <ul class="shareList">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
         
     </div>
 </div>
@@ -415,149 +354,39 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main post-page">
-    <article class="article-entry">
-        <p>为了写<a href="https://www.wusanwan.xyz/2020/02/19/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E4%B9%8B%E6%99%8B%E6%B1%9F%E6%A6%9C%E5%8D%95%E6%8A%93%E5%8F%96%E4%BB%A5%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">晋江的数据分析</a>，就了解了下pyecharts，看到pyecharts文档里有日历图就随随便便搞了个脚本出来。</p>
-<pre><code>&quot;&quot;&quot;
-调用pyecharts生成专注时间日历图
-&quot;&quot;&quot;
-import datetime
-import pandas as pd
-
-from pyecharts import options as opts
-from pyecharts.charts import Calendar
-from pyecharts.render import make_snapshot
-from snapshot_selenium import snapshot
-
-
-# 数据分析
-p = pd.read_csv(&quot;c:/users/sanw/desktop/hours.csv&quot;)
-hours = p.hours.values.tolist()
-sum_hours = sum(hours)
-day = len(hours)
-avg_hours = sum_hours / day
-if day &lt; 30:
-    avg_hours30 = avg_hours
-else:
-    avg_hours30 = sum(hours[-30:]) / 30
-sub = &quot;共&quot; + str(day) + &quot;天计&quot; + str(sum_hours) + &quot;小时 平均&quot; + str(
-    round(avg_hours, 2)) + &quot;小时 近30天平均&quot; + str(round(avg_hours30, 2)) + &quot;小时&quot;
-
-
-# 日历图
-def calendar_base() -&gt; Calendar:
-    begin = datetime.date(2020, 2, 12)
-    data = [[str(begin + datetime.timedelta(days=i)), hours[i]]
-            for i in range(day)]
-
-    c = (Calendar(init_opts=opts.InitOpts(width=&#39;1200px&#39;, height=&#39;300px&#39;, bg_color=&#39;white&#39;))
-        .add(&quot;&quot;, data, calendar_opts=opts.CalendarOpts(range_=&quot;2020&quot;))
-        .set_global_opts(
-            title_opts=opts.TitleOpts(
-                title=&quot;小吴-2020年专注日记&quot;,
-                subtitle=sub,
-                item_gap=2,
-                pos_left=&#39;center&#39;,
-                padding=3),
-            visualmap_opts=opts.VisualMapOpts(
-                max_=15,
-                min_=0,
-                orient=&quot;horizontal&quot;,
-                is_piecewise=True,
-                pos_top=&quot;220px&quot;,
-                pos_left=&quot;center&quot;,
-                pieces=[  #github日历图配色
-                            {
-                                &quot;min&quot;: 12,
-                                &quot;color&quot;: &#39;#196127&#39;
-                            }, {
-                                &quot;min&quot;: 9,
-                                &quot;max&quot;: 12,
-                                &quot;color&quot;: &#39;#239a3b&#39;
-                            }, {
-                                &quot;min&quot;: 6,
-                                &quot;max&quot;: 9,
-                                &quot;color&quot;: &#39;#7bc96f&#39;
-                            }, {
-                                &quot;min&quot;: 3,
-                                &quot;max&quot;: 6,
-                                &quot;color&quot;: &#39;#c6e48b&#39;
-                            }, {
-                                &quot;max&quot;: 3,
-                                &quot;color&quot;: &#39;#ebedf0&#39;
-                            }
-                        ]
-                ),
-            ))
-    return c
-
-
-# 生成图片
-make_snapshot(snapshot, calendar_base().render(), &quot;c://users/sanw/desktop/calendar.png&quot;)
-print(&quot;生成完毕&quot;)
-</code></pre><p>嫌本来的红橙黄绿蓝配色太丑了，直接抄了github的配色。<br>最后的效果图是这样的<br><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/study_calendar.png"></p>
-<p>姑且还能看看……<br>长个记性，有问题先搜索文档。<br><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/mad_dog.jpg" width="300px" text-align="center"></p>
-
-    </article>
-    <!-- license  -->
+            <main class="main index-page">
     
-        <div class="license-wrapper">
-            <p>原文作者：<a href="http://www.wusanwan.xyz">吴三万</a>
-            <p>原文链接：<a href="http://www.wusanwan.xyz/2020/02/20/基于pyecharts的专注时间日历图生成脚本/">http://www.wusanwan.xyz/2020/02/20/基于pyecharts的专注时间日历图生成脚本/</a>
-            <p>发表日期：<a href="http://www.wusanwan.xyz/2020/02/20/基于pyecharts的专注时间日历图生成脚本/">二月 20日 2020, 3:47:22 凌晨</a>
-            <p>更新日期：<a href="http://www.wusanwan.xyz/2020/02/20/基于pyecharts的专注时间日历图生成脚本/">February 21st 2020, 2:19:31 pm</a>
-            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/08/用moviepy剪辑延时视频/" >
+            
+                <span>用MoviePy剪辑延时视频</span>
+        </a>
+        <div class="abstract-content">
+            用python剪一个简单延时视频。
         </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/08</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "python">python</a>
+    
+</div>
+            
+        </div>
+    </article>
     
     <!-- paginator  -->
-    <ul class="post-paginator">
-        <li class="next">
-            
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/02/23/越王勾践分析/" title= "越王勾践分析">
-                    <div class="nextTitle">越王勾践分析</div>
-                </a>
-            
-        </li>
-        <li class="previous">
-            
-                <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/02/19/爬虫实战之晋江榜单抓取以及数据分析/" title= "🕷爬虫实战之晋江榜单抓取以及数据分析">
-                    <div class="prevTitle">🕷爬虫实战之晋江榜单抓取以及数据分析</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- 评论插件 -->
-    <!-- 来必力City版安装代码 -->
-
-<!-- City版安装代码已完成 -->
     
-    
-    <!-- partial('_partial/comment/changyan') -->
-    <!--PC版-->
-
-
-    
-    
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-    <div id="comment"></div>
-    <script>
-    new Valine({
-        el: '#comment' ,
-        notify:false, 
-        verify:false, 
-        appId: "LBBQupBMJM5xUoIbNjmi43JO-gzGzoHsz",
-        appKey: "zs5uR8OAi9BWaa9pQGtewrFj",
-        placeholder: "来侃大山",
-        path:window.location.pathname, 
-        avatar:'mm' 
-    });
-    </script>
-
-
-    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -670,24 +499,6 @@ print(&quot;生成完毕&quot;)
 
     </div>
     <!-- toc -->
-    
-    <div class="toc-wrapper" style=
-    
-
-
-
-
-
-
-
-top:50vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        
-    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1204,8 +1015,6 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
-    
-        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -1222,7 +1031,7 @@ jsonContent:
     });
 </script>
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script></body>
 </html>
 
 

@@ -285,6 +285,8 @@ height:50vh;
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "PAT">PAT</a>
     
+        <a class="post-tag" href="javascript:void(0);" data-tags = "LeetCode">LeetCode</a>
+    
 </div>
                 
                 
@@ -423,9 +425,9 @@ height:50vh;
 <h1 id="知识要点-注意点"><a href="#知识要点-注意点" class="headerlink" title="知识要点/注意点"></a>知识要点/注意点</h1><p>参考<a href="https://book.douban.com/subject/26827295/" target="_blank" rel="noopener">《算法笔记》</a>第四章</p>
 <p><strong>通式</strong><br>目的都是求最x,解决方法通常是将（经过处理的）已知量排个序按顺序进行处理。<br>每步都做到局部最优，达到最后的整体最优。<br>（仅限于做设计好的算法题，平时还是得证明看下能不能整体最优。）</p>
 <p><strong>报错点</strong><br>用double不要用float.</p>
-<h1 id="PAT"><a href="#PAT" class="headerlink" title="PAT"></a>PAT</h1><h2 id="甲级"><a href="#甲级" class="headerlink" title="甲级"></a>甲级</h2><p><strong>1070 Mooncake(25) <a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805399578853376" target="_blank" rel="noopener"> 原题 </a>  <a href="https://github.com/wusanwan/algorithm/blob/master/Advanced%20Level/1070.cpp" target="_blank" rel="noopener">  GitHub  </a></strong><br>最简单的贪心题，当忘了概念的时候就点开来看看吧😀。</p>
-<p><strong>1125 Chain the Ropes(25)   <a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805350316752896" target="_blank" rel="noopener"> 原题 </a>  <a href="https://github.com/wusanwan/algorithm/blob/master/Advanced%20Level/1125.cpp" target="_blank" rel="noopener">  GitHub  </a></strong><br>简单题，两段绳子每次相加要砍掉一半，那么加过n次后该段绳子等于原来的$\frac{1}{2^n}$，故想要最大长度，应该从短的开始接，长的留在后面可以少腰斩几次。</p>
-<p><strong>1037 Magic Coupon(25) <a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805451374313472" target="_blank" rel="noopener">原题</a> <a href="https://github.com/wusanwan/algorithm/blob/master/Advanced%20Level/1037.cpp" target="_blank" rel="noopener">  GitHub  </a></strong><br>简单题，就分正正负负两种，排序后头尾各一个循环就行。</p>
+<h1 id="PAT"><a href="#PAT" class="headerlink" title="PAT"></a>PAT</h1><h2 id="甲级"><a href="#甲级" class="headerlink" title="甲级"></a>甲级</h2><p><strong>1070 Mooncake(25) <a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805399578853376" target="_blank" rel="noopener"> 原题 </a>  <a href="https://github.com/wusanwan/algorithm/blob/master/AdvancedLevel/1070.cpp" target="_blank" rel="noopener">  GitHub  </a></strong><br>最简单的贪心题，当忘了概念的时候就点开来看看吧😀。</p>
+<p><strong>1125 Chain the Ropes(25)   <a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805350316752896" target="_blank" rel="noopener"> 原题 </a>  <a href="https://github.com/wusanwan/algorithm/blob/master/AdvancedLevel/1125.cpp" target="_blank" rel="noopener">  GitHub  </a></strong><br>简单题，两段绳子每次相加要砍掉一半，那么加过n次后该段绳子等于原来的$\frac{1}{2^n}$，故想要最大长度，应该从短的开始接，长的留在后面可以少腰斩几次。</p>
+<p><strong>1037 Magic Coupon(25) <a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805451374313472" target="_blank" rel="noopener">原题</a> <a href="https://github.com/wusanwan/algorithm/blob/master/AdvancedLevel/1037.cpp" target="_blank" rel="noopener">  GitHub  </a></strong><br>简单题，就分正正负负两种，排序后头尾各一个循环就行。</p>
 <h1 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h1><h2 id="easy"><a href="#easy" class="headerlink" title="easy"></a>easy</h2><p><strong>122. Best Time to Buy and Sell Stock II   <a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener"> 原题 </a><a href="https://github.com/wusanwan/algorithm/blob/master/LeetCode/122.md" target="_blank" rel="noopener"> GitHub</a></strong></p>
 <p><strong>法一</strong><br>思路很简单，[第一天，第二天]如果是涨的就第一天买第二天卖，如果是亏的就不操作。<br>(一点都不像股票😑)<strong>贪心：每一个波段都要吃到。</strong></p>
 <pre><code>//法一 思路简单 速度较慢
@@ -503,14 +505,19 @@ public:
         <div class="license-wrapper">
             <p>原文作者：<a href="http://www.wusanwan.xyz">吴三万</a>
             <p>原文链接：<a href="http://www.wusanwan.xyz/2020/02/25/算法题：贪心/">http://www.wusanwan.xyz/2020/02/25/算法题：贪心/</a>
-            <p>发表日期：<a href="http://www.wusanwan.xyz/2020/02/25/算法题：贪心/">二月 25日 2020, 5:40:48 下午</a>
-            <p>更新日期：<a href="http://www.wusanwan.xyz/2020/02/25/算法题：贪心/">March 7th 2020, 11:48:55 pm</a>
+            <p>发表日期：<a href="http://www.wusanwan.xyz/2020/02/25/算法题：贪心/">February 25th 2020, 5:40:48 pm</a>
+            <p>更新日期：<a href="http://www.wusanwan.xyz/2020/02/25/算法题：贪心/">March 8th 2020, 12:19:00 am</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
     <!-- paginator  -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/03/08/用moviepy剪辑延时视频/" title= "用MoviePy剪辑延时视频">
+                    <div class="nextTitle">用MoviePy剪辑延时视频</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -894,9 +901,50 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 17
+        Total : 18
         </div>
         <!-- search  -->
         
@@ -913,6 +961,11 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2020/03/08/用moviepy剪辑延时视频/" >用MoviePy剪辑延时视频</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1022,9 +1075,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
-    
         <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+    
+        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
     
         <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
     
@@ -1038,27 +1091,29 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
+        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+    
         <span class="sidebar-tag-name" data-tags="openGL"><span class="iconfont-archer">&#xe606;</span>openGL</span>
     
         <span class="sidebar-tag-name" data-tags="图形学"><span class="iconfont-archer">&#xe606;</span>图形学</span>
-    
-        <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据分析"><span class="iconfont-archer">&#xe606;</span>数据分析</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
     
-        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+        <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
     
-        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
+        <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
     
-        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
+        <span class="sidebar-tag-name" data-tags="数据分析"><span class="iconfont-archer">&#xe606;</span>数据分析</span>
     
         <span class="sidebar-tag-name" data-tags="coursera"><span class="iconfont-archer">&#xe606;</span>coursera</span>
     
         <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
+    
+        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
+    
+        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
