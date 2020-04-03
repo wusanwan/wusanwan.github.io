@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>图形学基础实验 · 菜鸡小万。</title>
+    <title>图形学基础实验 · 菜鸡小万</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -229,14 +229,14 @@
     
     <div class="banner">
             <div class="blog-title">
-                <a href="/" >菜鸡小万。</a>
+                <a href="/" >菜鸡小万</a>
             </div>
             <div class="post-title">
                 <a href="#" class="post-name">图形学基础实验</a>
             </div>
     </div>
     
-    <a class="home-link" href=/>菜鸡小万。</a>
+    <a class="home-link" href=/>菜鸡小万</a>
 </header>
     <div class="wrapper">
         <div class="site-intro" style="
@@ -289,7 +289,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">3.1k</span>阅读时长: <span class="post-count reading-time">16 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">3.2k</span>阅读时长: <span class="post-count reading-time">17 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -419,565 +419,603 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="直线的扫描转换"><a href="#直线的扫描转换" class="headerlink" title="直线的扫描转换"></a>直线的扫描转换</h1><p>用三种算法实现了各个斜率的直线扫描转换，除此之外在环境配置上添加了菜单项供算法的选择使用，同时增加了键盘响应函数（只能移动第二个点）和鼠标点击响应函数，实现了鼠标以及键盘的交互，鼠标移动响应函数因为效果不好被删去（bresenham函数里如果dx&lt;0会交换两点）。</p>
-<h2 id="DDA数值微分法"><a href="#DDA数值微分法" class="headerlink" title="DDA数值微分法"></a>DDA数值微分法</h2><p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/DDA.png"></p>
+        <p>#直线的扫描转换
+用三种算法实现了各个斜率的直线扫描转换，除此之外在环境配置上添加了菜单项供算法的选择使用，同时增加了键盘响应函数（只能移动第二个点）和鼠标点击响应函数，实现了鼠标以及键盘的交互，鼠标移动响应函数因为效果不好被删去（bresenham函数里如果dx&lt;0会交换两点）。
+##DDA数值微分法
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/DDA.png&quot;&gt;</p>
 <pre><code>void DDALine(){
-    int dx, dy, epsl,type;
-    float x, y, xIncre, yIncre,k;
-    dx = x1 - x0;dy = y1 - y0;        //确定位移
-    x = x0;y = y0;                //确定起始点
-    if (abs(dx) &gt; abs(dy))epsl = abs(dx); //选择主方向
-    else epsl = abs(dy);
-    xIncre = (float)dx / (float)epsl;        //确定步长
-    yIncre = (float)dy / (float)epsl;
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glPointSize(1);
-    for (k = 0; k &lt; epsl; k++){
-        glBegin(GL_POINTS);
-        glVertex2i(int(x + 0.5), (int)(y + 0.5));    //四舍五入画点
-        glEnd();
-        x += xIncre;
-        y += yIncre;
-    }
-    glFlush();
+	int dx, dy, epsl,type;
+	float x, y, xIncre, yIncre,k;
+	dx = x1 - x0;dy = y1 - y0;    	//确定位移
+	x = x0;y = y0;				//确定起始点
+	if (abs(dx) &gt; abs(dy))epsl = abs(dx); //选择主方向
+	else epsl = abs(dy);
+	xIncre = (float)dx / (float)epsl;		//确定步长
+	yIncre = (float)dy / (float)epsl;
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glPointSize(1);
+	for (k = 0; k &lt; epsl; k++){
+		glBegin(GL_POINTS);
+		glVertex2i(int(x + 0.5), (int)(y + 0.5));	//四舍五入画点
+		glEnd();
+		x += xIncre;
+		y += yIncre;
+	}
+	glFlush();
 }
-</code></pre><h2 id="中点Bresenham算法"><a href="#中点Bresenham算法" class="headerlink" title="中点Bresenham算法"></a>中点Bresenham算法</h2><p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/MidBresenhamLine.png"></p>
+</code></pre>
+<p>##中点Bresenham算法
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/MidBresenhamLine.png&quot;&gt;</p>
 <pre><code>void MidBresenhamLine(){
-    int dx, dy, UpIncre, DownIncre, x, y, d, flag=0;
-    if (x0&gt;x1){
-        int temp;
-        temp = x0; x0 = x1; x1 = temp;
-        temp = y0; y0 = y1; y1 = temp;
-    }
-    x = x0; y = y0;
-    dx = x1 - x0;
-    dy = y1 - y0;
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glPointSize(1);
-    if (dx &gt; abs(dy)){//斜率（0,1）
-        flag = 0;
-        if (dy &lt; 0){//斜率为负的情况
-            dy = -dy;
-            flag = 1;
-        }
-        d = dx - 2 * dy;
-        UpIncre = 2 * dx - 2 * dy;        
-        DownIncre = -2 * dy;            
-        while (x &lt;= x1){
-            glBegin(GL_POINTS);
-            glVertex2i(x, y);
-            glEnd();
-            x++;
-            if (d &lt; 0){
-                if (flag) y--;
-                else y++;
-                d += UpIncre;
-            }
-            else d += DownIncre;
-        }
-    }
-    else{//补全斜率&gt;1的情况
-        flag = 0;
-        if (dy &lt; 0){//斜率为负的情况
-            dy = -dy;
-            flag = 1;
-        }
-        d = dy - 2 * dx;
-        UpIncre = 2 * dy - 2 * dx;        
-        DownIncre = -2 * dx;            
+	int dx, dy, UpIncre, DownIncre, x, y, d, flag=0;
+	if (x0&gt;x1){
+		int temp;
+		temp = x0; x0 = x1; x1 = temp;
+		temp = y0; y0 = y1; y1 = temp;
+	}
+	x = x0; y = y0;
+	dx = x1 - x0;
+	dy = y1 - y0;
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glPointSize(1);
+	if (dx &gt; abs(dy)){//斜率（0,1）
+		flag = 0;
+		if (dy &lt; 0){//斜率为负的情况
+			dy = -dy;
+			flag = 1;
+		}
+		d = dx - 2 * dy;
+		UpIncre = 2 * dx - 2 * dy;		
+		DownIncre = -2 * dy;			
+		while (x &lt;= x1){
+			glBegin(GL_POINTS);
+			glVertex2i(x, y);
+			glEnd();
+			x++;
+			if (d &lt; 0){
+				if (flag) y--;
+				else y++;
+				d += UpIncre;
+			}
+			else d += DownIncre;
+		}
+	}
+	else{//补全斜率&gt;1的情况
+		flag = 0;
+		if (dy &lt; 0){//斜率为负的情况
+			dy = -dy;
+			flag = 1;
+		}
+		d = dy - 2 * dx;
+		UpIncre = 2 * dy - 2 * dx;		
+		DownIncre = -2 * dx;			
 
-        if (flag) {
-            while (y &gt;= y1){
-                glBegin(GL_POINTS);
-                glVertex2i(x, y);
-                glEnd();
-                y--;
-                if (d &lt; 0){
-                    x++;
-                    d += UpIncre;
-                }
-                else d += DownIncre;
-            }
-        }
-        else {
-            while (y &lt;= y1){
-                glBegin(GL_POINTS);
-                glVertex2i(x, y);
-                glEnd();
-                y++;
-                if (d &lt; 0){
-                    x++;
-                    d += UpIncre;
-                }
-                else d += DownIncre;
-            }
-        }
-    }
+		if (flag) {
+			while (y &gt;= y1){
+				glBegin(GL_POINTS);
+				glVertex2i(x, y);
+				glEnd();
+				y--;
+				if (d &lt; 0){
+					x++;
+					d += UpIncre;
+				}
+				else d += DownIncre;
+			}
+		}
+		else {
+			while (y &lt;= y1){
+				glBegin(GL_POINTS);
+				glVertex2i(x, y);
+				glEnd();
+				y++;
+				if (d &lt; 0){
+					x++;
+					d += UpIncre;
+				}
+				else d += DownIncre;
+			}
+		}
+	}
 }
-</code></pre><h2 id="Bresenham算法"><a href="#Bresenham算法" class="headerlink" title="Bresenham算法"></a>Bresenham算法</h2><p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/BresenhamLine.png"></p>
+</code></pre>
+<p>##Bresenham算法</p>
+<p>&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/BresenhamLine.png&quot;&gt;</p>
 <pre><code>void BresenhamLine(){
-    int dx, dy, e, x, y, flag = 0;
-    if (x0 &gt; x1){
-        int temp;
-        temp = x0; x0 = x1; x1 = temp;
-        temp = y0; y0 = y1; y1 = temp;
-    }
-    x = x0; y = y0;
-    dx = x1 - x0; dy = y1 - y0;
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glPointSize(1);
-    if (dx &gt; abs(dy)){//斜率（0,1）
-        e = -dx;
-        flag = 0;
-        if (dy &lt; 0){ //斜率为负的情况
-            dy = -dy;
-            flag = 1;
-        }
-        while (x &lt;= x1){
-            glBegin(GL_POINTS);
-            glVertex2i(x, y);
-            glEnd();
-            x++;
-            e = e + 2 * dy;
-            if (e &gt; 0){
-                if (flag)y--;
-                else y++;
-                e = e - 2 * dx;
-            }
-        }
-    }
-    else{ //补全斜率&gt;1的情况
-        flag = 0;
-        if (dy &lt; 0)
-        { //斜率为负的情况
-            dy = -dy;
-            flag = 1;
-        }
-        e = -dy;
-        if (flag){
-            while (y &gt;= y1){
-                glBegin(GL_POINTS);
-                glVertex2i(x, y);
-                glEnd();
-                y--;
-                e = e + 2 * dx;
-                if (e &gt; 0){
-                    x++;
-                    e = e - 2 * dy;
-                }
-            }
-        }
-        else{//斜率为负的情况
-            while (y &lt;= y1){
-                glBegin(GL_POINTS);
-                glVertex2i(x, y);
-                glEnd();
-                y++;
-                e = e + 2 * dx;
-                if (e &gt; 0){
-                    x++;
-                    e = e - 2 * dy;
-                }
-            }
-        }
-    }
+	int dx, dy, e, x, y, flag = 0;
+	if (x0 &gt; x1){
+		int temp;
+		temp = x0; x0 = x1; x1 = temp;
+		temp = y0; y0 = y1; y1 = temp;
+	}
+	x = x0; y = y0;
+	dx = x1 - x0; dy = y1 - y0;
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glPointSize(1);
+	if (dx &gt; abs(dy)){//斜率（0,1）
+		e = -dx;
+		flag = 0;
+		if (dy &lt; 0){ //斜率为负的情况
+			dy = -dy;
+			flag = 1;
+		}
+		while (x &lt;= x1){
+			glBegin(GL_POINTS);
+			glVertex2i(x, y);
+			glEnd();
+			x++;
+			e = e + 2 * dy;
+			if (e &gt; 0){
+				if (flag)y--;
+				else y++;
+				e = e - 2 * dx;
+			}
+		}
+	}
+	else{ //补全斜率&gt;1的情况
+		flag = 0;
+		if (dy &lt; 0)
+		{ //斜率为负的情况
+			dy = -dy;
+			flag = 1;
+		}
+		e = -dy;
+		if (flag){
+			while (y &gt;= y1){
+				glBegin(GL_POINTS);
+				glVertex2i(x, y);
+				glEnd();
+				y--;
+				e = e + 2 * dx;
+				if (e &gt; 0){
+					x++;
+					e = e - 2 * dy;
+				}
+			}
+		}
+		else{//斜率为负的情况
+			while (y &lt;= y1){
+				glBegin(GL_POINTS);
+				glVertex2i(x, y);
+				glEnd();
+				y++;
+				e = e + 2 * dx;
+				if (e &gt; 0){
+					x++;
+					e = e - 2 * dy;
+				}
+			}
+		}
+	}
 }
-</code></pre><h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p>见github<br><a href="https://github.com/wusanwan/daily_exercises/tree/master/graphics" target="_blank" rel="noopener">https://github.com/wusanwan/daily_exercises/tree/master/graphics</a><br>输入:由鼠标左键确定两点，或者由键盘改变第二个点的位置（w上s下a左d右），还可用右键选择具体算法。</p>
-<h1 id="圆和椭圆的扫描转换"><a href="#圆和椭圆的扫描转换" class="headerlink" title="圆和椭圆的扫描转换"></a>圆和椭圆的扫描转换</h1><p>实现了圆和椭圆的中点Bresenham扫描转换，并提供右键菜单项进行两者的切换。圆的扫描转换可基于鼠标交互，椭圆的扫描转换可基于键盘交互，具体为键盘上ws控制椭圆轴b,ad控制椭圆轴a。(不区分大小写）</p>
-<h2 id="圆的中点Bresenham算法"><a href="#圆的中点Bresenham算法" class="headerlink" title="圆的中点Bresenham算法"></a>圆的中点Bresenham算法</h2><p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/BresenhamCircle.png"></p>
+</code></pre>
+<p>##完整代码
+见github
+https://github.com/wusanwan/daily_exercises/tree/master/graphics
+输入:由鼠标左键确定两点，或者由键盘改变第二个点的位置（w上s下a左d右），还可用右键选择具体算法。</p>
+<p>#圆和椭圆的扫描转换
+实现了圆和椭圆的中点Bresenham扫描转换，并提供右键菜单项进行两者的切换。圆的扫描转换可基于鼠标交互，椭圆的扫描转换可基于键盘交互，具体为键盘上ws控制椭圆轴b,ad控制椭圆轴a。(不区分大小写）</p>
+<p>##圆的中点Bresenham算法
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/BresenhamCircle.png&quot;&gt;</p>
 <pre><code>void CirclePoint(int x,int y){
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glPointSize(1);
-    glBegin(GL_POINTS);
-    glVertex2i(centerx +x, centery+y);
-    glVertex2i(centerx +x, centery-y);
-    glVertex2i(centerx -x, centery+y);
-    glVertex2i(centerx -x, centery-y);
-    glVertex2i(centerx +y, centery+x);
-    glVertex2i(centerx -y, centery+x);
-    glVertex2i(centerx +y, centery-x);
-    glVertex2i(centerx -y, centery-x);
-    glEnd();
-    glFlush();
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glPointSize(1);
+	glBegin(GL_POINTS);
+	glVertex2i(centerx +x, centery+y);
+	glVertex2i(centerx +x, centery-y);
+	glVertex2i(centerx -x, centery+y);
+	glVertex2i(centerx -x, centery-y);
+	glVertex2i(centerx +y, centery+x);
+	glVertex2i(centerx -y, centery+x);
+	glVertex2i(centerx +y, centery-x);
+	glVertex2i(centerx -y, centery-x);
+	glEnd();
+	glFlush();
 }
 
 void MidBresenhamCircle(){
-    int x, y, d, r;
-    r = int(sqrt((centerx - rx)*(centerx - rx) + (centery - ry)*(centery - ry)));
-    x = 0; y =r; d = 1 - r;
-    while (x &lt;= y){
-        CirclePoint(x, y);
-        if (d &lt; 0)d += 2 * x + 3;
-        else{
-            d += 2 * (x - y) + 5;
-            y--;
-        }
-        x++;
-    }
+	int x, y, d, r;
+	r = int(sqrt((centerx - rx)*(centerx - rx) + (centery - ry)*(centery - ry)));
+	x = 0; y =r; d = 1 - r;
+	while (x &lt;= y){
+		CirclePoint(x, y);
+		if (d &lt; 0)d += 2 * x + 3;
+		else{
+			d += 2 * (x - y) + 5;
+			y--;
+		}
+		x++;
+	}
 }
-</code></pre><h2 id="椭圆的中点Bresenham算法"><a href="#椭圆的中点Bresenham算法" class="headerlink" title="椭圆的中点Bresenham算法"></a>椭圆的中点Bresenham算法</h2><p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/MidBresenhamEllipse.png"></p>
+</code></pre>
+<p>##椭圆的中点Bresenham算法
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/MidBresenhamEllipse.png&quot;&gt;</p>
 <pre><code>void CirclePoint4(int x, int y){
-    glColor3f(1.0f, 1.0f, 1.0f);
-        glPointSize(1);
-        glBegin(GL_POINTS);
-        glVertex2i(centerx + x, centery + y);
-        glVertex2i(centerx + x, centery - y);
-        glVertex2i(centerx - x, centery + y);
-        glVertex2i(centerx - x, centery - y);
-        glEnd();
-        glFlush();
+	glColor3f(1.0f, 1.0f, 1.0f);
+		glPointSize(1);
+		glBegin(GL_POINTS);
+		glVertex2i(centerx + x, centery + y);
+		glVertex2i(centerx + x, centery - y);
+		glVertex2i(centerx - x, centery + y);
+		glVertex2i(centerx - x, centery - y);
+		glEnd();
+		glFlush();
 }
 void MidBresenhamEllipse(){
-    int x, y;
-    float d1, d2;
-    x = 0; y = b;
-    d1 = b*b + a*a*(-b + 0.25);
-    CirclePoint4(x, y);
-    while (b*b*(x + 1) &lt; a*a*(y - 0.5)){
-        if (d1 &lt;= 0){
-            d1 += b*b*(2 * x + 3);
-            x++;
-        }
-        else{
-            d1 += b*b*(2 * x + 3) + a*a*(-2 * y + 2);
-            x++;
-            y--;
-        }
-        CirclePoint4(x, y);
-    }
-    d2 = b*b*(0.5 + x)*(x + 0.5) + a*a*(y - 1)*(y - 1) - a*a*b*b;
-    while (y &gt; 0){
-        if (d2 &lt;= 0){
-            d2 += b*b*(2 * x + 2) + a*a*(-2 * y + 3);
-            x++; y--;
-        }
-        else{
-            d2 += a*a*(-2 * y + 3);
-            y--;
-        }
-        CirclePoint4(x, y);
-    }
+	int x, y;
+	float d1, d2;
+	x = 0; y = b;
+	d1 = b*b + a*a*(-b + 0.25);
+	CirclePoint4(x, y);
+	while (b*b*(x + 1) &lt; a*a*(y - 0.5)){
+		if (d1 &lt;= 0){
+			d1 += b*b*(2 * x + 3);
+			x++;
+		}
+		else{
+			d1 += b*b*(2 * x + 3) + a*a*(-2 * y + 2);
+			x++;
+			y--;
+		}
+		CirclePoint4(x, y);
+	}
+	d2 = b*b*(0.5 + x)*(x + 0.5) + a*a*(y - 1)*(y - 1) - a*a*b*b;
+	while (y &gt; 0){
+		if (d2 &lt;= 0){
+			d2 += b*b*(2 * x + 2) + a*a*(-2 * y + 3);
+			x++; y--;
+		}
+		else{
+			d2 += a*a*(-2 * y + 3);
+			y--;
+		}
+		CirclePoint4(x, y);
+	}
 }
-</code></pre><h2 id="完整代码-1"><a href="#完整代码-1" class="headerlink" title="完整代码"></a>完整代码</h2><p>  见github<br>  <a href="https://github.com/wusanwan/daily_exercises/tree/master/graphics" target="_blank" rel="noopener">https://github.com/wusanwan/daily_exercises/tree/master/graphics</a><br>  输入：右键选择圆/椭圆，用鼠标/键盘进行输入。<br>圆是以屏幕中点为圆心，到鼠标所在位置为半径画圆。<br>椭圆是有椭圆长短轴的默认值，通过键盘上的a,d对椭圆长轴a进行减小，增大；<br>w,s对应短轴b增大，减小。（不区分大小写）</p>
-<h1 id="多边形扫描转换"><a href="#多边形扫描转换" class="headerlink" title="多边形扫描转换"></a>多边形扫描转换</h1><h2 id="有效边表算法"><a href="#有效边表算法" class="headerlink" title="有效边表算法"></a>有效边表算法</h2><p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/AET.png"></p>
+</code></pre>
+<p>##完整代码
+见github
+https://github.com/wusanwan/daily_exercises/tree/master/graphics
+输入：右键选择圆/椭圆，用鼠标/键盘进行输入。
+圆是以屏幕中点为圆心，到鼠标所在位置为半径画圆。
+椭圆是有椭圆长短轴的默认值，通过键盘上的a,d对椭圆长轴a进行减小，增大；
+w,s对应短轴b增大，减小。（不区分大小写）</p>
+<p>#多边形扫描转换
+##有效边表算法
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/AET.png&quot;&gt;</p>
 <pre><code>//---------------------有效边表算法-----------------------------------------------
 //结点
 struct Tnode{
-    float x;        //当前扫描线与有效边的交点的x坐标
-    int ymax;        //有效边所在的最高扫描线
-    float reciprocalK;    //当前有效边的斜率倒数
-    Tnode* next;        //链表中下一个结点的指针
+	float x;		//当前扫描线与有效边的交点的x坐标
+	int ymax;		//有效边所在的最高扫描线
+	float reciprocalK;	//当前有效边的斜率倒数
+	Tnode* next;		//链表中下一个结点的指针
 };
 typedef Tnode AETnode;
 typedef Tnode ETnode;
 
 float Ymax(){
-    int result = pointset[0].y;
-    for (int i = 1; i &lt; pointset.size(); i++){
-        if (result &lt; pointset[i].y)result = pointset[i].y;
-    }
-    return result;
+	int result = pointset[0].y;
+	for (int i = 1; i &lt; pointset.size(); i++){
+		if (result &lt; pointset[i].y)result = pointset[i].y;
+	}
+	return result;
 }
 
 float Ymin(){
-    int result = pointset[0].y;
-    for (int i = 1; i &lt; pointset.size(); i++)
-    if (result &gt; pointset[i].y)result = pointset[i].y;
-    return result;
+	int result = pointset[0].y;
+	for (int i = 1; i &lt; pointset.size(); i++)
+	if (result &gt; pointset[i].y)result = pointset[i].y;
+	return result;
 }
 
 void  LineYmin(){//计算完放在vector中，避免重复计算
-    for (int i = 0; i &lt; pointset.size(); i++)
-        pointset[i].y &lt; pointset[(i + 1) % pointset.size()].y ? vector_line_ymin.push_back(pointset[i].y) : vector_line_ymin.push_back(pointset[(i + 1) % pointset.size()].y);
+	for (int i = 0; i &lt; pointset.size(); i++)
+		pointset[i].y &lt; pointset[(i + 1) % pointset.size()].y ? vector_line_ymin.push_back(pointset[i].y) : vector_line_ymin.push_back(pointset[(i + 1) % pointset.size()].y);
 }
 
 bool cmp(ETnode a, ETnode b){
-    if (a.x == b.x)return a.reciprocalK &lt; b.reciprocalK;
-    else return a.x &lt; b.x;
+	if (a.x == b.x)return a.reciprocalK &lt; b.reciprocalK;
+	else return a.x &lt; b.x;
 }
 
 void My_AET_Algorithm(){
-    //构造ET
-    int start = ceil(Ymin());
-    int end = floor(Ymax());
-    ETnode* list[400];
-    for (int i = 0; i &lt;= end - start; i++){
-        list[i] = new ETnode;        //桶
-        list[i]-&gt;next = NULL;
-    }
-    LineYmin();//计算所有边的ymin
-    //扫描
-    for (int h = start; h &lt;= end; h++){
-        for (int i = 0; i &lt; pointset.size(); i++){
-            if (h == vector_line_ymin[i]){
-                ETnode *p = new ETnode;
-                if (pointset[i].y == pointset[(i + 1) % pointset.size()].y)continue;
-                else if (pointset[i].y &lt; pointset[(i + 1) % pointset.size()].y){
-                    p-&gt;x = pointset[i].x;
-                    p-&gt;ymax = pointset[(i + 1) % pointset.size()].y;
-                }
-                else{
-                    p-&gt;x = pointset[(i + 1) % pointset.size()].x;
-                    p-&gt;ymax = pointset[i].y;
-                }
-                p-&gt;next = NULL;
-                p-&gt;reciprocalK = (pointset[i].x - pointset[(i + 1) % pointset.size()].x) / (pointset[i].y - pointset[(i + 1) % pointset.size()].y);
-                //排序插入
-                ETnode *head = list[h-start],*q=list[h-start]-&gt;next;
-                while (q!=NULL){
-                    if (cmp(*(q), *(p))){//不符合要求
-                        q = q-&gt;next;
-                        head = head-&gt;next;
-                    }
-                    else{//插入
-                        head-&gt;next = p;
-                        p-&gt;next = q;
-                        break;
-                    }
-                }
-                if (q==NULL){
-                    head-&gt;next = p;
-                    p-&gt;next = NULL;
-                }
-            }
-        }        
-    }
-    //构造AET表
-    AETnode *AET = new AETnode;
-    AET-&gt;next = NULL;
-    for (int h = 0; h &lt;= end-start; h++){
-        //合并
-        AETnode *p = AET, *q = list[h]-&gt;next;        
-        while (p-&gt;next != NULL &amp;&amp;q != NULL){
-            if (cmp(*(q), *(p-&gt;next))){
-                cout &lt;&lt; &quot;目前为第&quot; &lt;&lt; h &lt;&lt; &quot;行，一共&quot; &lt;&lt; end - start &lt;&lt; &quot;行&quot; &lt;&lt; endl;
-                cout &lt;&lt; &quot;插入节点 &quot;&lt;&lt;endl;
-                AETnode *temp = q;
-                q = q-&gt;next;
-                temp-&gt;next = p-&gt;next;
-                p-&gt;next = temp;
-            }
-            p = p-&gt;next;
-        }
-        if (p-&gt;next == NULL&amp;&amp;q!=NULL)p-&gt;next = q;
-        //删除y=ymax的边
-        p = AET;
-        q = AET-&gt;next;
-        while (q!=NULL){
-            if (h+start &gt; q-&gt;ymax){
-                cout &lt;&lt; &quot;目前为第&quot; &lt;&lt; h &lt;&lt; &quot;行，一共&quot; &lt;&lt; end - start &lt;&lt; &quot;行&quot; &lt;&lt; endl;
-                cout &lt;&lt; &quot;删除边&quot; &lt;&lt; endl;                //测试点
-                p-&gt;next = q-&gt;next;
-                delete(q);
-                q = p-&gt;next;
-            }
-            else{
-                p = p-&gt;next;
-                q = q-&gt;next;
-            }
-        }
-        //填充
-        glColor3f(1.0f, 1.0f, 1.0f);
-        glBegin(GL_POINTS);
-        p = AET-&gt;next;
-        while (p != NULL&amp;&amp;p-&gt;next != NULL){
-            //cout &lt;&lt; p-&gt;x &lt;&lt; &quot; &quot; &lt;&lt; p-&gt;next-&gt;x &lt;&lt; endl;
-            for (float f = p-&gt;x; f &lt;= p-&gt;next-&gt;x; f++){//填充区间
-                if (p == AET-&gt;next)glVertex2i(ceil(f), h + start);
-                else glVertex2i(int(f), h + start);
-            }
-            p = p-&gt;next-&gt;next;
-        }
-        glEnd();
-        glFlush();
-        //更新
-        p = AET-&gt;next;
-        while (p!=NULL){
-            p-&gt;x = p-&gt;x + p-&gt;reciprocalK;
-            p = p-&gt;next;
-        }
-    }
+	//构造ET
+	int start = ceil(Ymin());
+	int end = floor(Ymax());
+	ETnode* list[400];
+	for (int i = 0; i &lt;= end - start; i++){
+		list[i] = new ETnode;		//桶
+		list[i]-&gt;next = NULL;
+	}
+	LineYmin();//计算所有边的ymin
+	//扫描
+	for (int h = start; h &lt;= end; h++){
+		for (int i = 0; i &lt; pointset.size(); i++){
+			if (h == vector_line_ymin[i]){
+				ETnode *p = new ETnode;
+				if (pointset[i].y == pointset[(i + 1) % pointset.size()].y)continue;
+				else if (pointset[i].y &lt; pointset[(i + 1) % pointset.size()].y){
+					p-&gt;x = pointset[i].x;
+					p-&gt;ymax = pointset[(i + 1) % pointset.size()].y;
+				}
+				else{
+					p-&gt;x = pointset[(i + 1) % pointset.size()].x;
+					p-&gt;ymax = pointset[i].y;
+				}
+				p-&gt;next = NULL;
+				p-&gt;reciprocalK = (pointset[i].x - pointset[(i + 1) % pointset.size()].x) / (pointset[i].y - pointset[(i + 1) % pointset.size()].y);
+				//排序插入
+				ETnode *head = list[h-start],*q=list[h-start]-&gt;next;
+				while (q!=NULL){
+					if (cmp(*(q), *(p))){//不符合要求
+						q = q-&gt;next;
+						head = head-&gt;next;
+					}
+					else{//插入
+						head-&gt;next = p;
+						p-&gt;next = q;
+						break;
+					}
+				}
+				if (q==NULL){
+					head-&gt;next = p;
+					p-&gt;next = NULL;
+				}
+			}
+		}		
+	}
+	//构造AET表
+	AETnode *AET = new AETnode;
+	AET-&gt;next = NULL;
+	for (int h = 0; h &lt;= end-start; h++){
+		//合并
+		AETnode *p = AET, *q = list[h]-&gt;next;		
+		while (p-&gt;next != NULL &amp;&amp;q != NULL){
+			if (cmp(*(q), *(p-&gt;next))){
+				cout &lt;&lt; &quot;目前为第&quot; &lt;&lt; h &lt;&lt; &quot;行，一共&quot; &lt;&lt; end - start &lt;&lt; &quot;行&quot; &lt;&lt; endl;
+				cout &lt;&lt; &quot;插入节点 &quot;&lt;&lt;endl;
+				AETnode *temp = q;
+				q = q-&gt;next;
+				temp-&gt;next = p-&gt;next;
+				p-&gt;next = temp;
+			}
+			p = p-&gt;next;
+		}
+		if (p-&gt;next == NULL&amp;&amp;q!=NULL)p-&gt;next = q;
+		//删除y=ymax的边
+		p = AET;
+		q = AET-&gt;next;
+		while (q!=NULL){
+			if (h+start &gt; q-&gt;ymax){
+				cout &lt;&lt; &quot;目前为第&quot; &lt;&lt; h &lt;&lt; &quot;行，一共&quot; &lt;&lt; end - start &lt;&lt; &quot;行&quot; &lt;&lt; endl;
+				cout &lt;&lt; &quot;删除边&quot; &lt;&lt; endl;				//测试点
+				p-&gt;next = q-&gt;next;
+				delete(q);
+				q = p-&gt;next;
+			}
+			else{
+				p = p-&gt;next;
+				q = q-&gt;next;
+			}
+		}
+		//填充
+		glColor3f(1.0f, 1.0f, 1.0f);
+		glBegin(GL_POINTS);
+		p = AET-&gt;next;
+		while (p != NULL&amp;&amp;p-&gt;next != NULL){
+			//cout &lt;&lt; p-&gt;x &lt;&lt; &quot; &quot; &lt;&lt; p-&gt;next-&gt;x &lt;&lt; endl;
+			for (float f = p-&gt;x; f &lt;= p-&gt;next-&gt;x; f++){//填充区间
+				if (p == AET-&gt;next)glVertex2i(ceil(f), h + start);
+				else glVertex2i(int(f), h + start);
+			}
+			p = p-&gt;next-&gt;next;
+		}
+		glEnd();
+		glFlush();
+		//更新
+		p = AET-&gt;next;
+		while (p!=NULL){
+			p-&gt;x = p-&gt;x + p-&gt;reciprocalK;
+			p = p-&gt;next;
+		}
+	}
 }
-</code></pre><h2 id="边界填充算法"><a href="#边界填充算法" class="headerlink" title="边界填充算法"></a>边界填充算法</h2><p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/BoundaryFill.png"></p>
+</code></pre>
+<p>##边界填充算法
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/BoundaryFill.png&quot;&gt;</p>
 <pre><code>//---------------------种子填充算法部分---------------------------------------------
 
 void DrawBorder(){
-    glClear(GL_COLOR_BUFFER_BIT);
-    glBegin(GL_POINTS);
-    glEnd();
-    glFlush();
-    glLineWidth(10.0f);
-    glBegin(GL_LINE_LOOP);
-    glColor3f(0.0f, 0.0f, 1.0f);    //指定当前的绘图颜色
-    for (int i = 0; i &lt; pointset.size(); i++){
-        glVertex2f(pointset[i].x, pointset[i].y);
-    }
-    glEnd();
-    glFlush();
+	glClear(GL_COLOR_BUFFER_BIT);
+	glBegin(GL_POINTS);
+	glEnd();
+	glFlush();
+	glLineWidth(10.0f);
+	glBegin(GL_LINE_LOOP);
+	glColor3f(0.0f, 0.0f, 1.0f);	//指定当前的绘图颜色
+	for (int i = 0; i &lt; pointset.size(); i++){
+		glVertex2f(pointset[i].x, pointset[i].y);
+	}
+	glEnd();
+	glFlush();
 }
 
 bool equal(Color c1, Color c2){
-    bool flag = true;
-    for (int i = 0;  i &lt; 3; i++){
-        if (fabs(c1[i] - c2[i])&gt;1e-6){
-            flag = false;
-            break;
-        }
-    }
-    return flag;
+	bool flag = true;
+	for (int i = 0;  i &lt; 3; i++){
+		if (fabs(c1[i] - c2[i])&gt;1e-6){
+			flag = false;
+			break;
+		}
+	}
+	return flag;
 }
 
 void BoundaryFill4(int x, int y)
 {
-    Color InteriorColor;
-    glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, &amp;InteriorColor);
-    if (!equal(InteriorColor,BorderColor) &amp;&amp; !equal(InteriorColor,FillColor))//没到边界也没被填充
-    {
-        glPointSize(3);
-        glColor3f(0.0f, 1.0f, 0.0f);    //指定当前的绘图颜色
-        glBegin(GL_POINTS);
-        glVertex2f(x, y);
-        glEnd();
-        glFlush();
-        BoundaryFill4(x + 3, y);
-        BoundaryFill4(x - 3, y);
-        BoundaryFill4(x, y + 3);
-        BoundaryFill4(x, y - 3);
-    }
+	Color InteriorColor;
+	glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, &amp;InteriorColor);
+	if (!equal(InteriorColor,BorderColor) &amp;&amp; !equal(InteriorColor,FillColor))//没到边界也没被填充
+	{
+		glPointSize(3);
+		glColor3f(0.0f, 1.0f, 0.0f);	//指定当前的绘图颜色
+		glBegin(GL_POINTS);
+		glVertex2f(x, y);
+		glEnd();
+		glFlush();
+		BoundaryFill4(x + 3, y);
+		BoundaryFill4(x - 3, y);
+		BoundaryFill4(x, y + 3);
+		BoundaryFill4(x, y - 3);
+	}
 }
 //边界填充算法-8连通域
 void BoundaryFill8(int x, int y)
 {
-    Color InteriorColor;
-    glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, &amp;InteriorColor);
-    if (!equal(InteriorColor, BorderColor) &amp;&amp; !equal(InteriorColor, FillColor))
-    {
-        glPointSize(3);
-        glColor3f(0.0f, 1.0f, 0.0f);    //指定当前的绘图颜色
-        glBegin(GL_POINTS);
-        glVertex2f(x, y);
-        glEnd();
-        glFlush();
-        BoundaryFill8(x + 3, y);
-        BoundaryFill8(x - 3, y);
-        BoundaryFill8(x, y + 3);
-        BoundaryFill8(x, y - 3);
-        BoundaryFill8(x - 3, y - 3);
-        BoundaryFill8(x - 3, y + 3);
-        BoundaryFill8(x + 3, y - 3);
-        BoundaryFill8(x + 3, y + 3);
-    }
+	Color InteriorColor;
+	glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, &amp;InteriorColor);
+	if (!equal(InteriorColor, BorderColor) &amp;&amp; !equal(InteriorColor, FillColor))
+	{
+		glPointSize(3);
+		glColor3f(0.0f, 1.0f, 0.0f);	//指定当前的绘图颜色
+		glBegin(GL_POINTS);
+		glVertex2f(x, y);
+		glEnd();
+		glFlush();
+		BoundaryFill8(x + 3, y);
+		BoundaryFill8(x - 3, y);
+		BoundaryFill8(x, y + 3);
+		BoundaryFill8(x, y - 3);
+		BoundaryFill8(x - 3, y - 3);
+		BoundaryFill8(x - 3, y + 3);
+		BoundaryFill8(x + 3, y - 3);
+		BoundaryFill8(x + 3, y + 3);
+	}
 }
-</code></pre><h2 id="完整代码-2"><a href="#完整代码-2" class="headerlink" title="完整代码"></a>完整代码</h2><p>见github<br><a href="https://github.com/wusanwan/daily_exercises/tree/master/graphics" target="_blank" rel="noopener">https://github.com/wusanwan/daily_exercises/tree/master/graphics</a><br>输入：按逆时针顺序选择3个及3个以上的点，D键确定，C键重置。可用右键菜单进行算法的切换。<br>注意：4,8-连通边界填充算法选择区域不要过大，会爆栈……<br>4,8-连通边界填充算法的种子点是屏幕中心的白点，务必围绕其选择。</p>
-<h1 id="简单二维图形的几何变换"><a href="#简单二维图形的几何变换" class="headerlink" title="简单二维图形的几何变换"></a>简单二维图形的几何变换</h1><pre><code>Point s0[4] = { 195.0f, 195.0f, 205.0f, 195.0f, 205.0f, 205.0f ,195.0f, 205.0f };
+</code></pre>
+<p>##完整代码</p>
+<p>见github
+https://github.com/wusanwan/daily_exercises/tree/master/graphics
+输入：按逆时针顺序选择3个及3个以上的点，D键确定，C键重置。可用右键菜单进行算法的切换。
+注意：4,8-连通边界填充算法选择区域不要过大，会爆栈……
+4,8-连通边界填充算法的种子点是屏幕中心的白点，务必围绕其选择。</p>
+<p>#简单二维图形的几何变换</p>
+<pre><code>Point s0[4] = { 195.0f, 195.0f, 205.0f, 195.0f, 205.0f, 205.0f ,195.0f, 205.0f };
 float square0[4] = { 195.0f, 195.0f, 205.0f, 205.0f };//初始状态
 float square1[4];
 
 void DrawSquare(){
-    glClear(GL_COLOR_BUFFER_BIT);
-    if (iMode==1)glRectf(square0[0],square0[1], square0[2], square0[3]);    
-    else glRectf(square1[0], square1[1], square1[2], square1[3]);
-    glFlush();  
+	glClear(GL_COLOR_BUFFER_BIT);
+	if (iMode==1)glRectf(square0[0],square0[1], square0[2], square0[3]);    
+	else glRectf(square1[0], square1[1], square1[2], square1[3]);
+	glFlush();  
 }
 void Draw(){
-    glClear(GL_COLOR_BUFFER_BIT);
-    glBegin(GL_POLYGON);
-    for (int i = 0; i &lt; 4; i++){
-        cout &lt;&lt; s0[i].x &lt;&lt; &quot;  &quot; &lt;&lt; s0[i].y &lt;&lt; endl;
-        glVertex2f(s0[i].x, s0[i].y);
-    }
-    glEnd();
-    glFlush();
+	glClear(GL_COLOR_BUFFER_BIT);
+	glBegin(GL_POLYGON);
+	for (int i = 0; i &lt; 4; i++){
+		cout &lt;&lt; s0[i].x &lt;&lt; &quot;  &quot; &lt;&lt; s0[i].y &lt;&lt; endl;
+		glVertex2f(s0[i].x, s0[i].y);
+	}
+	glEnd();
+	glFlush();
 }
 void my_translation(){//平移
-    cout &lt;&lt; &quot;向右平移50个单位，向上平移100个单位&quot; &lt;&lt; endl;
-    float dx = 50,dy =100;//平移更改量
-    for (int i = 0; i &lt; 4; i++){
-        if (i == 0 || i == 2)square1[i] = square0[i] + dx;
-        else square1[i] = square0[i] + dy;
-    }
-    DrawSquare();
+	cout &lt;&lt; &quot;向右平移50个单位，向上平移100个单位&quot; &lt;&lt; endl;
+	float dx = 50,dy =100;//平移更改量
+	for (int i = 0; i &lt; 4; i++){
+		if (i == 0 || i == 2)square1[i] = square0[i] + dx;
+		else square1[i] = square0[i] + dy;
+	}
+	DrawSquare();
 }
 
 void my_scale(){//比例
-    cout &lt;&lt; &quot;绘图点是屏幕中心,按比例将原正方形放大5倍&quot; &lt;&lt; endl;
-    float xmultiple = 5 , ymultiple = 5;        
-    for (int i = 0; i &lt; 4; i++){
-        if (i == 0 || i == 2)square1[i] = (square0[i]-cx)*xmultiple + cx;
-        else square1[i] = (square0[i] - cy)*ymultiple + cy;
-    }
-    DrawSquare();
+	cout &lt;&lt; &quot;绘图点是屏幕中心,按比例将原正方形放大5倍&quot; &lt;&lt; endl;
+	float xmultiple = 5 , ymultiple = 5;		
+	for (int i = 0; i &lt; 4; i++){
+		if (i == 0 || i == 2)square1[i] = (square0[i]-cx)*xmultiple + cx;
+		else square1[i] = (square0[i] - cy)*ymultiple + cy;
+	}
+	DrawSquare();
 }
 
 void my_symmetry(){//对称
-    cout &lt;&lt; &quot;按照原正方形左下角的点中心对称&quot; &lt;&lt; endl;
-    for (int i = 0; i &lt; 4; i++){
-        if (i == 2)square1[i] = 2*square0[0]-square0[i];
-        else if (i == 3) square1[i] = 2*square0[1] - square0[i];
-        else square1[i] = square0[i];
-    }
-    if (square1[2]&lt;square1[0])swap(square1[0], square1[2]);
-    if (square1[3]&lt;square1[1])swap(square1[1], square1[3]);
-    DrawSquare();
+	cout &lt;&lt; &quot;按照原正方形左下角的点中心对称&quot; &lt;&lt; endl;
+	for (int i = 0; i &lt; 4; i++){
+		if (i == 2)square1[i] = 2*square0[0]-square0[i];
+		else if (i == 3) square1[i] = 2*square0[1] - square0[i];
+		else square1[i] = square0[i];
+	}
+	if (square1[2]&lt;square1[0])swap(square1[0], square1[2]);
+	if (square1[3]&lt;square1[1])swap(square1[1], square1[3]);
+	DrawSquare();
 }
 
 void my_shear(){
-    float c=0.5f;//是水平方向的错切，即沿x轴方向关于y的错切，若&gt;0，则沿 + x轴方向错切，若&lt;0，则沿 - x轴方向错切。
-    cout &lt;&lt; &quot;水平方向沿+x方向错切，参数为0.5&quot; &lt;&lt; endl;
-    for (int i = 0; i &lt; 4; i++){
-        s0[i].x = s0[i].x + c*(s0[i].y-s0[0].y);//减去s0[0].y是因为把s0[0].y作为y=0的轴
-    }
-    Draw();
+	float c=0.5f;//是水平方向的错切，即沿x轴方向关于y的错切，若&gt;0，则沿 + x轴方向错切，若&lt;0，则沿 - x轴方向错切。
+	cout &lt;&lt; &quot;水平方向沿+x方向错切，参数为0.5&quot; &lt;&lt; endl;
+	for (int i = 0; i &lt; 4; i++){
+		s0[i].x = s0[i].x + c*(s0[i].y-s0[0].y);//减去s0[0].y是因为把s0[0].y作为y=0的轴
+	}
+	Draw();
 }
-</code></pre><h1 id="liang-barsky算法"><a href="#liang-barsky算法" class="headerlink" title="liang-barsky算法"></a>liang-barsky算法</h1><p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/liang-barsky.png"></p>
+</code></pre>
+<p>#liang-barsky算法
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/liang-barsky.png&quot;&gt;</p>
 <pre><code>//Liang-Barsky算法开始
 bool LBLineClipTest(float p, float q, float &amp;u1, float&amp;u2){
-    float r = 0.0;
-    if (p &lt; -0.00001){//p小于0时比较最大值
-        r = q / p;
-        if (r &gt; u2)return false;//umax小于umin才有在窗口内的部分
-        else if (r &gt; u1)u1 = r;
-    }
-    else if (p &gt; 0.00001){    //p大于0时比较最小值
-        r = q / p;
-        if (r &lt; u1)return false;
-        else if (r &lt; u2)u2 = r;
-    }
-    else if (q &lt; 0.0)return false;//处理p等于0的情况
-    return true;
+	float r = 0.0;
+	if (p &lt; -0.00001){//p小于0时比较最大值
+		r = q / p;
+		if (r &gt; u2)return false;//umax小于umin才有在窗口内的部分
+		else if (r &gt; u1)u1 = r;
+	}
+	else if (p &gt; 0.00001){	//p大于0时比较最小值
+		r = q / p;
+		if (r &lt; u1)return false;
+		else if (r &lt; u2)u2 = r;
+	}
+	else if (q &lt; 0.0)return false;//处理p等于0的情况
+	return true;
 }
 
 void VBLineClip(float XL, float XR, float YB, float YT, float x1, float y1, float x2, float y2){
-    float u1, u2, dx, dy;
-    dx = x2 - x1;
-    dy = y2 - y1;
-    u1 = 0.0; u2 = 1.0;
-    if (LBLineClipTest(-dx, x1 - XL, u1, u2)){//左边界交点
-        if (LBLineClipTest(dx, XR - x1, u1, u2)){//右边界交点
-            if (LBLineClipTest(-dy, y1 - YB, u1, u2)){//下边界交点
-                if (LBLineClipTest(dy, YT - y1, u1, u2)){//上边界交点
-                    //u2大于1说明线的右端点与框无交点（端点在框内），所以直接输出即可
-                    if (u2&lt; 1.0) {//说明线的右端点超出框外了，此时需要剪切，更新x2,y2为线框交点。
-                        x2 = x1 + u2*dx;
-                        y2 = y1 + u2*dy;
-                    }
-                    if (u1&gt;0.0) {//u1同理
-                        x1 = x1 + u1*dx;
-                        y1 = y1 + u1*dy;
-                    }
-                }
-                glBegin(GL_LINES);
-                glColor3f(0.0f, 1.0f, 0.0f);
-                glVertex2i(x1, y1);
-                glVertex2i(x2, y2);
-                glEnd();
-                glFlush();
-            }
-        }
-    }
+	float u1, u2, dx, dy;
+	dx = x2 - x1;
+	dy = y2 - y1;
+	u1 = 0.0; u2 = 1.0;
+	if (LBLineClipTest(-dx, x1 - XL, u1, u2)){//左边界交点
+		if (LBLineClipTest(dx, XR - x1, u1, u2)){//右边界交点
+			if (LBLineClipTest(-dy, y1 - YB, u1, u2)){//下边界交点
+				if (LBLineClipTest(dy, YT - y1, u1, u2)){//上边界交点
+					//u2大于1说明线的右端点与框无交点（端点在框内），所以直接输出即可
+					if (u2&lt; 1.0) {//说明线的右端点超出框外了，此时需要剪切，更新x2,y2为线框交点。
+						x2 = x1 + u2*dx;
+						y2 = y1 + u2*dy;
+					}
+					if (u1&gt;0.0) {//u1同理
+						x1 = x1 + u1*dx;
+						y1 = y1 + u1*dy;
+					}
+				}
+				glBegin(GL_LINES);
+				glColor3f(0.0f, 1.0f, 0.0f);
+				glVertex2i(x1, y1);
+				glVertex2i(x2, y2);
+				glEnd();
+				glFlush();
+			}
+		}
+	}
 }
-</code></pre><h2 id="完整代码-3"><a href="#完整代码-3" class="headerlink" title="完整代码"></a>完整代码</h2><p><a href="https://github.com/wusanwan/daily_exercises/tree/master/graphics" target="_blank" rel="noopener">https://github.com/wusanwan/daily_exercises/tree/master/graphics</a></p>
-<p>输入：右键选择菜单选择算法。<br>Liang-barsky算法如果需要换一条直线，则右键菜单中再次选择Liang-barsky算法。<br>Liang-barsky算法裁剪框的确定：鼠标确定点的±20区域。</p>
+</code></pre>
+<p>##完整代码
+https://github.com/wusanwan/daily_exercises/tree/master/graphics</p>
+<p>输入：右键选择菜单选择算法。
+Liang-barsky算法如果需要换一条直线，则右键菜单中再次选择Liang-barsky算法。
+Liang-barsky算法裁剪框的确定：鼠标确定点的±20区域。</p>
 <p>书上的伪码改的，对缺漏部分进行了补全。</p>
 
     </article>
@@ -1032,7 +1070,7 @@ void VBLineClip(float XL, float XR, float YB, float YT, float x1, float y1, floa
         verify:false, 
         appId: "LBBQupBMJM5xUoIbNjmi43JO-gzGzoHsz",
         appKey: "zs5uR8OAi9BWaa9pQGtewrFj",
-        placeholder: "来侃大山",
+        placeholder: "欢迎指正",
         path:window.location.pathname, 
         avatar:'mm' 
     });
@@ -1107,6 +1145,10 @@ void VBLineClip(float XL, float XR, float YB, float YT, float x1, float y1, floa
         
     
         
+            
+                <a href="https://leetcode-cn.com/u/cai-ji-xiao-mo/" class="iconfont-archer others" target="_blank" title=others></a>
+            
+        
     
         
     
@@ -1168,7 +1210,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#直线的扫描转换"><span class="toc-number">1.</span> <span class="toc-text">直线的扫描转换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DDA数值微分法"><span class="toc-number">1.1.</span> <span class="toc-text">DDA数值微分法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中点Bresenham算法"><span class="toc-number">1.2.</span> <span class="toc-text">中点Bresenham算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bresenham算法"><span class="toc-number">1.3.</span> <span class="toc-text">Bresenham算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整代码"><span class="toc-number">1.4.</span> <span class="toc-text">完整代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#圆和椭圆的扫描转换"><span class="toc-number">2.</span> <span class="toc-text">圆和椭圆的扫描转换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#圆的中点Bresenham算法"><span class="toc-number">2.1.</span> <span class="toc-text">圆的中点Bresenham算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#椭圆的中点Bresenham算法"><span class="toc-number">2.2.</span> <span class="toc-text">椭圆的中点Bresenham算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整代码-1"><span class="toc-number">2.3.</span> <span class="toc-text">完整代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多边形扫描转换"><span class="toc-number">3.</span> <span class="toc-text">多边形扫描转换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#有效边表算法"><span class="toc-number">3.1.</span> <span class="toc-text">有效边表算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#边界填充算法"><span class="toc-number">3.2.</span> <span class="toc-text">边界填充算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整代码-2"><span class="toc-number">3.3.</span> <span class="toc-text">完整代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单二维图形的几何变换"><span class="toc-number">4.</span> <span class="toc-text">简单二维图形的几何变换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#liang-barsky算法"><span class="toc-number">5.</span> <span class="toc-text">liang-barsky算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#完整代码-3"><span class="toc-number">5.1.</span> <span class="toc-text">完整代码</span></a></li></ol></li></ol>
+        
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1181,30 +1223,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1445,6 +1463,11 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2020/03/30/CS61A笔记1/" >CS61A 笔记1</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2020/03/08/用moviepy剪辑延时视频/" >用MoviePy剪辑延时视频</a>
         </li>
     
@@ -1466,11 +1489,6 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2020/02/19/爬虫实战之晋江榜单抓取以及数据分析/" >🕷爬虫实战之晋江榜单抓取以及数据分析</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2020/01/30/CS61A/" >CS61A</a>
         </li>
     
     
@@ -1509,7 +1527,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2019/02/23/git学习实验报告/" >git入门</a>
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2019/02/23/git入门/" >git入门</a>
         </li>
     
     
@@ -1558,31 +1576,37 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
     
-        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
-    
         <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
-    
-        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
-    
-        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
-    
-        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
     
         <span class="sidebar-tag-name" data-tags="玩具"><span class="iconfont-archer">&#xe606;</span>玩具</span>
     
         <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
-        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="TeachYourselfCS"><span class="iconfont-archer">&#xe606;</span>TeachYourselfCS</span>
+    
+        <span class="sidebar-tag-name" data-tags="programming"><span class="iconfont-archer">&#xe606;</span>programming</span>
     
         <span class="sidebar-tag-name" data-tags="openGL"><span class="iconfont-archer">&#xe606;</span>openGL</span>
     
         <span class="sidebar-tag-name" data-tags="图形学"><span class="iconfont-archer">&#xe606;</span>图形学</span>
+    
+        <span class="sidebar-tag-name" data-tags="剪辑"><span class="iconfont-archer">&#xe606;</span>剪辑</span>
+    
+        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+    
+        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
+    
+        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
+    
+        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
     
         <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
     
@@ -1592,9 +1616,7 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
     
-        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
-    
-        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
+        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1628,6 +1650,8 @@ jsonContent:
 </div>
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="programming"><span class="iconfont-archer">&#xe60a;</span>programming</span>
     
         <span class="sidebar-category-name" data-categories="算法题"><span class="iconfont-archer">&#xe60a;</span>算法题</span>
     

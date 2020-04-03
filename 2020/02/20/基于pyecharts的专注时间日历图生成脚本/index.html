@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>基于pyecharts的专注时间日历图生成脚本 · 菜鸡小万。</title>
+    <title>基于pyecharts的专注时间日历图生成脚本 · 菜鸡小万</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -229,14 +229,14 @@
     
     <div class="banner">
             <div class="blog-title">
-                <a href="/" >菜鸡小万。</a>
+                <a href="/" >菜鸡小万</a>
             </div>
             <div class="post-title">
                 <a href="#" class="post-name">基于pyecharts的专注时间日历图生成脚本</a>
             </div>
     </div>
     
-    <a class="home-link" href=/>菜鸡小万。</a>
+    <a class="home-link" href=/>菜鸡小万</a>
 </header>
     <div class="wrapper">
         <div class="site-intro" style="
@@ -287,7 +287,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">407</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">495</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -417,7 +417,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>为了写<a href="https://www.wusanwan.xyz/2020/02/19/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E4%B9%8B%E6%99%8B%E6%B1%9F%E6%A6%9C%E5%8D%95%E6%8A%93%E5%8F%96%E4%BB%A5%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">晋江的数据分析</a>，就了解了下pyecharts，看到pyecharts文档里有日历图就随随便便搞了个脚本出来。</p>
+        <p>为了写&lt;a href=&quot;https://www.wusanwan.xyz/2020/02/19/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E4%B9%8B%E6%99%8B%E6%B1%9F%E6%A6%9C%E5%8D%95%E6%8A%93%E5%8F%96%E4%BB%A5%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/&quot;&gt;晋江的数据分析&lt;/a&gt;，就了解了下pyecharts，看到pyecharts文档里有日历图就随手搞了个脚本出来。</p>
 <pre><code>&quot;&quot;&quot;
 调用pyecharts生成专注时间日历图
 &quot;&quot;&quot;
@@ -450,14 +450,14 @@ def calendar_base() -&gt; Calendar:
     data = [[str(begin + datetime.timedelta(days=i)), hours[i]]
             for i in range(day)]
 
-    c = (Calendar(init_opts=opts.InitOpts(width=&#39;1200px&#39;, height=&#39;300px&#39;, bg_color=&#39;white&#39;))
+    c = (Calendar(init_opts=opts.InitOpts(width='1200px', height='300px', bg_color='white'))
         .add(&quot;&quot;, data, calendar_opts=opts.CalendarOpts(range_=&quot;2020&quot;))
         .set_global_opts(
             title_opts=opts.TitleOpts(
                 title=&quot;小吴-2020年专注日记&quot;,
                 subtitle=sub,
                 item_gap=2,
-                pos_left=&#39;center&#39;,
+                pos_left='center',
                 padding=3),
             visualmap_opts=opts.VisualMapOpts(
                 max_=15,
@@ -469,22 +469,22 @@ def calendar_base() -&gt; Calendar:
                 pieces=[  #github日历图配色
                             {
                                 &quot;min&quot;: 12,
-                                &quot;color&quot;: &#39;#196127&#39;
+                                &quot;color&quot;: '#196127'
                             }, {
                                 &quot;min&quot;: 9,
                                 &quot;max&quot;: 12,
-                                &quot;color&quot;: &#39;#239a3b&#39;
+                                &quot;color&quot;: '#239a3b'
                             }, {
                                 &quot;min&quot;: 6,
                                 &quot;max&quot;: 9,
-                                &quot;color&quot;: &#39;#7bc96f&#39;
+                                &quot;color&quot;: '#7bc96f'
                             }, {
                                 &quot;min&quot;: 3,
                                 &quot;max&quot;: 6,
-                                &quot;color&quot;: &#39;#c6e48b&#39;
+                                &quot;color&quot;: '#c6e48b'
                             }, {
                                 &quot;max&quot;: 3,
-                                &quot;color&quot;: &#39;#ebedf0&#39;
+                                &quot;color&quot;: '#ebedf0'
                             }
                         ]
                 ),
@@ -495,8 +495,14 @@ def calendar_base() -&gt; Calendar:
 # 生成图片
 make_snapshot(snapshot, calendar_base().render(), &quot;c://users/sanw/desktop/calendar.png&quot;)
 print(&quot;生成完毕&quot;)
-</code></pre><p>嫌本来的红橙黄绿蓝配色太丑了，直接抄了github的配色。<br>最后的效果图是这样的<br><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/study_calendar.png"></p>
-<p>姑且还能看看……<br>长个记性，有问题先搜索文档。<br><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/mad_dog.jpg" width="300px" text-align="center"></p>
+</code></pre>
+<p>嫌本来的红橙黄绿蓝配色太丑了，直接抄了github的配色。
+最后的效果图是这样的
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/study_calendar.png&quot;&gt;</p>
+<p>姑且还能看看……
+长个记性，有问题先搜索文档。
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/mad_dog.jpg&quot;
+width=300px text-align=&quot;center&quot;&gt;</p>
 
     </article>
     <!-- license  -->
@@ -505,7 +511,7 @@ print(&quot;生成完毕&quot;)
             <p>原文作者：<a href="http://www.wusanwan.xyz">吴三万</a>
             <p>原文链接：<a href="http://www.wusanwan.xyz/2020/02/20/基于pyecharts的专注时间日历图生成脚本/">http://www.wusanwan.xyz/2020/02/20/基于pyecharts的专注时间日历图生成脚本/</a>
             <p>发表日期：<a href="http://www.wusanwan.xyz/2020/02/20/基于pyecharts的专注时间日历图生成脚本/">二月 20日 2020, 3:47:22 凌晨</a>
-            <p>更新日期：<a href="http://www.wusanwan.xyz/2020/02/20/基于pyecharts的专注时间日历图生成脚本/">February 21st 2020, 2:19:31 pm</a>
+            <p>更新日期：<a href="http://www.wusanwan.xyz/2020/02/20/基于pyecharts的专注时间日历图生成脚本/">March 8th 2020, 8:00:41 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -550,7 +556,7 @@ print(&quot;生成完毕&quot;)
         verify:false, 
         appId: "LBBQupBMJM5xUoIbNjmi43JO-gzGzoHsz",
         appKey: "zs5uR8OAi9BWaa9pQGtewrFj",
-        placeholder: "来侃大山",
+        placeholder: "欢迎指正",
         path:window.location.pathname, 
         avatar:'mm' 
     });
@@ -624,6 +630,10 @@ print(&quot;生成完毕&quot;)
             
         
     
+        
+            
+                <a href="https://leetcode-cn.com/u/cai-ji-xiao-mo/" class="iconfont-archer others" target="_blank" title=others></a>
+            
         
     
         
@@ -917,30 +927,6 @@ top:50vh;
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 18
@@ -960,6 +946,11 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2020/03/30/CS61A笔记1/" >CS61A 笔记1</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -984,11 +975,6 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2020/02/19/爬虫实战之晋江榜单抓取以及数据分析/" >🕷爬虫实战之晋江榜单抓取以及数据分析</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2020/01/30/CS61A/" >CS61A</a>
         </li>
     
     
@@ -1027,7 +1013,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2019/02/23/git学习实验报告/" >git入门</a>
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2019/02/23/git入门/" >git入门</a>
         </li>
     
     
@@ -1076,31 +1062,37 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
     
-        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
-    
         <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
-    
-        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
-    
-        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
-    
-        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
     
         <span class="sidebar-tag-name" data-tags="玩具"><span class="iconfont-archer">&#xe606;</span>玩具</span>
     
         <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
-        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="TeachYourselfCS"><span class="iconfont-archer">&#xe606;</span>TeachYourselfCS</span>
+    
+        <span class="sidebar-tag-name" data-tags="programming"><span class="iconfont-archer">&#xe606;</span>programming</span>
     
         <span class="sidebar-tag-name" data-tags="openGL"><span class="iconfont-archer">&#xe606;</span>openGL</span>
     
         <span class="sidebar-tag-name" data-tags="图形学"><span class="iconfont-archer">&#xe606;</span>图形学</span>
+    
+        <span class="sidebar-tag-name" data-tags="剪辑"><span class="iconfont-archer">&#xe606;</span>剪辑</span>
+    
+        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+    
+        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
+    
+        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
+    
+        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
     
         <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
     
@@ -1110,9 +1102,7 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
     
-        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
-    
-        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
+        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1146,6 +1136,8 @@ jsonContent:
 </div>
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="programming"><span class="iconfont-archer">&#xe60a;</span>programming</span>
     
         <span class="sidebar-category-name" data-categories="算法题"><span class="iconfont-archer">&#xe60a;</span>算法题</span>
     

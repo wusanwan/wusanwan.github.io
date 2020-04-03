@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>🕷爬虫实战之晋江榜单抓取以及数据分析 · 菜鸡小万。</title>
+    <title>🕷爬虫实战之晋江榜单抓取以及数据分析 · 菜鸡小万</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -229,14 +229,14 @@
     
     <div class="banner">
             <div class="blog-title">
-                <a href="/" >菜鸡小万。</a>
+                <a href="/" >菜鸡小万</a>
             </div>
             <div class="post-title">
                 <a href="#" class="post-name">🕷爬虫实战之晋江榜单抓取以及数据分析</a>
             </div>
     </div>
     
-    <a class="home-link" href=/>菜鸡小万。</a>
+    <a class="home-link" href=/>菜鸡小万</a>
 </header>
     <div class="wrapper">
         <div class="site-intro" style="
@@ -289,7 +289,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">966</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.6k</span>阅读时长: <span class="post-count reading-time">8 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -419,9 +419,13 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>最近看了<a href="https://book.douban.com/subject/30175598/" target="_blank" rel="noopener">《Python 3网络爬虫开发实战》</a>，手痒就随便鼓捣了一个晋江榜单的爬虫，主要还是练练手，之后还会写其他网站的爬虫。<br>如果想找现成的爬虫使用可以看看这个👉<a href="https://github.com/facert/awesome-spider" target="_blank" rel="noopener">awesome spider</a>或者直接github上搜。</p>
-<h1 id="🕷爬虫"><a href="#🕷爬虫" class="headerlink" title="🕷爬虫"></a>🕷爬虫</h1><p>爬晋江6个频道的按收藏排序的前5页内容，一共6×5×100=3000篇小说的相关信息。<br><a href="https://github.com/wusanwan/daily_practices/blob/master/python/jjwxc_spider.py" target="_blank" rel="noopener">github链接</a></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code>&quot;&quot;&quot;
+        <p>最近看了&lt;a href=&quot;https://book.douban.com/subject/30175598/&quot;&gt;《Python 3网络爬虫开发实战》&lt;/a&gt;，手痒就随便鼓捣了一个晋江榜单的爬虫，主要还是练练手，之后还会写其他网站的爬虫。
+如果想找现成的爬虫使用可以看看这个👉&lt;a href=&quot;https://github.com/facert/awesome-spider&quot;&gt;awesome spider&lt;/a&gt;或者直接github上搜。</p>
+<h1>🕷爬虫</h1>
+<p>爬晋江6个频道的按收藏排序的前5页内容，一共6×5×100=3000篇小说的相关信息。
+&lt;a href=&quot;https://github.com/wusanwan/daily_practices/blob/master/python/jjwxc_spider.py&quot;&gt;github链接&lt;/a&gt;</p>
+<h2>代码</h2>
+<pre><code>&quot;&quot;&quot;
 jjwxc_spider.py
 
 1. 爬取榜单
@@ -439,11 +443,11 @@ from pyquery import PyQuery as pq
 
 def GetPage(url):  # 请求网页
     headers = {
-        &#39;User-Agent&#39;: &#39;Mozilla/5.0(Macintosh;Intel Mac OS X 10_13_3)AppleWebKit/537.36(KHTML,like Gecko)Chrome/65.0.3325.162 Safari/537.36&#39;
+        'User-Agent': 'Mozilla/5.0(Macintosh;Intel Mac OS X 10_13_3)AppleWebKit/537.36(KHTML,like Gecko)Chrome/65.0.3325.162 Safari/537.36'
     }
     response = requests.get(url, headers=headers)
     if response.status_code == requests.codes.ok:
-        response.encoding = &#39;gbk&#39;
+        response.encoding = 'gbk'
         return response.text
     else:
         print(&quot;错误原因&quot; + str(response.status_code))
@@ -452,40 +456,40 @@ def GetPage(url):  # 请求网页
 
 def ParsePage(html):  # 解析页面
     doc = pq(html)
-    tr = doc(&#39;.cytable tr&#39;)
+    tr = doc('.cytable tr')
     count = 0
     booklist = []
     # 列表页提取作者名，书名，类型，风格，字数，是否完结，发表年份，简介，标签，文章链接
     for item in tr.items():
         if count != 0:
-            author = item(&#39;td:nth-child(1) a&#39;).text()
-            book = item(&#39;td:nth-child(2) a&#39;).text()
-            booktype = item(&#39;td:nth-child(3)&#39;).text()
-            style = item(&#39;td:nth-child(4)&#39;).text()
-            length = item(&#39;td:nth-child(6)&#39;).text()
-            isfinish = item(&#39;td:nth-child(5)&#39;).text()
-            year = item(&#39;td:nth-child(8)&#39;).text()
+            author = item('td:nth-child(1) a').text()
+            book = item('td:nth-child(2) a').text()
+            booktype = item('td:nth-child(3)').text()
+            style = item('td:nth-child(4)').text()
+            length = item('td:nth-child(6)').text()
+            isfinish = item('td:nth-child(5)').text()
+            year = item('td:nth-child(8)').text()
             year = year[0:4]
 
-            title = item(&#39;td:nth-child(2) a&#39;).attr(&#39;title&#39;)
+            title = item('td:nth-child(2) a').attr('title')
             index = title.find(&quot;标签：&quot;)
             brief = title[3: index - 1]
             tags = title[index+3:]
-            link = item(&#39;td:nth-child(2) a&#39;).attr(&#39;href&#39;)
+            link = item('td:nth-child(2) a').attr('href')
 
             # 打开提取内容页信息 主角 收藏数 文案 视角
             content = GetPage(&quot;http://www.jjwxc.net/&quot; + link)
             # 内容页有可能被锁了
             if content is not None:
                 own = pq(content)
-                temp = own(&#39;head meta[name=&quot;Keywords&quot;]&#39;).attr(&#39;content&#39;)
+                temp = own('head meta[name=&quot;Keywords&quot;]').attr('content')
                 index = temp.find(&quot;主角：&quot;)
                 index1 = temp.find(&quot;┃&quot;)
                 roles = temp[index + 3:index1]
-                view = own(&#39;.rightul li:nth-child(2)&#39;).text()
+                view = own('.rightul li:nth-child(2)').text()
                 view = view[6:8]
-                intro = own(&#39;.smallreadbody #novelintro&#39;).text()
-                collected = own(&#39;.sptd span[itemprop=&quot;collectedCount&quot;]&#39;).text()
+                intro = own('.smallreadbody #novelintro').text()
+                collected = own('.sptd span[itemprop=&quot;collectedCount&quot;]').text()
                 # time.sleep(1) 其实不设也没关系
                 print(str(count), author, book, booktype, style, length, isfinish, year, roles, sep=&quot;  &quot;)
                 dict = {&quot;author&quot;: author, &quot;book&quot;: book, &quot;booktype&quot;: booktype, &quot;style&quot;: style, &quot;length&quot;: length, &quot;isfinish&quot;: isfinish, &quot;year&quot;: year, &quot;brief&quot;: brief, &quot;tags&quot;: tags, &quot;roles&quot;: roles, &quot;collected&quot;: collected, &quot;view&quot;: view, &quot;intro&quot;: intro}
@@ -503,29 +507,52 @@ def WriteCSV(booklist, index):   # 将数据写入csv
 
 
 def main(po, co):   # PageOffset,ChannelOffset
-    url = &#39;http://www.jjwxc.net/bookbase.php?fw0=0&amp;fbsj=0&amp;ycx0=0&amp;xx&#39;+str(co)+&#39;=&#39;+str(co)+&#39;&amp;mainview0=0&amp;sd0=0&amp;lx0=0&amp;fg0=0&amp;sortType=0&amp;isfinish=0&amp;collectiontypes=ors&amp;searchkeywords=&amp;page=&#39;+str(po)
+    url = 'http://www.jjwxc.net/bookbase.php?fw0=0&amp;fbsj=0&amp;ycx0=0&amp;xx'+str(co)+'='+str(co)+'&amp;mainview0=0&amp;sd0=0&amp;lx0=0&amp;fg0=0&amp;sortType=0&amp;isfinish=0&amp;collectiontypes=ors&amp;searchkeywords=&amp;page='+str(po)
     html = GetPage(url)
     return ParsePage(html)
 
 
-if __name__ == &#39;__main__&#39;:
+if __name__ == '__main__':
     for i in range(6):  # 频道偏移量
         total = []
         for j in range(5):  # 页数偏移量
             print(&quot;开始第%d个频道的第%d页……&quot; % (i, j+1))
             total.extend(main(j+1, i))
         WriteCSV(total, i)
-</code></pre><h2 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h2><ol>
-<li><p><strong>编码、乱码问题。pyquery用抓取的html初始化后print(doc)内容不全。</strong><br>发现是编码问题，因为基本上都截断在主角名字上，所以为什么非要用生僻字给角色取名🤦‍。<br>response.encoding=’网页编码’，再用doc=pq(response.text)。</p>
+</code></pre>
+<h2>bug</h2>
+<ol>
+<li>
+<p><strong>编码、乱码问题。pyquery用抓取的html初始化后print(doc)内容不全。</strong>
+发现是编码问题，因为基本上都截断在主角名字上，所以为什么非要用生僻字给角色取名🤦‍。
+response.encoding='网页编码'，再用doc=pq(response.text)。</p>
 </li>
-<li><p><strong>vscode输出乱码。</strong><br>设置-&gt;在settings.json中加入这句话：”code-runner.runInTerminal”: true</p>
+<li>
+<p><strong>vscode输出乱码。</strong>
+设置-&gt;在settings.json中加入这句话：&quot;code-runner.runInTerminal&quot;: true</p>
 </li>
-<li><p><strong>with open(“地址”””)这句没报错但是没有生成相应文件。</strong><br>改成绝对路径以后好了……？</p>
+<li>
+<p><strong>with open(&quot;地址&quot;&quot;&quot;)这句没报错但是没有生成相应文件。</strong>
+改成绝对路径以后好了……？</p>
 </li>
 </ol>
-<h1 id="⌨数据分析"><a href="#⌨数据分析" class="headerlink" title="⌨数据分析"></a>⌨数据分析</h1><p>第一次用jupyter notebook诶。</p>
-<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><p>太多了不复制了👉<a href="https://github.com/wusanwan/daily_practices/blob/master/python/data_analyse_jjwxc.ipynb" target="_blank" rel="noopener">github地址</a></p>
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>瞎搞了一些感觉都是同质性的活，一段时间不想数据分析了💔<br><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%90%84%E9%A2%91%E9%81%93%E5%B9%B3%E5%9D%87%E6%94%B6%E8%97%8F%E9%87%8F%20.png"><br><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%90%84%E9%A2%91%E9%81%93%E8%A7%86%E8%A7%92%E5%88%86%E5%B8%83.png"><br><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%90%84%E9%A2%91%E9%81%93top500%E5%8F%91%E8%A1%A8%E6%97%B6%E9%97%B4.jpg"><br><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%B0%8F%E8%AF%B4%E8%83%8C%E6%99%AF%E5%B9%B4%E4%BB%A3%E5%88%86%E5%B8%83.png"><br><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%85%A8%E9%A2%91%E9%81%93top50%E4%BD%9C%E8%80%85%E5%88%86%E5%B8%83.png"><br><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/TOP500%E5%B0%8F%E8%AF%B4%E9%95%BF%E5%BA%A6%E5%88%86%E5%B8%83.png"><br><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%96%87%E6%A1%88%E8%AF%8D%E4%BA%91.png"><br><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%99%8B%E6%B1%9F%E4%BA%BA%E5%8F%A3%E6%99%AE%E6%9F%A5%EF%BC%9A%E7%AC%AC%E4%B8%80%E5%A4%A7%E5%A7%93.png"><br><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E8%A8%80%E6%83%85%E8%AF%BB%E8%80%85%E5%96%9C%E5%A5%BD%20.png"><br><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E8%80%BD%E7%BE%8E%E8%AF%BB%E8%80%85%E5%96%9C%E5%A5%BD%20.png"><br><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E7%99%BE%E5%90%88%E8%AF%BB%E8%80%85%E5%96%9C%E5%A5%BD.png"></p>
+<h1>⌨数据分析</h1>
+<p>第一次用jupyter notebook诶。</p>
+<h2>代码</h2>
+<p>太多了不复制了👉&lt;a href=&quot;https://github.com/wusanwan/daily_practices/blob/master/python/data_analyse_jjwxc.ipynb&quot;&gt;github地址&lt;/a&gt;</p>
+<h2>结果</h2>
+<p>瞎搞了一些感觉都是同质性的活，一段时间不想数据分析了💔
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%90%84%E9%A2%91%E9%81%93%E5%B9%B3%E5%9D%87%E6%94%B6%E8%97%8F%E9%87%8F%20.png&quot;&gt;
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%90%84%E9%A2%91%E9%81%93%E8%A7%86%E8%A7%92%E5%88%86%E5%B8%83.png&quot;&gt;
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%90%84%E9%A2%91%E9%81%93top500%E5%8F%91%E8%A1%A8%E6%97%B6%E9%97%B4.jpg&quot;&gt;
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%B0%8F%E8%AF%B4%E8%83%8C%E6%99%AF%E5%B9%B4%E4%BB%A3%E5%88%86%E5%B8%83.png&quot;&gt;
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E5%85%A8%E9%A2%91%E9%81%93top50%E4%BD%9C%E8%80%85%E5%88%86%E5%B8%83.png&quot;&gt;
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/TOP500%E5%B0%8F%E8%AF%B4%E9%95%BF%E5%BA%A6%E5%88%86%E5%B8%83.png&quot;&gt;
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%96%87%E6%A1%88%E8%AF%8D%E4%BA%91.png&quot;&gt;
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%99%8B%E6%B1%9F%E4%BA%BA%E5%8F%A3%E6%99%AE%E6%9F%A5%EF%BC%9A%E7%AC%AC%E4%B8%80%E5%A4%A7%E5%A7%93.png&quot;&gt;
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E8%A8%80%E6%83%85%E8%AF%BB%E8%80%85%E5%96%9C%E5%A5%BD%20.png&quot;&gt;
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E8%80%BD%E7%BE%8E%E8%AF%BB%E8%80%85%E5%96%9C%E5%A5%BD%20.png&quot;&gt;
+&lt;img src=&quot;https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/%E6%99%8B%E6%B1%9F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E7%99%BE%E5%90%88%E8%AF%BB%E8%80%85%E5%96%9C%E5%A5%BD.png&quot;&gt;</p>
 
     </article>
     <!-- license  -->
@@ -551,8 +578,8 @@ if __name__ == &#39;__main__&#39;:
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/01/30/CS61A/" title= "CS61A">
-                    <div class="prevTitle">CS61A</div>
+                <a href= "/2019/12/17/学过的在线课程/" title= "学过的在线课程">
+                    <div class="prevTitle">学过的在线课程</div>
                 </a>
             
         </li>
@@ -579,7 +606,7 @@ if __name__ == &#39;__main__&#39;:
         verify:false, 
         appId: "LBBQupBMJM5xUoIbNjmi43JO-gzGzoHsz",
         appKey: "zs5uR8OAi9BWaa9pQGtewrFj",
-        placeholder: "来侃大山",
+        placeholder: "欢迎指正",
         path:window.location.pathname, 
         avatar:'mm' 
     });
@@ -654,6 +681,10 @@ if __name__ == &#39;__main__&#39;:
         
     
         
+            
+                <a href="https://leetcode-cn.com/u/cai-ji-xiao-mo/" class="iconfont-archer others" target="_blank" title=others></a>
+            
+        
     
         
     
@@ -715,7 +746,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#🕷爬虫"><span class="toc-number">1.</span> <span class="toc-text">🕷爬虫</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">1.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bug"><span class="toc-number">1.2.</span> <span class="toc-text">bug</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#⌨数据分析"><span class="toc-number">2.</span> <span class="toc-text">⌨数据分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-1"><span class="toc-number">2.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果"><span class="toc-number">2.2.</span> <span class="toc-text">结果</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">🕷爬虫</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">bug</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">⌨数据分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.2.</span> <span class="toc-text">结果</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -728,30 +759,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -992,6 +999,11 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2020/03/30/CS61A笔记1/" >CS61A 笔记1</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2020/03/08/用moviepy剪辑延时视频/" >用MoviePy剪辑延时视频</a>
         </li>
     
@@ -1013,11 +1025,6 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2020/02/19/爬虫实战之晋江榜单抓取以及数据分析/" >🕷爬虫实战之晋江榜单抓取以及数据分析</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2020/01/30/CS61A/" >CS61A</a>
         </li>
     
     
@@ -1056,7 +1063,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2019/02/23/git学习实验报告/" >git入门</a>
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2019/02/23/git入门/" >git入门</a>
         </li>
     
     
@@ -1105,31 +1112,37 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
     
-        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
-    
         <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
-    
-        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
-    
-        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
-    
-        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
     
         <span class="sidebar-tag-name" data-tags="玩具"><span class="iconfont-archer">&#xe606;</span>玩具</span>
     
         <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
-        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="TeachYourselfCS"><span class="iconfont-archer">&#xe606;</span>TeachYourselfCS</span>
+    
+        <span class="sidebar-tag-name" data-tags="programming"><span class="iconfont-archer">&#xe606;</span>programming</span>
     
         <span class="sidebar-tag-name" data-tags="openGL"><span class="iconfont-archer">&#xe606;</span>openGL</span>
     
         <span class="sidebar-tag-name" data-tags="图形学"><span class="iconfont-archer">&#xe606;</span>图形学</span>
+    
+        <span class="sidebar-tag-name" data-tags="剪辑"><span class="iconfont-archer">&#xe606;</span>剪辑</span>
+    
+        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+    
+        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
+    
+        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
+    
+        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
     
         <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
     
@@ -1139,9 +1152,7 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
     
-        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
-    
-        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
+        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1175,6 +1186,8 @@ jsonContent:
 </div>
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="programming"><span class="iconfont-archer">&#xe60a;</span>programming</span>
     
         <span class="sidebar-category-name" data-categories="算法题"><span class="iconfont-archer">&#xe60a;</span>算法题</span>
     

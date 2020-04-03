@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>基于Python wxpy库 的微信改造 · 菜鸡小万。</title>
+    <title>基于Python wxpy库 的微信改造 · 菜鸡小万</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -229,14 +229,14 @@
     
     <div class="banner">
             <div class="blog-title">
-                <a href="/" >菜鸡小万。</a>
+                <a href="/" >菜鸡小万</a>
             </div>
             <div class="post-title">
                 <a href="#" class="post-name">基于Python wxpy库 的微信改造</a>
             </div>
     </div>
     
-    <a class="home-link" href=/>菜鸡小万。</a>
+    <a class="home-link" href=/>菜鸡小万</a>
 </header>
     <div class="wrapper">
         <div class="site-intro" style="
@@ -289,7 +289,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.4k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.3k</span>阅读时长: <span class="post-count reading-time">6 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -420,7 +420,8 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <p>只做了一些我觉得比较有意思的，(我就是喜欢开发无聊还没技术含量的功能)。</p>
-<h1 id="TO-DO-LIST"><a href="#TO-DO-LIST" class="headerlink" title="TO DO LIST"></a>TO DO LIST</h1><ul>
+<p>#TO DO LIST</p>
+<ul>
 <li>好友分布热力图</li>
 <li>好友谁删了我</li>
 <li>自动回复的时间间隔</li>
@@ -434,24 +435,35 @@ height:50vh;
 <li>API(把地区放在函数参数里)</li>
 </ul>
 <hr>
-<p>好了，因为没有微信小号，所以拿大号搞的，这真的是危险的弟弟行为。（容易精分）</p>
-<h1 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h1><p>itchat库 <a href="https://itchat.readthedocs.io/zh/latest/" target="_blank" rel="noopener">https://itchat.readthedocs.io/zh/latest/</a><br>wxpy库  <a href="https://wxpy.readthedocs.io/zh/latest/index.html" target="_blank" rel="noopener">https://wxpy.readthedocs.io/zh/latest/index.html</a></p>
-<h1 id="已配置"><a href="#已配置" class="headerlink" title="已配置"></a>已配置</h1><h2 id="自动回复"><a href="#自动回复" class="headerlink" title="自动回复"></a>自动回复</h2><p>自动回复好友消息。</p>
+<p>好了，因为没有微信小号，所以拿大号搞的，这真的是危险的弟弟行为。（容易精分）
+#相关文档<br>
+itchat库 https://itchat.readthedocs.io/zh/latest/<br>
+wxpy库  https://wxpy.readthedocs.io/zh/latest/index.html</p>
+<p>#已配置<br>
+##自动回复<br>
+自动回复好友消息。</p>
 <pre><code>@bot.register(bot.friends(),enabled = False)
 def autoreply(msg):
-    return &#39;Bot:已收到消息{}&#39;.format(msg.text)
-</code></pre><h2 id="图灵机器人"><a href="#图灵机器人" class="headerlink" title="图灵机器人"></a>图灵机器人</h2><p>填上API后就可以通过图灵机器人来回复啦。</p>
-<pre><code>tuling = Tuling(api_key=&#39;你的API&#39;)
-url_api = &#39;http://www.tuling123.com/openai/api&#39;
+    return 'Bot:已收到消息{}'.format(msg.text)
+</code></pre>
+<p>##图灵机器人<br>
+填上API后就可以通过图灵机器人来回复啦。</p>
+<pre><code>tuling = Tuling(api_key='你的API')
+url_api = 'http://www.tuling123.com/openai/api'
 @bot.register(dorm_group, TEXT,except_self=False,enabled=True)
 def reply_group(msg):
     if msg.is_at:
         tuling.do_reply(msg)
-</code></pre><h2 id="公众号自动提醒"><a href="#公众号自动提醒" class="headerlink" title="公众号自动提醒"></a>公众号自动提醒</h2><p>先find出公众号对象，再监听。</p>
+</code></pre>
+<p>##公众号自动提醒<br>
+先find出公众号对象，再监听。</p>
 <pre><code>@bot.register(lecture,enabled=True)
 def warning_in_dorm(msg):
-    dorm_group.send(&#39;Bot:公众号更新了！&#39;)
-</code></pre><h2 id="每日播报：倒计时，生活信息，课表"><a href="#每日播报：倒计时，生活信息，课表" class="headerlink" title="每日播报：倒计时，生活信息，课表"></a>每日播报：倒计时，生活信息，课表</h2><p>可以通过apscheduler来实现定时任务。<br>然后在网上找了些免费接口获取信息。</p>
+    dorm_group.send('Bot:公众号更新了！')
+</code></pre>
+<p>##每日播报：倒计时，生活信息，课表<br>
+可以通过apscheduler来实现定时任务。
+然后在网上找了些免费接口获取信息。</p>
 <pre><code>def countdown():#倒计时
     now=datetime.datetime.now()
     d1=datetime.datetime(2019,5,11)
@@ -468,46 +480,46 @@ def warning_in_dorm(msg):
     return text
 
 def get_weather():
-    payload = {&#39;key&#39;:&#39;your key&#39;,&#39;location&#39;:&#39;your location&#39;}
+    payload = {'key':'your key','location':'your location'}
     pollution= requests.get(&quot;https://free-api.heweather.net/s6/air/now&quot;, params=payload,timeout=1)
 
-    payload1 = {&#39;key&#39;:&#39;your key&#39;,&#39;location&#39;:&#39;your location&#39;,&#39;days&#39;:&#39;1&#39;}
+    payload1 = {'key':'your key','location':'your location','days':'1'}
     result=requests.get(&quot;https://api.seniverse.com/v3/weather/daily.json&quot;,params=payload1,timeout=1)
 
     pollution=pollution.json()
-    result_pollution=pollution[&#39;HeWeather6&#39;]
+    result_pollution=pollution['HeWeather6']
     result_pollution=result_pollution[0]
-    air_now_city=result_pollution[&#39;air_now_city&#39;]
+    air_now_city=result_pollution['air_now_city']
 
 
     result=result.json()
-    results=result[&#39;results&#39;]
+    results=result['results']
     results=results[0]
-    daily=results[&#39;daily&#39;]
+    daily=results['daily']
     daily=daily[0]
 
-    location=results[&#39;location&#39;]
+    location=results['location']
 
-    weather_text=&#39;QT:【天气情况】当前城市为&#39;+location[&#39;name&#39;]+&#39;，&#39;+daily[&#39;text_day&#39;]+&#39;转&#39;+daily[&#39;text_night&#39;]+&#39;，最高温度:&#39;+daily[&#39;high&#39;]+&#39;摄氏度，最低温度：&#39;+daily[&#39;low&#39;]+&#39;摄氏度，风力等级为&#39;+daily[&#39;wind_scale&#39;]+&#39;空气污染指数为&#39;+air_now_city[&#39;aqi&#39;]+&#39;，空气污染质量为&#39;+air_now_city[&#39;qlty&#39;]
+    weather_text='QT:【天气情况】当前城市为'+location['name']+'，'+daily['text_day']+'转'+daily['text_night']+'，最高温度:'+daily['high']+'摄氏度，最低温度：'+daily['low']+'摄氏度，风力等级为'+daily['wind_scale']+'空气污染指数为'+air_now_city['aqi']+'，空气污染质量为'+air_now_city['qlty']
     return weather_text
 
 def get_life_suggestion():
-    payload = {&#39;key&#39;:&#39;your key&#39;,&#39;location&#39;:&#39;your location&#39;}
+    payload = {'key':'your key','location':'your location'}
     result= requests.get(&quot;https://free-api.heweather.net/s6/weather/lifestyle&quot;, params=payload,timeout=1)
     result=result.json()
-    result=result[&#39;HeWeather6&#39;]
+    result=result['HeWeather6']
     result=result[0]
-    suggestion=result[&#39;lifestyle&#39;]
-    location=result[&#39;basic&#39;]
-    suggestion_text=&#39;QT:【生活指数】当前城市为&#39;+location[&#39;location&#39;]+&#39;\n舒适：&#39;+suggestion[0][&#39;txt&#39;]+&#39;,\n 穿衣：&#39;+suggestion[1][&#39;txt&#39;]+&#39;\n 流感：&#39;+suggestion[2][&#39;txt&#39;]+&#39;\n 运动：&#39;+suggestion[3][&#39;txt&#39;]+&#39;\n 紫外线：&#39;+suggestion[5][&#39;txt&#39;]+&#39;\n 空气情况：&#39;+suggestion[7][&#39;txt&#39;]
+    suggestion=result['lifestyle']
+    location=result['basic']
+    suggestion_text='QT:【生活指数】当前城市为'+location['location']+'\n舒适：'+suggestion[0]['txt']+',\n 穿衣：'+suggestion[1]['txt']+'\n 流感：'+suggestion[2]['txt']+'\n 运动：'+suggestion[3]['txt']+'\n 紫外线：'+suggestion[5]['txt']+'\n 空气情况：'+suggestion[7]['txt']
     return suggestion_text
 
 def get_calendar():
-    payload = {&#39;key&#39;:&#39;your key&#39;,&#39;date&#39;:time.strftime(&#39;%y-%m-%d&#39;)}
+    payload = {'key':'your key','date':time.strftime('%y-%m-%d')}
     calendar= requests.get(&quot;http://v.juhe.cn/laohuangli/d&quot;, params=payload,timeout=1)
     result=calendar.json()
-    result=result[&#39;result&#39;]
-    text=&quot;QT:【老黄历】今天是&quot;+result[&#39;yinli&#39;]+&quot;\n宜：&quot;+result[&#39;yi&#39;]+&quot;\n忌：&quot;+result[&#39;ji&#39;]
+    result=result['result']
+    text=&quot;QT:【老黄历】今天是&quot;+result['yinli']+&quot;\n宜：&quot;+result['yi']+&quot;\n忌：&quot;+result['ji']
     return text
 
 def get_courses():
@@ -552,13 +564,15 @@ def self_driving():
 
 sched = BlockingScheduler()
 #间隔式定时
-sched.add_job(self_driving,&#39;interval&#39;,seconds=3600)
+sched.add_job(self_driving,'interval',seconds=3600)
 #定点式定时
-sched.add_job(daily_report,&#39;cron&#39;,month=&#39;1-12&#39;,day=&#39;1-31&#39;,hour=10,minute=15)
+sched.add_job(daily_report,'cron',month='1-12',day='1-31',hour=10,minute=15)
 sched.start()
-</code></pre><h2 id="宿舍群娱乐：今天吃什么"><a href="#宿舍群娱乐：今天吃什么" class="headerlink" title="宿舍群娱乐：今天吃什么"></a>宿舍群娱乐：今天吃什么</h2><p>实现功能菜单。</p>
+</code></pre>
+<p>##宿舍群娱乐：今天吃什么<br>
+实现功能菜单。</p>
 <pre><code>def what_to_eat():
-    food_list=[&quot;香锅&quot;,&quot;焗饭&quot;,&quot;炒饭&quot;,&quot;炒面&quot;,&quot;盖浇饭&quot;,&quot;寿司&quot;,&quot;石锅拌饭&quot;,&quot;肉夹馍&quot;,&quot;酸辣粉&quot;,&quot;炸鸡饭&quot;,&quot;盐酥鸡饭&quot;,&quot;鸡公煲&quot;,&#39;炸鸡&#39;]
+    food_list=[&quot;香锅&quot;,&quot;焗饭&quot;,&quot;炒饭&quot;,&quot;炒面&quot;,&quot;盖浇饭&quot;,&quot;寿司&quot;,&quot;石锅拌饭&quot;,&quot;肉夹馍&quot;,&quot;酸辣粉&quot;,&quot;炸鸡饭&quot;,&quot;盐酥鸡饭&quot;,&quot;鸡公煲&quot;,'炸鸡']
     random_number=randint(0,len(food_list)-1)
     return food_list[random_number]
 
@@ -579,6 +593,7 @@ def reply_group(msg):
     else:
         return
 </code></pre>
+
     </article>
     <!-- license  -->
     
@@ -603,7 +618,7 @@ def reply_group(msg):
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2019/02/23/git学习实验报告/" title= "git入门">
+                <a href= "/2019/02/23/git入门/" title= "git入门">
                     <div class="prevTitle">git入门</div>
                 </a>
             
@@ -631,7 +646,7 @@ def reply_group(msg):
         verify:false, 
         appId: "LBBQupBMJM5xUoIbNjmi43JO-gzGzoHsz",
         appKey: "zs5uR8OAi9BWaa9pQGtewrFj",
-        placeholder: "来侃大山",
+        placeholder: "欢迎指正",
         path:window.location.pathname, 
         avatar:'mm' 
     });
@@ -706,6 +721,10 @@ def reply_group(msg):
         
     
         
+            
+                <a href="https://leetcode-cn.com/u/cai-ji-xiao-mo/" class="iconfont-archer others" target="_blank" title=others></a>
+            
+        
     
         
     
@@ -767,7 +786,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TO-DO-LIST"><span class="toc-number">1.</span> <span class="toc-text">TO DO LIST</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#相关文档"><span class="toc-number">2.</span> <span class="toc-text">相关文档</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#已配置"><span class="toc-number">3.</span> <span class="toc-text">已配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#自动回复"><span class="toc-number">3.1.</span> <span class="toc-text">自动回复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图灵机器人"><span class="toc-number">3.2.</span> <span class="toc-text">图灵机器人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公众号自动提醒"><span class="toc-number">3.3.</span> <span class="toc-text">公众号自动提醒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#每日播报：倒计时，生活信息，课表"><span class="toc-number">3.4.</span> <span class="toc-text">每日播报：倒计时，生活信息，课表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#宿舍群娱乐：今天吃什么"><span class="toc-number">3.5.</span> <span class="toc-text">宿舍群娱乐：今天吃什么</span></a></li></ol></li></ol>
+        
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -780,30 +799,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1044,6 +1039,11 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2020/03/30/CS61A笔记1/" >CS61A 笔记1</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2020/03/08/用moviepy剪辑延时视频/" >用MoviePy剪辑延时视频</a>
         </li>
     
@@ -1065,11 +1065,6 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2020/02/19/爬虫实战之晋江榜单抓取以及数据分析/" >🕷爬虫实战之晋江榜单抓取以及数据分析</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2020/01/30/CS61A/" >CS61A</a>
         </li>
     
     
@@ -1108,7 +1103,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2019/02/23/git学习实验报告/" >git入门</a>
+            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2019/02/23/git入门/" >git入门</a>
         </li>
     
     
@@ -1157,31 +1152,37 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
     
-        <span class="sidebar-tag-name" data-tags="打卡"><span class="iconfont-archer">&#xe606;</span>打卡</span>
-    
         <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
-    
-        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
-    
-        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
-    
-        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
     
         <span class="sidebar-tag-name" data-tags="玩具"><span class="iconfont-archer">&#xe606;</span>玩具</span>
     
         <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
-        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="TeachYourselfCS"><span class="iconfont-archer">&#xe606;</span>TeachYourselfCS</span>
+    
+        <span class="sidebar-tag-name" data-tags="programming"><span class="iconfont-archer">&#xe606;</span>programming</span>
     
         <span class="sidebar-tag-name" data-tags="openGL"><span class="iconfont-archer">&#xe606;</span>openGL</span>
     
         <span class="sidebar-tag-name" data-tags="图形学"><span class="iconfont-archer">&#xe606;</span>图形学</span>
+    
+        <span class="sidebar-tag-name" data-tags="剪辑"><span class="iconfont-archer">&#xe606;</span>剪辑</span>
+    
+        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+    
+        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
+    
+        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
+    
+        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
     
         <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
     
@@ -1191,9 +1192,7 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
     
-        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
-    
-        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
+        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1227,6 +1226,8 @@ jsonContent:
 </div>
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="programming"><span class="iconfont-archer">&#xe60a;</span>programming</span>
     
         <span class="sidebar-category-name" data-categories="算法题"><span class="iconfont-archer">&#xe60a;</span>算法题</span>
     
