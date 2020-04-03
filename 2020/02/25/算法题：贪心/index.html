@@ -291,7 +291,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.7k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.3k</span>阅读时长: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -421,33 +421,15 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>因为PAT甲/乙 LeetCode的题分开来太乱了，所以在这边重构了一下。
-大坑🕳,不知道什么时候能更完。
-LeetCode的题在GitHub有详细笔记，PAT挑着说了一下。
-善用搜索。</p>
-<p>#知识要点/注意点</p>
-<p>参考&lt;a href=&quot;https://book.douban.com/subject/26827295/&quot;&gt;《算法笔记》&lt;/a&gt;第四章</p>
-<p><strong>通式</strong>
-目的都是求最x,解决方法通常是将（经过处理的）已知量排个序按顺序进行处理。
-每步都做到局部最优，达到最后的整体最优。
-（仅限于做设计好的算法题，平时还是得证明看下能不能整体最优。）</p>
-<p><strong>报错点</strong>
-用double不要用float.</p>
-<p>#PAT
-##甲级</p>
-<p><strong>1070 Mooncake(25) &lt;a href=&quot;https://pintia.cn/problem-sets/994805342720868352/problems/994805399578853376&quot;&gt; 原题 &lt;/a&gt;  &lt;a href=&quot;https://github.com/wusanwan/algorithm/blob/master/AdvancedLevel/1070.cpp&quot;&gt;  GitHub  &lt;/a&gt;</strong>
-最简单的贪心题，当忘了概念的时候就点开来看看吧😀。</p>
-<p><strong>1125 Chain the Ropes(25)   &lt;a href=&quot;https://pintia.cn/problem-sets/994805342720868352/problems/994805350316752896&quot;&gt; 原题 &lt;/a&gt;  &lt;a href=&quot;https://github.com/wusanwan/algorithm/blob/master/AdvancedLevel/1125.cpp&quot;&gt;  GitHub  &lt;/a&gt;</strong>
-简单题，两段绳子每次相加要砍掉一半，那么加过n次后该段绳子等于原来的$\frac{1}{2^n}$，故想要最大长度，应该从短的开始接，长的留在后面可以少腰斩几次。</p>
-<p><strong>1037 Magic Coupon(25) &lt;a href=&quot;https://pintia.cn/problem-sets/994805342720868352/problems/994805451374313472&quot;&gt;原题&lt;/a&gt; &lt;a href=&quot;https://github.com/wusanwan/algorithm/blob/master/AdvancedLevel/1037.cpp&quot;&gt;  GitHub  &lt;/a&gt;</strong>
-简单题，就分正正负负两种，排序后头尾各一个循环就行。</p>
-<p>#LeetCode
-##easy
-<strong>122. Best Time to Buy and Sell Stock II   &lt;a href=&quot;https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/&quot;&gt; 原题 &lt;/a&gt;&lt;a href=&quot;https://github.com/wusanwan/algorithm/blob/master/LeetCode/122.md&quot;&gt; GitHub&lt;/a&gt;</strong></p>
-<p><strong>法一</strong>
-思路很简单，[第一天，第二天]如果是涨的就第一天买第二天卖，如果是亏的就不操作。
-(一点都不像股票😑)<strong>贪心：每一个波段都要吃到。</strong>
-其实就是最大子序列和的问题。</p>
+        <p>因为PAT甲/乙 LeetCode的题分开来太乱了，所以在这边重构了一下。<br>大坑🕳,不知道什么时候能更完。<br>LeetCode的题在GitHub有详细笔记，PAT挑着说了一下。<br>善用搜索。</p>
+<h1 id="知识要点-注意点"><a href="#知识要点-注意点" class="headerlink" title="知识要点/注意点"></a>知识要点/注意点</h1><p>参考<a href="https://book.douban.com/subject/26827295/" target="_blank" rel="noopener">《算法笔记》</a>第四章</p>
+<p><strong>通式</strong><br>目的都是求最x,解决方法通常是将（经过处理的）已知量排个序按顺序进行处理。<br>每步都做到局部最优，达到最后的整体最优。<br>（仅限于做设计好的算法题，平时还是得证明看下能不能整体最优。）</p>
+<p><strong>报错点</strong><br>用double不要用float.</p>
+<h1 id="PAT"><a href="#PAT" class="headerlink" title="PAT"></a>PAT</h1><h2 id="甲级"><a href="#甲级" class="headerlink" title="甲级"></a>甲级</h2><p><strong>1070 Mooncake(25) <a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805399578853376" target="_blank" rel="noopener"> 原题 </a>  <a href="https://github.com/wusanwan/algorithm/blob/master/AdvancedLevel/1070.cpp" target="_blank" rel="noopener">  GitHub  </a></strong><br>最简单的贪心题，当忘了概念的时候就点开来看看吧😀。</p>
+<p><strong>1125 Chain the Ropes(25)   <a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805350316752896" target="_blank" rel="noopener"> 原题 </a>  <a href="https://github.com/wusanwan/algorithm/blob/master/AdvancedLevel/1125.cpp" target="_blank" rel="noopener">  GitHub  </a></strong><br>简单题，两段绳子每次相加要砍掉一半，那么加过n次后该段绳子等于原来的$\frac{1}{2^n}$，故想要最大长度，应该从短的开始接，长的留在后面可以少腰斩几次。</p>
+<p><strong>1037 Magic Coupon(25) <a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805451374313472" target="_blank" rel="noopener">原题</a> <a href="https://github.com/wusanwan/algorithm/blob/master/AdvancedLevel/1037.cpp" target="_blank" rel="noopener">  GitHub  </a></strong><br>简单题，就分正正负负两种，排序后头尾各一个循环就行。</p>
+<h1 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h1><h2 id="easy"><a href="#easy" class="headerlink" title="easy"></a>easy</h2><p><strong>122. Best Time to Buy and Sell Stock II   <a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener"> 原题 </a><a href="https://github.com/wusanwan/algorithm/blob/master/LeetCode/122.md" target="_blank" rel="noopener"> GitHub</a></strong></p>
+<p><strong>法一</strong><br>思路很简单，[第一天，第二天]如果是涨的就第一天买第二天卖，如果是亏的就不操作。<br>(一点都不像股票😑)<strong>贪心：每一个波段都要吃到。</strong><br>其实就是最大子序列和的问题。</p>
 <pre><code>//法一 思路简单 速度较慢
 //执行用时 :12 ms, 在所有 C++ 提交中击败了26.05%的用户
 class Solution {
@@ -462,24 +444,17 @@ public:
         return profit;
     }
 };
-</code></pre>
-<p><strong>报错</strong>
-此时，如果没有if(prices.empty())return profit;就会报数组越界的错误。</p>
+</code></pre><p><strong>报错</strong><br>此时，如果没有if(prices.empty())return profit;就会报数组越界的错误。</p>
 <blockquote>
 <p>因为 prices.size() 得到是一个无符号整型数 ，所以做 i &lt; 0 -1 比较运算时，右侧 0-1得到的是一个无符号数，所以不会跳出for循环，而是进行极大次数的循环，当prices数组为空时，造成访问越界 因为c语言传参就是int 型，所以没有无符号和带符号数计算带来的错误。<em>——leetcode用户：模电小天才</em></p>
 </blockquote>
-<p>为什么是极大次数的循环：👉&lt;a href=&quot;https://www.zhihu.com/question/322379893/answer/668427247&quot;&gt;详细解释&lt;/a&gt;
-其实就是因为是无符号整型数，所以-1就变最大了。</p>
-<p><strong>改进</strong>
-1.如果不想要这个判断empty的语句，可以改成int(prices.size())-1,或改成i+1&lt;prices.size(),或改成i从1开始和前一天进行比较，变成i&lt;prices.size()就没有问题了。</p>
+<p>为什么是极大次数的循环：👉<a href="https://www.zhihu.com/question/322379893/answer/668427247" target="_blank" rel="noopener">详细解释</a><br>其实就是因为是无符号整型数，所以-1就变最大了。</p>
+<p><strong>改进</strong><br>1.如果不想要这个判断empty的语句，可以改成int(prices.size())-1,或改成i+1&lt;prices.size(),或改成i从1开始和前一天进行比较，变成i&lt;prices.size()就没有问题了。</p>
 <p>2.代码简洁上的考虑</p>
 <pre><code>if(prices[i+1]&gt;prices[i])
 profit+=prices[i+1]-prices[i];
 //更简洁的写法是 profit+=max(0,prices[i+1]-prices[i])
-</code></pre>
-<p>3.执行速度上的考虑
-<strong>法二</strong>
-[第一天，第二天]的思考方法简单易懂，虽然已经是O(n)，但天数一多还是速度慢，于是可以加两句代码处理连涨的情况，将一天一卖变成几天一卖，减少+=运算的次数。于是就从[第一天，第二天]的模型变成了变成了while找谷值，while找峰值，做差求利润的模型。</p>
+</code></pre><p>3.执行速度上的考虑<br><strong>法二</strong><br>[第一天，第二天]的思考方法简单易懂，虽然已经是O(n)，但天数一多还是速度慢，于是可以加两句代码处理连涨的情况，将一天一卖变成几天一卖，减少+=运算的次数。于是就从[第一天，第二天]的模型变成了变成了while找谷值，while找峰值，做差求利润的模型。</p>
 <pre><code>//法二 实现稍复杂 速度快
 // 执行用时 :4 ms, 在所有 C++ 提交中击败了97.46%的用户
 // 内存消耗 :15.2MB,在所有 C++ 提交中击败了5.07%的用户
@@ -499,18 +474,10 @@ public:
         return profit;
     }
 };
-</code></pre>
-<p>4.其他解法待补充💨</p>
-<p><strong>392. Is Subsequence &lt;a href=&quot;https://leetcode-cn.com/problems/is-subsequence/&quot;&gt;原题&lt;/a&gt;&lt;a href=&quot;https://github.com/wusanwan/algorithm/blob/master/LeetCode/392.md&quot;&gt; GitHub&lt;/a&gt;</strong>
-最简单的思路应该是用有点像归并操作的双指针来做。
-##medium
-<strong>55. Jump Game &lt;a href=&quot;https://leetcode-cn.com/problems/jump-game/&quot;&gt;原题&lt;/a&gt;&lt;a href=&quot;https://github.com/wusanwan/algorithm/blob/master/LeetCode/55.md&quot;&gt; GitHub&lt;/a&gt;</strong>
-遍历数组更新最远能到距离right。</p>
-<p><strong>134. Gas Station &lt;a href=&quot;https://leetcode-cn.com/problems/gas-station/&quot;&gt;原题&lt;/a&gt;&lt;a href=&quot;https://github.com/wusanwan/algorithm/blob/master/LeetCode/55.md&quot;&gt; GitHub&lt;/a&gt;</strong>
-这题我是先从整体考虑，sum(gas)如果小于sum(cost),肯定是到不了的。
-再考虑局部sum+diff[i] (目前的汽油量)如果小于零的话就让i+1做新的起点，有点像&lt;a href=&quot;https://leetcode-cn.com/problems/majority-element/&quot;&gt;169. Majority Element&lt;/a&gt;，遍历一遍i就可以知道起点在哪。
-实际意义上类似于&lt;a href=&quot;https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/&quot;&gt;122.炒股 &lt;/a&gt;，如果是亏的就换下一个点开始。
-基本靠直觉做出来的，建议复习的时候再品一品。</p>
+</code></pre><p>4.其他解法待补充💨</p>
+<p><strong>392. Is Subsequence <a href="https://leetcode-cn.com/problems/is-subsequence/" target="_blank" rel="noopener">原题</a><a href="https://github.com/wusanwan/algorithm/blob/master/LeetCode/392.md" target="_blank" rel="noopener"> GitHub</a></strong><br>最简单的思路应该是用有点像归并操作的双指针来做。</p>
+<h2 id="medium"><a href="#medium" class="headerlink" title="medium"></a>medium</h2><p><strong>55. Jump Game <a href="https://leetcode-cn.com/problems/jump-game/" target="_blank" rel="noopener">原题</a><a href="https://github.com/wusanwan/algorithm/blob/master/LeetCode/55.md" target="_blank" rel="noopener"> GitHub</a></strong><br>遍历数组更新最远能到距离right。</p>
+<p><strong>134. Gas Station <a href="https://leetcode-cn.com/problems/gas-station/" target="_blank" rel="noopener">原题</a><a href="https://github.com/wusanwan/algorithm/blob/master/LeetCode/55.md" target="_blank" rel="noopener"> GitHub</a></strong><br>这题我是先从整体考虑，sum(gas)如果小于sum(cost),肯定是到不了的。<br>再考虑局部sum+diff[i] (目前的汽油量)如果小于零的话就让i+1做新的起点，有点像<a href="https://leetcode-cn.com/problems/majority-element/" target="_blank" rel="noopener">169. Majority Element</a>，遍历一遍i就可以知道起点在哪。<br>实际意义上类似于<a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener">122.炒股 </a>，如果是亏的就换下一个点开始。<br>基本靠直觉做出来的，建议复习的时候再品一品。</p>
 <pre><code>//4ms,97.56%
 class Solution {
 public:
@@ -529,12 +496,8 @@ public:
         else return index;
     }
 };
-</code></pre>
-<p><strong>优化</strong>
-1.记得看看能不能把for合并下。</p>
-<p>##hard
-<strong>45. Jump Game II &lt;a href=&quot;https://leetcode-cn.com/problems/jump-game-ii/&quot;&gt;原题&lt;/a&gt;&lt;a href=&quot;https://github.com/wusanwan/algorithm/blob/master/LeetCode/45.md&quot;&gt; GitHub&lt;/a&gt;</strong>
-I的时候想复杂了，那段代码也可以用在II这里，每次都跳得最远。</p>
+</code></pre><p><strong>优化</strong><br>1.记得看看能不能把for合并下。</p>
+<h2 id="hard"><a href="#hard" class="headerlink" title="hard"></a>hard</h2><p><strong>45. Jump Game II <a href="https://leetcode-cn.com/problems/jump-game-ii/" target="_blank" rel="noopener">原题</a><a href="https://github.com/wusanwan/algorithm/blob/master/LeetCode/45.md" target="_blank" rel="noopener"> GitHub</a></strong><br>I的时候想复杂了，那段代码也可以用在II这里，每次都跳得最远。</p>
 
     </article>
     <!-- license  -->
@@ -728,7 +691,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#知识要点-注意点"><span class="toc-number">1.</span> <span class="toc-text">知识要点/注意点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PAT"><span class="toc-number">2.</span> <span class="toc-text">PAT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#甲级"><span class="toc-number">2.1.</span> <span class="toc-text">甲级</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LeetCode"><span class="toc-number">3.</span> <span class="toc-text">LeetCode</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#easy"><span class="toc-number">3.1.</span> <span class="toc-text">easy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#medium"><span class="toc-number">3.2.</span> <span class="toc-text">medium</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hard"><span class="toc-number">3.3.</span> <span class="toc-text">hard</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -741,16 +704,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -981,7 +934,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2020/03/30/CS61A笔记1/" >CS61A 笔记1</a>
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/2020/03/30/CS61A笔记1/" >CS61A 笔记1：基础</a>
         </li>
     
     
@@ -1092,7 +1045,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+        <span class="sidebar-tag-name" data-tags="TeachYourselfCS"><span class="iconfont-archer">&#xe606;</span>TeachYourselfCS</span>
+    
+        <span class="sidebar-tag-name" data-tags="programming"><span class="iconfont-archer">&#xe606;</span>programming</span>
     
         <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
     
@@ -1102,19 +1057,17 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
     
-        <span class="sidebar-tag-name" data-tags="TeachYourselfCS"><span class="iconfont-archer">&#xe606;</span>TeachYourselfCS</span>
+        <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
     
-        <span class="sidebar-tag-name" data-tags="programming"><span class="iconfont-archer">&#xe606;</span>programming</span>
+        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
+    
+        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
     
         <span class="sidebar-tag-name" data-tags="openGL"><span class="iconfont-archer">&#xe606;</span>openGL</span>
     
         <span class="sidebar-tag-name" data-tags="图形学"><span class="iconfont-archer">&#xe606;</span>图形学</span>
     
-        <span class="sidebar-tag-name" data-tags="剪辑"><span class="iconfont-archer">&#xe606;</span>剪辑</span>
-    
         <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
-    
-        <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
@@ -1122,19 +1075,19 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
     
-        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
-    
-        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
-    
         <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
     
         <span class="sidebar-tag-name" data-tags="数据分析"><span class="iconfont-archer">&#xe606;</span>数据分析</span>
     
+        <span class="sidebar-tag-name" data-tags="图像处理"><span class="iconfont-archer">&#xe606;</span>图像处理</span>
+    
+        <span class="sidebar-tag-name" data-tags="论文"><span class="iconfont-archer">&#xe606;</span>论文</span>
+    
+        <span class="sidebar-tag-name" data-tags="剪辑"><span class="iconfont-archer">&#xe606;</span>剪辑</span>
+    
         <span class="sidebar-tag-name" data-tags="coursera"><span class="iconfont-archer">&#xe606;</span>coursera</span>
     
         <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
-    
-        <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
