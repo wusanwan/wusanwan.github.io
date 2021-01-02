@@ -11,7 +11,7 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
     <meta name="author" content="吴三万">
     <meta name="renderer" content="webkit">
@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>人生浪费指南</title>
+    <title>B树与B+树笔记 · 人生浪费指南</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -213,17 +213,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
     <!-- 百度统计  -->
     
-    <!-- 谷歌统计  -->
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 </head>
 
     
+        <body class="post-body">
     
-<header class="header">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >人生浪费指南</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">B树与B+树笔记</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>人生浪费指南</a>
 </header>
@@ -235,24 +246,74 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
     
+    
+    <!-- 404页  -->
+    
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            B树与B+树笔记
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "data structure">data structure</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1k</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/07/11</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -354,39 +415,134 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/07/11/B树与B树笔记/" >
-            
-                <span>B树与B+树笔记</span>
-        </a>
-        <div class="abstract-content">
-            瞎写的。
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/07/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "data structure">data structure</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>被书上的定义搞怕了，为什么可以写的这么乱 😇。</p>
+<h3 id="提出"><a href="#提出" class="headerlink" title="提出"></a>提出</h3><p>主要是考虑到数据量非常大时的磁盘I/O次数。</p>
+<blockquote>
+<p>假设我们现在有 838,8608 条记录，对于红黑树而言，树的高度 h=log(838,8608)=23，也就是说如果要查找到叶子结点需要 23 次磁盘 I/O 操作；但是 B-树，情况就不同了，假设每一个结点可以包含 8 个键（当然真实情况下没有这么平均，有的结点包含的键可能比8多一些，有些比 8 少一些），那么整颗树的高度将最多  ceil(log8(838,8608))=8层，也就意味着磁盘查找一个叶子结点上的键的磁盘访问时间只有 8 次，这就是 B-树提出来的原因所在。 —<a href="https://mp.weixin.qq.com/s/Q29CgcnnudePQ0l2UyshUw" target="_blank" rel="noopener">景禹图解：什么是B树（心中有 B树，做人要谦虚）？</a></p>
+</blockquote>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>B树，又称<strong>多路平衡查找树</strong>。</p>
+<p><strong>m阶</strong>：各结点最多m棵子树。</p>
+<p>阶数和目前树的状态无关，是一开始对树下的一个定义。</p>
+<p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/Btree/pp1.png"></p>
+<p>m阶b树要么为空树，要么满足以下条件。</p>
+<ol>
+<li><p><strong>结点的结构</strong></p>
+<p> 结点中有<strong>n</strong>个关键字，<strong>n+1</strong>个指针，对每个关键字而言，所有左边指针所指的子树结点里的关键字都要比它小，右边子树结点里的关键字都要比它大，结点内的关键字也有序。</p>
+</li>
+<li><p><strong>结点中子树指针和关键字的个数(m阶)</strong></p>
+<p> 子树数-1=关键字数。</p>
+<p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/Btree/pp2.png"></p>
+</li>
+<li><p><strong>叶结点</strong></p>
+<p> 所有的叶结点都在同一层次上（平衡因子均等于0），并且不带信息。上图并未画出叶节点，叶节点应该在第4层，代表查找失败的位置。</p>
+<p> n个关键字有n+1个叶结点。</p>
+</li>
+</ol>
+<h3 id="高度"><a href="#高度" class="headerlink" title="高度"></a>高度</h3><p><strong>定义：</strong>B树的高度不带叶结点那层。</p>
+<p><strong>作用：</strong>B树的大部分操作所需的磁盘存取次数与B树的高度成正比。</p>
+<p><strong>范围：</strong>n个关键字，m阶，高度为h</p>
+<script type="math/tex; mode=display">log_m(n+1)\leq h\leq log_{ceil(m/2)}\frac{n+1}{2}+1</script><p><strong>推导过程：</strong></p>
+<ol>
+<li><p>h最小则需尽量矮胖，必须填满每个节点，有</p>
+<p> $n&lt;(m-1)(1+m+m^2+\dots+m^{h-1})=m^h-1$</p>
+<p> $m-1$是每个节点的关键词数，（$1+m+m^2\dots$）是每层的结点数。</p>
+</li>
+<li><p>h最大则要尽量瘦高,第1层1个,第2层2个,第3层2<em>ceil(m/2)个,第4层2 </em> ceil(m/2) * ceil(m/2)个…</p>
+<p> 于是对第h+1层有</p>
+<script type="math/tex; mode=display">n+1\ge2(ceil(m/2)^h</script><p> 其中n+1是第h+1层的关键字数，不等式右边是h+1层最少结点数。</p>
+<p> 对于关键字个数为n的B树，叶结点即查找不成功的结点为n+1个。</p>
+</li>
+</ol>
+<h3 id="B树的查找O-n"><a href="#B树的查找O-n" class="headerlink" title="B树的查找O(n)"></a>B树的查找O(n)</h3><p>在B树中找结点（磁盘），再到结点内找关键字（内存）</p>
+<p>即找到目标结点后，将结点信息读入内存，然后在结点内采用顺序或折半查找。</p>
+<h3 id="B树的插入O-n"><a href="#B树的插入O-n" class="headerlink" title="B树的插入O(n)"></a>B树的插入O(n)</h3><p><strong>终端结点</strong>定义为最底层非叶结点<strong>。</strong></p>
+<p>定位→判断合法→分裂“左原右新中飞升”→判断父结点。</p>
+<p>插入的是<strong>关键字</strong>。</p>
+<p>因为有个飞升到父结点了，所以它右边又有个新子树，刚好就是右边关键字所在的新结点。</p>
+<p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/Btree/pp3.png"></p>
+<h3 id="B树的删除O-n"><a href="#B树的删除O-n" class="headerlink" title="B树的删除O(n)"></a>B树的删除O(n)</h3><p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/Btree/pp4.png"></p>
+<p><strong>例子</strong></p>
+<p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/Btree/pp5.jpeg"></p>
+<h3 id="B-树的概念"><a href="#B-树的概念" class="headerlink" title="B+树的概念"></a>B+树的概念</h3><p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/Btree/pp6.png"></p>
+<p>一个关键字对应一颗子树。</p>
+<p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/Btree/pp7.png"></p>
+<p><strong>B+树比B树的优势</strong></p>
+<ol>
+<li>I/O次数少，中间结点没存储对应的记录地址可以放更多结点，更紧凑，更矮胖。</li>
+<li>查询性能稳定，每次都要查到叶结点上。</li>
+<li>遍历方便，有链方便范围查询。</li>
+</ol>
+<p><strong>B树比B+树的优势</strong></p>
+<p>如果有高频度结点在靠近根的位置就会省时。</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>文件系统和数据库索引。</p>
+<p>MongoDB用的B树，mysql用的B+树。</p>
+<p><strong>遗留问题</strong></p>
+<p>为啥一会儿叶结点空一会儿又有叶结点的。</p>
+<p><strong>参考资料</strong></p>
+<p>王道2021</p>
+
     </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://www.wusanwan.com">吴三万</a>
+            <p>原文链接：<a href="http://www.wusanwan.com/2020/07/11/B树与B树笔记/">http://www.wusanwan.com/2020/07/11/B树与B树笔记/</a>
+            <p>发表日期：<a href="http://www.wusanwan.com/2020/07/11/B树与B树笔记/">七月 11日 2020, 3:36:13 下午</a>
+            <p>更新日期：<a href="http://www.wusanwan.com/2020/07/11/B树与B树笔记/">January 2nd 2021, 8:37:06 am</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2021/01/01/PAT甲级感想/" title= "PAT常见报错总结+安利notion">
+                    <div class="nextTitle">PAT常见报错总结+安利notion</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/06/30/详解KMP算法/" title= "详解KMP算法">
+                    <div class="prevTitle">详解KMP算法</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "LBBQupBMJM5xUoIbNjmi43JO-gzGzoHsz",
+        appKey: "zs5uR8OAi9BWaa9pQGtewrFj",
+        placeholder: "若有错误恳请大家不吝指正",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -499,6 +655,24 @@
 
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#提出"><span class="toc-number">1.</span> <span class="toc-text">提出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义"><span class="toc-number">2.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高度"><span class="toc-number">3.</span> <span class="toc-text">高度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B树的查找O-n"><span class="toc-number">4.</span> <span class="toc-text">B树的查找O(n)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B树的插入O-n"><span class="toc-number">5.</span> <span class="toc-text">B树的插入O(n)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B树的删除O-n"><span class="toc-number">6.</span> <span class="toc-text">B树的删除O(n)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-树的概念"><span class="toc-number">7.</span> <span class="toc-text">B+树的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用"><span class="toc-number">8.</span> <span class="toc-text">应用</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1078,6 +1252,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -1094,7 +1270,7 @@ jsonContent:
     });
 </script>
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
 
 

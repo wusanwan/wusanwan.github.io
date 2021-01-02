@@ -11,7 +11,7 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
     <meta name="author" content="吴三万">
     <meta name="renderer" content="webkit">
@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>人生浪费指南</title>
+    <title>归并排序，堆排序，快速排序总结 · 人生浪费指南</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -213,17 +213,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
     <!-- 百度统计  -->
     
-    <!-- 谷歌统计  -->
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 </head>
 
     
+        <body class="post-body">
     
-<header class="header">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >人生浪费指南</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">归并排序，堆排序，快速排序总结</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>人生浪费指南</a>
 </header>
@@ -235,24 +246,74 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
     
+    
+    <!-- 404页  -->
+    
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            归并排序，堆排序，快速排序总结
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "数据结构">数据结构</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2021/07/02</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -354,39 +415,111 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/07/11/B树与B树笔记/" >
-            
-                <span>B树与B+树笔记</span>
-        </a>
-        <div class="abstract-content">
-            瞎写的。
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/07/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "data structure">data structure</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>其实3个理解起来还挺容易，只是有点容易忘，所以还是写一下。（本来还以为理解透了，没想到写博客过程中又冒出来不少新问题…费曼大法好🤪</p>
+<p>写完感觉写得好水好水…</p>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p><strong>空间复杂度</strong> O(n)</p>
+<p><strong>时间复杂度</strong> O(nlogn)</p>
+<p><strong>稳定性</strong> 稳定</p>
+<p><strong>k路归并的归并趟数</strong> ceil(log_k n)</p>
+<p><a href="https://visualgo.net/zh/sorting?slide=10" target="_blank" rel="noopener">VisuAlgo</a></p>
+<p><strong>实际运行</strong>中往往是对左边递归递归递归递归完再进行右边的递归排序，而<strong>考试</strong>中是一次就排序一层，注意这个差别。</p>
+<h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//分治 思想</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// subarray1 = a[low..mid], subarray2 = a[mid+1..high], both sorted</span></span><br><span class="line">  <span class="keyword">int</span> N = high-low+<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> b[N]; <span class="comment">// 讨论: 为什么我们需要一个临时的数组 b?</span></span><br><span class="line">  <span class="keyword">int</span> left = low, right = mid+<span class="number">1</span>, bIdx = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> (left &lt;= mid &amp;&amp; right &lt;= high) <span class="comment">// 归并</span></span><br><span class="line">    b[bIdx++] = (a[left] &lt;= a[right]) ? a[left++] : a[right++];</span><br><span class="line">  <span class="keyword">while</span> (left &lt;= mid) b[bIdx++] = a[left++]; <span class="comment">// leftover, if any</span></span><br><span class="line">  <span class="keyword">while</span> (right &lt;= high) b[bIdx++] = a[right++]; <span class="comment">// leftover, if any</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; N; k++) a[low+k] = b[k]; <span class="comment">// copy back</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 要排序的数组是 a[low..high]</span></span><br><span class="line">  <span class="keyword">if</span> (low &lt; high) &#123; <span class="comment">// base case: low &gt;= high (0 or 1 item)</span></span><br><span class="line">    <span class="keyword">int</span> mid = (low+high) / <span class="number">2</span>;</span><br><span class="line">    mergeSort(a, low  , mid ); <span class="comment">// 分成一半</span></span><br><span class="line">    mergeSort(a, mid+<span class="number">1</span>, high); <span class="comment">// 递归地将它们排序</span></span><br><span class="line">    merge(a, low, mid, high); <span class="comment">// 解决: 归并子程序</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><h3 id="特性-1"><a href="#特性-1" class="headerlink" title="特性"></a>特性</h3><p><strong>空间复杂度</strong> O(1)</p>
+<p><strong>时间复杂度</strong></p>
+<p>堆排序O(nlogn)</p>
+<p>建堆O(n)</p>
+<p>插入,删除O(log2n)</p>
+<p>向下调整O(h）(其实就是O(log2n)吧，二叉树诶。</p>
+<p><strong>稳定性</strong> 不稳定</p>
+<p><a href="https://visualgo.net/zh/heap?slide=1" target="_blank" rel="noopener">VisuAlgo</a></p>
+<h3 id="code-1"><a href="#code-1" class="headerlink" title="code"></a>code</h3><p><strong>向下调整</strong></p>
+<ol>
+<li>将当前节点V与其左右孩子相比较，与其中权值更大且大于V的结点交换（如果有的话）。</li>
+<li>(已经在下面的)结点V继续与孩子比较，直到结点V的孩子的权值都比结点V的权值小或者不存在。</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对heap数组在[low,high]范围进行向下调整</span></span><br><span class="line"><span class="comment">//其中low为待调整的结点的数组下标，high一般为堆的最后一个元素的数组下标</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">downAdjust</span><span class="params">(<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i=low,j=i*<span class="number">2</span>;<span class="comment">//i是待调整结点，j是左孩子</span></span><br><span class="line">		<span class="keyword">while</span>(j&lt;=high)&#123;<span class="comment">//存在左孩子结点</span></span><br><span class="line">				<span class="comment">//如果右孩子存在且右孩子的值大于左孩子(左右比较）</span></span><br><span class="line">				<span class="keyword">if</span>(j+<span class="number">1</span>&lt;=high&amp;&amp;heap[j+<span class="number">1</span>]&gt;heap[j])&#123;</span><br><span class="line">						j=j+<span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">//如果孩子中最大的权值比欲调整结点i大（上下比较）</span></span><br><span class="line">				<span class="keyword">if</span>(heap[j]&gt;heap[i])&#123;</span><br><span class="line">						swap(heap[i],heap[j]);</span><br><span class="line">						i=j;  <span class="comment">//向下继续调整</span></span><br><span class="line">						j=i*<span class="number">2</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">break</span>;<span class="comment">//到头了调整结束</span></span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>建堆</strong></p>
+<p>从floor(n/2)到1：向下调整（到叶结点）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createHeap</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=n/<span class="number">2</span>;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">				downAdjust(i,n);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>堆排序</strong></p>
+<ol>
+<li>建堆</li>
+<li>交换堆底堆顶</li>
+<li>堆顶向下调整（到叶）</li>
+</ol>
+<p>2.3循环</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">heapSort</span><span class="params">()</span></span>&#123;</span><br><span class="line">		createHeap();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;<span class="number">1</span>;i--)&#123;<span class="comment">//倒着枚举，直到堆中只有一个元素</span></span><br><span class="line">				swap(heap[i],heap[<span class="number">1</span>]);    <span class="comment">//交换heap[i]与堆顶</span></span><br><span class="line">				downAdjust(<span class="number">1</span>,i<span class="number">-1</span>);        <span class="comment">//调整堆顶</span></span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><h3 id="特性-2"><a href="#特性-2" class="headerlink" title="特性"></a>特性</h3><p><strong>空间复杂度</strong></p>
+<p>最好O(log2n)</p>
+<p>最坏O(n)</p>
+<p>平均O(log2n)</p>
+<p><strong>时间复杂度</strong></p>
+<p>平均O(nlog2n)</p>
+<p>最差O(n^2) 基本有序或基本逆序的情况下</p>
+<p><strong>稳定性</strong> 不稳定</p>
+<p>“内部排序算法中最快的。”</p>
+<p>“每次排序后基准元素总能放到最后位置上”</p>
+<p><a href="https://visualgo.net/zh/sorting?slide=11" target="_blank" rel="noopener">VisuAlgo</a></p>
+<p>跟书上有点不太一样（考试还是照严版的）</p>
+<h3 id="code-2"><a href="#code-2" class="headerlink" title="code"></a>code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> p = a[low]; <span class="comment">// p 是枢纽</span></span><br><span class="line">  <span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">		<span class="keyword">while</span>(low&lt;high&amp;&amp;A[high]&gt;=p)--high;</span><br><span class="line">		A[low]=A[high];<span class="comment">//比p小放左边</span></span><br><span class="line">		<span class="keyword">while</span>(low&lt;high&amp;&amp;A[low]&lt;=p)++low;</span><br><span class="line">		A[high]=A[low];<span class="comment">//比p大放右边</span></span><br><span class="line">	&#125;</span><br><span class="line">	A[low]=p;  <span class="comment">//最终位置</span></span><br><span class="line">  <span class="keyword">return</span> low; <span class="comment">// 返回枢纽的最终位置, 用于快速排序（Quick Sort）</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (low &lt; high) &#123;</span><br><span class="line">    <span class="keyword">int</span> m = partition(a, low, high); <span class="comment">// O(N)</span></span><br><span class="line">    <span class="comment">// a[low..high] ~&gt; a[low..m–1], pivot, a[m+1..high]</span></span><br><span class="line">    quickSort(a, low, m<span class="number">-1</span>); <span class="comment">// 递归地将左子阵列排序</span></span><br><span class="line">    <span class="comment">// a[m] = pivot 在分区后就被排序好了</span></span><br><span class="line">    quickSort(a, m+<span class="number">1</span>, high); <span class="comment">// 然后将右子阵列排序</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
     </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://www.wusanwan.com">吴三万</a>
+            <p>原文链接：<a href="http://www.wusanwan.com/2021/07/02/归并排序，堆排序，快速排序总结/">http://www.wusanwan.com/2021/07/02/归并排序，堆排序，快速排序总结/</a>
+            <p>发表日期：<a href="http://www.wusanwan.com/2021/07/02/归并排序，堆排序，快速排序总结/">七月 2日 2021, 9:09:58 晚上</a>
+            <p>更新日期：<a href="http://www.wusanwan.com/2021/07/02/归并排序，堆排序，快速排序总结/">January 2nd 2021, 9:11:25 pm</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2021/01/01/PAT甲级感想/" title= "PAT常见报错总结+安利notion">
+                    <div class="prevTitle">PAT常见报错总结+安利notion</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "LBBQupBMJM5xUoIbNjmi43JO-gzGzoHsz",
+        appKey: "zs5uR8OAi9BWaa9pQGtewrFj",
+        placeholder: "若有错误恳请大家不吝指正",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -499,6 +632,24 @@
 
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#归并排序"><span class="toc-number">1.</span> <span class="toc-text">归并排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特性"><span class="toc-number">1.1.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code"><span class="toc-number">1.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆排序"><span class="toc-number">2.</span> <span class="toc-text">堆排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特性-1"><span class="toc-number">2.1.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code-1"><span class="toc-number">2.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速排序"><span class="toc-number">3.</span> <span class="toc-text">快速排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特性-2"><span class="toc-number">3.1.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code-2"><span class="toc-number">3.2.</span> <span class="toc-text">code</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1078,6 +1229,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -1094,7 +1247,7 @@ jsonContent:
     });
 </script>
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
 
 
