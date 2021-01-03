@@ -450,8 +450,8 @@ height:50vh;
 <p>有next公式如下：</p>
 <script type="math/tex; mode=display">next[j]=\begin{cases}0,j=1\\max\{k|1<k<j,p_1\dots p_{k-1}=p_{j-k+1}\dots p_{j-1}\},此集合不空时\\1,others\end{cases}</script><p>其实就是对上面的用PM求next的概括。</p>
 <p>下面给出求next数组和kmp的代码，可以看出一个是拿模式串匹配模式串，一个是拿模式串匹配主串，形式上十分相似。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getNext</span><span class="params">(<span class="built_in">string</span> t,<span class="keyword">int</span> next[])</span></span>&#123;<span class="comment">//模式串和模式串比</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>,j = <span class="number">0</span>;</span><br><span class="line">    next[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; t.length )&#123;</span><br><span class="line">        <span class="keyword">if</span> (j == <span class="number">0</span> || t[i] == t[j])next[i++] = j++;<span class="comment">//如果pi=pj,那么next[j+1]=next[j]+1</span></span><br><span class="line">				<span class="keyword">else</span> j = next[j];<span class="comment">//移动模式串，其实就是拿自己匹配自己的过程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Index_KMP</span><span class="params">(<span class="built_in">string</span> S,<span class="built_in">string</span> T,<span class="keyword">int</span> next[])</span></span>&#123;<span class="comment">//模式串和主串相比</span></span><br><span class="line">		<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(i&lt;=S.length&amp;&amp;j&lt;=T.length)&#123;</span><br><span class="line">				<span class="keyword">if</span>(j==<span class="number">0</span>||S[i]==T[j])++i,++j;</span><br><span class="line">				<span class="keyword">else</span> j=next[j];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> j&gt;T.length?i-T.length:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getNext</span><span class="params">(<span class="built_in">string</span> t,<span class="keyword">int</span> next[])</span></span>&#123;<span class="comment">//模式串和模式串比</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>,j = <span class="number">0</span>;</span><br><span class="line">    next[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; t.length )&#123;</span><br><span class="line">        <span class="keyword">if</span> (j == <span class="number">0</span> || t[i] == t[j])next[i++] = j++;<span class="comment">//如果pi=pj,那么next[j+1]=next[j]+1</span></span><br><span class="line">        <span class="keyword">else</span> j = next[j];<span class="comment">//移动模式串，其实就是拿自己匹配自己的过程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Index_KMP</span><span class="params">(<span class="built_in">string</span> S,<span class="built_in">string</span> T,<span class="keyword">int</span> next[])</span></span>&#123;<span class="comment">//模式串和主串相比</span></span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=S.length&amp;&amp;j&lt;=T.length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j==<span class="number">0</span>||S[i]==T[j])++i,++j;</span><br><span class="line">        <span class="keyword">else</span> j=next[j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> j&gt;T.length?i-T.length:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="KMP算法的优化：nextval数组"><a href="#KMP算法的优化：nextval数组" class="headerlink" title="KMP算法的优化：nextval数组"></a>KMP算法的优化：nextval数组</h4><p><strong>存在的问题</strong></p>
 <p>此时kmp算法仍有可以优化的地方,比如下图。</p>
 <p><img src="https://hexo-sanw.oss-cn-shanghai.aliyuncs.com/photos/KMP/p4.png"></p>
@@ -459,7 +459,7 @@ height:50vh;
 <p><strong>解决方法</strong></p>
 <p>可以递归的将next[j]=next[next[j]],直到$p<em>j\neq  p</em>{next[j]}.$</p>
 <p>如果是做题，需要注意在计算中更新next数组。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_nextval</span><span class="params">(<span class="built_in">string</span> t,<span class="keyword">int</span> nextval[])</span></span>&#123;<span class="comment">//模式串和模式串比</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>,j = <span class="number">0</span>;</span><br><span class="line">    nextval[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; t.length )&#123;</span><br><span class="line">        <span class="keyword">if</span> (j == <span class="number">0</span> || t[i] == t[j])&#123;</span><br><span class="line">						i++,j++;</span><br><span class="line">						<span class="keyword">if</span>(t[i]!=t[j])nextval[i]=j;<span class="comment">//和next的一样</span></span><br><span class="line">						<span class="keyword">else</span> nextval[i]=nextval[j];<span class="comment">//如果上面的等式成立，则回退。</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> j = nextval[j];<span class="comment">//移动模式串，其实就是拿自己匹配自己的过程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_nextval</span><span class="params">(<span class="built_in">string</span> t,<span class="keyword">int</span> nextval[])</span></span>&#123;<span class="comment">//模式串和模式串比</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>,j = <span class="number">0</span>;</span><br><span class="line">    nextval[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; t.length )&#123;</span><br><span class="line">        <span class="keyword">if</span> (j == <span class="number">0</span> || t[i] == t[j])&#123;</span><br><span class="line">           i++,j++;</span><br><span class="line">           <span class="keyword">if</span>(t[i]!=t[j])nextval[i]=j;<span class="comment">//和next的一样</span></span><br><span class="line">           <span class="keyword">else</span> nextval[i]=nextval[j];<span class="comment">//如果上面的等式成立，则回退。</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> j = nextval[j];<span class="comment">//移动模式串，其实就是拿自己匹配自己的过程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </article>
     <!-- license  -->
@@ -468,7 +468,7 @@ height:50vh;
             <p>原文作者：<a href="http://www.wusanwan.com">吴三万</a>
             <p>原文链接：<a href="http://www.wusanwan.com/2020/06/30/详解KMP算法/">http://www.wusanwan.com/2020/06/30/详解KMP算法/</a>
             <p>发表日期：<a href="http://www.wusanwan.com/2020/06/30/详解KMP算法/">June 30th 2020, 6:13:36 pm</a>
-            <p>更新日期：<a href="http://www.wusanwan.com/2020/06/30/详解KMP算法/">December 30th 2020, 6:56:14 pm</a>
+            <p>更新日期：<a href="http://www.wusanwan.com/2020/06/30/详解KMP算法/">January 3rd 2021, 2:33:34 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -477,8 +477,8 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/07/11/B树与B树笔记/" title= "B树与B+树笔记">
-                    <div class="nextTitle">B树与B+树笔记</div>
+                <a href= "/2020/07/02/归并排序，堆排序，快速排序总结/" title= "归并排序，堆排序，快速排序总结">
+                    <div class="nextTitle">归并排序，堆排序，快速排序总结</div>
                 </a>
             
         </li>
@@ -928,9 +928,22 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 22
+        Total : 23
         </div>
         <!-- search  -->
         
@@ -950,7 +963,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/02</span><a class="archive-post-title" href= "/2021/07/02/归并排序，堆排序，快速排序总结/" >归并排序，堆排序，快速排序总结</a>
+            <span class="archive-post-date">07/03</span><a class="archive-post-title" href= "/2021/07/03/复杂度分析/" >复杂度分析</a>
         </li>
     
     
@@ -970,6 +983,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">07/11</span><a class="archive-post-title" href= "/2020/07/11/B树与B树笔记/" >B树与B+树笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/02</span><a class="archive-post-title" href= "/2020/07/02/归并排序，堆排序，快速排序总结/" >归并排序，堆排序，快速排序总结</a>
         </li>
     
     
@@ -1090,53 +1108,53 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="TeachYourselfCS"><span class="iconfont-archer">&#xe606;</span>TeachYourselfCS</span>
-    
-        <span class="sidebar-tag-name" data-tags="programming"><span class="iconfont-archer">&#xe606;</span>programming</span>
-    
         <span class="sidebar-tag-name" data-tags="blog"><span class="iconfont-archer">&#xe606;</span>blog</span>
+    
+        <span class="sidebar-tag-name" data-tags="data structure"><span class="iconfont-archer">&#xe606;</span>data structure</span>
+    
+        <span class="sidebar-tag-name" data-tags="bug"><span class="iconfont-archer">&#xe606;</span>bug</span>
     
         <span class="sidebar-tag-name" data-tags="LaTeX"><span class="iconfont-archer">&#xe606;</span>LaTeX</span>
     
-        <span class="sidebar-tag-name" data-tags="bug"><span class="iconfont-archer">&#xe606;</span>bug</span>
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="玩具"><span class="iconfont-archer">&#xe606;</span>玩具</span>
     
         <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
-        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
-    
         <span class="sidebar-tag-name" data-tags="openGL"><span class="iconfont-archer">&#xe606;</span>openGL</span>
     
         <span class="sidebar-tag-name" data-tags="图形学"><span class="iconfont-archer">&#xe606;</span>图形学</span>
     
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
-        <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
-    
-        <span class="sidebar-tag-name" data-tags="数据分析"><span class="iconfont-archer">&#xe606;</span>数据分析</span>
-    
-        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
-    
         <span class="sidebar-tag-name" data-tags="MOOC"><span class="iconfont-archer">&#xe606;</span>MOOC</span>
     
         <span class="sidebar-tag-name" data-tags="cs"><span class="iconfont-archer">&#xe606;</span>cs</span>
-    
-        <span class="sidebar-tag-name" data-tags="剪辑"><span class="iconfont-archer">&#xe606;</span>剪辑</span>
-    
-        <span class="sidebar-tag-name" data-tags="data structure"><span class="iconfont-archer">&#xe606;</span>data structure</span>
-    
-        <span class="sidebar-tag-name" data-tags="coursera"><span class="iconfont-archer">&#xe606;</span>coursera</span>
-    
-        <span class="sidebar-tag-name" data-tags="data strcuture"><span class="iconfont-archer">&#xe606;</span>data strcuture</span>
-    
-        <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
     
         <span class="sidebar-tag-name" data-tags="PAT"><span class="iconfont-archer">&#xe606;</span>PAT</span>
     
         <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
+    
+        <span class="sidebar-tag-name" data-tags="工具"><span class="iconfont-archer">&#xe606;</span>工具</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="TeachYourselfCS"><span class="iconfont-archer">&#xe606;</span>TeachYourselfCS</span>
+    
+        <span class="sidebar-tag-name" data-tags="programming"><span class="iconfont-archer">&#xe606;</span>programming</span>
+    
+        <span class="sidebar-tag-name" data-tags="爬虫"><span class="iconfont-archer">&#xe606;</span>爬虫</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据分析"><span class="iconfont-archer">&#xe606;</span>数据分析</span>
+    
+        <span class="sidebar-tag-name" data-tags="coursera"><span class="iconfont-archer">&#xe606;</span>coursera</span>
+    
+        <span class="sidebar-tag-name" data-tags="剪辑"><span class="iconfont-archer">&#xe606;</span>剪辑</span>
+    
+        <span class="sidebar-tag-name" data-tags="data strcuture"><span class="iconfont-archer">&#xe606;</span>data strcuture</span>
+    
+        <span class="sidebar-tag-name" data-tags="Matlab"><span class="iconfont-archer">&#xe606;</span>Matlab</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1171,9 +1189,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="programming"><span class="iconfont-archer">&#xe60a;</span>programming</span>
-    
         <span class="sidebar-category-name" data-categories="算法题"><span class="iconfont-archer">&#xe60a;</span>算法题</span>
+    
+        <span class="sidebar-category-name" data-categories="programming"><span class="iconfont-archer">&#xe60a;</span>programming</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
@@ -1247,8 +1265,8 @@ jsonContent:
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":0.7,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-80},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.2},"log":false,"tagMode":false});</script></body>
 </html>
 
 
