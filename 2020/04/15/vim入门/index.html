@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>git入门 · 人生浪费指南</title>
+    <title>vim入门 · 人生浪费指南</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -232,7 +232,7 @@
                 <a href="/" >人生浪费指南</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">git入门</a>
+                <a href="#" class="post-name">vim入门</a>
             </div>
     </div>
     
@@ -262,7 +262,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            git入门
+            vim入门
             <!-- 404 -->
             
         </h1>
@@ -281,18 +281,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "git">git</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "工具">工具</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.2k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">2.4k</span>阅读时长: <span class="post-count reading-time">8 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/02/23</span>
+                    <span class="post-intro-time">2020/04/15</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -417,101 +417,224 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>学完git总算可以正规化这个博客的日常操作了。<br>学习素材是《git community》和实验楼的Git实战教程。<br>比起看一看还是自己手打一遍舒服。<br>一个特别好玩的<a href="https://learngitbranching.js.org" target="_blank" rel="noopener">git游戏化教程</a><br>是真的好！</p>
-<h1 id="理论部分"><a href="#理论部分" class="headerlink" title="理论部分"></a>理论部分</h1><h2 id="获得Git仓库"><a href="#获得Git仓库" class="headerlink" title="获得Git仓库"></a>获得Git仓库</h2><p>法1.从网上获取。</p>
-<pre><code>git clone +仓库地址
-</code></pre><p>法2.创建并初始化本地仓库。</p>
-<pre><code>mkdir project     //新建文件夹
-cd project
-git init
-</code></pre><h2 id="Git的基本流程"><a href="#Git的基本流程" class="headerlink" title="Git的基本流程"></a>Git的基本流程</h2><ol>
-<li>创建或修改文件。</li>
-<li>使用git add命令 添加新创建或者修改的文件到本地的缓存区。(Index)</li>
-<li>如果是删除，则使用git rm命令将已删除文件的信息加到缓存区。</li>
-<li><p>查看项目状况</p>
-<pre><code> git diff --cached     //查看会被提交的文件
- git diff              //查看已经修改的但是未被加入索引的文件（q退出）
- git status            //查看当前项目的状况
-</code></pre></li>
-<li><p>使用git commit 命令提交到本地代码库。</p>
-<pre><code> git commit -m &quot;这是提交&quot;
- git commit -a -m &quot;这是把没有提交到缓存的区的修改一起提交的操作&quot;
-</code></pre></li>
-<li><p>使用git push命令将本地代码库同步到远端代码库。</p>
-<pre><code> //添加远程仓库
- 之前已经git clone
- git remote add &lt;shortname&gt; &lt;url&gt;
- //推送到远端
- git push &lt;remote&gt; &lt;branch&gt;
-</code></pre></li>
-</ol>
-<h2 id="分支与合并"><a href="#分支与合并" class="headerlink" title="分支与合并"></a>分支与合并</h2><pre><code>//本地仓库
-HEAD是指当前分支
-//相对引用
-^表示上一个
-~num 表示上num个
-git branch branchname     //创建分支
-git branch   //查看当前分支及仓库中所有分支
-git checkout branchname     //切换分支
-git merge -m &#39;dddd&#39; branchname      //将分支与master合并
-git rebase  //取出一列的提交记录，“复制”它们，然后在另外一个地方逐个的放下去,更线性的合并。
-//如有冲突需要手动解决，add了再commit
-git branch -d branchname    //删去已合并的分支
-git branch -D crazy-idea    //强制删除分支
-git branch -f branchname head^ //强制将分支拉到head的父节点
-git reset  HEAD^    //撤销合并 不知道有这个提交，但是做的改变还在只是没加入缓存区（本地）
-git reset --hard HEAD     //撤销合并 不知道有这个提交，但是做的改变还在只是没加入缓存区
-git reset --hard ORIG_HEAD    //撤销已经提交的合并
-git revert HEAD //撤销提交并分享给别人（远程） 注意和reset参数不同
-git diff master..branchname     //比较两个版本之间的差异
-git diff branchname        //当前工作目录和其他分支的差别
-git cherry-pick &lt;提交号&gt; &lt;提交号&gt; &lt;提交号&gt;   //把提交号的这个提交复制到当前分支下
-//远程仓库
-//也可加入路径限定符，来比较某一文件或者目录
-git pull 地址 branchname  //把分支拉下来（包括两个步骤，从远程分支抓取修改内容再合并进当前分支）
-git pull --rebase  //将我们的工作 rebase 到远程分支的最新提交记录
-git fetch branchname      //抓取下来但是不修改合并进当前分支
-git remote add nickname 地址      //定义远程分支的缩写
-git push &lt;remote&gt; &lt;place&gt;      //将其push到公共仓库
-</code></pre><h2 id="Git日志"><a href="#Git日志" class="headerlink" title="Git日志"></a>Git日志</h2><pre><code>git log     //显示所有的提交
-git log --stat      //查看详细日志
-git log --pretty=short    //还可以选择email,medium,full,fuller,raw,oneline
-//日志排序的各种参数
---topo-order
---date-order    
---reverse     //逆序
-</code></pre><h2 id="Git标签"><a href="#Git标签" class="headerlink" title="Git标签"></a>Git标签</h2><pre><code>//轻量级标签
-git tag tagname commitID （前八位即可）
-</code></pre><h2 id="中级技能"><a href="#中级技能" class="headerlink" title="中级技能"></a>中级技能</h2><pre><code>//忽略某些文件
-添加一个.gitignore的文件，在里面写入需要忽略文件的名字，可以使用通配符*，以及取反符号！
-//储藏
-git stash &quot;work in progress&quot;    //会保存本地修改到储藏中，并还原到分支上次提交时的状态
-git stash apply       //修复完bug后恢复到以前的工作状态
-git stash list    //查看储藏队列（队列里的都可以apply
-git stash clear     //清空储藏队列
-//撤销
-git reset --hard HEAR     //让工作目录回到上次提交时的状态
-git checkout --hello.rb     //把hello.rb从HEAD中签出，并将其恢复成未修改时的样子
-//修复已提交文件中的错误————创建一个新的提交，在新的提交里撤销老的提交，所作的修改
-git revert HEAD       //撤销老的提交然后留下完整的老提交前的版本
-git revert HEAD^        //上上次的
-//维护
-git gc      //git历史信息的压缩
-</code></pre><h2 id="高级技能"><a href="#高级技能" class="headerlink" title="高级技能"></a>高级技能</h2><pre><code>//补丁
-git format-patch origin       //包含当前分支与origin/HEAD之间的差异内容
-</code></pre><h2 id="删除某文件夹"><a href="#删除某文件夹" class="headerlink" title="删除某文件夹"></a>删除某文件夹</h2><pre><code>git remote add origin 地址
-git rm -r --cached &quot;文件夹名称&quot;
-git commit -m&#39;删除&#39;
-git push -u origin master
-</code></pre>
+        <p>如果用notion的toggle list来折叠小标题下的内容，在查阅时效率会高很多。</p>
+<blockquote>
+<p>Vim仅仅通过键盘来在这些模式之中切换。</p>
+</blockquote>
+<p><a href="https://www.shiyanlou.com/courses/2" target="_blank" rel="noopener">实验楼Vim入门</a></p>
+<p><a href="https://vim-adventures.com/" target="_blank" rel="noopener">vim-adventure</a></p>
+<h3 id="进入Vim"><a href="#进入Vim" class="headerlink" title="进入Vim"></a>进入Vim</h3><ul>
+<li>vim或者vi后面加上你要打开的已存在的文件名或者不存在（则作为新建文件）的文件名。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim wusanwan.txt</span><br></pre></td></tr></table></figure>
+<ul>
+<li>vim 再进入命令行模式后输入:e 文件路径</li>
+</ul>
+<h3 id="基本模式"><a href="#基本模式" class="headerlink" title="基本模式"></a>基本模式</h3><ul>
+<li><p>👍<strong>普通模式(Normal mode)</strong></p>
+<p>  在普通模式中，用的编辑器命令，比如移动光标，删除文本等。这是Vim启动后的默认模式。</p>
+<p>  <strong>普通模式命令</strong>往往需要一个操作符结尾。例如普通模式命令dd删除当前行，但是第一个”d”的后面可以跟另外的移动命令来代替第二个d，比如用移动到下一行的”j”键就可以删除当前行和下一行。另外还可以指定命令重复次数，2dd（重复dd两次），和dj的效果是一样的。用户学习了各种各样的文本间移动／跳转的命令和其他的普通模式的编辑命令，并且能够灵活组合使用的话，能够比那些没有模式的编辑器更加高效地进行文本编辑。</p>
+</li>
+<li><p>👍<strong>插入模式(Insert mode)</strong></p>
+<p>  在这个模式中，大多数按键都会向文本缓冲中插入文本。大多数新用户希望文本编辑器编辑过程中一直保持这个模式。</p>
+</li>
+<li><p><strong>可视模式(Visual mode)</strong></p>
+<p>  这个模式与普通模式比较相似。但是移动命令会扩大高亮的文本区域。高亮区域可以是字符、行或者是一块文本。当执行一个非移动命令时，命令会被执行到这块高亮的区域上。Vim的”文本对象”也能和移动命令一样用在这个模式中。</p>
+<p>  v 进入字符选择模式，可移动光标，光标走过的地方就会选取，按下v之后会取消选取</p>
+<p>  shirt+v 行选择模式</p>
+<p>  crtl+v 区域选择模式</p>
+<p>  d 删除选取区域内容</p>
+<p>  y 复制选取区域内容</p>
+</li>
+<li><p><strong>选择模式(Select mode)</strong></p>
+<p>  这个模式和无模式编辑器的行为比较相似（Windows标准文本控件的方式）。这个模式中，可以用鼠标或者光标键高亮选择文本，不过输入任何字符的话，Vim会用这个字符替换选择的高亮文本块，并且自动进入插入模式。</p>
+</li>
+<li><p>👍<strong>命令行模式(Command line mode)</strong></p>
+<p>  在命令行模式中可以输入会被解释成并执行的文本。例如执行命令（:键），搜索（/和?键）或者过滤命令（!键）。在命令执行之后，Vim返回到命令行模式之前的模式，通常是普通模式。</p>
+</li>
+<li><p><strong>Ex模式(Ex mode)</strong></p>
+<p>  这和命令行模式比较相似，在使用:visual命令离开Ex模式前，可以一次执行多条命令。</p>
+</li>
+</ul>
+<h3 id="模式之间的转换"><a href="#模式之间的转换" class="headerlink" title="模式之间的转换"></a>模式之间的转换</h3><p><strong>启动</strong>：普通模式</p>
+<p><strong>插入/命令行模式➡普通模式：</strong>Esc或者Ctrl+[</p>
+<p><strong>普通模式➡插入模式：</strong>i或a</p>
+<p><strong>普通模式➡命令行模式：</strong>：</p>
+<p>模式转换中往往需要普通模式中转。</p>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><ul>
+<li><p><strong>移动游标（</strong>普通模式<strong>）</strong></p>
+<p>  上下左右 方向键或者kjhl</p>
+<p>  前一个单词 b</p>
+<p>  后一个单词 w</p>
+<p>  游标移动到n行  nG(n Shift+g)</p>
+<p>  游标移动到第一行 gg</p>
+<p>  游标移动到最后一行 G(shift+g)</p>
+<p>  如果默认没有显示行号，请先进入命令模式，输入:set nu以显示行号</p>
+<p>  到当前单词的结尾   e</p>
+<p>  到行头 0或^</p>
+<p>  到行尾  $</p>
+<p>  向后搜索字母并跳到第一个匹配的位置 f&lt;字母&gt;</p>
+<p>  向前搜索字母并跳到第一个匹配的位置 F&lt;字母&gt;</p>
+</li>
+<li><p><strong>插入操作（</strong>插入模式<strong>）</strong></p>
+<p>  在当前光标处编辑  i</p>
+<p>  在光标后插入 a</p>
+<p>  在行首插入 I</p>
+<p>  在行末插入 A</p>
+<p>  在当前行后插入新行 o</p>
+<p>  在当前行前插入新行 O</p>
+<p>  替换从光标所在位置后到一个单词结尾的字符 cw</p>
+</li>
+<li><p><strong>保存退出（</strong>命令行模式<strong>）</strong></p>
+<p>  保存文档 :w</p>
+<p>  保存为其他文件名或者其他路径 :w[文件名]</p>
+<p>  保存并退出  :wq或:x</p>
+<p>  退出 :q</p>
+<p>  强制退出 ：q！</p>
+<p>  强制退出并保存 :wq!</p>
+<p>  <strong>普通模式</strong>下退出： shift+zz</p>
+</li>
+<li><p><strong>替换撤销（</strong>普通模式<strong>）</strong></p>
+<p>  将游标所在字母替换为指定字母   r+&lt;待替换字母&gt;</p>
+<p>  连续替换，直到按下Esc     R</p>
+<p>  替换整行，删除游标所在行，并进入插入模式  cc</p>
+<p>  替换一个单词，即删除一个单词，并进入插入模式  cw</p>
+<p>  替换游标以后至行末   C(大写）</p>
+<p>  反转游标所在字母大小写 ~</p>
+<p>  撤销一次或n次操作  u{n}</p>
+<p>  撤销当前行的所有修改 U</p>
+<p>  撤销undo的操作（redo) ctrl+r</p>
+</li>
+<li><p><strong>快速缩进（</strong>普通模式<strong>）</strong></p>
+<p>  ’&gt;&gt; 将整行向右缩进</p>
+<p>  &lt;&lt; 将整行向左回退</p>
+<p>  :shiftwidth 向控制缩进和回退的字符数</p>
+<p>  :ce 文本居中</p>
+<p>  :ri  文本靠右</p>
+<p>  :le  文本靠左</p>
+</li>
+<li><p><strong>删除文本（</strong>普通模式<strong>）</strong></p>
+<p>  删除游标所在字符 x或delete</p>
+<p>  删除游标所在前一个字符 X</p>
+<p>  删除整行 dd（其实是剪贴）</p>
+<p>  删除2行   2dd</p>
+<p>  删除一个单词 dw</p>
+<p>  删除到行首 d^</p>
+<p>  删除到行尾 d$或D</p>
+<p>  删除到文档首部 d1G</p>
+<p>  删除到文档结尾处 dG</p>
+</li>
+<li><p><strong>重复命令（</strong>普通模式<strong>）</strong></p>
+<p>  重复上一次的命令操作 .</p>
+<p>  指定次数的相同命令 N<command>比如3dd,10x</p>
+</li>
+<li><p><strong>复制粘贴 (</strong>普通模式<strong>)</strong></p>
+<p>  y复制</p>
+<p>  复制游标所在的整行  yy（3yy表示复制3行）</p>
+<p>  复制至行首  y^或者y0</p>
+<p>  复制至行尾  y$，含光标所在的处的字符</p>
+<p>  复制一个单词 yw</p>
+<p>  复制一个两个单词 y2w</p>
+<p>  复制至文本末 yG</p>
+<p>  复制至文本开头 y1G</p>
+<p>  p粘贴</p>
+<p>  粘贴至光标后（下）p (小写）</p>
+<p>  粘贴至光标前（上）P (大写）</p>
+<p>  dd剪贴</p>
+<p>  实现了快速交换光标所在行与它下面的行 ddp 剪贴</p>
+</li>
+<li><p><strong>查找（</strong>普通模式<strong>）</strong></p>
+<p>  /&lt;要向下查什么string&gt;</p>
+<p>  ?&lt;要向上查什么string&gt;</p>
+<p>  n 查找下一个内容</p>
+<p>  N 查找上一个内容</p>
+<p>  noh 命令行模式取消搜索</p>
+<p>  * 向下查找游标所在处单词</p>
+<p>  # 向上查找游标所在处单词</p>
+<p>  g* 部分符合的*</p>
+<p>  g# 部分符合的#</p>
+</li>
+<li><p><strong>小技巧</strong></p>
+<p>  回到光标的上个位置 ctrl+o</p>
+</li>
+</ul>
+<p>用替换会比用i/a修改方便很多</p>
+<h3 id="高级功能"><a href="#高级功能" class="headerlink" title="高级功能"></a>高级功能</h3><ul>
+<li><p><strong>创建加密文档</strong></p>
+<p>  vim -x file1</p>
+<p>  输入密码并确认，下次要打开就需要密码了</p>
+</li>
+<li><p><strong>帮助系统</strong></p>
+<p>  （普通模式）F1帮助文档</p>
+<p>  （命令行模式）:h shiftwidth 代开shiftwidth的帮助文件</p>
+<p>  （命令行模式）:ver 显示版本及参数</p>
+</li>
+<li><p><strong>在vim执行外部命令</strong></p>
+<p>  :ls 显示当前目录的内容</p>
+<p>  :!rm wusanwan 用于删除名为wusanwan的文件</p>
+<p>  :w wusanwan 将当前vim中正在编辑的文件另存为wusanwan文件</p>
+</li>
+<li><p><strong>功能设定</strong></p>
+<p>  <strong>获取目前的设定（都是命令行模式）</strong></p>
+<p>  :set 显示所有修改过的配置</p>
+<p>  :set all 显示所有的设定值</p>
+<p>  :set <option>? 显示option的设定值</option></p>
+<p>  :set nooption 取消当前设定值</p>
+<p>  <strong>set功能的说明</strong></p>
+<p>  :set ai 设置自动缩进</p>
+<p>  :set aw 设置自动存档，默认未打开</p>
+<p>  :set background=dark或light 设置背景风格</p>
+<p>  :set bk 设置自动备份，默认未打开</p>
+<p>  :set cin 设置C语言风格缩进</p>
+</li>
+<li><p><strong>多窗口操作</strong></p>
+<p>  vim可以再一个界面里打开多个窗口进行编辑，这些编辑窗口称为vim的视窗。</p>
+<p>  :new 或 普通模式 ctrl+w 打开一个新的vim视窗，并进入视窗编辑一个新的文件</p>
+<p>  以下快捷键可能会和浏览器的快捷键冲突，可以禁用浏览器快捷键</p>
+<p>  命令行模式</p>
+<p>  :sp 1.txt 打开新的水平分屏视窗来编辑</p>
+<p>  :vsp 2.txt 垂直分屏视窗</p>
+<p>  普通模式</p>
+<p>  ctrl+w s 将当前窗口分成两个水平的窗口</p>
+<p>  ctrl+w v 垂直</p>
+<p>  ctrl+w q 即按:q结束分割出来的视窗</p>
+<p>  ctrl+w o 打开一个视窗并隐藏之前的所有视窗</p>
+<p>  ctrl+w j 移至下面视窗</p>
+<p>  ctrl+w k 移至上面视窗</p>
+<p>  ctrl+w h 移至左边视窗</p>
+<p>  ctrl+w l 移至右边视窗</p>
+<p>  ctrl+w J 将当前视窗移至下面（大写）</p>
+<p>  ctrl+w - 减小视窗的高度</p>
+<p>  ctrl+w + 增加</p>
+</li>
+<li><p><strong>多文件编辑</strong></p>
+<p>  <strong>vim 1.txt 2.txt 同时创建两个新文件并编辑</strong></p>
+<p>  默认进入1.txt的编辑界面</p>
+<p>  命令行模式下 输入:n 编辑2.txt文件 （前一个编辑的文件没有保存）</p>
+<p>  命令行模式下 输入:N 编辑1.txt文件 （前一个编辑的文件没有保存）</p>
+<p>  <strong>进vim后打开新文件</strong></p>
+<p>  命令行模式下</p>
+<p>  :e 3.txt 打开新文件3.txt</p>
+<p>  :e# 回到前一个文件</p>
+<p>  :ls 可以列出以前编辑过的文档</p>
+<p>  :b 2.txt （或者编号）可以直接进入文件2.txt编辑</p>
+<p>  :bd 2.txt （或者编号）可以删除以前编辑过的列表中的文件项目</p>
+<p>  :e! 4.txt 新打开文件4.txt 放弃正在编辑的文件</p>
+<p>  :f 显示正在编辑的文件名</p>
+<p>  :f new.txt 改变正在编辑的文件名为new.txt</p>
+<p>  <strong>恢复文件</strong></p>
+<p>  vim -r 1.txt</p>
+</li>
+</ul>
+
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>原文作者：<a href="http://www.wusanwan.com">吴三万</a>
-            <p>原文链接：<a href="http://www.wusanwan.com/2019/02/23/git入门/">http://www.wusanwan.com/2019/02/23/git入门/</a>
-            <p>发表日期：<a href="http://www.wusanwan.com/2019/02/23/git入门/">二月 23日 2019, 4:20:45 下午</a>
-            <p>更新日期：<a href="http://www.wusanwan.com/2019/02/23/git入门/">January 14th 2021, 10:17:39 pm</a>
+            <p>原文链接：<a href="http://www.wusanwan.com/2020/04/15/vim入门/">http://www.wusanwan.com/2020/04/15/vim入门/</a>
+            <p>发表日期：<a href="http://www.wusanwan.com/2020/04/15/vim入门/">四月 15日 2020, 9:57:31 晚上</a>
+            <p>更新日期：<a href="http://www.wusanwan.com/2020/04/15/vim入门/">January 14th 2021, 10:01:58 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -520,16 +643,16 @@ git push -u origin master
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2019/04/03/Python实现微信机器人/" title= "基于Python wxpy库 的微信改造">
-                    <div class="nextTitle">基于Python wxpy库 的微信改造</div>
+                <a href= "/2020/05/04/rsshub相关/" title= "rsshub部署后问题修复">
+                    <div class="nextTitle">rsshub部署后问题修复</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2019/02/01/通过两地经纬度计算距离/" title= "通过经纬度计算两地距离">
-                    <div class="prevTitle">通过经纬度计算两地距离</div>
+                <a href= "/2020/04/06/bug-在线编辑器用不了/" title= "bug:在线编辑器用不了">
+                    <div class="prevTitle">bug:在线编辑器用不了</div>
                 </a>
             
         </li>
@@ -692,7 +815,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#理论部分"><span class="toc-number">1.</span> <span class="toc-text">理论部分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#获得Git仓库"><span class="toc-number">1.1.</span> <span class="toc-text">获得Git仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git的基本流程"><span class="toc-number">1.2.</span> <span class="toc-text">Git的基本流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支与合并"><span class="toc-number">1.3.</span> <span class="toc-text">分支与合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git日志"><span class="toc-number">1.4.</span> <span class="toc-text">Git日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git标签"><span class="toc-number">1.5.</span> <span class="toc-text">Git标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中级技能"><span class="toc-number">1.6.</span> <span class="toc-text">中级技能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高级技能"><span class="toc-number">1.7.</span> <span class="toc-text">高级技能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除某文件夹"><span class="toc-number">1.8.</span> <span class="toc-text">删除某文件夹</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#进入Vim"><span class="toc-number">1.</span> <span class="toc-text">进入Vim</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本模式"><span class="toc-number">2.</span> <span class="toc-text">基本模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模式之间的转换"><span class="toc-number">3.</span> <span class="toc-text">模式之间的转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本操作"><span class="toc-number">4.</span> <span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高级功能"><span class="toc-number">5.</span> <span class="toc-text">高级功能</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
